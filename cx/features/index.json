@@ -1,3 +1,7 @@
 {
-  "features" : [ ]
+  "features" : [ {
+    "slug" : "01_09_26_bac0bbad-1760-40d5-aef8-6a518ae2ad9a",
+    "title" : "spec1",
+    "createdBy" : "1"
+  } ]
 }
