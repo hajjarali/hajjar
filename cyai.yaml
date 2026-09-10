@@ -1,8 +1,8 @@
 ---
-jdkVersion: "23"
+jdkVersion: "25"
 mavenVersion: "3.9.9"
 sourceEncoding: "UTF-8"
-javaSourceVersion: "23"
+javaSourceVersion: "25"
 defaultProfiles: []
 defaultProperties: {}
 buildFile: null
