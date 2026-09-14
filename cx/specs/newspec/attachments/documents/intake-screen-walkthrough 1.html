@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Authoring Workspace — reusable shell + spec intake</title>
+<style>
+  :root{--bg:#0f172a;--panel:#111c33;--card:#16233f;--ink:#e6edf7;--muted:#94a3b8;--accent:#38bdf8;
+    --obs:#22c55e;--rest:#38bdf8;--prop:#a78bfa;--warn:#eab308;}
+  *{box-sizing:border-box}
+  body{margin:0;background:linear-gradient(180deg,#0b1222,#0f172a);color:var(--ink);
+    font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  header{padding:32px 40px 16px;border-bottom:1px solid #1e293b}
+  h1{margin:0 0 6px;font-size:26px}h1 span{color:var(--accent)}
+  .sub{color:var(--muted);max-width:940px}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 24px 80px}
+  nav.toc{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 4px}
+  nav.toc a{font-size:12.5px;color:var(--muted);text-decoration:none;border:1px solid #24324d;padding:4px 10px;border-radius:999px;background:#0e1a30}
+  nav.toc a:hover{color:var(--ink);border-color:var(--accent)}
+  section{margin:30px 0 0;background:var(--panel);border:1px solid #1e293b;border-radius:14px;padding:22px 26px}
+  h2{margin:0 0 6px;font-size:20px}h2 .n{color:var(--accent);margin-right:8px}
+  h3.mh{margin:20px 0 8px;font-size:15px;color:#cbd5e1}
+  .lead{color:var(--muted);margin:2px 0 14px;max-width:990px}
+  code{background:#0c1830;border:1px solid #22314f;padding:1px 6px;border-radius:6px;color:#bae6fd;font-size:12.5px}
+  .callout{border-left:3px solid var(--accent);background:#0e1a30;padding:11px 15px;border-radius:0 10px 10px 0;color:#cbd5e1;margin:12px 0}
+  .vs{border-left:3px solid #a78bfa;background:#150e28;padding:10px 14px;border-radius:0 10px 10px 0;color:#d7cdf2;margin:12px 0;font-size:13.5px}
+  .vs b{color:#e9deff}
+  .chip{font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px;border:1px solid;white-space:nowrap}
+  .c-obs{color:#86efac;border-color:#166534;background:#0d2a1a}
+  .c-rest{color:#7dd3fc;border-color:#155e75;background:#0b2436}
+  .c-prop{color:#c4b5fd;border-color:#5b21b6;background:#1a1030}
+  .c-slot{color:#fde68a;border-color:#854d0e;background:#2a2410}
+  .legend{display:flex;flex-wrap:wrap;gap:14px;margin:4px 0 14px;font-size:13px}
+  .legend span{display:inline-flex;align-items:center;gap:7px;color:var(--muted)}
+  .dot{width:11px;height:11px;border-radius:3px;display:inline-block;border:1px solid rgba(255,255,255,.2)}
+  .d-obs{background:var(--obs)}.d-rest{background:var(--rest)}.d-prop{background:var(--prop)}.d-slot{background:var(--warn)}
+  /* generic shell diagram */
+  .shell{display:grid;grid-template-columns:150px 1fr 210px;grid-template-rows:auto auto 1fr auto;gap:8px;
+    background:var(--card);border:1px solid #2b3f63;border-radius:12px;padding:12px;min-height:420px}
+  .z{border:1px dashed #3a5488;border-radius:9px;padding:9px 11px;background:#0e1a30;position:relative}
+  .z .zt{font-size:9.5px;text-transform:uppercase;letter-spacing:.08em;color:#7dd3fc;font-weight:700;margin-bottom:4px}
+  .z .zd{font-size:11.5px;color:#aebfd8;line-height:1.45}
+  .z .zk{position:absolute;top:-9px;left:10px;background:#38bdf8;color:#04121f;font-weight:800;font-size:11px;border-radius:5px;padding:1px 7px}
+  .zA{grid-column:1/4}.zB{grid-column:1/4}
+  .zNav{grid-row:3/4}.zArt{}.zInsp{grid-row:3/5}
+  .zChat{grid-column:2/3}
+  /* app mockups */
+  .app{background:#0c1526;border:1px solid #22314f;border-radius:14px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.4);margin:8px 0}
+  .ctx{display:flex;align-items:center;gap:10px;padding:10px 15px;background:#0e1a30;border-bottom:1px solid #22314f;flex-wrap:wrap}
+  .brand{font-weight:800;font-size:13px}
+  .switch{background:#0b1830;border:1px solid #2a3f63;border-radius:8px;padding:5px 11px;font-size:12.5px;font-weight:600;color:#e6edf7}
+  .stt{font-size:9.5px;font-weight:800;padding:2px 7px;border-radius:5px;letter-spacing:.03em}
+  .stt.d{color:#fde68a;background:#2a2410;border:1px solid #854d0e}
+  .stt.a{color:#86efac;background:#0d2a1a;border:1px solid #166534}
+  .primary{margin-left:auto;background:#0d2a1a;border:1px solid #22c55e;color:#86efac;border-radius:8px;padding:6px 14px;font-size:12.5px;font-weight:700}
+  /* stepper */
+  .stepper{display:flex;align-items:center;gap:6px;padding:9px 15px;background:#0b1526;border-bottom:1px solid #1a2740;font-size:11.5px;flex-wrap:wrap}
+  .stp{padding:3px 10px;border-radius:999px;border:1px solid #24324d;color:var(--muted)}
+  .stp.on{color:#dcf0ff;background:#0b2436;border-color:#38bdf8}
+  .stp.done{color:#86efac;border-color:#166534;background:#0d2a1a}
+  .stp .a{color:#40567e;margin:0 2px}
+  .stepper .a{color:#40567e}
+  /* body: nav | artifact | inspector */
+  .body3{display:grid;grid-template-columns:140px 1fr 210px}
+  .nav{border-right:1px solid #1a2740;padding:10px 8px;background:#0a1712;font-size:12px}
+  .nav .ni{padding:6px 9px;border-radius:7px;color:#9fb3d1;margin:3px 0}
+  .nav .ni.on{background:#10251a;border:1px solid #1c3b28;color:#cde dd}
+  .art{padding:13px 15px;font:13px/1.7 "SF Mono",Consolas,monospace;color:#c7d2e4;border-right:1px solid #1a2740}
+  .art .h{color:#7dd3fc;font-weight:700}
+  .art .sel{background:#20344f;outline:1px solid #38bdf8;border-radius:3px;padding:0 2px}
+  .art .q{color:#fbbf24}
+  .insp{background:#0b1622}
+  .itabs{display:flex;border-bottom:1px solid #1a2740}
+  .itab{flex:1;text-align:center;font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);padding:8px 4px;border-bottom:2px solid transparent}
+  .itab.on{color:#e6edf7;border-bottom-color:#38bdf8}
+  .ibody{padding:10px 11px}
+  .cmt{background:#0e1a30;border:1px solid #26364f;border-radius:9px;padding:7px 9px;font-size:11.5px;margin:7px 0}
+  .cmt .who{font-size:10px;font-weight:700;margin-bottom:3px}
+  .cmt.you .who{color:#7dd3fc}.cmt.llm .who{color:#c4b5fd}
+  .cmt .bd{color:#aebfd8}
+  .chk{display:flex;align-items:center;justify-content:space-between;font-size:11.5px;padding:5px 0;color:#9fb3d1}
+  .badge{font-size:9.5px;font-weight:700;padding:1px 7px;border-radius:5px}
+  .badge.pass{color:#86efac;background:#0d2a1a;border:1px solid #166534}
+  .badge.warn{color:#fde68a;background:#2a2410;border:1px solid #854d0e}
+  .actions{display:flex;align-items:center;gap:8px;padding:10px 15px;background:#0b1526;border-top:1px solid #1a2740;flex-wrap:wrap}
+  .abtn{border-radius:8px;padding:6px 12px;font-size:12px;font-weight:600;border:1px solid}
+  .abtn.rest{color:#7dd3fc;border-color:#155e75;background:#0b2436}
+  .abtn.obs{color:#86efac;border-color:#22c55e;background:#0d2a1a}
+  .vstrip{margin-left:auto;display:flex;align-items:center;gap:6px;font-size:11.5px;color:var(--muted)}
+  .vchip{font-size:9px;padding:1px 5px;border-radius:4px;background:#0b2436;border:1px solid #155e75;color:#7dd3fc}
+  .chatbar{padding:11px 15px;background:#0a1a26;border-top:1px solid #1a2740}
+  .chatlbl{font-size:10px;color:#7dd3fc;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+  .msg{border-radius:9px;padding:7px 10px;font-size:12px;margin:5px 0;max-width:80%}
+  .msg.u{background:#0b2436;border:1px solid #1f5570;color:#dcf0ff}
+  .msg.b{background:#0d2013;border:1px solid #1c3b28;color:#a7e0bd;margin-left:auto}
+  .msg .tag{font-size:9px;font-weight:700;color:#7dd3fc;display:block;margin-bottom:2px}
+  .cinput{margin-top:7px;background:#0b1830;border:1px solid #2a3f63;border-radius:9px;padding:7px 11px;font-size:12px;color:#7e93b4}
+  /* canvas layout: chat (left) | artifact | inspector */
+  .body3.canvas{grid-template-columns:210px 1fr 205px}
+  .chatcol{border-right:1px solid #1a2740;background:#0a1a26;padding:10px 11px}
+  .docsec{display:flex;gap:6px;margin-bottom:11px;flex-wrap:wrap;align-items:center}
+  .docsec .s{font-size:10.5px;padding:2px 9px;border-radius:999px;border:1px solid #24324d;color:#9fb3d1}
+  .docsec .s.on{color:#dcf0ff;background:#0b2436;border-color:#38bdf8}
+  .mc{display:inline-block;font-size:10px;color:#fde68a;background:#2a2410;border:1px solid #854d0e;border-radius:6px;padding:0 6px;margin-left:6px;vertical-align:middle}
+  /* pins + tables */
+  .pin{display:inline-grid;place-items:center;width:21px;height:21px;border-radius:50%;background:#38bdf8;color:#04121f;font-weight:800;font-size:11.5px;box-shadow:0 0 0 3px rgba(56,189,248,.2);vertical-align:middle}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13px}
+  th,td{text-align:left;padding:9px 11px;border-bottom:1px solid #22314f;vertical-align:top}
+  th{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.04em}
+  td b{color:#fff}
+  .flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+  .step{background:#0d2a1a;border:1px solid #22c55e;color:#d1fae5;border-radius:9px;padding:6px 11px;font-size:12px}
+  .step.rest{background:#0b2436;border-color:#38bdf8;color:#dcf0ff}
+  .step.slot{background:#2a2410;border-color:#854d0e;color:#fde68a}
+  .arr{color:#5b7bb0;font-weight:700}
+  .foot{color:#64748b;font-size:12px;margin-top:26px;text-align:center}
+  b.hl{color:#fff}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap" style="padding-bottom:0">
+    <h1>Authoring Workspace — <span>one reusable shell, first instance: spec intake</span></h1>
+    <p class="sub">Intake (confirmed) authors a <b>spec to be implemented later</b> — a spec/PRD registry, not a runnable-agent vibe-coder. So the design goal isn't one screen; it's a <b>reusable "authoring workspace" shell</b> that every SDLC surface renders through — spec intake first, the <b>feature editor</b> next, and a future <b>permission-gated "do-the-whole-thing" intake</b> — so users learn one layout and reuse it everywhere. This is the VS Code / Linear / Figma / Notion move: one shell, many contexts.</p>
+    <nav class="toc">
+      <a href="#shell">1 · The reusable shell</a>
+      <a href="#parts">2 · The 6 parts</a>
+      <a href="#spec">3 · Instance: spec intake</a>
+      <a href="#reuse">4 · Same shell → feature / advanced</a>
+      <a href="#map">5 · Action → backend</a>
+      <a href="#why">6 · Benchmarked</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="legend" style="margin-top:18px">
+    <span><i class="dot d-obs"></i> Observer (shared/durable/live)</span>
+    <span><i class="dot d-rest"></i> Typed REST (session)</span>
+    <span><i class="dot d-prop"></i> Property layer (ephemeral)</span>
+    <span><i class="dot d-slot"></i> Extension slot (future / permission-gated)</span>
+  </div>
+
+  <!-- 1 · SHELL -->
+  <section id="shell">
+    <h2><span class="n">1</span>The reusable shell (six zones)</h2>
+    <p class="lead">Every authoring surface is the same skeleton; only the <i>content</i> of each zone changes. Learn it once, and the feature editor + advanced intake are instantly familiar.</p>
+    <div class="shell" style="grid-template-columns:210px 1fr 205px;grid-template-rows:auto auto 1fr">
+      <div class="z zA" style="grid-column:1/4;grid-row:1"><span class="zk">A</span><div class="zt">Context bar</div><div class="zd">project · artifact switcher (▾, not a list) · status/version · <b>primary action</b> (Accept / Advance / Ship — permission-gated)</div></div>
+      <div class="z zB" style="grid-column:1/4;grid-row:2"><span class="zk">B</span><div class="zt">Stepper — the lifecycle</div><div class="zd">the domain's stages, current highlighted (spec: Vibe→Compile→Review→Accept · feature: Planning→…→Done · advanced: the full SDLC)</div></div>
+      <div class="z" style="grid-column:1;grid-row:3"><span class="zk">F</span><div class="zt">Copilot chat — one thread</div><div class="zd"><b>left rail</b> (Canvas / Artifacts). The <b>first message generates</b> (vibe→compile, or generate-plan), the rest refine.</div></div>
+      <div class="z" style="grid-column:2;grid-row:3"><span class="zk">D</span><div class="zt">Artifact pane — the middle</div><div class="zd">the document being authored (markdown), with <b>select-to-comment</b> (margin threads) and a compact <b>section switcher</b> (zone&nbsp;C, folded in). The one thing you're focused on.</div></div>
+      <div class="z" style="grid-column:3;grid-row:3"><span class="zk">E</span><div class="zt">Inspector rail (tabbed)</div><div class="zd"><b>Checks</b> (validation / readiness / review) · <b>Comments</b> (the doc's threads, listed) · <span style="color:#fde68a">▦ slot</span> (future: Preview / Runs)</div></div>
+    </div>
+    <div class="vs"><b>Canonical arrangement = Canvas / Artifacts:</b> chat on the <b>left</b>, the editable document in the <b>center</b>, an inspector rail on the <b>right</b> — exactly <b>Claude Artifacts</b> and <b>ChatGPT Canvas</b> (chat beside a live editable artifact). The reusable-shell idea still holds — <b>VS Code</b>, <b>Linear</b>, <b>Figma</b>, <b>Notion</b> all keep one skeleton across contexts — we just fix the chat as a left rail rather than a bottom dock. Consistency <i>is</i> the feature. (Zone <b>C</b> — doc sections — folds into the artifact as a compact switcher, since the left column is now the chat.)</div>
+    <div class="callout"><b>In build-model terms:</b> the shell is a reusable base model+view (an <code>AbstractAuthoringWorkspaceModel</code>, in the spirit of the existing <code>AbstractDocumentEditorModel</code> / <code>AbstractBuildConfigTabModel</code> bases). Concrete screens <i>configure</i> it — the stepper stages, the artifact source, the inspector tabs, the primary action, and what the chat's first message does — and inherit the rest.</div>
+  </section>
+
+  <!-- 2 · PARTS -->
+  <section id="parts">
+    <h2><span class="n">2</span>The six reusable parts — one config table</h2>
+    <p class="lead">Each screen fills the same six slots. That's the whole "generic intake pattern": swap the config, keep the shell.</p>
+    <table>
+      <tr><th>Part</th><th>Configured with</th><th>Spec intake</th><th>Feature editor</th><th>Wire</th></tr>
+      <tr><td><b>A · Context bar</b></td><td>context + primary action(s)</td><td>project · spec ▾ · DRAFT/APPROVED · <b>Accept→vN</b></td><td>project · feature ▾ · PLANNING · <b>Advance / Implement</b></td><td><span class="chip c-rest">rest</span> editor session</td></tr>
+      <tr><td><b>B · Stepper</b></td><td>the stage set</td><td>Vibe → Compile → Review → Accept</td><td>Planning → Task-breakdown → Implementing → Done</td><td><span class="chip c-obs">obs</span> stage from the row/projection</td></tr>
+      <tr><td><b>C · Nav / sections</b></td><td>artifact sections/tabs</td><td>Intent · Scope · Open-Qs</td><td>Spec · Plan · Tasks tabs</td><td><span class="chip c-prop">local</span></td></tr>
+      <tr><td><b>D · Artifact pane</b></td><td>the document + editability</td><td>spec markdown (editable, autosave→DRAFT)</td><td>plan/tasks (editable) · spec (read-only)</td><td><span class="chip c-rest">rest</span> <code>compile</code>/<code>save</code>/<code>read</code></td></tr>
+      <tr><td><b>E · Inspector rail</b><br/><span style="font-size:11px;color:#7d90ad">right, tabbed</span></td><td>which tabs</td><td>Checks(validator + readiness + review) · Comments</td><td>Checks(build gate + task status) · Comments · Runs</td><td><span class="chip c-rest">rest</span> review/assess · <span class="chip c-obs">obs</span> run/task events</td></tr>
+      <tr><td><b>F · Copilot chat</b><br/><span style="font-size:11px;color:#7d90ad">left rail</span></td><td>what "message 1" does</td><td>msg 1 = vibe → <code>compile</code>; rest → <code>chat</code></td><td>msg 1/actions → generate plan/tasks; rest → <code>chat</code></td><td><span class="chip c-rest">rest</span> <code>compile</code>/<code>chat</code></td></tr>
+    </table>
+    <div class="callout"><b>Extensibility for the advanced intake:</b> the shell already has the seams — the <b>Stepper</b> can render the <i>whole</i> SDLC, the <b>primary action</b> can be "Take it live" (gated on the caller's permissions), and the Inspector's <b>▦ slot</b> can host a preview/runs pane. No new shell — just a richer config, permission-gated.</div>
+  </section>
+
+  <!-- 3 · SPEC INTAKE -->
+  <section id="spec">
+    <h2><span class="n">3</span>Instance #1 — the spec intake "vibing" screen</h2>
+    <p class="lead">The shell configured for authoring a spec. Note the <b>Checks</b> tab (❺) — the spec-appropriate version of the old mockup's "validation events + results": the accept-gate validator, the readiness verdict, and the review findings. A spec isn't executed, so there's no run sandbox here — that's a north-star slot for later.</p>
+    <div class="app">
+      <div class="ctx"><span class="pin">1</span><span class="brand">Authoring</span>
+        <span class="switch">invoice-recon ▾</span><span class="stt a">APPROVED · v2</span>
+        <span class="primary"><span class="pin">6</span> Accept → v3</span></div>
+      <div class="stepper"><span class="pin" style="margin-right:4px">2</span>
+        <span class="stp done">Vibe</span><span class="a">›</span>
+        <span class="stp done">Compile</span><span class="a">›</span>
+        <span class="stp on">Review</span><span class="a">›</span>
+        <span class="stp">Accept</span></div>
+      <div class="body3 canvas">
+        <div class="chatcol"><span class="pin">9</span>
+          <div class="chatlbl">chat — one thread (msg 1 = the vibe)</div>
+          <div class="msg u"><span class="tag">you · 1st = vibe</span>Monthly AP/AR reconciliation for the FR entity; flag mismatches over €50; signed report.</div>
+          <div class="msg b"><span class="tag">assistant · compiled</span>Drafted invoice-recon (Intent / Scope / Open questions).</div>
+          <div class="cinput">Message the assistant…</div></div>
+        <div class="art"><span class="pin">4</span>
+          <div class="docsec"><span class="pin" style="position:relative;top:-1px">3</span><span class="s on">Intent</span><span class="s">Scope</span><span class="s">Open questions</span></div>
+          <span class="h">## Intent</span><br/>Reconcile AP/AR monthly for the FR entity.<br/><br/>
+          <span class="h">## Scope</span><br/><span class="sel">French entity only; ledgers X, Y and Z.</span><span class="mc">💬 you</span><br/><br/>
+          <span class="h">## Open questions</span><br/><span class="q">- Threshold that flags a mismatch? (€50?)</span><span class="mc">💬 review</span></div>
+        <div class="insp"><span class="pin" style="position:relative;top:-2px">5</span>
+          <div class="itabs"><span class="itab on">Checks</span><span class="itab">Comments</span></div>
+          <div class="ibody">
+            <div class="chk">accept gate · name + intent <span class="badge pass">ok</span></div>
+            <div class="chk">readiness (LLM) <span class="badge warn">1 open q</span></div>
+            <div class="chk">review findings <span class="badge warn">2</span></div>
+            <div style="border-top:1px dashed #223b5c;margin:10px 0 8px;padding-top:8px" class="chatlbl">Comments (doc threads) →</div>
+            <div class="cmt you"><div class="who">You · on "Scope"</div><div class="bd">Drop ledger Z — out of FR scope.</div></div>
+            <div class="cmt llm"><div class="who">🤖 Review · "Open questions"</div><div class="bd">Add a currency note (EUR only?).</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="actions"><span class="pin">7</span>
+        <span class="abtn rest">Review</span><span class="abtn rest">Assess readiness</span>
+        <span class="vstrip"><span class="pin">8</span> versions <span class="vchip">v1</span><span class="vchip">v2</span>
+          <span class="abtn rest" style="padding:3px 9px;font-size:11px">compare v1↔v2</span></span></div>
+    </div>
+    <div style="font-size:13px;color:#9fb3d1;margin-top:6px">
+      <b>❶</b> context + switcher (<span class="chip c-rest">rest</span> <code>createSpecEditor</code>) ·
+      <b>❷</b> stepper = the authoring flow ·
+      <b>❸</b> doc sections ·
+      <b>❹</b> the spec doc, select-to-comment (<span class="chip c-rest">rest</span> <code>save</code>→<code>specChanged</code>) ·
+      <b>❺</b> inspector: <b>Checks</b> (validator + <code>assessReadiness</code> + <code>review</code> findings — the "events/results" for a spec) + <b>Comments</b> (the doc's anchored threads, also shown in the margin, shared with LLM <code>review</code>) ·
+      <b>❻/❼</b> Accept (<span class="chip c-obs">obs</span> <code>SpecWorkflow</code>) · Review/Assess (<span class="chip c-rest">rest</span>) ·
+      <b>❽</b> versions + compare (<span class="chip c-rest">rest</span> <code>readVersion</code>/<code>diff</code>) ·
+      <b>❾</b> chat — <b>left rail</b> (<span class="chip c-rest">rest</span> <code>compile</code> then <code>chat</code>).
+    </div>
+    <div class="vs"><b>vs. the earlier AgenticFactory mockup:</b> that one was a <i>vibe-coder for agents</i> — rich typed IR (Constraints/Tools/Rubric/Artifacts) + a live <b>preview sandbox</b> that ran the agent. For a <b>spec that's implemented later</b>, the "run preview" doesn't apply yet (nothing to execute at intake) — so it becomes the Inspector's <b>▦ slot</b>. What <i>does</i> map — the validation "events" — comes back as the <b>Checks</b> tab. The rich typed IR is a north-star (the IR is v0/markdown today).</div>
+  </section>
+
+  <!-- 4 · REUSE -->
+  <section id="reuse">
+    <h2><span class="n">4</span>The same shell → the feature editor, and the advanced intake</h2>
+    <p class="lead">Same six zones, different config. This is why it's worth building the shell once.</p>
+
+    <h3 class="mh">Feature editor (next screen) — same shell</h3>
+    <div class="app">
+      <div class="ctx"><span class="brand">Authoring</span><span class="switch">invoice-recon · feature ▾</span>
+        <span class="stt d">PLANNING</span><span class="primary">Advance →</span></div>
+      <div class="stepper">
+        <span class="stp on">Planning</span><span class="a">›</span><span class="stp">Task breakdown</span><span class="a">›</span>
+        <span class="stp">Implementing</span><span class="a">›</span><span class="stp">Done</span></div>
+      <div class="body3 canvas">
+        <div class="chatcol"><div class="chatlbl">chat — feature copilot (same component, feature context)</div>
+          <div class="msg u"><span class="tag">you</span>Split the matching rule into its own task.</div>
+          <div class="msg b"><span class="tag">assistant</span>Updated the plan — see task 2.</div>
+          <div class="cinput">Ask about the plan / tasks…</div></div>
+        <div class="art">
+          <div class="docsec"><span class="s">Spec (read-only)</span><span class="s on">Plan</span><span class="s">Tasks</span></div>
+          <span class="h"># Implementation plan</span><br/>1. Ledger adapter…<br/>2. Matching rule engine…<span class="mc">💬 you</span></div>
+        <div class="insp"><div class="itabs"><span class="itab on">Checks</span><span class="itab">Comments</span><span class="itab">Runs</span></div>
+          <div class="ibody"><div class="chk">last build <span class="badge pass">green</span></div>
+            <div class="chk">tasks done <span class="badge warn">2 / 5</span></div>
+            <div class="chk">agent run <span class="badge pass">idle</span></div></div></div>
+      </div>
+      <div class="actions"><span class="abtn rest">Generate plan</span><span class="abtn obs">Advance → Task breakdown</span>
+        <span class="abtn obs" style="margin-left:auto">Implement a task</span></div>
+    </div>
+    <div class="callout">Only the <b>config</b> changed: stepper = feature stages; artifact = Plan/Tasks tabs (+ read-only Spec); inspector adds a <b>Runs</b> tab (agent runs / build — <span class="chip c-obs">obs</span> from the change-plane); primary action = Advance/Implement. The user already knows this screen because it <i>is</i> the spec screen.</div>
+
+    <h3 class="mh">Advanced intake (future, permission-gated) — same shell, fuller config</h3>
+    <div class="flow">
+      <span class="step rest">Vibe</span><span class="arr">›</span>
+      <span class="step">Spec / accept</span><span class="arr">›</span>
+      <span class="step slot">Create feature</span><span class="arr">›</span>
+      <span class="step slot">Plan · Tasks · Implement</span><span class="arr">›</span>
+      <span class="step slot">Merge</span><span class="arr">›</span>
+      <span class="step slot">Deploy</span>
+    </div>
+    <div class="callout">If the caller has the permissions to do the whole thing, the <b>Stepper (B)</b> renders the full SDLC, the <b>primary action (A)</b> becomes "Take it live" (each step gated by permission), and the <b>▦ slot (E)</b> can host a preview/runs pane. A restricted user sees the same shell truncated to <i>Vibe → Accept</i>. <span class="chip c-slot">slot</span> = backend not built yet (merge/CI/deploy are the SDLC-tail gaps) — the shell is ready; the capability is phased.</div>
+    <div class="vs"><b>vs. other products:</b> permission-scoped depth is <b>Linear/Jira workflow</b> + <b>GitHub Actions gates</b> — the same view shows more or fewer steps by role. And a single "keep going" primary action that walks a pipeline is <b>Vercel/Netlify deploy</b> / <b>Copilot Workspace</b>.</div>
+  </section>
+
+  <!-- 5 · MAP -->
+  <section id="map">
+    <h2><span class="n">5</span>Spec intake — every action → its backend call</h2>
+    <table>
+      <tr><th>Zone</th><th>You do…</th><th>Behind it</th></tr>
+      <tr><td>A</td><td>open / switch a spec</td><td><span class="chip c-rest">rest</span> <code>createSpecEditor(projectId)</code> · <code>read(id, name)</code></td></tr>
+      <tr><td>A</td><td>Accept → publish version</td><td><span class="chip c-obs">obs</span> <code>SpecWorkflow</code> (validate → freeze commit → SpecVersion) → <code>specChanged(APPROVED)</code></td></tr>
+      <tr><td>B</td><td>see the current stage</td><td><span class="chip c-obs">obs</span> spec status from <code>SpecRegistrySheet</code> / the row</td></tr>
+      <tr><td>D</td><td>edit the doc (autosave)</td><td><span class="chip c-rest">rest</span> <code>save(id, ir)</code> → <code>specChanged(DRAFT)</code></td></tr>
+      <tr><td>E · Comments</td><td>comment on a line</td><td><span class="chip c-rest">rest</span> anchored thread on the doc (persisted via <code>save</code>; shared with <code>review</code>)</td></tr>
+      <tr><td>E · Checks</td><td>readiness / review</td><td><span class="chip c-rest">rest</span> <code>assessReadiness(id, ir)</code> · <code>review(id, ir)</code> (+ the accept-gate validator)</td></tr>
+      <tr><td>F</td><td>chat msg 1 (vibe) / refine</td><td><span class="chip c-rest">rest</span> <code>compile(id, vibe)</code> then <code>chat(id, message)</code></td></tr>
+      <tr><td>—</td><td>view / compare versions</td><td><span class="chip c-rest">rest</span> <code>readVersion</code> · <code>diff</code></td></tr>
+    </table>
+    <div class="callout"><b>No new backend</b> for the spec instance — the shell arranges existing endpoints + the observer registry. The advanced intake's extra steps (merge/CI/deploy) are the known SDLC-tail backend gaps, added behind the same shell later.</div>
+  </section>
+
+  <!-- 6 · WHY -->
+  <section id="why">
+    <h2><span class="n">6</span>Design decisions, benchmarked</h2>
+    <table>
+      <tr><th>Decision</th><th>Why (vs. products)</th></tr>
+      <tr><td><b>One reusable shell for every authoring screen</b></td><td>VS Code / Linear / Figma / Notion — one skeleton, many contexts. Users learn once; the feature + advanced screens come "for free" and feel familiar.</td></tr>
+      <tr><td><b>Focused artifact + inspector rail + one chat</b></td><td>ChatGPT Canvas / Claude Artifacts / v0 (chat + live artifact) and Figma/VS Code (inspector rail). The vibe is the chat's first message — no separate box.</td></tr>
+      <tr><td><b>Inline anchored comments</b></td><td>Google Docs / Notion / GitHub review — select → thread; LLM <code>review</code> shares the same threads.</td></tr>
+      <tr><td><b>"Checks" tab instead of a run sandbox</b></td><td>A spec isn't executed at intake (implemented later), so validation/readiness (Checks) maps; a live preview belongs to the ▦ slot / the feature-run screen — the AgenticFactory preview was a vibe-coder feature.</td></tr>
+      <tr><td><b>Stepper + primary action are permission-scoped</b></td><td>Linear/Jira workflows + Actions gates — the same view shows more steps to those allowed to do more.</td></tr>
+    </table>
+  </section>
+
+  <p class="foot">Backend as built (spec instance): <code>SpecEditorService</code> (createSpecEditor / compile / save / read / readVersion / diff / review / assess / chat) + <code>SpecWorkflow</code> (accept) + <code>SpecRegistrySheet</code> (live registry). The reusable shell + these bindings are the UI work; the advanced-intake tail (merge/CI/deploy) is deferred backend.</p>
+</div>
+</body>
+</html>
