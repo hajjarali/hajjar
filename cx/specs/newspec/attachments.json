@@ -7,6 +7,13 @@
     "uploaded_at" : "2026-09-14T17:37:37.498230100Z",
     "origin" : "USER"
   }, {
+    "name" : "documents/intake-middle-pane-explained.html",
+    "type" : "DOCUMENTS",
+    "size_bytes" : 20725,
+    "uploaded_by" : "System Admin",
+    "uploaded_at" : "2026-09-14T17:38:45.002255300Z",
+    "origin" : "USER"
+  }, {
     "name" : "documents/intake-screen-walkthrough 1.html",
     "type" : "DOCUMENTS",
     "size_bytes" : 29078,
