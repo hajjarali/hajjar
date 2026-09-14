@@ -5,3 +5,7 @@ target/
 .idea/
 *.iml
 .DS_Store
+
+# Machine-local scratch — delivery run logs and anything else the platform keeps beside a
+# worktree without committing it. Everything under it is ignored.
+.local/
