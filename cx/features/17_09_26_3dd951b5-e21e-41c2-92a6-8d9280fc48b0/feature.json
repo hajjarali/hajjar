@@ -1,6 +1,6 @@
 {
   "content" : [ {
-    "id" : "e645ce2a",
+    "id" : "c55dff85",
     "type" : "heading",
     "props" : {
       "level" : 1
@@ -10,7 +10,7 @@
       "text" : "About page"
     } ]
   }, {
-    "id" : "b12ddfd2",
+    "id" : "0a9f21cb",
     "type" : "heading",
     "props" : {
       "level" : 2
@@ -20,7 +20,7 @@
       "text" : "Design"
     } ]
   }, {
-    "id" : "58231810",
+    "id" : "c9d931c2",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -33,7 +33,7 @@
       }
     }, {
       "type" : "text",
-      "text" : " page on the public landing site: one heading and a few body paragraphs served at "
+      "text" : " page on the public site: one heading and a few body paragraphs served at "
     }, {
       "type" : "text",
       "text" : "/about",
@@ -45,7 +45,7 @@
       "text" : " to every visitor, plus a navigation link to it from the landing page. No editing, no personalisation, no localisation."
     } ]
   }, {
-    "id" : "360afd7a",
+    "id" : "2a9679a1",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -91,7 +91,25 @@
       }
     }, {
       "type" : "text",
-      "text" : ", Java 23, no dependencies) whose only source is "
+      "text" : ", Java 23, "
+    }, {
+      "type" : "text",
+      "text" : "zero dependencies",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " per "
+    }, {
+      "type" : "text",
+      "text" : "pom.xml",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ") whose only source is "
     }, {
       "type" : "text",
       "text" : "src/main/java/com/example/App.java",
@@ -100,7 +118,7 @@
       }
     }, {
       "type" : "text",
-      "text" : " (a Hello-World main). There is no web layer, no landing page and no view to extend yet, so this feature introduces the site's first static page and its first navigation markup. "
+      "text" : " (a Hello-World main that prints to stdout). There is no web layer, no landing page, no stylesheet and no navigation markup — this feature introduces all of them, and the tasks below say so rather than instructing an agent to reuse artifacts that do not exist. "
     }, {
       "type" : "text",
       "text" : "platformSpecs",
@@ -121,7 +139,74 @@
       "text" : " registered — this feature's own spec — so no other spec's ground is overlapped."
     } ]
   }, {
-    "id" : "5f580bc1",
+    "id" : "675682f7",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Serving mechanism (established by this feature):",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " the project has no framework and the spec adds none, so the design uses the JDK's built-in "
+    }, {
+      "type" : "text",
+      "text" : "com.sun.net.httpserver.HttpServer",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", started from the existing "
+    }, {
+      "type" : "text",
+      "text" : "App.main",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", with no new Maven dependency. The server binds "
+    }, {
+      "type" : "text",
+      "text" : "port 8080 by default",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", overridable via the "
+    }, {
+      "type" : "text",
+      "text" : "APP_PORT",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " environment variable (documented default 8080), so the HTTP checks in Tasks 2–3 are deterministic. A small shared page-shell (layout chrome + stylesheet, with an empty navigation region) is created by Task 1; Task 2 registers the "
+    }, {
+      "type" : "text",
+      "text" : "/about",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " route through it, and Task 3 populates the shell's navigation region with the site's nav markup. Because every page renders through the same shell, the nav appears on both the landing page and "
+    }, {
+      "type" : "text",
+      "text" : "/about",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " without duplication."
+    } ]
+  }, {
+    "id" : "6aad3046",
     "type" : "heading",
     "props" : {
       "level" : 3
@@ -131,7 +216,7 @@
       "text" : "Data model"
     } ]
   }, {
-    "id" : "06bf8795",
+    "id" : "982ffd2b",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -147,7 +232,7 @@
       "text" : " The heading and body paragraphs are constants in the page artifact itself — no entity, no persistence, no migration."
     } ]
   }, {
-    "id" : "9e013250",
+    "id" : "30d08ac3",
     "type" : "heading",
     "props" : {
       "level" : 3
@@ -157,7 +242,7 @@
       "text" : "Page content"
     } ]
   }, {
-    "id" : "43387fea",
+    "id" : "3be33a4d",
     "type" : "bulletListItem",
     "content" : [ {
       "type" : "text",
@@ -176,10 +261,19 @@
       }
     }, {
       "type" : "text",
-      "text" : ", reachable without authentication (spec Constraint: readable by unauthenticated visitors)."
+      "text" : ", reachable without authentication (spec Constraint: readable by unauthenticated visitors). The server binds port 8080 (or "
+    }, {
+      "type" : "text",
+      "text" : "APP_PORT",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " if set) and registers no auth handler, so any HTTP client can fetch the page."
     } ]
   }, {
-    "id" : "869a4797",
+    "id" : "d568afb7",
     "type" : "bulletListItem",
     "content" : [ {
       "type" : "text",
@@ -192,7 +286,7 @@
       "text" : " \"About\" — the text A1 asserts."
     } ]
   }, {
-    "id" : "f995c299",
+    "id" : "229cccb3",
     "type" : "bulletListItem",
     "content" : [ {
       "type" : "text",
@@ -205,7 +299,7 @@
       "text" : " a short description of who the company is and what it does — a few paragraphs of fixed prose, no interactive elements beyond the site's standard navigation (spec User interface)."
     } ]
   }, {
-    "id" : "4fef26dc",
+    "id" : "257c6b24",
     "type" : "bulletListItem",
     "content" : [ {
       "type" : "text",
@@ -215,10 +309,19 @@
       }
     }, {
       "type" : "text",
-      "text" : " consistent with the rest of the landing page — same layout chrome, same stylesheet; the About page adds only its own content region."
+      "text" : " consistent with the rest of the site because every page renders through the same shared shell. "
+    }, {
+      "type" : "text",
+      "text" : "This feature establishes that shell",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (layout chrome + stylesheet) — it is not inherited from a landing page that does not yet exist; the About page adds its own content region inside the shell Task 1 creates."
     } ]
   }, {
-    "id" : "d9547799",
+    "id" : "edcb28a7",
     "type" : "heading",
     "props" : {
       "level" : 3
@@ -228,11 +331,11 @@
       "text" : "Navigation"
     } ]
   }, {
-    "id" : "1623fb83",
+    "id" : "fc1a1a1e",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
-      "text" : "The landing page's main navigation gains one link labelled \"About\" pointing at "
+      "text" : "The site's main navigation carries one link labelled \"About\" pointing at "
     }, {
       "type" : "text",
       "text" : "/about",
@@ -241,10 +344,19 @@
       }
     }, {
       "type" : "text",
-      "text" : " (A2). The link is part of the standard navigation markup shared by the site's pages, so it renders on the landing page load without any per-visitor state."
+      "text" : " (A2). The shell created in Task 1 reserves an empty navigation region; Task 3 populates that region with the nav markup (including the About link). Since both the landing page and "
+    }, {
+      "type" : "text",
+      "text" : "/about",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " render through the same shell, the populated nav renders on both without any per-visitor state and without duplicated markup."
     } ]
   }, {
-    "id" : "1a44d1b5",
+    "id" : "ddd55fc6",
     "type" : "heading",
     "props" : {
       "level" : 3
@@ -254,14 +366,14 @@
       "text" : "View layouts"
     } ]
   }, {
-    "id" : "5c553151",
+    "id" : "93115726",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
-      "text" : "None — this feature serves fixed prose, not a data-backed view. There is no entity to lay out, no ViewType applies, and the spec's UI section asks only for a heading plus paragraphs in the site's existing chrome."
+      "text" : "None — this feature serves fixed prose, not a data-backed view. There is no entity to lay out, no ViewType applies, and the spec's UI section asks only for a heading plus paragraphs in the site's chrome."
     } ]
   }, {
-    "id" : "cc876bbf",
+    "id" : "369f4017",
     "type" : "heading",
     "props" : {
       "level" : 2
@@ -271,42 +383,96 @@
       "text" : "Tasks"
     } ]
   }, {
-    "id" : "b757dbed",
+    "id" : "0a47bd5a",
     "type" : "heading",
     "props" : {
       "level" : 3
     },
     "content" : [ {
       "type" : "text",
-      "text" : "Task 1: Create the static /about page"
+      "text" : "Task 1: Establish the web layer — HTTP server, shared page shell and stylesheet"
     } ]
   }, {
-    "id" : "13bbfdaa",
+    "id" : "1d89b272",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
-      "text" : "Create the About page artifact at route "
+      "text" : "Extend the existing "
     }, {
       "type" : "text",
-      "text" : "/about",
+      "text" : "src/main/java/com/example/App.java",
       "styles" : {
         "code" : true
       }
     }, {
       "type" : "text",
-      "text" : " in the web source tree (new — the repository currently has no web layer; place it alongside where the landing page lives once Task 2 establishes it, or in the conventional static-page location for the chosen web setup). The page renders an "
+      "text" : " (currently a Hello-World main) to start an embedded HTTP server using the JDK's built-in "
     }, {
       "type" : "text",
-      "text" : "<h1>",
+      "text" : "com.sun.net.httpserver.HttpServer",
       "styles" : {
         "code" : true
       }
     }, {
       "type" : "text",
-      "text" : "/heading with the text \"About\" followed by a few fixed body paragraphs describing who the company is and what it does, wrapped in the same layout chrome and stylesheet as the rest of the landing site. The route must be served to unauthenticated visitors. The content is a constant in the artifact — do NOT introduce an entity, a content store, a CMS hook or an editing path; the spec's Data model section rules that out explicitly."
+      "text" : " — no new Maven dependency in "
+    }, {
+      "type" : "text",
+      "text" : "pom.xml",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". The server binds port "
+    }, {
+      "type" : "text",
+      "text" : "8080 by default",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", overridable via the "
+    }, {
+      "type" : "text",
+      "text" : "APP_PORT",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " environment variable (default 8080 when unset). Create the site's shared page shell: a layout template (HTML chrome: "
+    }, {
+      "type" : "text",
+      "text" : "<head>",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", stylesheet link, an "
+    }, {
+      "type" : "text",
+      "text" : "empty",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " navigation region, content region) and a small stylesheet, in a new source location such as "
+    }, {
+      "type" : "text",
+      "text" : "src/main/resources/web/",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". The shell is minimal but shared — every page this feature introduces renders through it, which is what keeps the About page consistent with the rest of the site. The shell's nav region is left empty here; Task 3 fills it. The server must serve pages to unauthenticated visitors (no auth handler registered)."
     } ]
   }, {
-    "id" : "82dcf3e2",
+    "id" : "c12ed0c2",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -319,7 +485,96 @@
       "text" : ":"
     } ]
   }, {
-    "id" : "8784a0da",
+    "id" : "5546d82b",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Starting "
+    }, {
+      "type" : "text",
+      "text" : "App.main",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " binds the HTTP server to port 8080 (or "
+    }, {
+      "type" : "text",
+      "text" : "APP_PORT",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " when set), and a request to an unregistered path (e.g. "
+    }, {
+      "type" : "text",
+      "text" : "/",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ") returns a well-formed 404 rendered through the shared shell — this verifies the server and shell run, with no dependency on Tasks 2–3."
+    } ]
+  }, {
+    "id" : "7cfa4c54",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "No new Maven dependency is added."
+    } ]
+  }, {
+    "id" : "1eaa236b",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Task 2: Create the static /about page"
+    } ]
+  }, {
+    "id" : "2583e9a5",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Register the "
+    }, {
+      "type" : "text",
+      "text" : "/about",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " route on the HTTP server from Task 1. The page renders through the shared shell from Task 1: an "
+    }, {
+      "type" : "text",
+      "text" : "<h1>",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " with the text \"About\" followed by a few fixed body paragraphs describing who the company is and what it does, in the shell's content region. The content is a constant in the page artifact — do NOT introduce an entity, a content store, a CMS hook or an editing path; the spec's Data model section rules that out explicitly. Depends on Task 1 (server and shell must exist first)."
+    } ]
+  }, {
+    "id" : "9160fd97",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "36a003c4",
     "type" : "bulletListItem",
     "content" : [ {
       "type" : "text",
@@ -332,31 +587,23 @@
       }
     }, {
       "type" : "text",
-      "text" : " is opened, the page displays the \"About\" heading and its body paragraphs."
+      "text" : " is opened — i.e. starting the app and requesting "
+    }, {
+      "type" : "text",
+      "text" : "http://localhost:8080/about",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " over HTTP — the page displays the \"About\" heading and its body paragraphs."
     } ]
   }, {
-    "id" : "2e5f1e13",
+    "id" : "2bfc43c9",
     "type" : "bulletListItem",
     "content" : [ {
       "type" : "text",
-      "text" : "The page is readable by an unauthenticated visitor (spec Constraint)."
-    } ]
-  }, {
-    "id" : "3301bb82",
-    "type" : "heading",
-    "props" : {
-      "level" : 3
-    },
-    "content" : [ {
-      "type" : "text",
-      "text" : "Task 2: Add the About link to the landing page navigation"
-    } ]
-  }, {
-    "id" : "f3d418b9",
-    "type" : "paragraph",
-    "content" : [ {
-      "type" : "text",
-      "text" : "Add a navigation link labelled \"About\" with target "
+      "text" : "Requesting "
     }, {
       "type" : "text",
       "text" : "/about",
@@ -365,10 +612,63 @@
       }
     }, {
       "type" : "text",
-      "text" : " to the main navigation of the landing page, so it is present when the landing page is loaded. Use the site's existing navigation markup/styles — this task changes only the nav contents, not the page's layout or any other landing-page section (those are out of scope per the spec). Depends on Task 1: the link's target route must exist first."
+      "text" : " over plain HTTP with no credentials, cookies or auth headers returns 200 with the full page content (spec Constraint: readable by unauthenticated visitors)."
     } ]
   }, {
-    "id" : "7d920747",
+    "id" : "c5443d72",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Task 3: Create the landing page and populate the shared navigation with the About link"
+    } ]
+  }, {
+    "id" : "8a66f7f6",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Create the landing page (the site's "
+    }, {
+      "type" : "text",
+      "text" : "/",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " route) rendering through the same shared shell from Task 1, and populate the shell's empty navigation region with the site's main navigation markup: a link labelled \"About\" whose target is "
+    }, {
+      "type" : "text",
+      "text" : "/about",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". Because both pages render through the same shell, this one nav region serves the landing page and "
+    }, {
+      "type" : "text",
+      "text" : "/about",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " alike — do not duplicate nav markup per page. This task "
+    }, {
+      "type" : "text",
+      "text" : "creates",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " the landing page and the nav markup — neither exists in the repository today; it does not modify an existing page. Do NOT add any other landing-page section (out of scope per the spec). Depends on Task 2: the link's target route must exist first."
+    } ]
+  }, {
+    "id" : "739880a9",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -381,11 +681,20 @@
       "text" : ":"
     } ]
   }, {
-    "id" : "c2f1aa42",
+    "id" : "494289d7",
     "type" : "bulletListItem",
     "content" : [ {
       "type" : "text",
-      "text" : "(A2) WHEN the landing page is loaded, a link to "
+      "text" : "(A2) WHEN the landing page is loaded — i.e. requesting "
+    }, {
+      "type" : "text",
+      "text" : "http://localhost:8080/",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " over HTTP — a link to "
     }, {
       "type" : "text",
       "text" : "/about",
@@ -397,8 +706,5 @@
       "text" : " is present in the main navigation."
     } ]
   } ],
-  "comments" : [ ],
-  "metadata" : {
-    "createdAt" : "2026-09-17T08:21:04.946418400Z"
-  }
+  "comments" : [ ]
 }
