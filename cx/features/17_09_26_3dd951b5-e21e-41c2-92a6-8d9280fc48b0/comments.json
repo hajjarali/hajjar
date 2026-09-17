@@ -1,1 +1,71 @@
-[ ]
+[ {
+  "threadId" : "d76a130f-77ad-464c-992a-d99e94327e67",
+  "text" : "Use the site's existing navigation markup/styles — this task changes only the nav contents",
+  "occurrence" : 0,
+  "resolved" : false,
+  "comments" : [ {
+    "id" : "9867defd-61e3-40e0-9553-1a0280fd8fab",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "The design's own Reuse check states the repository has 'no web layer, no landing page and no view to extend yet' and that this feature 'introduces the site's first navigation markup'. Yet Task 2 instructs the agent to 'use the site's existing navigation markup/styles' and 'change only the nav contents' — there is nothing existing to change, and neither Task 1 nor Task 2 creates the landing page shell or its navigation. A2 requires a link present 'WHEN the landing page is loaded', so the landing page must exist for the criterion to be verifiable. Add an explicit step (or expand Task 2's description) to create the landing page's navigation markup (even a minimal shared nav partial/header) before adding the About link, and reword Task 2 from 'change only the nav contents' to 'create/extend the main navigation with the About link'.",
+    "createdAt" : "2026-09-17T08:21:04.946418400Z"
+  } ]
+}, {
+  "threadId" : "312a9cc8-0634-45c7-a961-f12d2e36ec1c",
+  "text" : "place it alongside where the landing page lives once Task 2 establishes it",
+  "occurrence" : 0,
+  "resolved" : false,
+  "comments" : [ {
+    "id" : "1aa5df23-5d0e-46fb-93b8-94d2062f9898",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "Task 1 tells the agent to place the page 'alongside where the landing page lives once Task 2 establishes it', while Task 2 states 'Depends on Task 1: the link's target route must exist first'. Each task's prerequisite is the other's output, so an implementing agent cannot execute either in order. Resolve by making the dependency one-directional: either have Task 1 establish the web source tree/location convention itself (and Task 2 merely add the nav link), or split out a Task 0 that creates the web layer/layout chrome that both consume. Also remove the conditional 'or in the conventional static-page location for the chosen web setup' — pick one placement rule so the agent has a single verifiable instruction.",
+    "createdAt" : "2026-09-17T08:21:04.946418400Z"
+  } ]
+}, {
+  "threadId" : "dc0ae90b-c226-4b98-9012-230805313c1c",
+  "text" : "None. The spec fixes this: *\"the page content is static; no entities are created or stored.\"*",
+  "occurrence" : 0,
+  "resolved" : false,
+  "comments" : [ {
+    "id" : "13eb5490-7fde-4556-b67b-f5e91b66d8ce",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "The design correctly honours the spec's explicit 'None' Data model and keeps View layouts empty rather than inventing an entity or a ViewType for fixed prose — this is the right call and avoids the CMS/editing scope the spec lists as OUT. No change needed; noting as confirmation that the reuse check and scope obedience here are sound.",
+    "createdAt" : "2026-09-17T08:21:04.946418400Z"
+  } ]
+}, {
+  "threadId" : "8f67d3cf-072a-415b-80e5-025d0080af2f",
+  "text" : "The route must be served to unauthenticated visitors.",
+  "occurrence" : 0,
+  "resolved" : false,
+  "comments" : [ {
+    "id" : "f2a9f80f-f096-424e-ae92-5a611daccb6a",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "The design's own Reuse check states the repository is 'a bare Maven jar … whose only source is src/main/java/com/example/App.java (a Hello-World main)' with 'no web layer'. Yet Task 1 requires 'The route must be served to unauthenticated visitors' without any task (or step within Task 1) introducing the thing that serves it — no HTTP server, no routing, no static hosting decision is made anywhere in the design or breakdown. A1 ('WHEN /about is opened') and A2 ('WHEN the landing page is loaded') are unverifiable until a serving mechanism exists and can be started. Add an explicit step to Task 1 (or a new Task 0) that establishes the serving mechanism — e.g., an embedded HTTP server in the existing app or a chosen static-hosting setup — and state in the acceptance criteria how it is exercised (e.g., 'starting the app and requesting /about over HTTP returns the page').",
+    "createdAt" : "2026-09-17T08:21:31.100054300Z"
+  } ]
+}, {
+  "threadId" : "8f549350-816b-4968-a4e7-fffdf0d19dac",
+  "text" : "wrapped in the same layout chrome and stylesheet as the rest of the landing site",
+  "occurrence" : 0,
+  "resolved" : false,
+  "comments" : [ {
+    "id" : "ce4fafb2-2449-4914-8128-448a96cbc336",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "The design's Page content section says 'the About page adds only its own content region' and Task 1 says to wrap the page 'in the same layout chrome and stylesheet as the rest of the landing site' — but per the design's own Reuse check there is no landing site, no stylesheet and no chrome yet; this feature is the first page. As written, the agent is told to reuse artifacts that don't exist, and the design understates the work ('adds only its own content region') relative to what Task 1 must actually do. Reword both: Task 1 should say it CREATES the shared layout chrome and stylesheet (minimal, to be extended by later pages), and the design's Page content/Styling bullet should state the chrome is established by this feature rather than inherited from a landing page that doesn't yet exist. (This is distinct from the open thread on Task 2's navigation markup — it concerns the page shell and stylesheet Task 1 references.)",
+    "createdAt" : "2026-09-17T08:21:31.100054300Z"
+  } ]
+} ]

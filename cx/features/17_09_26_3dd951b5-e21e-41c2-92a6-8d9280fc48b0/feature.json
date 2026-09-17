@@ -1,0 +1,404 @@
+{
+  "content" : [ {
+    "id" : "e645ce2a",
+    "type" : "heading",
+    "props" : {
+      "level" : 1
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "About page"
+    } ]
+  }, {
+    "id" : "b12ddfd2",
+    "type" : "heading",
+    "props" : {
+      "level" : 2
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Design"
+    } ]
+  }, {
+    "id" : "58231810",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "A single static "
+    }, {
+      "type" : "text",
+      "text" : "About",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " page on the public landing site: one heading and a few body paragraphs served at "
+    }, {
+      "type" : "text",
+      "text" : "/about",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " to every visitor, plus a navigation link to it from the landing page. No editing, no personalisation, no localisation."
+    } ]
+  }, {
+    "id" : "360afd7a",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Reuse check (live catalogs):",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " "
+    }, {
+      "type" : "text",
+      "text" : "platformEntities",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " lists 60 served entities — all demo ("
+    }, {
+      "type" : "text",
+      "text" : "simpledao.*",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "), platform-internal ("
+    }, {
+      "type" : "text",
+      "text" : "system.*",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ") or knowledge/registry entities; none models public page content, and the spec's Data model section explicitly says none is created. The repository is a bare Maven jar ("
+    }, {
+      "type" : "text",
+      "text" : "com.example:projecytt",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", Java 23, no dependencies) whose only source is "
+    }, {
+      "type" : "text",
+      "text" : "src/main/java/com/example/App.java",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (a Hello-World main). There is no web layer, no landing page and no view to extend yet, so this feature introduces the site's first static page and its first navigation markup. "
+    }, {
+      "type" : "text",
+      "text" : "platformSpecs",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " shows only "
+    }, {
+      "type" : "text",
+      "text" : "spec1 v2",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " registered — this feature's own spec — so no other spec's ground is overlapped."
+    } ]
+  }, {
+    "id" : "5f580bc1",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Data model"
+    } ]
+  }, {
+    "id" : "06bf8795",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "None. The spec fixes this: "
+    }, {
+      "type" : "text",
+      "text" : "\"the page content is static; no entities are created or stored.\"",
+      "styles" : {
+        "italic" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " The heading and body paragraphs are constants in the page artifact itself — no entity, no persistence, no migration."
+    } ]
+  }, {
+    "id" : "9e013250",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Page content"
+    } ]
+  }, {
+    "id" : "43387fea",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Route:",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " "
+    }, {
+      "type" : "text",
+      "text" : "/about",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", reachable without authentication (spec Constraint: readable by unauthenticated visitors)."
+    } ]
+  }, {
+    "id" : "869a4797",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Heading:",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " \"About\" — the text A1 asserts."
+    } ]
+  }, {
+    "id" : "f995c299",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Body:",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " a short description of who the company is and what it does — a few paragraphs of fixed prose, no interactive elements beyond the site's standard navigation (spec User interface)."
+    } ]
+  }, {
+    "id" : "4fef26dc",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Styling:",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " consistent with the rest of the landing page — same layout chrome, same stylesheet; the About page adds only its own content region."
+    } ]
+  }, {
+    "id" : "d9547799",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Navigation"
+    } ]
+  }, {
+    "id" : "1623fb83",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The landing page's main navigation gains one link labelled \"About\" pointing at "
+    }, {
+      "type" : "text",
+      "text" : "/about",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (A2). The link is part of the standard navigation markup shared by the site's pages, so it renders on the landing page load without any per-visitor state."
+    } ]
+  }, {
+    "id" : "1a44d1b5",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "View layouts"
+    } ]
+  }, {
+    "id" : "5c553151",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "None — this feature serves fixed prose, not a data-backed view. There is no entity to lay out, no ViewType applies, and the spec's UI section asks only for a heading plus paragraphs in the site's existing chrome."
+    } ]
+  }, {
+    "id" : "cc876bbf",
+    "type" : "heading",
+    "props" : {
+      "level" : 2
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Tasks"
+    } ]
+  }, {
+    "id" : "b757dbed",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Task 1: Create the static /about page"
+    } ]
+  }, {
+    "id" : "13bbfdaa",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Create the About page artifact at route "
+    }, {
+      "type" : "text",
+      "text" : "/about",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " in the web source tree (new — the repository currently has no web layer; place it alongside where the landing page lives once Task 2 establishes it, or in the conventional static-page location for the chosen web setup). The page renders an "
+    }, {
+      "type" : "text",
+      "text" : "<h1>",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "/heading with the text \"About\" followed by a few fixed body paragraphs describing who the company is and what it does, wrapped in the same layout chrome and stylesheet as the rest of the landing site. The route must be served to unauthenticated visitors. The content is a constant in the artifact — do NOT introduce an entity, a content store, a CMS hook or an editing path; the spec's Data model section rules that out explicitly."
+    } ]
+  }, {
+    "id" : "82dcf3e2",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "8784a0da",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A1) WHEN "
+    }, {
+      "type" : "text",
+      "text" : "/about",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " is opened, the page displays the \"About\" heading and its body paragraphs."
+    } ]
+  }, {
+    "id" : "2e5f1e13",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The page is readable by an unauthenticated visitor (spec Constraint)."
+    } ]
+  }, {
+    "id" : "3301bb82",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Task 2: Add the About link to the landing page navigation"
+    } ]
+  }, {
+    "id" : "f3d418b9",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Add a navigation link labelled \"About\" with target "
+    }, {
+      "type" : "text",
+      "text" : "/about",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " to the main navigation of the landing page, so it is present when the landing page is loaded. Use the site's existing navigation markup/styles — this task changes only the nav contents, not the page's layout or any other landing-page section (those are out of scope per the spec). Depends on Task 1: the link's target route must exist first."
+    } ]
+  }, {
+    "id" : "7d920747",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "c2f1aa42",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A2) WHEN the landing page is loaded, a link to "
+    }, {
+      "type" : "text",
+      "text" : "/about",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " is present in the main navigation."
+    } ]
+  } ],
+  "comments" : [ ],
+  "metadata" : {
+    "createdAt" : "2026-09-17T08:21:04.946418400Z"
+  }
+}
