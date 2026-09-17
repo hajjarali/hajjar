@@ -26,9 +26,15 @@ class PageHandler implements HttpHandler {
         String path = exchange.getRequestURI().getPath();
         if (STYLESHEET_PATH.equals(path)) {
             serveStylesheet(exchange);
+        } else if (AboutPage.PATH.equals(path)) {
+            serveAbout(exchange);
         } else {
             serveNotFound(exchange, path);
         }
+    }
+
+    private void serveAbout(HttpExchange exchange) throws IOException {
+        serveHtml(exchange, 200, AboutPage.render());
     }
 
     private void serveStylesheet(HttpExchange exchange) throws IOException {
@@ -44,10 +50,13 @@ class PageHandler implements HttpHandler {
     private void serveNotFound(HttpExchange exchange, String path) throws IOException {
         String content = "<h1>Page not found</h1>\n"
                 + "<p>There is no page at <code>" + escapeHtml(path) + "</code>.</p>";
-        String page = renderShell("Page not found", content);
+        serveHtml(exchange, 404, PageHandler.renderShell("Page not found", content));
+    }
+
+    private static void serveHtml(HttpExchange exchange, int status, String page) throws IOException {
         byte[] body = page.getBytes(StandardCharsets.UTF_8);
         exchange.getResponseHeaders().set("Content-Type", "text/html; charset=utf-8");
-        exchange.sendResponseHeaders(404, body.length);
+        exchange.sendResponseHeaders(status, body.length);
         try (OutputStream out = exchange.getResponseBody()) {
             out.write(body);
         }

@@ -4,6 +4,7 @@ import com.sun.net.httpserver.HttpServer;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
@@ -20,6 +21,7 @@ public class App {
     static final int DEFAULT_PORT = 8080;
 
     private HttpServer server;
+    private ExecutorService executor;
 
     public static void main(String[] args) throws IOException {
         new App().start(portFromEnv());
@@ -38,7 +40,13 @@ public class App {
     void start(int port) throws IOException {
         server = HttpServer.create(new InetSocketAddress(port), 0);
         server.createContext("/", new PageHandler());
-        server.setExecutor(Executors.newFixedThreadPool(4));
+        // Daemon threads: the JVM must be free to exit when main returns.
+        executor = Executors.newFixedThreadPool(4, runnable -> {
+            Thread thread = new Thread(runnable);
+            thread.setDaemon(true);
+            return thread;
+        });
+        server.setExecutor(executor);
         server.start();
         System.out.println("Serving on port " + port);
     }
@@ -46,6 +54,9 @@ public class App {
     void stop() {
         if (server != null) {
             server.stop(0);
+        }
+        if (executor != null) {
+            executor.shutdownNow();
         }
     }
 
