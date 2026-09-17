@@ -11,7 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Self-checking main for the web layer and the About page (Tasks 1–2). Run with:
+ * Self-checking main for the web layer, the About page and the landing page
+ * (Tasks 1–3). Run with:
  * {@code mvn -q compile test-compile exec:java -Dexec.mainClass=com.example.WebLayerCheck -Dexec.classpathScope=test}
  *
  * <p>Deliberately plain Java with no test framework: the acceptance criteria forbid
@@ -35,16 +36,17 @@ public class WebLayerCheck {
             check("app_portFromEnvDefaultsTo8080", App.portFromEnv() == 8080,
                     "APP_PORT unset should default to 8080, got " + App.portFromEnv());
 
-            HttpURLConnection root = get(port, "/");
-            check("unregisteredPath_returns404", root.getResponseCode() == 404,
-                    "GET / returned " + root.getResponseCode() + ", expected 404");
-            String rootBody = body(root);
-            check("notFound_wellFormedHtml", rootBody.startsWith("<!DOCTYPE html>")
-                            && rootBody.trim().endsWith("</html>"),
-                    "404 body is not well-formed HTML: " + snippet(rootBody));
+            // Task 3 made / a real page, so 404 is asserted on a path no page claims.
+            HttpURLConnection missing = get(port, "/no-such-page");
+            check("unregisteredPath_returns404", missing.getResponseCode() == 404,
+                    "GET /no-such-page returned " + missing.getResponseCode() + ", expected 404");
+            String missingBody = body(missing);
+            check("notFound_wellFormedHtml", missingBody.startsWith("<!DOCTYPE html>")
+                            && missingBody.trim().endsWith("</html>"),
+                    "404 body is not well-formed HTML: " + snippet(missingBody));
             check("notFound_renderedThroughSharedShell",
-                    rootBody.contains("<link rel=\"stylesheet\" href=\"/assets/styles.css\">")
-                            && rootBody.contains("<nav>"),
+                    missingBody.contains("<link rel=\"stylesheet\" href=\"/assets/styles.css\">")
+                            && missingBody.contains("<nav>"),
                     "404 body does not carry the shared shell chrome");
 
             HttpURLConnection css = get(port, PageHandler.STYLESHEET_PATH);
@@ -69,6 +71,22 @@ public class WebLayerCheck {
                     aboutBody.contains("<link rel=\"stylesheet\" href=\"/assets/styles.css\">")
                             && aboutBody.contains("<nav>"),
                     "About page does not carry the shared shell chrome");
+
+            // Task 3 (A2): landing page carries the About link in the main navigation
+            HttpURLConnection landing = get(port, LandingPage.PATH);
+            check("a2_landing_returns200", landing.getResponseCode() == 200,
+                    "GET " + LandingPage.PATH + " returned " + landing.getResponseCode() + ", expected 200");
+            String landingBody = body(landing);
+            check("a2_landing_navLinksToAbout",
+                    landingBody.contains("<nav>") && landingBody.contains("</nav>")
+                            && navRegion(landingBody).contains("<a href=\"/about\">About</a>"),
+                    "landing page nav does not carry the About link: " + snippet(landingBody));
+            check("a2_landing_renderedThroughSharedShell",
+                    landingBody.contains("<link rel=\"stylesheet\" href=\"/assets/styles.css\">"),
+                    "landing page does not carry the shared shell chrome");
+            check("a2_about_navLinksToAbout",
+                    navRegion(aboutBody).contains("<a href=\"/about\">About</a>"),
+                    "About page nav does not carry the About link (nav must be shared, not per-page)");
         } finally {
             app.stop();
         }
@@ -85,6 +103,16 @@ public class WebLayerCheck {
         if (!FAILURES.isEmpty()) {
             System.exit(1);
         }
+    }
+
+    /** The text between the page's {@code <nav>} and {@code </nav>} markers. */
+    private static String navRegion(String page) {
+        int start = page.indexOf("<nav>");
+        int end = page.indexOf("</nav>");
+        if (start == -1 || end == -1 || end < start) {
+            return "";
+        }
+        return page.substring(start + "<nav>".length(), end);
     }
 
     private static int count(String haystack, String needle) {

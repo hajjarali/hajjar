@@ -11,9 +11,9 @@ import java.nio.charset.StandardCharsets;
 /**
  * Serves every page through the shared page shell (layout + stylesheet).
  *
- * <p>Routes registered by later tasks plug their content into the same shell, so
- * every page of the site shares one layout and one stylesheet. Paths with no
- * registered page get a well-formed 404 rendered through the same shell.</p>
+ * <p>Registered pages plug their content into the same shell, so every page of
+ * the site shares one layout, one stylesheet and one navigation region. Paths
+ * with no registered page get a well-formed 404 rendered through the same shell.</p>
  */
 class PageHandler implements HttpHandler {
 
@@ -26,15 +26,13 @@ class PageHandler implements HttpHandler {
         String path = exchange.getRequestURI().getPath();
         if (STYLESHEET_PATH.equals(path)) {
             serveStylesheet(exchange);
+        } else if (LandingPage.PATH.equals(path)) {
+            serveHtml(exchange, 200, LandingPage.render());
         } else if (AboutPage.PATH.equals(path)) {
-            serveAbout(exchange);
+            serveHtml(exchange, 200, AboutPage.render());
         } else {
             serveNotFound(exchange, path);
         }
-    }
-
-    private void serveAbout(HttpExchange exchange) throws IOException {
-        serveHtml(exchange, 200, AboutPage.render());
     }
 
     private void serveStylesheet(HttpExchange exchange) throws IOException {
@@ -65,16 +63,21 @@ class PageHandler implements HttpHandler {
     /**
      * Renders {@code content} inside the shared page shell.
      *
-     * <p>The shell's navigation region is currently empty; a later task populates
-     * it, and because every page renders through this shell the nav then appears
-     * site-wide without duplicated markup.</p>
+     * <p>The shell's navigation region carries the site's main navigation. It is
+     * defined once here, so the nav renders on every page — landing page and
+     * About alike — without duplicated markup.</p>
      */
     static String renderShell(String title, String content) throws IOException {
         String layout = readResource(LAYOUT_RESOURCE);
         return layout
                 .replace("{{TITLE}}", escapeHtml(title))
-                .replace("{{NAV}}", "")
+                .replace("{{NAV}}", mainNavigation())
                 .replace("{{CONTENT}}", content);
+    }
+
+    /** The site's main navigation — defined once, rendered on every page. */
+    private static String mainNavigation() {
+        return "<a href=\"" + AboutPage.PATH + "\">About</a>";
     }
 
     private static String readResource(String resourcePath) throws IOException {
