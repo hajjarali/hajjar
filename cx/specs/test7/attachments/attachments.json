@@ -1,5 +1,12 @@
 {
   "attachments" : [ {
+    "name" : "documents/Brotli-Prototype-FileA (2).pdf",
+    "type" : "DOCUMENTS",
+    "size_bytes" : 1305278,
+    "uploaded_by" : "System Admin",
+    "uploaded_at" : "2026-09-21T07:28:26.788757Z",
+    "origin" : "USER"
+  }, {
     "name" : "documents/CHARTS.md",
     "type" : "DOCUMENTS",
     "size_bytes" : 9619,
