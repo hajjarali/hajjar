@@ -7,6 +7,13 @@
     "uploaded_at" : "2026-09-21T13:38:23.804618Z",
     "origin" : "USER"
   }, {
+    "name" : "documents/Receipt-2783-8170-6921.pdf",
+    "type" : "DOCUMENTS",
+    "size_bytes" : 32276,
+    "uploaded_by" : "System Admin",
+    "uploaded_at" : "2026-09-21T13:38:28.229851900Z",
+    "origin" : "USER"
+  }, {
     "name" : "documents/intake-middle-pane-explained (1).html",
     "type" : "DOCUMENTS",
     "size_bytes" : 20725,
