@@ -1,0 +1,85 @@
+{
+  "descriptors" : [ {
+    "name" : "idea.Idea",
+    "className" : "cyai.idea.Idea",
+    "entityType" : "PERSISTABLE_BEAN",
+    "label" : "Idea",
+    "description" : "A captured idea: a short title, an optional longer note, and the timestamp it was captured at.",
+    "group" : "idea",
+    "persistenceDescriptor" : {
+      "tableName" : "idea",
+      "idGenerationStrategy" : "AUTO_INCREMENT",
+      "indexGroups" : {
+        "by_captured_at" : [ "capturedAt" ]
+      },
+      "naturalKeyGroups" : { },
+      "cacheDescriptor" : {
+        "strategy" : "NONE"
+      }
+    },
+    "fieldDescriptors" : {
+      "title" : {
+        "name" : "title",
+        "fieldType" : "STRING",
+        "label" : "Title",
+        "description" : "The idea in one line.",
+        "persistenceDescriptor" : {
+          "columnName" : "title",
+          "length" : 200
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "note" : {
+        "name" : "note",
+        "fieldType" : "STRING",
+        "label" : "Note",
+        "description" : "The optional longer note behind the idea.",
+        "persistenceDescriptor" : {
+          "columnName" : "note",
+          "length" : 2000
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT",
+          "viewParameter" : {
+            "jsontype" : "entity.desc.textFieldViewParameter",
+            "multiline" : true
+          }
+        },
+        "systemField" : false
+      },
+      "capturedAt" : {
+        "name" : "capturedAt",
+        "fieldType" : "DATE_TIME",
+        "label" : "Captured At",
+        "description" : "When the idea was captured.",
+        "persistenceDescriptor" : {
+          "columnName" : "captured_at"
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "DATE_TIME"
+        },
+        "systemField" : false
+      }
+    },
+    "relationships" : { },
+    "version" : 1
+  } ]
+}
