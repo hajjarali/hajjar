@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Bugfixes-Scm review — a verb that needs inputs is its own model, not a payload contract</title>
+<style>
+  body { font-family: -apple-system, "Segoe UI", Roboto, sans-serif; max-width: 980px; margin: 32px auto; padding: 0 20px; color: #1f2328; line-height: 1.5; }
+  h1 { font-size: 1.6rem; border-bottom: 2px solid #d0d7de; padding-bottom: 8px; }
+  h2 { font-size: 1.2rem; margin-top: 2.2rem; border-bottom: 1px solid #d8dee4; padding-bottom: 4px; }
+  h3 { font-size: 1rem; margin-top: 1.6rem; color: #57606a; }
+  code { font-family: "JetBrains Mono", Consolas, monospace; font-size: 0.86em; background: #f6f8fa; padding: 1px 5px; border-radius: 4px; }
+  pre { background: #0d1117; color: #e6edf3; padding: 14px 16px; border-radius: 8px; overflow-x: auto; font-size: 0.84rem; line-height: 1.45; }
+  pre code { background: none; padding: 0; color: inherit; }
+  .kw { color: #ff7b72; } .cm { color: #8b949e; font-style: italic; } .st { color: #a5d6ff; } .ty { color: #d2a8ff; } .del { color: #ffa198; text-decoration: line-through; }
+  table { border-collapse: collapse; width: 100%; margin: 12px 0; font-size: 0.92rem; }
+  th, td { border: 1px solid #d0d7de; padding: 7px 10px; text-align: left; vertical-align: top; }
+  th { background: #f6f8fa; }
+  .box { border-left: 4px solid #0969da; background: #f0f6ff; padding: 10px 14px; margin: 14px 0; border-radius: 0 6px 6px 0; }
+  .warn { border-left-color: #bf8700; background: #fff8e5; }
+  .ok { color: #1a7f37; }
+  .file { font-family: Consolas, monospace; font-size: 0.82rem; color: #57606a; margin: 18px 0 -6px; }
+  .meta { color: #57606a; font-size: 0.9rem; }
+</style>
+</head>
+<body>
+
+<h1>Bugfixes-Scm — a verb that needs inputs is its own model, not a payload contract</h1>
+<p class="meta">Review of <code>Bugfixes-Scm</code> (2026-09-08), point 2 of 4: the health chip asking for a repository. Written for Ali El Hajjar. Companion of <code>review-bugfixes-scm-token-username.html</code>.</p>
+
+<h2>1. The original problem</h2>
+<p>The SCM sheet's <code>probe</code> cell has an optional input cell, <code>probeRepository</code>, defaulting to empty. A bare <code>scm.git</code> row that no project uses gives git nothing to dial: the wire protocol is repository-scoped. The probe therefore could not run and failed with "open the SCM screen and enter one". The goal was to let the user name a repository from the health chip and test again. Legitimate goal.</p>
+
+<h2>2. What the branch built, and why it is the wrong shape</h2>
+<p>The branch makes the <b>server describe the missing input in the result</b>, and makes the <b>generic chip understand that description</b>. Three layers change for one input on one verb:</p>
+<table>
+<tr><th>Layer</th><th>Branch change</th><th>Problem</th></tr>
+<tr><td><code>TestResult</code> (build-client)</td><td>gains a nullable <code>requestedInput</code> (<code>FormField</code>)</td><td>A domain result type now carries a UI protocol. Every other result type that ever wants to ask must copy the field.</td></tr>
+<tr><td><code>IInputRequestingOutcome</code> (platform-forms-api)</td><td>new platform contract, one <code>FormField</code></td><td>Exactly one input. A probe that needs a repository <i>and</i> a branch cannot express it. New public API surface for one caller.</td></tr>
+<tr><td><code>StateVerbModel</code> (entity-model)</td><td>remembers one cell + one answer, builds a <code>FormRequest</code> with a null agent name, opens a dialog, clears the seed on failure, gates on the <code>checking</code> flag so live deliveries do not pop dialogs, plus a new dependency on platform-forms-api and ~15 mock-driven tests</td><td>A generic pip-and-Test chip now contains a state machine about repositories. None of it is about health pips.</td></tr>
+</table>
+
+<div class="box warn"><b>The root mistake:</b> treating the chip as the one and only model every verb must fit into, so the verb's specifics had to be smuggled through the payload. The chip is a model like any other. A verb with inputs is a <i>different</i> model.</div>
+
+<h2>3. The shape to build instead</h2>
+<p>The registration in <code>BuildApplicationModule</code> already chooses the model per entity and role. Let it choose a <b>verb-specific model with its own view</b> when a verb needs inputs. The generic <code>StateVerbModel</code> stays the plain pip + Test and gets exactly one hook: a template method where a subclass seeds its inputs into the same committed batch. The server probe goes back to being a plain probe.</p>
+
+<ul>
+  <li><b>The client already knows its domain.</b> build-model registers the SCM verb and knows the probe wants a repository. It does not need the server to say so, and it can show a real picker over the project's repositories instead of a generic text box.</li>
+  <li><b>N inputs is free.</b> A model has as many properties as it needs, each a real widget in its own view JS. No form request, no field list, no remembered seeds.</li>
+  <li><b>It follows the platform's own rule.</b> One model, one view; promote to a shared base only when a pattern repeats (<code>ui-screen-design-guidelines.md</code>). No new contract in platform-forms-api, no kb section, no field on <code>TestResult</code>.</li>
+</ul>
+
+<h3>Pseudo-code</h3>
+
+<p class="file">domain/entity-model/.../inspector/StateVerbModel.java   (generic; keep the branch's single watch channel with the failure arm)</p>
+<pre><code><span class="kw">public class</span> <span class="ty">StateVerbModel</span> <span class="kw">extends</span> AbstractModel {
+
+    <span class="cm">// subclass constructor: same arguments as create(...), plus the subclass's own view class</span>
+    <span class="kw">protected</span> StateVerbModel(Class&lt;? <span class="kw">extends</span> IView&gt; view, DisplayContext ctx, String sheetName, String cellName,
+                             String label, Function&lt;Object, String&gt; outcomeInterpreter) { ... }
+
+    <span class="kw">@Action</span>(name = <span class="st">"onTest"</span>, description = <span class="st">"Runs the health check for this row"</span>)
+    <span class="kw">public void</span> onTest() {
+        applyStatus(VerbStatus.CHECKING, <span class="st">""</span>);
+        IObserverTx tx = clientOrOpen().begin();
+        tx.override(sheetName, IEntityInstanceSheet.SUBJECT, rowId, rowId);
+        <b>seedInputs(tx);</b>                                        <span class="cm">// NEW — the only generic change</span>
+        IDrivenCell&lt;Object&gt; driven = tx.evaluateCell(sheetName, cellName, rowId, Object.class);
+        tx.commit();
+        bindLive(driven);                                       <span class="cm">// 4-arg watch: value → applyOutcome, thrown → applyFailure (branch, keep)</span>
+    }
+
+    <span class="cm">/** Seeds the cells this verb's inputs drive, in the same batch as the evaluate. Default: nothing. */</span>
+    <span class="kw">protected void</span> seedInputs(IObserverTx tx) { }
+
+    <span class="kw">protected</span> Object getRowId()      { <span class="kw">return</span> rowId; }
+    <span class="kw">protected</span> String getSheetName()  { <span class="kw">return</span> sheetName; }
+}
+<span class="del">private String inputCell; private Object inputAnswer;</span>                  <span class="cm">// DELETE</span>
+<span class="del">requestInput(...) showAsk(...) withDefault(...) DialogsManagerModel dialogs</span>  <span class="cm">// DELETE</span>
+<span class="del">applyOutcome: the IInputRequestingOutcome / checking gate</span>           <span class="cm">// DELETE — back to interpreter → OK / FAILED</span></code></pre>
+
+<p class="file">domain/build/build-model/.../scm/ScmProbeVerbModel.java   (the SCM verb's own model)</p>
+<pre><code><span class="cm">/**
+ * The SCM connection's health verb: the stock pip + Test, plus the repository to probe against when no
+ * project uses the row yet. A forge-backed row needs none (the probe goes through the forge); a bare
+ * scm.git row shows the field. Its own model + view, as every screen widget is.
+ */</span>
+<span class="kw">public class</span> <span class="ty">ScmProbeVerbModel</span> <span class="kw">extends</span> StateVerbModel {
+
+    <span class="kw">private final</span> IObjectProperty&lt;String&gt; repository;          <span class="cm">// what the user names</span>
+    <span class="kw">private final</span> IObjectProperty&lt;List&lt;String&gt;&gt; candidates;    <span class="cm">// repositories of the projects on this row, if any</span>
+    <span class="kw">private final</span> IBooleanProperty needsRepository;             <span class="cm">// bare scm.git row with no project → show the field</span>
+
+    <span class="kw">public</span> ScmProbeVerbModel(DisplayContext ctx) {
+        <span class="kw">super</span>(ScmProbeVerbView.class, ctx, IScmConnectionSheet.NAME, IScmConnectionSheet.PROBE,
+              <span class="st">"Connection health"</span>, ScmProbeVerbModel::failureOf);
+        <span class="cm">// needsRepository / candidates: read off the row (location is scm.git, not a forgeRef) and the
+        // project sheet, through the same observer client the chip already opens</span>
+    }
+
+    <span class="kw">@Override protected void</span> seedInputs(IObserverTx tx) {
+        String repo = repository.get();
+        <span class="kw">if</span> (repo != <span class="kw">null</span> &amp;&amp; !repo.isBlank()) {
+            tx.override(getSheetName(), IScmConnectionSheet.PROBE_REPOSITORY, getRowId(), repo.trim());
+        }
+    }
+
+    <span class="kw">private static</span> String failureOf(Object payload) {          <span class="cm">// failure-as-value, as today</span>
+        <span class="kw">return</span> payload <span class="kw">instanceof</span> TestResult r &amp;&amp; !r.success() ? r.message() : <span class="kw">null</span>;
+    }
+}
+<span class="cm">// ScmProbeVerbView.java + ScmProbeVerbView.js: pip, Test button, and — when needsRepository — a repository
+// field (autocomplete over candidates when there are any, free text otherwise) with the helper text
+// "No project uses this connection yet; name a repository to test against." Two inputs tomorrow = two fields.</span></code></pre>
+
+<p class="file">domain/build/build-model/.../BuildApplicationModule.java   (the registration picks the model, as it already does)</p>
+<pre><code>registry.register(ScmEntity.ENTITY_CLASS_KEY, DisplayRole.INSPECTOR, <b>ScmProbeVerbModel::new</b>);
+
+<span class="cm">// forge: the plain chip, registered ONCE (the branch registers it twice — delete the duplicate block)</span>
+registry.register(ForgeEntity.ENTITY_CLASS_KEY, DisplayRole.INSPECTOR,
+        ctx -&gt; StateVerbModel.create(ctx, IForgeConnectionSheet.NAME, IForgeConnectionSheet.PROBE,
+                <span class="st">"Connection health"</span>, p -&gt; p <span class="kw">instanceof</span> TestResult r &amp;&amp; !r.success() ? r.message() : <span class="kw">null</span>));</code></pre>
+
+<p class="file">domain/build/build-server/.../ScmConnectionSheet.java   (back to a plain probe)</p>
+<pre><code><span class="kw">if</span> (effectiveRepository == <span class="kw">null</span>) {
+    Long forgeId = ScmForgeRefs.forgeIdOf(scm.getScmLocation());
+    <span class="kw">if</span> (forgeId == <span class="kw">null</span>) {
+        <span class="kw">return</span> TestResult.failure(<span class="st">"No repository to test against — no project uses this SCM connection yet; "</span>
+                + <span class="st">"name a repository to test explicitly"</span>);          <span class="cm">// plain failure; the chip shows the field</span>
+    }
+    <span class="kw">return</span> probeThroughForge(scm, forgeId, caller, secretApi, principal);   <span class="cm">// branch's forgeId reordering: keep</span>
+}</code></pre>
+
+<h3>What to delete from the branch</h3>
+<ul>
+  <li><code>TestResult.requestedInput</code>, <code>TestResult.missing(...)</code>, the <code>@JsonInclude</code>, the 3-arg creator; <code>TestResultWireRoundTripTest</code> goes back to two fields.</li>
+  <li><code>cyai.forms.IInputRequestingOutcome</code> and its CLAUDE.md entries.</li>
+  <li>entity-model's new dependency on <code>platform-forms-api</code>.</li>
+  <li><code>StateVerbModel</code>: the input fields, <code>requestInput</code> / <code>showAsk</code> / <code>withDefault</code>, the dialogs injection and the <code>checking</code> gate in <code>applyOutcome</code>; the ~15 input tests. Keep <code>applyFailure</code> as the shared failure path (without the seed clearing).</li>
+  <li>kb <code>observer-sheets.md</code> section 5.4c and the matching <code>BuildApplicationModule</code> comment.</li>
+</ul>
+
+<h3>What to keep from the branch</h3>
+<ul>
+  <li>The single outcome channel: the 4-arg watch with the <code>onFailed</code> arm, the removed future consumer, the "a live re-delivery never opens a dialog" reasoning (now moot, but the channel is right).</li>
+  <li>The <code>probeThroughForge(scm, forgeId, ...)</code> reordering and its javadoc.</li>
+  <li>The <code>FormRequestDialogs</code> rename, if you like it. It is harmless either way.</li>
+</ul>
+
+<h3>Tests (same unit of work)</h3>
+<ul>
+  <li><code>ScmProbeVerbModelTest</code>: a named repository is seeded on <code>probeRepository</code> at the row id in the same batch; a blank one seeds nothing; the field is shown for a bare row and hidden for a forge-backed one.</li>
+  <li><code>StateVerbModelTest</code>: the existing pip cases + one case that the default <code>seedInputs</code> seeds nothing.</li>
+  <li><code>ScmConnectionSheetTest</code>: bare row, no project, no repository → plain failure naming the repository.</li>
+</ul>
+
+<h2>4. When would a server-described ask be right?</h2>
+<p>Only when the <b>server</b> decides at runtime that it needs something the client could not know when the screen was built. That plane already exists: agent forms through <code>IFormSink</code> / <code>FormRequestDialogs</code>. If a sheet ever needs it, it asks through that, not through a second protocol on the result payload. The SCM probe is not that case: what it needs is static, known to the module that registers its chip, and better rendered by a widget that knows the domain.</p>
+
+<div class="box"><b>Rule of thumb for next time.</b> If a generic model starts learning things about one entity, the fix is a model for that entity, not a contract that lets the server teach the generic model. The registration already exists to choose it.</div>
+
+</body>
+</html>
