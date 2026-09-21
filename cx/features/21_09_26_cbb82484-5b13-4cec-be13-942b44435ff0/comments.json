@@ -1,0 +1,29 @@
+[ {
+  "threadId" : "371557fa-d9f3-455b-bbfd-21e19bc4dbce",
+  "text" : "Task 3: Ship the spec-time default form beside the entity class",
+  "occurrence" : 0,
+  "resolved" : false,
+  "comments" : [ {
+    "id" : "38d6dc3e-917b-4b2d-afa4-92c8542b7326",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "Task 3's acceptance criterion — 'The default form renders for a saved Idea row' — verifies an end-to-end behaviour that requires the `idea` table to exist, but the task's Depends line declares only Task-1. The table is created by Task-2's migration, so as written the task can be scheduled before the schema exists and the criterion cannot be checked. Either add Task-2 to the '**Depends on**: Task-1' line, or move the render-for-a-saved-row criterion into Task 4 (which already depends on Task-1 and Task-2) and leave Task 3 with a purely static criterion (e.g. the file exists at `src/main/resources/cyai/ideas/Idea.js` and matches the spec-time JS byte for byte).",
+    "createdAt" : "2026-09-21T12:50:25.281336100Z"
+  } ]
+}, {
+  "threadId" : "09d404fd-7fe8-469c-b816-857ccc3f136b",
+  "text" : "| `note` | STRING | TEXT | `note`, varchar(4000) | nullable — the optional longer note |",
+  "occurrence" : 0,
+  "resolved" : false,
+  "comments" : [ {
+    "id" : "e7837364-171e-4f0c-869a-9808cd1286e7",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "The design states the descriptor is 'taken **verbatim**' from the spec-time `entity_descriptors.json` and Task 1 forbids altering it, yet the design's field table asserts details the spec never states: the varchar(4000) length for `note` (the spec's Intent says only 'an optional longer note') and the `by_captured_at` index group (the spec's Data model says 'No rules beyond the table' and its Artifacts block lists no index). If the spec-time descriptor actually contains these, fine — but then the design table is narration; if it does not, the verbatim copy and the design table diverge and the implementing agent will follow the descriptor, not the table. Confirm the spec-time descriptor really fixes the 4000 length and the index (and say so, e.g. 'the spec-time descriptor already carries the length/index'), or soften the table to 'as authored in the spec-time descriptor' so there is exactly one source of truth.",
+    "createdAt" : "2026-09-21T12:50:25.281336100Z"
+  } ]
+} ]
