@@ -7,6 +7,13 @@
     "uploaded_at" : "2026-09-21T13:42:37.893624100Z",
     "origin" : "USER"
   }, {
+    "name" : "documents/Invoice-6QRQSLJB-0001.pdf",
+    "type" : "DOCUMENTS",
+    "size_bytes" : 31686,
+    "uploaded_by" : "System Admin",
+    "uploaded_at" : "2026-09-21T13:42:44.330495500Z",
+    "origin" : "USER"
+  }, {
     "name" : "documents/download",
     "type" : "DOCUMENTS",
     "size_bytes" : 2206,
