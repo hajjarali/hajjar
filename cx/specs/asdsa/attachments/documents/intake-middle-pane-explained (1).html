@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Intake screen — what the middle pane really is</title>
+<style>
+  :root{
+    --bg:#0f172a; --panel:#111c33; --card:#16233f; --ink:#e2e8f0; --muted:#94a3b8;
+    --line:#243b5e; --accent:#38bdf8;
+    --doc:#22c55e; --docbg:#0d2a1a;
+    --chat:#a78bfa; --chatbg:#1c1633;
+    --checks:#eab308; --checksbg:#2a2410;
+    --no:#ef4444; --nobg:#2a1114;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:linear-gradient(180deg,#0b1222,#0f172a);color:var(--ink);
+    font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  header{padding:34px 40px 18px;border-bottom:1px solid #1e293b}
+  h1{margin:0 0 6px;font-size:26px;letter-spacing:.2px}
+  h1 span{color:var(--accent)}
+  .sub{color:var(--muted);max-width:940px}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px 90px}
+  nav.toc{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 4px}
+  nav.toc a{font-size:12.5px;color:var(--muted);text-decoration:none;border:1px solid #24324d;
+    padding:4px 10px;border-radius:999px;background:#0e1a30}
+  nav.toc a:hover{color:var(--ink);border-color:var(--accent)}
+  section{margin:32px 0 0;background:var(--panel);border:1px solid #1e293b;border-radius:14px;
+    padding:22px 26px;box-shadow:0 8px 30px rgba(0,0,0,.25)}
+  h2{margin:0 0 4px;font-size:19px}
+  h2 .n{color:var(--accent);font-variant-numeric:tabular-nums;margin-right:8px}
+  .lead{color:var(--muted);margin:2px 0 16px;max-width:980px}
+  .mermaid{background:var(--card);border:1px solid #22314f;border-radius:12px;padding:18px;
+    overflow-x:auto;text-align:center}
+  .mermaid svg{max-width:100%!important;height:auto!important}
+  table{width:100%;border-collapse:collapse;margin:8px 0 4px;font-size:13.5px}
+  th,td{text-align:left;padding:9px 12px;border-bottom:1px solid #22314f;vertical-align:top}
+  th{color:var(--muted);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.04em}
+  td code,p code,li code{background:#0c1830;border:1px solid #22314f;padding:1px 6px;border-radius:6px;
+    color:#bae6fd;font-size:12.5px}
+  .callout{border-left:3px solid var(--accent);background:#0e1a30;padding:12px 16px;border-radius:0 10px 10px 0;
+    color:#cbd5e1;margin:14px 0}
+  .key{border-left:3px solid var(--doc);background:var(--docbg);padding:14px 18px;border-radius:0 10px 10px 0;
+    color:#d7f5e3;margin:14px 0}
+
+  /* ---- wireframe ---- */
+  .frame{border:1px solid #2b3d5f;border-radius:12px;overflow:hidden;background:#0c1526;margin:6px 0 4px}
+  .frame .bar{background:#0e1a30;border-bottom:1px solid #23324e;padding:8px 14px;font-size:12.5px;color:#9fb3cf;
+    display:flex;align-items:center;gap:10px}
+  .frame .bar .dot{width:9px;height:9px;border-radius:50%}
+  .stage{display:grid;grid-template-columns:1.05fr 2fr 1fr;gap:0;min-height:340px}
+  @media(max-width:820px){.stage{grid-template-columns:1fr}}
+  .zone{padding:14px;border-right:1px solid #21324e;position:relative}
+  .zone:last-child{border-right:none}
+  .zone h4{margin:0 0 3px;font-size:13px;letter-spacing:.02em;text-transform:uppercase}
+  .zone .el{font-size:11.5px;color:#8aa0bd;margin-bottom:10px}
+  .zone .el code{background:#0c1830;border:1px solid #22314f;padding:0 5px;border-radius:5px;color:#bae6fd;font-size:11px}
+  .z-chat{background:linear-gradient(180deg,#160f2b,#12102a)}
+  .z-doc{background:linear-gradient(180deg,#0c2418,#0b1f16)}
+  .z-checks{background:linear-gradient(180deg,#241f0e,#1c190c)}
+  .z-chat h4{color:#c4b5fd}.z-doc h4{color:#86efac}.z-checks h4{color:#fde68a}
+  .bubble{border-radius:9px;padding:7px 10px;margin:6px 0;font-size:12px;max-width:88%}
+  .bubble.me{background:#2a2140;margin-left:auto;color:#e9d5ff}
+  .bubble.ai{background:#161f38;border:1px solid #24324d;color:#cdd8ea}
+  .composer{margin-top:10px;border:1px dashed #4b3a78;border-radius:9px;padding:8px 10px;color:#a98fe0;font-size:12px}
+  .docline{height:9px;border-radius:4px;background:#12351f;margin:7px 0}
+  .docline.h{height:13px;width:52%;background:#1c4a2c}
+  .docline.s{width:92%}.docline.m{width:74%}.docline.x{width:83%}
+  .anchor{position:relative}
+  .cmt{position:absolute;right:-8px;top:-4px;background:#3a2a10;border:1px solid #7c5a12;color:#fde68a;
+    font-size:10px;border-radius:6px;padding:1px 6px;white-space:nowrap}
+  .chip{display:inline-block;font-size:11px;border-radius:6px;padding:2px 8px;margin:3px 4px 3px 0;border:1px solid}
+  .chip.err{color:#fca5a5;border-color:#7f1d1d;background:#2a1114}
+  .chip.warn{color:#fde68a;border-color:#854d0e;background:#2a2410}
+  .chip.ok{color:#86efac;border-color:#166534;background:#0d2a1a}
+  .thread{font-size:11.5px;color:#cbd5e1;border-left:2px solid #7c5a12;padding:3px 8px;margin:6px 0}
+
+  /* verdict cards */
+  .verdicts{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:6px}
+  @media(max-width:820px){.verdicts{grid-template-columns:1fr}}
+  .v{border:1px solid #24324d;border-radius:12px;padding:14px 16px;background:var(--card)}
+  .v .q{font-size:13px;color:#cbd5e1;margin:0 0 10px}
+  .v .a{font-weight:800;font-size:13px;display:inline-flex;align-items:center;gap:7px;margin-bottom:6px}
+  .v.no .a{color:#fca5a5}.v.yes .a{color:#86efac}
+  .v p{margin:6px 0 0;font-size:12.5px;color:#93a6c2}
+  .badge{font-size:10.5px;font-weight:800;border-radius:6px;padding:2px 7px}
+  .badge.no{background:var(--nobg);color:#fca5a5;border:1px solid #7f1d1d}
+  .badge.yes{background:var(--docbg);color:#86efac;border:1px solid #166534}
+  .foot{color:#64748b;font-size:12px;margin-top:26px;text-align:center}
+  .legend{display:flex;flex-wrap:wrap;gap:16px;margin:2px 0 14px;font-size:12.5px}
+  .legend span{display:inline-flex;align-items:center;gap:7px;color:var(--muted)}
+  .sq{width:12px;height:12px;border-radius:3px;display:inline-block;border:1px solid rgba(255,255,255,.22)}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap" style="padding-bottom:0">
+    <h1>The intake screen — <span>what the middle pane actually is</span></h1>
+    <p class="sub">Resolving the confusion: is the center the markdown document, the chat, both, or tabs? The answer is the <b>Artifact + Conversation</b> pattern (Claude Artifacts / ChatGPT Canvas / Google&nbsp;Docs&nbsp;+&nbsp;Gemini): the center is the <b>editable spec document</b>, the chat is a <b>separate coordinated panel</b>, and they share <b>one source of truth</b>. Every zone below names the real element that backs it.</p>
+    <nav class="toc">
+      <a href="#principle">The principle</a>
+      <a href="#layout">The layout</a>
+      <a href="#elements">Which element is which</a>
+      <a href="#questions">Your 3 questions</a>
+      <a href="#flow">The data flow</a>
+      <a href="#states">The states</a>
+      <a href="#reuse">Reuse vs new</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- 1 PRINCIPLE -->
+  <section id="principle">
+    <h2><span class="n">1</span>The one principle that removes the confusion</h2>
+    <p class="lead">A <b>conversation</b> and an <b>artifact</b> are two different things and must be two different surfaces. The chat is where you <i>talk about</i> the spec; the document is the <i>spec itself</i>. They are kept side by side and both write the <b>same</b> underlying <code>SpecIR</code> (a <code>MarkdownDocumentData</code>). This is precisely how mature tools do it:</p>
+    <table>
+      <tr><th>Product</th><th>Conversation</th><th>Artifact (the doc)</th><th>Shared truth</th></tr>
+      <tr><td><b>Claude — Artifacts</b></td><td>chat, left</td><td>live editable artifact, right</td><td>the artifact</td></tr>
+      <tr><td><b>ChatGPT — Canvas</b></td><td>chat, left</td><td>editable canvas doc, right</td><td>the canvas</td></tr>
+      <tr><td><b>Google Docs + Gemini</b></td><td>side panel</td><td>the document (margin comments)</td><td>the document</td></tr>
+      <tr><td><b>Cursor</b></td><td>chat</td><td>the file / editor</td><td>the file</td></tr>
+      <tr><td style="color:#86efac"><b>Our intake</b></td><td style="color:#c4b5fd"><code>IChatElement</code></td><td style="color:#86efac"><code>IMarkdownEditorElement</code></td><td>the <code>SpecIR</code></td></tr>
+    </table>
+    <div class="key"><b>So the middle is the document editor — not the chat, and the chat never contains it.</b> Two panels, one <code>SpecIR</code>. Everything else below is just the consequence of this.</div>
+  </section>
+
+  <!-- 2 LAYOUT -->
+  <section id="layout">
+    <h2><span class="n">2</span>The layout — a picture of the screen</h2>
+    <p class="lead">Three coordinated panels. The center is the editable spec; comments render <b>in its margin</b> (the editor supports anchored threads natively); the right rail is a <b>summary/navigator</b> for checks + comment threads; the copilot chat is the left rail (the vibe is just its first message).</p>
+    <div class="legend">
+      <span><i class="sq" style="background:var(--chat)"></i> Conversation — <code>IChatElement</code></span>
+      <span><i class="sq" style="background:var(--doc)"></i> Artifact — <code>IMarkdownEditorElement</code></span>
+      <span><i class="sq" style="background:var(--checks)"></i> Inspector — checks + comment list</span>
+    </div>
+    <div class="frame">
+      <div class="bar"><span class="dot" style="background:#f87171"></span><span class="dot" style="background:#fbbf24"></span><span class="dot" style="background:#34d399"></span>
+        &nbsp;Context bar — project · spec name · status DRAFT · primary action “Accept vN”</div>
+      <div class="stage">
+        <div class="zone z-chat">
+          <h4>Copilot chat</h4>
+          <div class="el"><code>IChatElement</code> · left rail</div>
+          <div class="bubble me">Build a monthly invoice-reconciliation spec.</div>
+          <div class="bubble ai">Drafted it → see the document. I added an Intent and open questions.</div>
+          <div class="bubble me">Tighten the cutoff rule.</div>
+          <div class="bubble ai">Updated §Constraints. Re-check the doc.</div>
+          <div class="composer">Type a message… (vibe = the 1st one)</div>
+        </div>
+        <div class="zone z-doc">
+          <h4>Spec document — editable</h4>
+          <div class="el">the middle · <code>IMarkdownEditorElement</code> / <code>MarkdownEditorModel</code></div>
+          <div class="docline h"></div>
+          <div class="anchor"><div class="docline s"></div></div>
+          <div class="anchor"><div class="docline x"></div><span class="cmt">💬 AI: clarify the cutoff</span></div>
+          <div class="docline m"></div>
+          <div class="docline h" style="width:40%"></div>
+          <div class="docline s"></div>
+          <div class="anchor"><div class="docline m"></div><span class="cmt">💬 you: add rounding</span></div>
+          <div class="docline x"></div>
+          <p style="color:#6f8aa5;font-size:11.5px;margin-top:12px">You can edit directly here <b>and</b> ask the chat to edit — both change the same <code>SpecIR</code>. Read-only when viewing an accepted version.</p>
+        </div>
+        <div class="zone z-checks">
+          <h4>Checks &amp; comments</h4>
+          <div class="el">right rail · summary + navigator</div>
+          <div style="margin-bottom:8px">
+            <span class="chip err">1 error</span><span class="chip warn">1 warning</span><span class="chip ok">ready?</span>
+          </div>
+          <div class="thread">💬 “clarify the cutoff” — AI Reviewer</div>
+          <div class="thread">💬 “add rounding” — you</div>
+          <p style="color:#8aa0bd;font-size:11px;margin-top:10px">Validate findings (Gap&nbsp;3) + the doc’s comment threads. Click one → jumps to its anchor in the doc.</p>
+        </div>
+      </div>
+    </div>
+    <div class="callout">The comment chips in the document margin and the list on the right are the <b>same</b> comment threads — the editor owns the inline rendering (<code>getComments()</code>), the rail is a list view over them plus the validator’s findings. No third element is needed.</div>
+  </section>
+
+  <!-- 3 ELEMENTS -->
+  <section id="elements">
+    <h2><span class="n">3</span>Which element backs which zone (and what it calls)</h2>
+    <p class="lead">Every zone is an element we already have, driven by a model over the <code>SpecEditor</code> REST surface (all of it built + verified).</p>
+    <table>
+      <tr><th>Zone</th><th>Element / Model</th><th>Carries</th><th>Server call</th></tr>
+      <tr><td><b>Center — the spec doc</b></td><td><code>IMarkdownEditorElement</code> / <code>MarkdownEditorModel</code></td><td><code>content</code> (blocks) · <code>comments</code> (anchored threads) · <code>readOnly</code></td><td><code>read</code> / <code>save</code> / <code>review</code></td></tr>
+      <tr><td><b>Left — copilot chat</b></td><td><code>IChatElement</code> (a chat model)</td><td>message list · interrupt</td><td><code>chat(id, message)</code></td></tr>
+      <tr><td><b>Right — checks</b></td><td>a small list/inspector (Timeline / list)</td><td>validate findings · comment-thread list · readiness</td><td><code>validate</code> · <code>assessReadiness</code></td></tr>
+      <tr><td><b>Context bar</b></td><td>toolbar (buttons + status)</td><td>project · status · Accept</td><td><code>getRegistry</code> (first paint) · Accept workflow</td></tr>
+    </table>
+    <div class="callout">This is <b>the same wiring the feature editor already uses</b>: <code>AbstractDocumentEditorModel</code> composes a <code>MarkdownEditorModel</code>, seeds <code>content</code>+<code>comments</code> at connect, tracks dirty, and commits. The intake reuses that and adds the chat panel beside it.</div>
+  </section>
+
+  <!-- 4 QUESTIONS -->
+  <section id="questions">
+    <h2><span class="n">4</span>Your three questions, answered</h2>
+    <div class="verdicts">
+      <div class="v no">
+        <p class="q">“Is the middle our markdown view, or the chatElement?”</p>
+        <div class="a"><span class="badge yes">DOC</span> The markdown <i>editor</i>.</div>
+        <p>The middle is <code>IMarkdownEditorElement</code> (editable, with margin comments) — not the read-only <code>RichText</code> display, and not the chat. The chat is a <b>separate</b> panel.</p>
+      </div>
+      <div class="v no">
+        <p class="q">“Should the chatElement display a MarkdownEditorElement inside it?”</p>
+        <div class="a"><span class="badge no">NO</span> Don’t nest them.</div>
+        <p>Nesting the doc in the chat conflates conversation with artifact and breaks direct editing + comments. Keep them side by side, sharing the <code>SpecIR</code>.</p>
+      </div>
+      <div class="v no">
+        <p class="q">“Should the middle be 2 tabs?”</p>
+        <div class="a"><span class="badge no">NOT chat/doc</span> One editor.</div>
+        <p>The center is one editor. Tabs only make sense later as <b>Document / Versions-diff</b> (same spec, another view via <code>readVersion</code>/<code>diff</code>) — never doc-vs-chat. Chat stays always-visible.</p>
+      </div>
+    </div>
+    <div class="key"><b>What actually felt missing is not an element — it is the coordination.</b> When the chat edits the spec, the center editor must re-read and reload; and before a spec exists, the chat’s first message (the vibe → <code>compile</code>) is what fills the empty editor. Both are model wiring, shown next.</div>
+  </section>
+
+  <!-- 5 FLOW -->
+  <section id="flow">
+    <h2><span class="n">5</span>The data flow — how the two panels stay in sync</h2>
+    <p class="lead">Both the direct-edit path and the chat path write the same <code>SpecIR</code>; the difference is only who initiates. The one piece to add for intake (the feature editor doesn’t need it because it has no chat) is <b>“after a chat turn, re-read the doc into the editor.”</b></p>
+    <pre class="mermaid">
+sequenceDiagram
+  autonumber
+  participant Chat as Copilot chat
+  participant Doc as Markdown editor
+  participant M as Intake model
+  participant SE as SpecEditor REST
+  Note over Chat,Doc: two panels · one SpecIR
+
+  Chat->>M: user message (the vibe, or a refine)
+  M->>SE: chat(id, message)  -- or compile(vibe) on cold start
+  SE-->>M: turn done -- the spec.json was edited server-side
+  M->>SE: read(id, name)
+  SE-->>M: fresh SpecIR
+  M->>Doc: editor.content.set(...) + editor.comments.set(...)
+  Note over Doc: center re-renders with the new content
+
+  Doc->>M: direct edit (onContentChange) -- marks dirty
+  M->>SE: save(ir)  -- autosave DRAFT
+  M->>SE: validate(ir) + review(ir)
+  SE-->>M: findings + anchored comments
+  M->>Doc: merge review comments into editor.comments
+    </pre>
+    <div class="callout">Direct edits flow <code>editor.onContentChange</code> → the model (dirty → <code>save</code>). Chat edits flow through the server then back via <code>read</code> → <code>editor.content.set</code>. Review comments (Gap&nbsp;2) land as <code>editor.comments</code> — margin threads. Validate findings (Gap&nbsp;3) feed the right rail.</div>
+  </section>
+
+  <!-- 6 STATES -->
+  <section id="states">
+    <h2><span class="n">6</span>The states — cold start to accepted version</h2>
+    <p class="lead">The center pane has states; the chat is the entry point that moves it out of empty.</p>
+    <pre class="mermaid">
+stateDiagram-v2
+  [*] --> Empty: open intake (no spec yet)
+  Empty --> Drafting: chat vibe → compile → first doc fills the editor
+  Drafting --> Drafting: edit directly / chat refine / review / validate (autosave DRAFT)
+  Drafting --> Accepted: Accept vN (validate passes → freeze commit)
+  Accepted --> Drafting: edit again (amend → new DRAFT)
+  Accepted --> Viewing: open an older version (readOnly)
+  Viewing --> Drafting: back to the live draft
+    </pre>
+    <div class="callout"><b>Empty state</b> = the editor is blank and the chat says “describe what you want.” That is the vibe-coder cold start — no separate screen, just the same three panels with an empty center. <b>Viewing</b> a version flips the editor <code>readOnly</code> (the property already exists).</div>
+  </section>
+
+  <!-- 7 REUSE -->
+  <section id="reuse">
+    <h2><span class="n">7</span>What we reuse vs. what is new</h2>
+    <div class="verdicts">
+      <div class="v yes">
+        <div class="a"><span class="badge yes">REUSE</span> The editor stack</div>
+        <p><code>MarkdownEditorModel</code> + <code>IMarkdownEditorElement</code> (content, comments, readOnly, change hooks) and the <code>AbstractDocumentEditorModel</code> pattern (seed / dirty / commit) — already in build-model for the feature spec/plan/tasks tabs.</p>
+      </div>
+      <div class="v yes">
+        <div class="a"><span class="badge yes">REUSE</span> The chat element</div>
+        <p><code>IChatElement</code> + a chat model — the same element the copilot uses — pointed at <code>SpecEditor.chat</code>.</p>
+      </div>
+      <div class="v yes">
+        <div class="a"><span class="badge yes">NEW</span> The coordination + shell</div>
+        <p>The intake model that (a) fills the editor from <code>compile</code> on cold start, (b) re-reads the doc after each chat turn, (c) feeds the checks rail from <code>validate</code>/<code>review</code>, (d) the 3-pane shell = the reusable Authoring Workspace. No new element type.</p>
+      </div>
+    </div>
+    <div class="key"><b>Bottom line:</b> the middle is one thing — the editable spec document (<code>IMarkdownEditorElement</code>). The chat is a peer panel, never a container for it, never a tab against it. Everything the pane needs already exists as an element; intake is the model that coordinates the three panels over the finished <code>SpecEditor</code> backend.</div>
+  </section>
+
+  <p class="foot">Elements verified in <code>ui-core/ui-model</code> (IMarkdownEditorElement · IChatElement · MarkdownEditorModel) and <code>domain/build/build-model</code> (AbstractDocumentEditorModel). Diagrams via Mermaid (CDN — open online).</p>
+</div>
+
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({
+    startOnLoad:true,
+    theme:'base',
+    themeVariables:{
+      fontSize:'14px',
+      primaryColor:'#16233f', primaryTextColor:'#e2e8f0', primaryBorderColor:'#33507f',
+      lineColor:'#5b7bb0', secondaryColor:'#14233f', tertiaryColor:'#0e1a30',
+      clusterBkg:'#0e1a30', clusterBorder:'#243b63',
+      noteBkgColor:'#1c2740', noteTextColor:'#cbd5e1', noteBorderColor:'#33507f',
+      actorBkg:'#16233f', actorBorder:'#33507f', actorTextColor:'#e2e8f0',
+      signalColor:'#94a3b8', signalTextColor:'#cbd5e1'
+    }
+  });
+</script>
+</body>
+</html>
