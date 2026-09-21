@@ -1,5 +1,12 @@
 {
   "attachments" : [ {
+    "name" : "documents/Invoice-6QRQSLJB-0001.pdf",
+    "type" : "DOCUMENTS",
+    "size_bytes" : 31686,
+    "uploaded_by" : "System Admin",
+    "uploaded_at" : "2026-09-21T07:28:10.947069900Z",
+    "origin" : "USER"
+  }, {
     "name" : "documents/review-bugfixes-scm-health-chip-inputs (1).html",
     "type" : "DOCUMENTS",
     "size_bytes" : 14521,
