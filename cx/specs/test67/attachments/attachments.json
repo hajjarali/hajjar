@@ -7,6 +7,13 @@
     "uploaded_at" : "2026-09-21T07:12:54.433397600Z",
     "origin" : "USER"
   }, {
+    "name" : "documents/cartesianChart1 (2).png",
+    "type" : "DOCUMENTS",
+    "size_bytes" : 34771,
+    "uploaded_by" : "System Admin",
+    "uploaded_at" : "2026-09-21T07:13:25.588434800Z",
+    "origin" : "USER"
+  }, {
     "name" : "documents/review-bugfixes-scm-health-chip-inputs.html",
     "type" : "DOCUMENTS",
     "size_bytes" : 14521,
