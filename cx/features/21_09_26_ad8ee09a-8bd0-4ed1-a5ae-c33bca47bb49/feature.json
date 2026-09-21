@@ -1,6 +1,6 @@
 {
   "content" : [ {
-    "id" : "e3cc2e69",
+    "id" : "abc5796f",
     "type" : "heading",
     "props" : {
       "level" : 1
@@ -10,14 +10,14 @@
       "text" : "Idea register"
     } ]
   }, {
-    "id" : "b64a7fc0",
+    "id" : "07a06226",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
       "text" : "A minimal idea-capture register: any signed-in user jots down a one-line idea with an optional note, browses the list, and edits or deletes entries through the platform's standard screens. One new persistable bean, no relationships, no workflow — the design is the entity and its standard surfaces."
     } ]
   }, {
-    "id" : "5033a23f",
+    "id" : "8dd7eddf",
     "type" : "heading",
     "props" : {
       "level" : 2
@@ -27,7 +27,7 @@
       "text" : "Design"
     } ]
   }, {
-    "id" : "c30c44db",
+    "id" : "385c6d12",
     "type" : "heading",
     "props" : {
       "level" : 3
@@ -55,7 +55,7 @@
       "text" : ")"
     } ]
   }, {
-    "id" : "dfd4d0a4",
+    "id" : "ed1f0d4a",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -80,7 +80,7 @@
       "text" : " shows no other spec covering this ground. Modelled exactly as the spec's Data model bean block: three scalar fields, no relationships."
     } ]
   }, {
-    "id" : "2a9f7092",
+    "id" : "a5196075",
     "type" : "table",
     "content" : {
       "type" : "tableContent",
@@ -168,7 +168,7 @@
       "headerRows" : 1
     }
   }, {
-    "id" : "1d0ffc54",
+    "id" : "745a75a8",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -190,7 +190,7 @@
       "text" : " column, not a duplicate."
     } ]
   }, {
-    "id" : "a6c876f5",
+    "id" : "07ed5e70",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -266,7 +266,7 @@
       "text" : "; nothing about it is re-decided here."
     } ]
   }, {
-    "id" : "d3befffa",
+    "id" : "9052b366",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -279,7 +279,7 @@
       "text" : " (the spec's only two, both enforced on save and covered by generated tests):"
     } ]
   }, {
-    "id" : "6f7518e9",
+    "id" : "6bd9290a",
     "type" : "bulletListItem",
     "content" : [ {
       "type" : "text",
@@ -292,7 +292,7 @@
       "text" : " max(200) — carried by the descriptor's column length; the save path refuses a longer title."
     } ]
   }, {
-    "id" : "c085dea3",
+    "id" : "17fa7136",
     "type" : "bulletListItem",
     "content" : [ {
       "type" : "text",
@@ -314,7 +314,7 @@
       "text" : " null gets the current instant, so a capture never carries a blank timestamp."
     } ]
   }, {
-    "id" : "efb54462",
+    "id" : "6bc405e2",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -327,7 +327,7 @@
       "text" : " None. No reference fields, no inverses, no join tables."
     } ]
   }, {
-    "id" : "9a6f370c",
+    "id" : "ae22cfb6",
     "type" : "heading",
     "props" : {
       "level" : 3
@@ -337,7 +337,7 @@
       "text" : "View layouts"
     } ]
   }, {
-    "id" : "ca0c10e4",
+    "id" : "dbc9d7d1",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -371,7 +371,7 @@
       "text" : ", where the view-JS class-name convention discovers it. It renders a single \"Idea\" section: title and note full-width (note with its \"Optional\" helper text), capturedAt at half width. No observer-sheet layout work is needed beyond the standard entity sheet."
     } ]
   }, {
-    "id" : "188b1884",
+    "id" : "d4207d8a",
     "type" : "heading",
     "props" : {
       "level" : 3
@@ -381,7 +381,7 @@
       "text" : "Remote surface"
     } ]
   }, {
-    "id" : "0a7fa1a4",
+    "id" : "edd5c921",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -397,7 +397,7 @@
       "text" : "), no custom operations, no domain adapter seams: the bean is pure scalars with no cross-field rules for a validator to carry."
     } ]
   }, {
-    "id" : "d5470986",
+    "id" : "299de683",
     "type" : "heading",
     "props" : {
       "level" : 2
@@ -407,7 +407,7 @@
       "text" : "Tasks"
     } ]
   }, {
-    "id" : "344b105f",
+    "id" : "1fe959ac",
     "type" : "heading",
     "props" : {
       "level" : 3
@@ -417,7 +417,7 @@
       "text" : "Task 1: Author the Idea entity class and its descriptor entry"
     } ]
   }, {
-    "id" : "d7d827e7",
+    "id" : "5b9545e8",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -430,7 +430,7 @@
       "text" : ": None"
     } ]
   }, {
-    "id" : "022ca951",
+    "id" : "06bb7982",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -608,7 +608,7 @@
       "text" : "."
     } ]
   }, {
-    "id" : "683e7798",
+    "id" : "314bc4c0",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -621,7 +621,7 @@
       "text" : ":"
     } ]
   }, {
-    "id" : "1542af91",
+    "id" : "1fa49a44",
     "type" : "bulletListItem",
     "content" : [ {
       "type" : "text",
@@ -646,14 +646,14 @@
       "text" : "."
     } ]
   }, {
-    "id" : "dd104462",
+    "id" : "a56c887a",
     "type" : "bulletListItem",
     "content" : [ {
       "type" : "text",
       "text" : "The descriptor entry is byte-identical to the spec-time authoring."
     } ]
   }, {
-    "id" : "16db9cd3",
+    "id" : "31374956",
     "type" : "bulletListItem",
     "content" : [ {
       "type" : "text",
@@ -669,7 +669,7 @@
       "text" : " entry resolves the discriminator on deserialization."
     } ]
   }, {
-    "id" : "187e978b",
+    "id" : "55f9ae10",
     "type" : "heading",
     "props" : {
       "level" : 3
@@ -688,7 +688,7 @@
       "text" : " table"
     } ]
   }, {
-    "id" : "321afac0",
+    "id" : "b079f7f0",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -701,7 +701,7 @@
       "text" : ": Task-1"
     } ]
   }, {
-    "id" : "d51bb151",
+    "id" : "01d18cc4",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -780,7 +780,7 @@
       "text" : " index. The migration and descriptor must stay in lockstep — the descriptor describes the schema this migration creates."
     } ]
   }, {
-    "id" : "7f658540",
+    "id" : "f0e2294c",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -793,21 +793,21 @@
       "text" : ":"
     } ]
   }, {
-    "id" : "b7167ac8",
+    "id" : "c7ff887c",
     "type" : "bulletListItem",
     "content" : [ {
       "type" : "text",
       "text" : "The migration runs against an empty schema and creates the table with all columns, the primary key and the index."
     } ]
   }, {
-    "id" : "5712c4ce",
+    "id" : "9e184ab0",
     "type" : "bulletListItem",
     "content" : [ {
       "type" : "text",
       "text" : "Re-running the migration chain is a no-op at version 1."
     } ]
   }, {
-    "id" : "7c721a96",
+    "id" : "68178b5c",
     "type" : "heading",
     "props" : {
       "level" : 3
@@ -817,7 +817,7 @@
       "text" : "Task 3: Enforce the title and capturedAt validation rules"
     } ]
   }, {
-    "id" : "c64ed2a2",
+    "id" : "769ddd9c",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -830,7 +830,7 @@
       "text" : ": Task-1"
     } ]
   }, {
-    "id" : "6fc9f2cd",
+    "id" : "39286dc5",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -855,7 +855,7 @@
       "text" : " to the current instant so a capture is never saved blank. Cover both with generated tests — one refusing an over-long title, one proving the default fills on save and an explicit value is kept."
     } ]
   }, {
-    "id" : "f22a2258",
+    "id" : "965c4066",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -868,14 +868,14 @@
       "text" : ":"
     } ]
   }, {
-    "id" : "eae7287f",
+    "id" : "0fbbe11f",
     "type" : "bulletListItem",
     "content" : [ {
       "type" : "text",
       "text" : "Saving an Idea with a title over 200 characters is refused."
     } ]
   }, {
-    "id" : "d46f64fc",
+    "id" : "ed849c5a",
     "type" : "bulletListItem",
     "content" : [ {
       "type" : "text",
@@ -891,7 +891,7 @@
       "text" : " unset persists the current instant; an explicitly set value is preserved."
     } ]
   }, {
-    "id" : "647ca93d",
+    "id" : "b3c53936",
     "type" : "heading",
     "props" : {
       "level" : 3
@@ -901,7 +901,7 @@
       "text" : "Task 4: Ship the default form and surface the entity sheet"
     } ]
   }, {
-    "id" : "4c88fae2",
+    "id" : "0ba72aff",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -914,7 +914,7 @@
       "text" : ": Task-1"
     } ]
   }, {
-    "id" : "20d4823e",
+    "id" : "0f58a21b",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -957,7 +957,7 @@
       "text" : " — reads and writes, no custom cells or operations. Do not add any screen, navigation entry or layout beyond what the sheet and default form give."
     } ]
   }, {
-    "id" : "30ce3463",
+    "id" : "7a28289b",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -970,21 +970,21 @@
       "text" : ":"
     } ]
   }, {
-    "id" : "4a446d94",
+    "id" : "d499bd74",
     "type" : "bulletListItem",
     "content" : [ {
       "type" : "text",
       "text" : "The Idea search screen lists rows and the edit form renders the spec-authored layout (title, note with helper text, capturedAt)."
     } ]
   }, {
-    "id" : "b15bee05",
+    "id" : "357c7fc7",
     "type" : "bulletListItem",
     "content" : [ {
       "type" : "text",
       "text" : "Create, edit and delete work end to end through the sheet."
     } ]
   }, {
-    "id" : "15b55f26",
+    "id" : "1375e4be",
     "type" : "heading",
     "props" : {
       "level" : 3
@@ -994,7 +994,7 @@
       "text" : "Task 5: Guard the table rules with the entity's generated tests"
     } ]
   }, {
-    "id" : "738195fb",
+    "id" : "7744b116",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -1007,7 +1007,7 @@
       "text" : ": Task-2, Task-3"
     } ]
   }, {
-    "id" : "bb31cf25",
+    "id" : "c9173fdb",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -1023,7 +1023,7 @@
       "text" : " per the platform test pattern: the JSON seed round-trips through the wire contract (discriminator present, no bare-string fields), the descriptor's field set matches the migration's columns, and the two validation rules from Task 3 are exercised. The spec's acceptance criteria are deliberately none — the platform's generated tests cover the table rules — so this task closes the loop the spec leaves to the platform."
     } ]
   }, {
-    "id" : "6221e898",
+    "id" : "817972b8",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -1036,7 +1036,7 @@
       "text" : ":"
     } ]
   }, {
-    "id" : "e3593cb7",
+    "id" : "66eac748",
     "type" : "bulletListItem",
     "content" : [ {
       "type" : "text",
@@ -1045,6 +1045,6 @@
   } ],
   "comments" : [ ],
   "metadata" : {
-    "createdAt" : "2026-09-21T13:10:49.670301200Z"
+    "createdAt" : "2026-09-21T13:11:13.527803400Z"
   }
 }
