@@ -1,6 +1,6 @@
 {
   "content" : [ {
-    "id" : "d34cabdb",
+    "id" : "64662c0c",
     "type" : "heading",
     "props" : {
       "level" : 1
@@ -10,32 +10,14 @@
       "text" : "Idea capture register (speckl1)"
     } ]
   }, {
-    "id" : "84c367fc",
+    "id" : "dfd80b8e",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
-      "text" : "A minimal idea-capture register built to exercise the spec workflow end to end: one persistable"
-    }, {
-      "type" : "text",
-      "text" : " "
-    }, {
-      "type" : "text",
-      "text" : "bean, its standard search screen and edit form, nothing custom. Any signed-in user captures a"
-    }, {
-      "type" : "text",
-      "text" : " "
-    }, {
-      "type" : "text",
-      "text" : "one-line idea with an optional note, browses the list, and edits or deletes any entry. No"
-    }, {
-      "type" : "text",
-      "text" : " "
-    }, {
-      "type" : "text",
-      "text" : "workflow, no assignment, no visibility rules."
+      "text" : "A minimal idea-capture register built to exercise the spec workflow end to end: one persistable bean, its standard search screen and edit form, nothing custom. Any signed-in user captures a one-line idea with an optional note, browses the list, and edits or deletes any entry. No workflow, no assignment, no visibility rules."
     } ]
   }, {
-    "id" : "8ea42f39",
+    "id" : "a12b1f89",
     "type" : "heading",
     "props" : {
       "level" : 2
@@ -45,7 +27,7 @@
       "text" : "Design"
     } ]
   }, {
-    "id" : "de6ff5a9",
+    "id" : "8d538372",
     "type" : "heading",
     "props" : {
       "level" : 3
@@ -64,7 +46,7 @@
       "text" : " (new)"
     } ]
   }, {
-    "id" : "ad5b9b21",
+    "id" : "38777b7d",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -77,13 +59,7 @@
       }
     }, {
       "type" : "text",
-      "text" : ";"
-    }, {
-      "type" : "text",
-      "text" : " "
-    }, {
-      "type" : "text",
-      "text" : "the nearest nouns are the "
+      "text" : "; the nearest nouns are the "
     }, {
       "type" : "text",
       "text" : "simpledao.Demo*",
@@ -101,13 +77,7 @@
       }
     }, {
       "type" : "text",
-      "text" : " platform beans,"
-    }, {
-      "type" : "text",
-      "text" : " "
-    }, {
-      "type" : "text",
-      "text" : "none reusable for this). No spec registered elsewhere covers idea capture ("
+      "text" : " platform beans, none reusable for this). No spec registered elsewhere covers idea capture ("
     }, {
       "type" : "text",
       "text" : "platformSpecs",
@@ -119,7 +89,7 @@
       "text" : ")."
     } ]
   }, {
-    "id" : "bcbd6998",
+    "id" : "be255a8d",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -132,10 +102,7 @@
       }
     }, {
       "type" : "text",
-      "text" : " "
-    }, {
-      "type" : "text",
-      "text" : "and is taken "
+      "text" : " and is taken "
     }, {
       "type" : "text",
       "text" : "verbatim",
@@ -144,10 +111,7 @@
       }
     }, {
       "type" : "text",
-      "text" : " — the entity task copies it into the application's"
-    }, {
-      "type" : "text",
-      "text" : " "
+      "text" : " — the entity task copies it into the application's "
     }, {
       "type" : "text",
       "text" : "entity_descriptors.json",
@@ -159,7 +123,7 @@
       "text" : " rather than re-deriving it. What it fixes:"
     } ]
   }, {
-    "id" : "c5e371fd",
+    "id" : "6970f35b",
     "type" : "table",
     "content" : {
       "type" : "tableContent",
@@ -235,7 +199,7 @@
       "headerRows" : 1
     }
   }, {
-    "id" : "cef83db6",
+    "id" : "05fd39c9",
     "type" : "bulletListItem",
     "content" : [ {
       "type" : "text",
@@ -266,13 +230,7 @@
       }
     }, {
       "type" : "text",
-      "text" : ", one"
-    }, {
-      "type" : "text",
-      "text" : " "
-    }, {
-      "type" : "text",
-      "text" : "index group "
+      "text" : ", one index group "
     }, {
       "type" : "text",
       "text" : "by_captured_at",
@@ -290,16 +248,10 @@
       }
     }, {
       "type" : "text",
-      "text" : " so the list can be browsed newest-first without a"
-    }, {
-      "type" : "text",
-      "text" : " "
-    }, {
-      "type" : "text",
-      "text" : "scan."
+      "text" : " so the list can be browsed newest-first without a scan."
     } ]
   }, {
-    "id" : "e6087d8a",
+    "id" : "c4a6a236",
     "type" : "bulletListItem",
     "content" : [ {
       "type" : "text",
@@ -312,19 +264,7 @@
       }
     }, {
       "type" : "text",
-      "text" : " is NOT"
-    }, {
-      "type" : "text",
-      "text" : " "
-    }, {
-      "type" : "text",
-      "text" : "modelled: the spec reserves it because the platform injects it as a system field on every"
-    }, {
-      "type" : "text",
-      "text" : " "
-    }, {
-      "type" : "text",
-      "text" : "persistable bean; "
+      "text" : " is NOT modelled: the spec reserves it because the platform injects it as a system field on every persistable bean; "
     }, {
       "type" : "text",
       "text" : "capturedAt",
@@ -336,7 +276,7 @@
       "text" : " is the business timestamp and is a separate, user-visible field."
     } ]
   }, {
-    "id" : "41b7cd0e",
+    "id" : "a327792a",
     "type" : "bulletListItem",
     "content" : [ {
       "type" : "text",
@@ -358,13 +298,7 @@
       }
     }, {
       "type" : "text",
-      "text" : " package, following the standard persistable-bean"
-    }, {
-      "type" : "text",
-      "text" : " "
-    }, {
-      "type" : "text",
-      "text" : "pattern (immutable, nested builder, "
+      "text" : " package, following the standard persistable-bean pattern (immutable, nested builder, "
     }, {
       "type" : "text",
       "text" : "ENTITY_NAME",
@@ -391,13 +325,7 @@
       }
     }, {
       "type" : "text",
-      "text" : " version 1"
-    }, {
-      "type" : "text",
-      "text" : " "
-    }, {
-      "type" : "text",
-      "text" : "matching the descriptor's version). Wire type registered in the module's "
+      "text" : " version 1 matching the descriptor's version). Wire type registered in the module's "
     }, {
       "type" : "text",
       "text" : "jsontypes.json",
@@ -409,20 +337,14 @@
       "text" : "."
     } ]
   }, {
-    "id" : "6df5dbbc",
+    "id" : "7da5b719",
     "type" : "bulletListItem",
     "content" : [ {
       "type" : "text",
-      "text" : "The two validation rules from the spec's artifacts block — title max(200), capturedAt"
-    }, {
-      "type" : "text",
-      "text" : " "
-    }, {
-      "type" : "text",
-      "text" : "default(now) — are enforced on save and covered by generated tests; no hand-written rule code."
+      "text" : "The two validation rules from the spec's artifacts block — title max(200), capturedAt default(now) — are enforced on save and covered by generated tests; no hand-written rule code."
     } ]
   }, {
-    "id" : "c3cd3478",
+    "id" : "6d42d966",
     "type" : "heading",
     "props" : {
       "level" : 3
@@ -432,20 +354,11 @@
       "text" : "View layout"
     } ]
   }, {
-    "id" : "9427864d",
+    "id" : "49361055",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
-      "text" : "Nothing custom is designed here: the spec's UI section is the bean's standard search screen and"
-    }, {
-      "type" : "text",
-      "text" : " "
-    }, {
-      "type" : "text",
-      "text" : "edit form. The default form's layout JS was authored at spec time at"
-    }, {
-      "type" : "text",
-      "text" : " "
+      "text" : "Nothing custom is designed here: the spec's UI section is the bean's standard search screen and edit form. The default form's layout JS was authored at spec time at "
     }, {
       "type" : "text",
       "text" : "cx/specs/speckl1/ui/ideas.Idea.js",
@@ -454,13 +367,7 @@
       }
     }, {
       "type" : "text",
-      "text" : " (a single \"Idea\" section: title and note full-width,"
-    }, {
-      "type" : "text",
-      "text" : " "
-    }, {
-      "type" : "text",
-      "text" : "capturedAt half-width) and ships "
+      "text" : " (a single \"Idea\" section: title and note full-width, capturedAt half-width) and ships "
     }, {
       "type" : "text",
       "text" : "verbatim",
@@ -469,10 +376,7 @@
       }
     }, {
       "type" : "text",
-      "text" : " beside the entity class as"
-    }, {
-      "type" : "text",
-      "text" : " "
+      "text" : " beside the entity class as "
     }, {
       "type" : "text",
       "text" : "src/main/resources/cyai/ideas/Idea.js",
@@ -484,7 +388,7 @@
       "text" : " — copied, not rewritten."
     } ]
   }, {
-    "id" : "b7b34199",
+    "id" : "137d93fe",
     "type" : "heading",
     "props" : {
       "level" : 3
@@ -494,7 +398,7 @@
       "text" : "Migration & compatibility"
     } ]
   }, {
-    "id" : "d3899f5f",
+    "id" : "e005f9d7",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -516,13 +420,7 @@
       }
     }, {
       "type" : "text",
-      "text" : " table"
-    }, {
-      "type" : "text",
-      "text" : " "
-    }, {
-      "type" : "text",
-      "text" : "(system columns + the three field columns + the "
+      "text" : " table (system columns + the three field columns + the "
     }, {
       "type" : "text",
       "text" : "by_captured_at",
@@ -531,16 +429,10 @@
       }
     }, {
       "type" : "text",
-      "text" : " index), in lockstep with the"
-    }, {
-      "type" : "text",
-      "text" : " "
-    }, {
-      "type" : "text",
-      "text" : "descriptor."
+      "text" : " index), in lockstep with the descriptor."
     } ]
   }, {
-    "id" : "e33da449",
+    "id" : "7ff4a99a",
     "type" : "heading",
     "props" : {
       "level" : 2
@@ -550,7 +442,7 @@
       "text" : "Tasks"
     } ]
   }, {
-    "id" : "fa26d6f6",
+    "id" : "edab2451",
     "type" : "heading",
     "props" : {
       "level" : 3
@@ -560,7 +452,7 @@
       "text" : "Task 1: Create the Idea entity class with its descriptor and wire-type entries"
     } ]
   }, {
-    "id" : "5b0c66b2",
+    "id" : "075552a1",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -573,7 +465,7 @@
       "text" : ": None"
     } ]
   }, {
-    "id" : "603e44f6",
+    "id" : "1687fa09",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -595,13 +487,7 @@
       }
     }, {
       "type" : "text",
-      "text" : " per the standard entity"
-    }, {
-      "type" : "text",
-      "text" : " "
-    }, {
-      "type" : "text",
-      "text" : "class pattern (immutable fields, nested builder, "
+      "text" : " per the standard entity class pattern (immutable fields, nested builder, "
     }, {
       "type" : "text",
       "text" : "ENTITY_NAME",
@@ -619,10 +505,7 @@
       }
     }, {
       "type" : "text",
-      "text" : ","
-    }, {
-      "type" : "text",
-      "text" : " "
+      "text" : ", "
     }, {
       "type" : "text",
       "text" : "ENTITY_CLASS_KEY",
@@ -649,10 +532,7 @@
       }
     }, {
       "type" : "text",
-      "text" : " from"
-    }, {
-      "type" : "text",
-      "text" : " "
+      "text" : " from "
     }, {
       "type" : "text",
       "text" : "cx/specs/speckl1/entity_descriptors.json",
@@ -670,16 +550,7 @@
       }
     }, {
       "type" : "text",
-      "text" : " "
-    }, {
-      "type" : "text",
-      "text" : "(create it if the module does not yet carry one), and register the entity's jsontype in the"
-    }, {
-      "type" : "text",
-      "text" : " "
-    }, {
-      "type" : "text",
-      "text" : "module's "
+      "text" : " (create it if the module does not yet carry one), and register the entity's jsontype in the module's "
     }, {
       "type" : "text",
       "text" : "jsontypes.json",
@@ -688,16 +559,10 @@
       }
     }, {
       "type" : "text",
-      "text" : ". Do not alter the descriptor's field set, lengths, validation or index"
-    }, {
-      "type" : "text",
-      "text" : " "
-    }, {
-      "type" : "text",
-      "text" : "groups — it is the spec-time artifact."
+      "text" : ". Do not alter the descriptor's field set, lengths, validation or index groups — it is the spec-time artifact."
     } ]
   }, {
-    "id" : "468e80cc",
+    "id" : "d2db6ffb",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -710,7 +575,7 @@
       "text" : ":"
     } ]
   }, {
-    "id" : "edd4ace5",
+    "id" : "73cd6ad3",
     "type" : "bulletListItem",
     "content" : [ {
       "type" : "text",
@@ -747,13 +612,10 @@
       }
     }, {
       "type" : "text",
-      "text" : " "
-    }, {
-      "type" : "text",
-      "text" : "(date-time) fields and the standard builder/copy trio."
+      "text" : " (date-time) fields and the standard builder/copy trio."
     } ]
   }, {
-    "id" : "d451c868",
+    "id" : "ac0057ca",
     "type" : "bulletListItem",
     "content" : [ {
       "type" : "text",
@@ -766,16 +628,10 @@
       }
     }, {
       "type" : "text",
-      "text" : " matches the spec-time file byte for byte;"
-    }, {
-      "type" : "text",
-      "text" : " "
-    }, {
-      "type" : "text",
-      "text" : "the jsontypes entry resolves the class."
+      "text" : " matches the spec-time file byte for byte; the jsontypes entry resolves the class."
     } ]
   }, {
-    "id" : "c1b8bb04",
+    "id" : "8c891c14",
     "type" : "heading",
     "props" : {
       "level" : 3
@@ -785,7 +641,7 @@
       "text" : "Task 2: Write the initial migration creating the idea table"
     } ]
   }, {
-    "id" : "4001532a",
+    "id" : "aba534bd",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -798,7 +654,7 @@
       "text" : ": Task-1"
     } ]
   }, {
-    "id" : "a0ea8262",
+    "id" : "70dc934e",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -829,10 +685,7 @@
       }
     }, {
       "type" : "text",
-      "text" : ","
-    }, {
-      "type" : "text",
-      "text" : " "
+      "text" : ", "
     }, {
       "type" : "text",
       "text" : "title",
@@ -859,13 +712,7 @@
       }
     }, {
       "type" : "text",
-      "text" : " date-time not null,"
-    }, {
-      "type" : "text",
-      "text" : " "
-    }, {
-      "type" : "text",
-      "text" : "plus the "
+      "text" : " date-time not null, plus the "
     }, {
       "type" : "text",
       "text" : "by_captured_at",
@@ -886,7 +733,7 @@
       "text" : ". No unique constraints (no natural keys)."
     } ]
   }, {
-    "id" : "0a34b426",
+    "id" : "0d2eb32c",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -899,21 +746,21 @@
       "text" : ":"
     } ]
   }, {
-    "id" : "ff6f4571",
+    "id" : "080a0a68",
     "type" : "bulletListItem",
     "content" : [ {
       "type" : "text",
       "text" : "The migration runs and leaves a table matching the descriptor (columns, nullability, index)."
     } ]
   }, {
-    "id" : "8753885c",
+    "id" : "aa0cc592",
     "type" : "bulletListItem",
     "content" : [ {
       "type" : "text",
       "text" : "The descriptor's version stays 1, in lockstep with the migration."
     } ]
   }, {
-    "id" : "30aa81bf",
+    "id" : "29bac5c6",
     "type" : "heading",
     "props" : {
       "level" : 3
@@ -923,7 +770,7 @@
       "text" : "Task 3: Ship the spec-time default form beside the entity class"
     } ]
   }, {
-    "id" : "a426021e",
+    "id" : "ecd1e057",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -936,7 +783,7 @@
       "text" : ": Task-1"
     } ]
   }, {
-    "id" : "45e79257",
+    "id" : "2643decf",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -958,13 +805,10 @@
       }
     }, {
       "type" : "text",
-      "text" : " "
-    }, {
-      "type" : "text",
-      "text" : "(the class-name-convention location the view loader discovers). No edits to its layout."
+      "text" : " (the class-name-convention location the view loader discovers). No edits to its layout."
     } ]
   }, {
-    "id" : "44f9a55d",
+    "id" : "ec2ad87c",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -977,20 +821,14 @@
       "text" : ":"
     } ]
   }, {
-    "id" : "a7bfd086",
+    "id" : "c16b21a2",
     "type" : "bulletListItem",
     "content" : [ {
       "type" : "text",
-      "text" : "The default form renders for a saved Idea row: title and note full-width, capturedAt"
-    }, {
-      "type" : "text",
-      "text" : " "
-    }, {
-      "type" : "text",
-      "text" : "half-width, in one \"Idea\" section."
+      "text" : "The default form renders for a saved Idea row: title and note full-width, capturedAt half-width, in one \"Idea\" section."
     } ]
   }, {
-    "id" : "6877cd5e",
+    "id" : "9ba555c4",
     "type" : "heading",
     "props" : {
       "level" : 3
@@ -1000,7 +838,7 @@
       "text" : "Task 4: Expose the Idea observer sheet (read and write)"
     } ]
   }, {
-    "id" : "1ad0e337",
+    "id" : "a18e719a",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -1013,17 +851,11 @@
       "text" : ": Task-1, Task-2"
     } ]
   }, {
-    "id" : "961e1ad0",
+    "id" : "90169d22",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
-      "text" : "Surface the entity through its standard observer sheet — the bean's only remote surface — with"
-    }, {
-      "type" : "text",
-      "text" : " "
-    }, {
-      "type" : "text",
-      "text" : "read and write operations over the "
+      "text" : "Surface the entity through its standard observer sheet — the bean's only remote surface — with read and write operations over the "
     }, {
       "type" : "text",
       "text" : "idea",
@@ -1032,10 +864,7 @@
       }
     }, {
       "type" : "text",
-      "text" : " table, so the search screen lists, filters (by"
-    }, {
-      "type" : "text",
-      "text" : " "
+      "text" : " table, so the search screen lists, filters (by "
     }, {
       "type" : "text",
       "text" : "capturedAt",
@@ -1044,16 +873,10 @@
       }
     }, {
       "type" : "text",
-      "text" : " via the index group) and opens rows, and the edit form saves and deletes them."
-    }, {
-      "type" : "text",
-      "text" : " "
-    }, {
-      "type" : "text",
-      "text" : "Follow the observer entity-sheet pattern; no custom cells or operations."
+      "text" : " via the index group) and opens rows, and the edit form saves and deletes them. Follow the observer entity-sheet pattern; no custom cells or operations."
     } ]
   }, {
-    "id" : "a6903a41",
+    "id" : "b3003fe9",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -1066,17 +889,11 @@
       "text" : ":"
     } ]
   }, {
-    "id" : "eb2cf0db",
+    "id" : "c37ae93e",
     "type" : "bulletListItem",
     "content" : [ {
       "type" : "text",
-      "text" : "The sheet lists saved ideas and serves the live record; an upsert through it persists a row"
-    }, {
-      "type" : "text",
-      "text" : " "
-    }, {
-      "type" : "text",
-      "text" : "with "
+      "text" : "The sheet lists saved ideas and serves the live record; an upsert through it persists a row with "
     }, {
       "type" : "text",
       "text" : "capturedAt",
@@ -1094,23 +911,17 @@
       }
     }, {
       "type" : "text",
-      "text" : " longer than 200"
-    }, {
-      "type" : "text",
-      "text" : " "
-    }, {
-      "type" : "text",
-      "text" : "characters."
+      "text" : " longer than 200 characters."
     } ]
   }, {
-    "id" : "94da17bd",
+    "id" : "2914ea55",
     "type" : "bulletListItem",
     "content" : [ {
       "type" : "text",
       "text" : "Delete through the sheet removes the row."
     } ]
   }, {
-    "id" : "f7c03fde",
+    "id" : "73e829f0",
     "type" : "heading",
     "props" : {
       "level" : 3
@@ -1120,7 +931,7 @@
       "text" : "Task 5: Guard the bean with its generated tests"
     } ]
   }, {
-    "id" : "99be9ba5",
+    "id" : "23a7037d",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -1133,17 +944,11 @@
       "text" : ": Task-1, Task-2, Task-4"
     } ]
   }, {
-    "id" : "3cd952c6",
+    "id" : "f6454a8a",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
-      "text" : "Generate the entity's standard tests: the seed-shape + descriptor contract test and the"
-    }, {
-      "type" : "text",
-      "text" : " "
-    }, {
-      "type" : "text",
-      "text" : "save-path tests for the two validation rules (title max(200) refused; "
+      "text" : "Generate the entity's standard tests: the seed-shape + descriptor contract test and the save-path tests for the two validation rules (title max(200) refused; "
     }, {
       "type" : "text",
       "text" : "capturedAt",
@@ -1152,22 +957,10 @@
       }
     }, {
       "type" : "text",
-      "text" : " defaulted to"
-    }, {
-      "type" : "text",
-      "text" : " "
-    }, {
-      "type" : "text",
-      "text" : "now on save when unset). The spec deliberately sets no acceptance criteria of its own — the"
-    }, {
-      "type" : "text",
-      "text" : " "
-    }, {
-      "type" : "text",
-      "text" : "platform's generated tests carry the table rules."
+      "text" : " defaulted to now on save when unset). The spec deliberately sets no acceptance criteria of its own — the platform's generated tests carry the table rules."
     } ]
   }, {
-    "id" : "0f626a8f",
+    "id" : "584fbda1",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -1180,14 +973,11 @@
       "text" : ":"
     } ]
   }, {
-    "id" : "2f936449",
+    "id" : "99e9b03a",
     "type" : "bulletListItem",
     "content" : [ {
       "type" : "text",
-      "text" : "The generated tests pass: descriptor/seed shape verified, overlong title refused on save,"
-    }, {
-      "type" : "text",
-      "text" : " "
+      "text" : "The generated tests pass: descriptor/seed shape verified, overlong title refused on save, "
     }, {
       "type" : "text",
       "text" : "capturedAt",
@@ -1201,6 +991,6 @@
   } ],
   "comments" : [ ],
   "metadata" : {
-    "createdAt" : "2026-09-21T12:50:25.281336100Z"
+    "createdAt" : "2026-09-21T12:51:08.194039800Z"
   }
 }

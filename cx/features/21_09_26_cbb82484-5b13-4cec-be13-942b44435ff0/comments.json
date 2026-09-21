@@ -1,29 +1,43 @@
 [ {
-  "threadId" : "371557fa-d9f3-455b-bbfd-21e19bc4dbce",
+  "threadId" : "b16211a6-f326-4185-be4b-570052dd6877",
   "text" : "Task 3: Ship the spec-time default form beside the entity class",
   "occurrence" : 0,
   "resolved" : false,
   "comments" : [ {
-    "id" : "38d6dc3e-917b-4b2d-afa4-92c8542b7326",
+    "id" : "818547d8-56da-42e8-8691-08c87d2be0d0",
     "author" : {
       "id" : "ai-feature",
       "username" : "Feature Agent"
     },
     "text" : "Task 3's acceptance criterion — 'The default form renders for a saved Idea row' — verifies an end-to-end behaviour that requires the `idea` table to exist, but the task's Depends line declares only Task-1. The table is created by Task-2's migration, so as written the task can be scheduled before the schema exists and the criterion cannot be checked. Either add Task-2 to the '**Depends on**: Task-1' line, or move the render-for-a-saved-row criterion into Task 4 (which already depends on Task-1 and Task-2) and leave Task 3 with a purely static criterion (e.g. the file exists at `src/main/resources/cyai/ideas/Idea.js` and matches the spec-time JS byte for byte).",
-    "createdAt" : "2026-09-21T12:50:25.281336100Z"
+    "createdAt" : "2026-09-21T12:51:08.194039800Z"
   } ]
 }, {
-  "threadId" : "09d404fd-7fe8-469c-b816-857ccc3f136b",
+  "threadId" : "73d0a8e8-d36e-4dd1-99df-3cdc6bf4dde7",
   "text" : "| `note` | STRING | TEXT | `note`, varchar(4000) | nullable — the optional longer note |",
   "occurrence" : 0,
   "resolved" : false,
   "comments" : [ {
-    "id" : "e7837364-171e-4f0c-869a-9808cd1286e7",
+    "id" : "024ba5c2-6b37-41e1-b3da-96cfa1130925",
     "author" : {
       "id" : "ai-feature",
       "username" : "Feature Agent"
     },
-    "text" : "The design states the descriptor is 'taken **verbatim**' from the spec-time `entity_descriptors.json` and Task 1 forbids altering it, yet the design's field table asserts details the spec never states: the varchar(4000) length for `note` (the spec's Intent says only 'an optional longer note') and the `by_captured_at` index group (the spec's Data model says 'No rules beyond the table' and its Artifacts block lists no index). If the spec-time descriptor actually contains these, fine — but then the design table is narration; if it does not, the verbatim copy and the design table diverge and the implementing agent will follow the descriptor, not the table. Confirm the spec-time descriptor really fixes the 4000 length and the index (and say so, e.g. 'the spec-time descriptor already carries the length/index'), or soften the table to 'as authored in the spec-time descriptor' so there is exactly one source of truth.",
-    "createdAt" : "2026-09-21T12:50:25.281336100Z"
+    "text" : "The design states the descriptor is 'taken **verbatim**' from the spec-time `entity_descriptors.json` and Task 1 forbids altering it, yet the design's field table asserts details the spec never states: the varchar(4000) length for `note` (the spec's Intent says only 'an optional longer note') and the `by_captured_at` index group (the spec's Data model says 'No rules beyond the table' and its Artifacts block lists no index). If the spec-time descriptor actually contains these, the design table is narration that can drift; if it does not, the verbatim copy and the design table diverge and the implementing agent will follow the descriptor, not the table. Confirm the spec-time descriptor really fixes the 4000 length and the index (and say so, e.g. 'the spec-time descriptor already carries the length/index'), or soften the table to 'as authored in the spec-time descriptor' so there is exactly one source of truth.",
+    "createdAt" : "2026-09-21T12:51:08.194039800Z"
+  } ]
+}, {
+  "threadId" : "a6a8ab4c-7c8b-41bf-abae-da0a42fcfed5",
+  "text" : "Task 5: Guard the bean with its generated tests",
+  "occurrence" : 0,
+  "resolved" : false,
+  "comments" : [ {
+    "id" : "9d3055bc-0be2-4673-b315-dded5d85c8ff",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "Task 4's acceptance criteria already verify 'persists a row with `capturedAt` defaulted to now when unset, and rejects a `title` longer than 200 characters', and Task 5's generated tests verify exactly the same two rules again. This is defensible (one exercises the sheet path, one locks the contract in tests), but as written an implementer may hand-write assertions in Task 4 that duplicate Task 5's generated tests. Make the split explicit: narrow Task 4's criteria to the functional outcome ('an upsert through the sheet persists and a delete removes the row') and leave rule-refusal verification solely to Task 5's generated tests, or state in Task 4 that its criteria are smoke-checked by Task 5's suite.",
+    "createdAt" : "2026-09-21T12:51:08.194039800Z"
   } ]
 } ]
