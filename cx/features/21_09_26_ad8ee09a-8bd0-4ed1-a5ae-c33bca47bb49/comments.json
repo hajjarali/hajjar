@@ -1,0 +1,57 @@
+[ {
+  "threadId" : "e244a31b-bcc1-4b89-841a-1ee3f99033df",
+  "text" : "Create, edit and delete work end to end through the sheet.",
+  "occurrence" : 0,
+  "resolved" : false,
+  "comments" : [ {
+    "id" : "d53b998d-bd7d-4df7-8544-4c70729b101a",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "Task 4 declares '**Depends on**: Task-1' only, yet its acceptance criteria verify create/edit/delete working end to end through the sheet — which requires the `idea` table that only Task 2's V0→V1 migration creates. Either add Task-2 to the Depends on line, or move the end-to-end criterion to Task 5 (which already depends on Task-2) and leave Task 4 verifying only that the form JS is copied and the sheet is registered.",
+    "createdAt" : "2026-09-21T13:10:49.670301200Z"
+  } ]
+}, {
+  "threadId" : "3fd47570-b3c4-4748-a49b-19e4b226348e",
+  "text" : "Saving an Idea with `capturedAt` unset persists the current instant; an explicitly set value is preserved.",
+  "occurrence" : 0,
+  "resolved" : false,
+  "comments" : [ {
+    "id" : "763e223e-2d57-413b-9fad-d1228df2478c",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "Task 3 declares '**Depends on**: Task-1', but its criterion says the defaulted value 'persists' — a database write that needs the `idea` table created by Task 2's migration. Add Task-2 to the '**Depends on**' line (or reword the criterion to a pre-persist hook check if the validation is genuinely verified without a table, but the current wording implies persistence).",
+    "createdAt" : "2026-09-21T13:10:49.670301200Z"
+  } ]
+}, {
+  "threadId" : "2e104915-7bfc-4c3a-9e56-8db20cd241f4",
+  "text" : "immutable fields `title`, `note`, `capturedAt`, `ENTITY_NAME = \"idea.Idea\"`, `ENTITY_CLASS_KEY` at version 1, two constructors, builder, `copy()`, and the `internalToString`/`internalHashCode`/`internalEquals` trio.",
+  "occurrence" : 0,
+  "resolved" : false,
+  "comments" : [ {
+    "id" : "2c6be4b3-8e82-4230-8300-c65178c3e718",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "The task already points the implementer at `DemoManufacturer` (platform example `entity-basic-scalars-and-enum`) as the pattern to follow; enumerating 'two constructors, builder, `copy()`, and the `internalToString`/`internalHashCode`/`internalEquals` trio' re-narrates the base-class contract that example carries and will drift independently of it. Trim to 'Create `cyai.idea.Idea` following the minimal-scalar pattern of `DemoManufacturer` (platform example `entity-basic-scalars-and-enum`), with scalar fields `title`, `note`, `capturedAt` and no reference fields.' — the descriptor-copy and jsontypes instructions are the parts that carry real decisions and should stay.",
+    "createdAt" : "2026-09-21T13:10:49.670301200Z"
+  } ]
+}, {
+  "threadId" : "1b287f05-9c4e-4591-aa76-cb2264005d55",
+  "text" : "one index group `by_captured_at` on `capturedAt` so the list can be browsed newest-first",
+  "occurrence" : 0,
+  "resolved" : false,
+  "comments" : [ {
+    "id" : "06846e69-464a-4301-911d-242052e70d18",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "The spec's Data model says 'No relationships. No rules beyond the table' and the design claims to be 'Modelled exactly as the spec's Data model bean block', yet it adds a `by_captured_at` index the spec never mentions. The index is harmless and plausibly serves the standard browse screen, but per the design's own framing it should be surfaced as a deliberate design addition (one clause: 'index added beyond the bean block to support newest-first browsing') or dropped — otherwise a reviewer comparing the migration against the spec's bean block sees an unexplained column-group.",
+    "createdAt" : "2026-09-21T13:10:49.670301200Z"
+  } ]
+} ]
