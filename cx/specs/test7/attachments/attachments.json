@@ -1,5 +1,12 @@
 {
   "attachments" : [ {
+    "name" : "documents/CHARTS.md",
+    "type" : "DOCUMENTS",
+    "size_bytes" : 9619,
+    "uploaded_by" : "System Admin",
+    "uploaded_at" : "2026-09-21T07:28:24.714500600Z",
+    "origin" : "USER"
+  }, {
     "name" : "documents/Invoice-6QRQSLJB-0001.pdf",
     "type" : "DOCUMENTS",
     "size_bytes" : 31686,
