@@ -1,0 +1,81 @@
+{
+  "descriptors" : [ {
+    "name" : "ideas.Idea",
+    "className" : "cyai.ideas.Idea",
+    "entityType" : "PERSISTABLE_BEAN",
+    "label" : "Idea",
+    "description" : "A one-line idea captured for testing, with an optional longer note.",
+    "group" : "ideas",
+    "persistenceDescriptor" : {
+      "tableName" : "idea",
+      "idGenerationStrategy" : "AUTO_INCREMENT",
+      "indexGroups" : {
+        "by_captured_at" : [ "capturedAt" ]
+      },
+      "naturalKeyGroups" : { },
+      "cacheDescriptor" : {
+        "strategy" : "NONE"
+      }
+    },
+    "fieldDescriptors" : {
+      "title" : {
+        "name" : "title",
+        "fieldType" : "STRING",
+        "label" : "Title",
+        "description" : "The idea in one line.",
+        "persistenceDescriptor" : {
+          "columnName" : "title",
+          "length" : 200
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "note" : {
+        "name" : "note",
+        "fieldType" : "STRING",
+        "label" : "Note",
+        "description" : "Optional longer note expanding on the idea.",
+        "persistenceDescriptor" : {
+          "columnName" : "note",
+          "length" : 4000
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "capturedAt" : {
+        "name" : "capturedAt",
+        "fieldType" : "DATE_TIME",
+        "label" : "Captured At",
+        "description" : "When the idea was captured.",
+        "persistenceDescriptor" : {
+          "columnName" : "captured_at"
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "DATE_TIME"
+        },
+        "systemField" : false
+      }
+    },
+    "relationships" : { },
+    "version" : 1
+  } ]
+}
