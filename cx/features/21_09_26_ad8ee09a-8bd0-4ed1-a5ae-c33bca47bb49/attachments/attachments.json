@@ -14,6 +14,13 @@
     "uploaded_at" : "2026-09-21T13:42:44.330495500Z",
     "origin" : "USER"
   }, {
+    "name" : "documents/Receipt-2783-8170-6921.pdf",
+    "type" : "DOCUMENTS",
+    "size_bytes" : 32276,
+    "uploaded_by" : "System Admin",
+    "uploaded_at" : "2026-09-21T13:42:46.290094200Z",
+    "origin" : "USER"
+  }, {
     "name" : "documents/download",
     "type" : "DOCUMENTS",
     "size_bytes" : 2206,
