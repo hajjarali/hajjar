@@ -1,1 +1,1 @@
-{"spec_id":"e06c0b91-3a00-4432-8d81-23a918ed395f","name":"spectest3","property_metadata":{}}
+{"spec_id":"e06c0b91-3a00-4432-8d81-23a918ed395f","name":"spectest3","property_metadata":{"dataClass":"INTERNAL","domain":"reference-data","keyEntity":"LegalEntity","reuseGate":"platformEntities (61 entities) checked — no LegalEntity served live, bean is genuinely new; platformSpecs checked — only this spec registered; cdm corpus read for the CDM type (LegalEntity, EntityIdentifier, EntityIdentifierTypeEnum); company corpus read for standing rules R7/R8."}}
