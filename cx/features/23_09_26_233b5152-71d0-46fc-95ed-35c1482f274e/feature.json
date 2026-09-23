@@ -1125,8 +1125,5 @@
       "text" : "A signed-in user can create, browse, edit and delete a person through the sheet, and the save-time rules of Tasks 1 and 4 hold there."
     } ]
   } ],
-  "comments" : [ ],
-  "metadata" : {
-    "createdAt" : "2026-09-23T13:36:28.186304200Z"
-  }
+  "comments" : [ ]
 }

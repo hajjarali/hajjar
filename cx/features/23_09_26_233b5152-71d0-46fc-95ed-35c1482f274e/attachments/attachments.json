@@ -1,0 +1,66 @@
+{
+  "attachments" : [ {
+    "name" : "documents/SNA Health Proposal-1.pdf",
+    "type" : "DOCUMENTS",
+    "size_bytes" : 4463255,
+    "uploaded_by" : "System Admin",
+    "uploaded_at" : "2026-09-23T13:43:37.559373700Z",
+    "origin" : "USER"
+  }, {
+    "name" : "documents/SNA Health Proposal-2.pdf",
+    "type" : "DOCUMENTS",
+    "size_bytes" : 4463255,
+    "uploaded_by" : "System Admin",
+    "uploaded_at" : "2026-09-23T13:43:39.541279300Z",
+    "origin" : "USER"
+  }, {
+    "name" : "documents/SNA Health Proposal.pdf",
+    "type" : "DOCUMENTS",
+    "size_bytes" : 4463255,
+    "uploaded_by" : "System Admin",
+    "uploaded_at" : "2026-09-23T13:43:35.703185600Z",
+    "origin" : "USER"
+  }, {
+    "name" : "documents/Screenshot 2026-09-23 095417-1.png",
+    "type" : "DOCUMENTS",
+    "size_bytes" : 11037,
+    "uploaded_by" : "System Admin",
+    "uploaded_at" : "2026-09-23T13:43:37.456455400Z",
+    "origin" : "USER"
+  }, {
+    "name" : "documents/Screenshot 2026-09-23 095417-2.png",
+    "type" : "DOCUMENTS",
+    "size_bytes" : 11037,
+    "uploaded_by" : "System Admin",
+    "uploaded_at" : "2026-09-23T13:43:39.338709200Z",
+    "origin" : "USER"
+  }, {
+    "name" : "documents/Screenshot 2026-09-23 095417.png",
+    "type" : "DOCUMENTS",
+    "size_bytes" : 11037,
+    "uploaded_by" : "System Admin",
+    "uploaded_at" : "2026-09-23T13:43:35.560532300Z",
+    "origin" : "USER"
+  }, {
+    "name" : "documents/text-1.txt",
+    "type" : "DOCUMENTS",
+    "size_bytes" : 633,
+    "uploaded_by" : "System Admin",
+    "uploaded_at" : "2026-09-23T13:43:37.464184500Z",
+    "origin" : "USER"
+  }, {
+    "name" : "documents/text-2.txt",
+    "type" : "DOCUMENTS",
+    "size_bytes" : 633,
+    "uploaded_by" : "System Admin",
+    "uploaded_at" : "2026-09-23T13:43:39.350671500Z",
+    "origin" : "USER"
+  }, {
+    "name" : "documents/text.txt",
+    "type" : "DOCUMENTS",
+    "size_bytes" : 633,
+    "uploaded_by" : "System Admin",
+    "uploaded_at" : "2026-09-23T13:43:35.565586500Z",
+    "origin" : "USER"
+  } ]
+}
