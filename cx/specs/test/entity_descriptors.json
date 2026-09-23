@@ -81,5 +81,104 @@
     },
     "relationships" : { },
     "version" : 1
+  }, {
+    "name" : "people.Person",
+    "className" : "cyai.people.Person",
+    "entityType" : "PERSISTABLE_BEAN",
+    "label" : "Person",
+    "description" : "A person in the register: basic contact details.",
+    "group" : "people",
+    "persistenceDescriptor" : {
+      "tableName" : "person",
+      "idGenerationStrategy" : "AUTO_INCREMENT",
+      "indexGroups" : {
+        "by_last_name" : [ "lastName" ]
+      },
+      "naturalKeyGroups" : {
+        "by_email" : [ "email" ]
+      },
+      "cacheDescriptor" : {
+        "strategy" : "NONE"
+      }
+    },
+    "fieldDescriptors" : {
+      "firstName" : {
+        "name" : "firstName",
+        "fieldType" : "STRING",
+        "label" : "First Name",
+        "description" : "The person's given name.",
+        "persistenceDescriptor" : {
+          "columnName" : "first_name",
+          "length" : 100
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "lastName" : {
+        "name" : "lastName",
+        "fieldType" : "STRING",
+        "label" : "Last Name",
+        "description" : "The person's family name.",
+        "persistenceDescriptor" : {
+          "columnName" : "last_name",
+          "length" : 100
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "email" : {
+        "name" : "email",
+        "fieldType" : "STRING",
+        "label" : "Email",
+        "description" : "The person's email address, unique across the register when present.",
+        "persistenceDescriptor" : {
+          "columnName" : "email",
+          "length" : 255
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : true,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "EMAIL"
+        },
+        "systemField" : false
+      },
+      "dateOfBirth" : {
+        "name" : "dateOfBirth",
+        "fieldType" : "DATE",
+        "label" : "Date of Birth",
+        "description" : "The person's date of birth.",
+        "persistenceDescriptor" : {
+          "columnName" : "date_of_birth"
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "DATE"
+        },
+        "systemField" : false
+      }
+    },
+    "relationships" : { },
+    "version" : 1
   } ]
 }
