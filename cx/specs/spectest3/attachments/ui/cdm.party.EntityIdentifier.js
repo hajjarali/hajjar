@@ -12,17 +12,25 @@
         const root = model.getId() + "_root";
         const fid = (n) => model.fieldNameToModelId(n);
 
-        const typeItem = gridField(fid("identifierType"), 4, "Identifier Type",
+        const typeItem = gridField(fid("identifierType"), 5, "Identifier Type",
             "BIC, LEI, MIC, REDID, COUNTRY_CODE or OTHER.");
-        const identItem = gridField(fid("identifier"), 8, "Identifier",
-            "The identifier value — for LEI, 20 alphanumeric characters.");
+        const identItem = gridField(fid("identifier"), 7, "Identifier",
+            "For LEI, exactly 20 alphanumeric characters.");
 
-        const fieldsGridId = root + "_fields";
-        const fieldsGrid = { id: fieldsGridId, jsontype: "mui.grid",
+        const rowGridId = root + "_row";
+        const rowGrid = { id: rowGridId, jsontype: "mui.grid",
             props: { container: true, columns: 12, spacing: 2 },
             elements: { [typeItem.id]: typeItem, [identItem.id]: identItem } };
 
+        const cardId = root + "_card";
+        const card = { id: cardId, jsontype: "mui.box",
+            props: { sx: { bgcolor: 'background.paper',
+                           border: '1px solid', borderColor: 'divider',
+                           borderLeft: '3px solid', borderLeftColor: 'primary.main',
+                           borderRadius: 2, p: 2 } },
+            elements: { [rowGrid.id]: rowGrid } };
+
         return { sx: { p: 1, minWidth: 320 },
-                 elements: { [fieldsGrid.id]: fieldsGrid } };
+                 elements: { [card.id]: card } };
     } };
 })();
