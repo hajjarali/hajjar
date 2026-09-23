@@ -1,0 +1,1114 @@
+{
+  "content" : [ {
+    "id" : "cab3978e",
+    "type" : "heading",
+    "props" : {
+      "level" : 1
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Person register"
+    } ]
+  }, {
+    "id" : "afd5bf3a",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "A minimal, self-contained register of people: any signed-in user creates, browses, edits and deletes a person's basic contact details (first name, last name, email, date of birth). No relationships, no lifecycle, no process — the platform's standard bean surfaces carry every journey."
+    } ]
+  }, {
+    "id" : "36275bf6",
+    "type" : "heading",
+    "props" : {
+      "level" : 2
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Reuse check"
+    } ]
+  }, {
+    "id" : "72d2fbf1",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "platformEntities",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " lists 61 served entities — the "
+    }, {
+      "type" : "text",
+      "text" : "simpledao.Demo*",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " family, the "
+    }, {
+      "type" : "text",
+      "text" : "system.*",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " platform tables, IAM and integration connections. None is a person/contact register, and none carries a reusable person shape, so "
+    }, {
+      "type" : "text",
+      "text" : "people.Person",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " is genuinely new. It is modelled exactly as the spec's descriptor ("
+    }, {
+      "type" : "text",
+      "text" : "cx/specs/test/entity_descriptors.json",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", entry "
+    }, {
+      "type" : "text",
+      "text" : "people.Person",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ") already fixes it — the descriptor is a spec-time artifact, copied verbatim, not re-derived here."
+    } ]
+  }, {
+    "id" : "4e7e0a44",
+    "type" : "heading",
+    "props" : {
+      "level" : 2
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Entity: people.Person"
+    } ]
+  }, {
+    "id" : "2b33e98a",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "PERSISTABLE_BEAN",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", class "
+    }, {
+      "type" : "text",
+      "text" : "cyai.people.Person",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", table "
+    }, {
+      "type" : "text",
+      "text" : "person",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "AUTO_INCREMENT",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " id, cache "
+    }, {
+      "type" : "text",
+      "text" : "NONE",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", version 1. No relationships."
+    } ]
+  }, {
+    "id" : "f146c55a",
+    "type" : "table",
+    "content" : {
+      "type" : "tableContent",
+      "rows" : [ {
+        "cells" : [ [ {
+          "type" : "text",
+          "text" : "Field"
+        } ], [ {
+          "type" : "text",
+          "text" : "FieldType"
+        } ], [ {
+          "type" : "text",
+          "text" : "View"
+        } ], [ {
+          "type" : "text",
+          "text" : "Nullable"
+        } ], [ {
+          "type" : "text",
+          "text" : "Storage"
+        } ] ]
+      }, {
+        "cells" : [ [ {
+          "type" : "text",
+          "text" : "firstName"
+        } ], [ {
+          "type" : "text",
+          "text" : "STRING(100)"
+        } ], [ {
+          "type" : "text",
+          "text" : "TEXT"
+        } ], [ {
+          "type" : "text",
+          "text" : "no"
+        } ], [ {
+          "type" : "text",
+          "text" : "`first_name`"
+        } ] ]
+      }, {
+        "cells" : [ [ {
+          "type" : "text",
+          "text" : "lastName"
+        } ], [ {
+          "type" : "text",
+          "text" : "STRING(100)"
+        } ], [ {
+          "type" : "text",
+          "text" : "TEXT"
+        } ], [ {
+          "type" : "text",
+          "text" : "no"
+        } ], [ {
+          "type" : "text",
+          "text" : "`last_name`"
+        } ] ]
+      }, {
+        "cells" : [ [ {
+          "type" : "text",
+          "text" : "email"
+        } ], [ {
+          "type" : "text",
+          "text" : "STRING(255)"
+        } ], [ {
+          "type" : "text",
+          "text" : "EMAIL"
+        } ], [ {
+          "type" : "text",
+          "text" : "yes"
+        } ], [ {
+          "type" : "text",
+          "text" : "`email`"
+        } ] ]
+      }, {
+        "cells" : [ [ {
+          "type" : "text",
+          "text" : "dateOfBirth"
+        } ], [ {
+          "type" : "text",
+          "text" : "DATE"
+        } ], [ {
+          "type" : "text",
+          "text" : "DATE"
+        } ], [ {
+          "type" : "text",
+          "text" : "yes"
+        } ], [ {
+          "type" : "text",
+          "text" : "`date_of_birth`"
+        } ] ]
+      } ],
+      "headerRows" : 1
+    }
+  }, {
+    "id" : "6042f835",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Decisions the descriptor already fixes, stated here only where a reader needs the why:"
+    } ]
+  }, {
+    "id" : "dca2505a",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Email is unique when present.",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " "
+    }, {
+      "type" : "text",
+      "text" : "validationDescriptor",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " sets "
+    }, {
+      "type" : "text",
+      "text" : "unique: true",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " with "
+    }, {
+      "type" : "text",
+      "text" : "nullable: true",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "; the save path enforces uniqueness across the register and a person without an email is allowed. The migration backs it with a unique constraint on "
+    }, {
+      "type" : "text",
+      "text" : "email",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " — multiple NULLs are permitted, so the constraint and the \"unique when present\" rule agree."
+    } ]
+  }, {
+    "id" : "40f3192e",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Date of birth cannot lie in the future.",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " The descriptor carries no max rule, so this is code: a bean validator ("
+    }, {
+      "type" : "text",
+      "text" : "cyai.people.PersonValidator",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ") rejects a "
+    }, {
+      "type" : "text",
+      "text" : "dateOfBirth",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " after today, enforced on save. This is the one behaviour the descriptor alone does not deliver."
+    } ]
+  }, {
+    "id" : "8336272e",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Index group ",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "by_last_name",
+      "styles" : {
+        "bold" : true,
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (lastName) feeds the standard search filters; "
+    }, {
+      "type" : "text",
+      "text" : "natural key ",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "by_email",
+      "styles" : {
+        "bold" : true,
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " drives the bean-form header — as authored in the spec-time descriptor, kept as-is."
+    } ]
+  }, {
+    "id" : "352dcd12",
+    "type" : "heading",
+    "props" : {
+      "level" : 2
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "View: default form"
+    } ]
+  }, {
+    "id" : "0eceb865",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The default form of one row is the spec-time artifact "
+    }, {
+      "type" : "text",
+      "text" : "cx/specs/test/ui/people.Person.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", copied verbatim to "
+    }, {
+      "type" : "text",
+      "text" : "src/main/resources/cyai/people/Person.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (discovered by class-name convention). It renders two sections — Name (first + last name) and Contact (email with its uniqueness helper text, date of birth) — in the standard sectioned grid layout. No other view work: the search screen is the entity's standard observer surface, not an authored layout."
+    } ]
+  }, {
+    "id" : "aa66d8a3",
+    "type" : "heading",
+    "props" : {
+      "level" : 2
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Migration"
+    } ]
+  }, {
+    "id" : "38584f47",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "One step, "
+    }, {
+      "type" : "text",
+      "text" : "Person_V0_V1",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": creates "
+    }, {
+      "type" : "text",
+      "text" : "person",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " with "
+    }, {
+      "type" : "text",
+      "text" : "withSystemColumns()",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", the four field columns mirroring the descriptor ("
+    }, {
+      "type" : "text",
+      "text" : "first_name",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "/"
+    }, {
+      "type" : "text",
+      "text" : "last_name",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " notNull, "
+    }, {
+      "type" : "text",
+      "text" : "email",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "date_of_birth",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "), the primary key, and the unique constraint on "
+    }, {
+      "type" : "text",
+      "text" : "email",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". Descriptor and migration must stay in lockstep."
+    } ]
+  }, {
+    "id" : "3fba02f3",
+    "type" : "heading",
+    "props" : {
+      "level" : 2
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Tasks"
+    } ]
+  }, {
+    "id" : "efc3e4d9",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Task 1: Create the Person entity class, descriptor entry and jsontypes entry"
+    } ]
+  }, {
+    "id" : "2bb8ecb8",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Depends on",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": None"
+    } ]
+  }, {
+    "id" : "30e7df18",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Create "
+    }, {
+      "type" : "text",
+      "text" : "cyai.people.Person",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " in "
+    }, {
+      "type" : "text",
+      "text" : "src/main/java/cyai/people/Person.java",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " following the standard persistable-entity pattern ("
+    }, {
+      "type" : "text",
+      "text" : "AbstractRdbmsEntity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " subclass, immutable fields, nested "
+    }, {
+      "type" : "text",
+      "text" : "@JsonPOJOBuilder",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " builder, "
+    }, {
+      "type" : "text",
+      "text" : "copy(long)",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", the "
+    }, {
+      "type" : "text",
+      "text" : "internalToString",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "/"
+    }, {
+      "type" : "text",
+      "text" : "internalHashCode",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "/"
+    }, {
+      "type" : "text",
+      "text" : "internalEquals",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " trio) with "
+    }, {
+      "type" : "text",
+      "text" : "ENTITY_NAME = \"people.Person\"",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and "
+    }, {
+      "type" : "text",
+      "text" : "ENTITY_CLASS_KEY",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " version 1. Merge the spec-time descriptor entry verbatim from "
+    }, {
+      "type" : "text",
+      "text" : "cx/specs/test/entity_descriptors.json",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " ("
+    }, {
+      "type" : "text",
+      "text" : "people.Person",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ") into "
+    }, {
+      "type" : "text",
+      "text" : "src/main/resources/cyai/entity/desc/entity_descriptors.json",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", and register the wire type ("
+    }, {
+      "type" : "text",
+      "text" : "people.people.person",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " discriminator → "
+    }, {
+      "type" : "text",
+      "text" : "cyai.people.Person",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ") in the module's "
+    }, {
+      "type" : "text",
+      "text" : "jsontypes.json",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". Do not alter the descriptor's fields, groups or validation values — it is a spec-time artifact."
+    } ]
+  }, {
+    "id" : "bb9fd481",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "3c0b8aac",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The class compiles and round-trips through the configured mapper with its "
+    }, {
+      "type" : "text",
+      "text" : "jsontype",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " discriminator."
+    } ]
+  }, {
+    "id" : "616ecc7f",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The descriptor entry matches the spec-time artifact field for field."
+    } ]
+  }, {
+    "id" : "90af9ad2",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Task 2: Create the Person_V0_V1 migration"
+    } ]
+  }, {
+    "id" : "594009cf",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Depends on",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": Task-1"
+    } ]
+  }, {
+    "id" : "f6381fc6",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Create "
+    }, {
+      "type" : "text",
+      "text" : "cyai.people.Person_V0_V1",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " implementing "
+    }, {
+      "type" : "text",
+      "text" : "IMigration",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": creates the "
+    }, {
+      "type" : "text",
+      "text" : "person",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " table with system columns, the four field columns mirroring the Task-1 descriptor ("
+    }, {
+      "type" : "text",
+      "text" : "first_name",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and "
+    }, {
+      "type" : "text",
+      "text" : "last_name",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " notNull, "
+    }, {
+      "type" : "text",
+      "text" : "email",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "date_of_birth",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "), the primary key on "
+    }, {
+      "type" : "text",
+      "text" : "id",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", and the unique constraint on "
+    }, {
+      "type" : "text",
+      "text" : "email",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (multiple NULLs allowed, matching \"unique when present\")."
+    } ]
+  }, {
+    "id" : "f8aeefbd",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "2c0678e2",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The migration runs and leaves a "
+    }, {
+      "type" : "text",
+      "text" : "person",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " table whose columns and constraints match the descriptor."
+    } ]
+  }, {
+    "id" : "d478b0c8",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Task 3: Ship the default form view JS"
+    } ]
+  }, {
+    "id" : "5e66b46c",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Depends on",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": Task-1"
+    } ]
+  }, {
+    "id" : "0d1fa6a6",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Copy "
+    }, {
+      "type" : "text",
+      "text" : "cx/specs/test/ui/people.Person.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " verbatim to "
+    }, {
+      "type" : "text",
+      "text" : "src/main/resources/cyai/people/Person.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " so the class-name convention discovers it as the entity's default form. No edits — it is a spec-time artifact."
+    } ]
+  }, {
+    "id" : "84dfc82d",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "70ad793b",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The form renders the Name and Contact sections against a Person row, with the email helper text."
+    } ]
+  }, {
+    "id" : "4071ae49",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Task 4: Add the dateOfBirth max(today) validator"
+    } ]
+  }, {
+    "id" : "f63b700a",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Depends on",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": Task-1"
+    } ]
+  }, {
+    "id" : "3be715b0",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Create "
+    }, {
+      "type" : "text",
+      "text" : "cyai.people.PersonValidator",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (the standard bean-validator code-behind) rejecting a "
+    }, {
+      "type" : "text",
+      "text" : "dateOfBirth",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " later than today, enforced on save. This is the only rule the descriptor does not already carry; email uniqueness needs no validator code — it rides the descriptor's "
+    }, {
+      "type" : "text",
+      "text" : "unique: true",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "."
+    } ]
+  }, {
+    "id" : "93b8a900",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "18a3a2b8",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Saving a person whose date of birth lies in the future is refused with a validation message; today and past dates save."
+    } ]
+  }, {
+    "id" : "fe184497",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Task 5: Add the generated tests"
+    } ]
+  }, {
+    "id" : "90ecdff4",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Depends on",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": Task-2, Task-4"
+    } ]
+  }, {
+    "id" : "005a7656",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Add the seed-shape + descriptor test for "
+    }, {
+      "type" : "text",
+      "text" : "Person",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (following the platform's test-writing pattern) covering the table rules the spec names: email unique when present (two rows sharing an email refused; two email-less rows allowed) and dateOfBirth max(today) — both enforced on save."
+    } ]
+  }, {
+    "id" : "825dbfab",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "8c6cdb00",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The tests pass and fail if either rule is broken."
+    } ]
+  }, {
+    "id" : "215bc22e",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Task 6: Surface the Person observer sheet"
+    } ]
+  }, {
+    "id" : "beb80dcf",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Depends on",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": Task-1"
+    } ]
+  }, {
+    "id" : "0b3611a0",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Deliver the entity's standard observer sheet — its only remote surface, reading and writing "
+    }, {
+      "type" : "text",
+      "text" : "people.Person",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " — which provides the standard search screen (create, browse, edit, delete) the spec's UI section calls for. Nothing custom: no extra cells, no workflow."
+    } ]
+  }, {
+    "id" : "6ce2a9b0",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "b67adf7b",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "A signed-in user can create, browse, edit and delete a person through the sheet, and the save-time rules of Tasks 1 and 4 hold there."
+    } ]
+  } ],
+  "comments" : [ ],
+  "metadata" : {
+    "createdAt" : "2026-09-23T13:33:39.716543300Z"
+  }
+}

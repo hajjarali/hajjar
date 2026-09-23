@@ -1,0 +1,57 @@
+[ {
+  "threadId" : "decce123-351a-4145-baf0-04c47cc29901",
+  "text" : "### Task 3: Ship the default form view JS",
+  "occurrence" : 0,
+  "resolved" : false,
+  "comments" : [ {
+    "id" : "8beafa96-d660-4464-8d55-0060f023d28b",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "Task 3's acceptance criterion — \"The form renders the Name and Contact sections against a Person row\" — verifies a render through a persisted row, which only exists once Task-2's `person` table migration has run, but the **Depends on** line declares only Task-1. Either declare `**Depends on**: Task-1, Task-2`, or reword the criterion to something Task-1 alone can verify (e.g. the copied file exists at `src/main/resources/cyai/people/Person.js` and its section/field names match the spec-time artifact), leaving the render check to a later task.",
+    "createdAt" : "2026-09-23T13:33:39.716543300Z"
+  } ]
+}, {
+  "threadId" : "5d9f2214-4839-44d1-950e-085f4aac941e",
+  "text" : "**Depends on**: Task-1\n\nDeliver the entity's standard observer sheet",
+  "occurrence" : 0,
+  "resolved" : false,
+  "comments" : [ {
+    "id" : "7dc59cb0-43f6-4bfa-a8a8-744a87bf253e",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "Task 6's criteria verify end-to-end CRUD (\"can create, browse, edit and delete a person through the sheet\") and that \"the save-time rules of Tasks 1 and 4 hold there\" — behaviour that requires Task-2's migration (a table to save into) and Task-4's validator, neither of which the **Depends on** line declares. Either change the line to `**Depends on**: Task-1, Task-2, Task-4`, or move the end-to-end criterion to Task-5 (which already depends on Task-2 and Task-4) and keep Task-6's criterion to what the sheet registration itself delivers.",
+    "createdAt" : "2026-09-23T13:33:39.716543300Z"
+  } ]
+}, {
+  "threadId" : "8c72bcf4-a786-41f1-bc79-cf501c072fc4",
+  "text" : "### Task 6: Surface the Person observer sheet",
+  "occurrence" : 0,
+  "resolved" : false,
+  "comments" : [ {
+    "id" : "65254ff7-0368-4f9d-bd10-25a4120fbd55",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "Unlike Tasks 1–4, which name the exact file to create or entry to merge, Task 6 says only \"Deliver the entity's standard observer sheet\" without naming the concrete artifact or mechanism — an implementing agent cannot tell whether this means adding an observer descriptor entry, registering a sheet against `people.Person`, or generating a file at a specific path. Rewrite the description to name the deliverable (e.g. \"add the observer sheet descriptor entry for `people.Person` at <path>, reading and writing the entity's standard fields\") so the change is verifiable.",
+    "createdAt" : "2026-09-23T13:33:39.716543300Z"
+  } ]
+}, {
+  "threadId" : "8e6c40e6-9fdb-4176-9c2d-d3bb5433b830",
+  "text" : "following the standard persistable-entity pattern (`AbstractRdbmsEntity` subclass, immutable fields, nested `@JsonPOJOBuilder` builder, `copy(long)`, the `internalToString`/`internalHashCode`/`internalEquals` trio)",
+  "occurrence" : 0,
+  "resolved" : false,
+  "comments" : [ {
+    "id" : "55a90d34-641b-4044-9d9e-2d830af90a9e",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "This parenthetical restates the base-class contract the platform's entity guide already mandates — every member listed (builder, `copy(long)`, the internal trio) is boilerplate the agent would write regardless, and it will drift independently of the guide. Trim to \"following the standard persistable-entity pattern per the entity guide\" and keep only the non-boilerplate specifics (`ENTITY_NAME = \"people.Person\"`, version 1, the verbatim-descriptor instruction).",
+    "createdAt" : "2026-09-23T13:33:39.716543300Z"
+  } ]
+} ]
