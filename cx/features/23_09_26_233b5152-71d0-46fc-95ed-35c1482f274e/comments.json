@@ -1,0 +1,71 @@
+[ {
+  "threadId" : "140102ac-9f10-4268-a465-61a3b5b2384f",
+  "text" : "Saving a person whose date of birth lies in the future is refused with a validation message; today and past dates save.",
+  "occurrence" : 0,
+  "resolved" : false,
+  "comments" : [ {
+    "id" : "7fe865e8-049d-469d-bae5-7d28cbf23ba5",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "Task 4's acceptance criterion verifies save-time refusal, but saving a Person requires the `person` table that only Task 2's `Person_V0_V1` migration creates — and the task's **Depends on** line lists only Task-1. Add Task-2 to the Depends on line (or, if the validator can be unit-tested against the bean without persistence, restate the criterion as a validator-level check that doesn't route through the table).",
+    "createdAt" : "2026-09-23T13:36:28.186304200Z"
+  } ]
+}, {
+  "threadId" : "6fe18198-cc8d-48ff-9302-05b4bc839573",
+  "text" : "A signed-in user can create, browse, edit and delete a person through the sheet, and the save-time rules of Tasks 1 and 4 hold there.",
+  "occurrence" : 0,
+  "resolved" : false,
+  "comments" : [ {
+    "id" : "9758b574-b6f6-4a26-b287-51a9da4e96ba",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "This criterion verifies the DOB rule that Task 4 builds, but Task 6's **Depends on** line names only Task-1 — declare Task-4 (and Task-2, since CRUD through the sheet needs the migrated table). Separately, note the tension with the design, which says \"No other view work: the search screen is the entity's standard observer surface, not an authored layout\": the spec marks the observer sheet as platform-regenerated, so there is no code change for an agent here. Either reframe Task 6 explicitly as an end-to-end verification task (its only deliverable is the check), or drop it and move this criterion into Task 5, which already depends on Task-2 and Task-4 and closes the same loop.",
+    "createdAt" : "2026-09-23T13:36:28.186304200Z"
+  } ]
+}, {
+  "threadId" : "e771125e-9fee-4a17-ada7-72ff2c175cc2",
+  "text" : "following the standard persistable-entity pattern (`AbstractRdbmsEntity` subclass, immutable fields, nested `@JsonPOJOBuilder` builder, `copy(long)`, the `internalToString`/`internalHashCode`/`internalEquals` trio)",
+  "occurrence" : 0,
+  "resolved" : false,
+  "comments" : [ {
+    "id" : "7bdd775c-fb2a-4fb6-a206-2b2f01ed9252",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "This parenthetical restates the entity boilerplate every platform-generated class carries — it wouldn't change what the implementing agent builds and will drift independently of the guide. Replace it with a citation to the persistable-entity guide the task already follows (\"following the standard persistable-entity pattern per the platform guide\"), keeping only the task-specific facts: ENTITY_NAME, ENTITY_CLASS_KEY version 1, and the verbatim-descriptor instruction.",
+    "createdAt" : "2026-09-23T13:36:28.186304200Z"
+  } ]
+}, {
+  "threadId" : "9b0c45ba-7aec-4ecd-b846-9fb18f511a17",
+  "text" : "This is the one behaviour the descriptor alone does not deliver.",
+  "occurrence" : 0,
+  "resolved" : false,
+  "comments" : [ {
+    "id" : "39164526-c75e-455c-b8b0-70f57e4b98f9",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "Good call-out: correctly distinguishing the DOB max rule (needs a validator, since the spec-time descriptor carries no max) from email uniqueness (rides the descriptor's `unique: true`, backed by the migration's unique constraint) prevents the agent from either writing redundant validator code or assuming the descriptor covers DOB. Task 4 and Task 2 are scoped accordingly.",
+    "createdAt" : "2026-09-23T13:36:28.186304200Z"
+  } ]
+}, {
+  "threadId" : "a3206b7e-98f0-4455-bf39-11c860c4d4f3",
+  "text" : "No other view work: the search screen is the entity's standard observer surface, not an authored layout.",
+  "occurrence" : 0,
+  "resolved" : false,
+  "comments" : [ {
+    "id" : "5fbd8c29-9af4-4046-830d-8c3451517ddc",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "Correct scope discipline: all four spec artifacts (entity class + descriptor + migration, observer sheet, default form JS, and the two validation rules) map to tasks 1–6, and the design resists inventing UI or relationship work the spec's OUT list excludes. The descriptor-verbatim stance in the Reuse check and Tasks 1/3 is consistent throughout.",
+    "createdAt" : "2026-09-23T13:36:28.186304200Z"
+  } ]
+} ]
