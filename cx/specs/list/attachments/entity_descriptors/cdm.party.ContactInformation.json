@@ -1,0 +1,106 @@
+{
+  "descriptors" : [ {
+    "name" : "cdm.party.ContactInformation",
+    "className" : "cyai.cdm.party.ContactInformation",
+    "entityType" : "BEAN",
+    "label" : "Contact Information",
+    "description" : "How to reach a natural person — telephone numbers, postal addresses, emails and a web page, realising the CDM bean cdm.base.staticdata.party.ContactInformation, embedded in a NaturalPerson row.",
+    "group" : "cdm.party",
+    "fieldDescriptors" : {
+      "telephone" : {
+        "name" : "telephone",
+        "fieldType" : "LIST",
+        "label" : "Telephone Numbers",
+        "description" : "The person's telephone numbers, each with its type — the CDM telephone list.",
+        "persistenceDescriptor" : {
+          "columnName" : "telephone"
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "EMBEDDED",
+          "hideInSearchResults" : true
+        },
+        "componentName" : {
+          "jsontype" : "entity.desc.entityKey",
+          "name" : "cdm.party.TelephoneNumber",
+          "version" : 0
+        },
+        "systemField" : false
+      },
+      "address" : {
+        "name" : "address",
+        "fieldType" : "LIST",
+        "label" : "Addresses",
+        "description" : "The person's postal or street addresses — the CDM address list.",
+        "persistenceDescriptor" : {
+          "columnName" : "address"
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "EMBEDDED",
+          "hideInSearchResults" : true
+        },
+        "componentName" : {
+          "jsontype" : "entity.desc.entityKey",
+          "name" : "cdm.party.Address",
+          "version" : 0
+        },
+        "systemField" : false
+      },
+      "email" : {
+        "name" : "email",
+        "fieldType" : "LIST",
+        "label" : "Emails",
+        "description" : "The person's email addresses — the CDM List<String> email, one entry per address.",
+        "persistenceDescriptor" : {
+          "columnName" : "email"
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "EMBEDDED",
+          "hideInSearchResults" : true
+        },
+        "componentName" : {
+          "jsontype" : "entity.desc.entityKey",
+          "name" : "cdm.party.EmailAddress",
+          "version" : 0
+        },
+        "systemField" : false
+      },
+      "webPage" : {
+        "name" : "webPage",
+        "fieldType" : "STRING",
+        "label" : "Web Page",
+        "description" : "The person's web page — the CDM List<String> webPage flattened to one field per the author's decision.",
+        "persistenceDescriptor" : {
+          "columnName" : "web_page",
+          "length" : 512
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "LINK",
+          "defaultSize" : 220
+        },
+        "systemField" : false
+      }
+    },
+    "relationships" : { },
+    "version" : 1
+  } ]
+}

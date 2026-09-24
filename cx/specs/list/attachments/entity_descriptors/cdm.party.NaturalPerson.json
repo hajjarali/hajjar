@@ -1,0 +1,230 @@
+{
+  "descriptors" : [ {
+    "name" : "cdm.party.NaturalPerson",
+    "className" : "cyai.cdm.party.NaturalPerson",
+    "entityType" : "PERSISTABLE_BEAN",
+    "label" : "Natural Person",
+    "description" : "A natural person — an individual human being — realising the CDM type cdm.base.staticdata.party.NaturalPerson: names, date of birth, person identifiers and contact information.",
+    "group" : "cdm.party",
+    "persistenceDescriptor" : {
+      "tableName" : "natural_person",
+      "idGenerationStrategy" : "AUTO_INCREMENT",
+      "indexGroups" : {
+        "searchable" : [ "surname", "firstName" ]
+      },
+      "naturalKeyGroups" : { },
+      "cacheDescriptor" : {
+        "strategy" : "NONE"
+      }
+    },
+    "fieldDescriptors" : {
+      "personId" : {
+        "name" : "personId",
+        "fieldType" : "LIST",
+        "label" : "Person Identifiers",
+        "description" : "The person's identifiers with their type and issuing country — the CDM personId list.",
+        "persistenceDescriptor" : {
+          "columnName" : "person_id",
+          "sensitivityName" : "PII"
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "EMBEDDED",
+          "hideInSearchResults" : true
+        },
+        "componentName" : {
+          "jsontype" : "entity.desc.entityKey",
+          "name" : "cdm.party.PersonIdentifier",
+          "version" : 0
+        },
+        "systemField" : false
+      },
+      "honorific" : {
+        "name" : "honorific",
+        "fieldType" : "STRING",
+        "label" : "Honorific",
+        "description" : "The person's honorific title, e.g. Mr, Mrs, Dr.",
+        "persistenceDescriptor" : {
+          "columnName" : "honorific",
+          "length" : 50,
+          "sensitivityName" : "PII"
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT",
+          "defaultSize" : 120
+        },
+        "systemField" : false
+      },
+      "firstName" : {
+        "name" : "firstName",
+        "fieldType" : "STRING",
+        "label" : "First Name",
+        "description" : "The person's given name.",
+        "persistenceDescriptor" : {
+          "columnName" : "first_name",
+          "length" : 255,
+          "sensitivityName" : "PII"
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT",
+          "defaultSize" : 180
+        },
+        "systemField" : false
+      },
+      "middleName" : {
+        "name" : "middleName",
+        "fieldType" : "LIST",
+        "label" : "Middle Names",
+        "description" : "The person's middle names — the CDM List<String> middleName, one entry per name.",
+        "persistenceDescriptor" : {
+          "columnName" : "middle_name",
+          "sensitivityName" : "PII"
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "EMBEDDED",
+          "hideInSearchResults" : true
+        },
+        "componentName" : {
+          "jsontype" : "entity.desc.entityKey",
+          "name" : "cdm.party.NamePart",
+          "version" : 0
+        },
+        "systemField" : false
+      },
+      "initial" : {
+        "name" : "initial",
+        "fieldType" : "LIST",
+        "label" : "Initials",
+        "description" : "The person's initials — the CDM List<String> initial, one entry per initial.",
+        "persistenceDescriptor" : {
+          "columnName" : "initial",
+          "sensitivityName" : "PII"
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "EMBEDDED",
+          "hideInSearchResults" : true
+        },
+        "componentName" : {
+          "jsontype" : "entity.desc.entityKey",
+          "name" : "cdm.party.NamePart",
+          "version" : 0
+        },
+        "systemField" : false
+      },
+      "surname" : {
+        "name" : "surname",
+        "fieldType" : "STRING",
+        "label" : "Surname",
+        "description" : "The person's family name. Together with the identifier set it satisfies the CDM NameOrIdChoice condition (R1): a person must carry a surname or an identifier.",
+        "persistenceDescriptor" : {
+          "columnName" : "surname",
+          "length" : 255,
+          "sensitivityName" : "PII"
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT",
+          "defaultSize" : 180
+        },
+        "systemField" : false
+      },
+      "suffix" : {
+        "name" : "suffix",
+        "fieldType" : "STRING",
+        "label" : "Suffix",
+        "description" : "The person's name suffix, e.g. Jr, III.",
+        "persistenceDescriptor" : {
+          "columnName" : "suffix",
+          "length" : 50,
+          "sensitivityName" : "PII"
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT",
+          "defaultSize" : 100
+        },
+        "systemField" : false
+      },
+      "dateOfBirth" : {
+        "name" : "dateOfBirth",
+        "fieldType" : "DATE",
+        "label" : "Date of Birth",
+        "description" : "The person's date of birth.",
+        "persistenceDescriptor" : {
+          "columnName" : "date_of_birth",
+          "sensitivityName" : "PII"
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "DATE",
+          "defaultSize" : 140
+        },
+        "systemField" : false
+      },
+      "contactInformation" : {
+        "name" : "contactInformation",
+        "fieldType" : "EMBEDDED",
+        "label" : "Contact Information",
+        "description" : "How to reach the person — telephone numbers, addresses, emails and web pages, per the CDM ContactInformation structure.",
+        "persistenceDescriptor" : {
+          "columnName" : "contact_information",
+          "columnPrefix" : "contact_information_",
+          "sensitivityName" : "PII"
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "EMBEDDED",
+          "hideInSearchResults" : true
+        },
+        "componentName" : {
+          "jsontype" : "entity.desc.entityKey",
+          "name" : "cdm.party.ContactInformation",
+          "version" : 0
+        },
+        "systemField" : false
+      }
+    },
+    "relationships" : { },
+    "version" : 1
+  } ]
+}

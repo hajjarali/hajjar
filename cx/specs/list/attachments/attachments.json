@@ -1,0 +1,111 @@
+{
+  "attachments" : [ {
+    "name" : "entity_descriptors/cdm.party.Address.json",
+    "type" : "ENTITY_DESCRIPTORS",
+    "size_bytes" : 3500,
+    "uploaded_at" : "2026-09-24T12:47:49.527931800Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "entity_descriptors/cdm.party.ContactInformation.json",
+    "type" : "ENTITY_DESCRIPTORS",
+    "size_bytes" : 3468,
+    "uploaded_at" : "2026-09-24T12:57:20.760574400Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "entity_descriptors/cdm.party.EmailAddress.json",
+    "type" : "ENTITY_DESCRIPTORS",
+    "size_bytes" : 1063,
+    "uploaded_at" : "2026-09-24T12:47:54.444696700Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "entity_descriptors/cdm.party.NamePart.json",
+    "type" : "ENTITY_DESCRIPTORS",
+    "size_bytes" : 1107,
+    "uploaded_at" : "2026-09-24T12:47:54.450244900Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "entity_descriptors/cdm.party.NaturalPerson.json",
+    "type" : "ENTITY_DESCRIPTORS",
+    "size_bytes" : 7413,
+    "uploaded_at" : "2026-09-24T12:47:37.575598600Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "entity_descriptors/cdm.party.PersonIdentifier.json",
+    "type" : "ENTITY_DESCRIPTORS",
+    "size_bytes" : 2547,
+    "uploaded_at" : "2026-09-24T12:47:43.073141100Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "entity_descriptors/cdm.party.StreetLine.json",
+    "type" : "ENTITY_DESCRIPTORS",
+    "size_bytes" : 1059,
+    "uploaded_at" : "2026-09-24T12:47:54.461378700Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "entity_descriptors/cdm.party.TelephoneNumber.json",
+    "type" : "ENTITY_DESCRIPTORS",
+    "size_bytes" : 1744,
+    "uploaded_at" : "2026-09-24T12:47:49.532143600Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "entity_descriptors/cdm.party.WebPageAddress.json",
+    "type" : "ENTITY_DESCRIPTORS",
+    "size_bytes" : 1027,
+    "uploaded_at" : "2026-09-24T12:47:54.455668200Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "ui/cdm.party.Address.js",
+    "type" : "UI",
+    "size_bytes" : 1334,
+    "uploaded_at" : "2026-09-24T12:51:51.394031800Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "ui/cdm.party.ContactInformation.js",
+    "type" : "UI",
+    "size_bytes" : 2229,
+    "uploaded_at" : "2026-09-24T12:57:24.844997Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "ui/cdm.party.EmailAddress.js",
+    "type" : "UI",
+    "size_bytes" : 309,
+    "uploaded_at" : "2026-09-24T12:51:52.007831300Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "ui/cdm.party.NamePart.js",
+    "type" : "UI",
+    "size_bytes" : 309,
+    "uploaded_at" : "2026-09-24T12:51:51.288956300Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "ui/cdm.party.NaturalPerson.js",
+    "type" : "UI",
+    "size_bytes" : 2801,
+    "uploaded_at" : "2026-09-24T12:51:33.698439300Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "ui/cdm.party.PersonIdentifier.js",
+    "type" : "UI",
+    "size_bytes" : 1017,
+    "uploaded_at" : "2026-09-24T12:51:46.114136700Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "ui/cdm.party.StreetLine.js",
+    "type" : "UI",
+    "size_bytes" : 309,
+    "uploaded_at" : "2026-09-24T12:51:50.881857500Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "ui/cdm.party.TelephoneNumber.js",
+    "type" : "UI",
+    "size_bytes" : 928,
+    "uploaded_at" : "2026-09-24T12:51:40.795806600Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "ui/cdm.party.WebPageAddress.js",
+    "type" : "UI",
+    "size_bytes" : 309,
+    "uploaded_at" : "2026-09-24T12:51:52.624334800Z",
+    "origin" : "AGENT"
+  } ]
+}

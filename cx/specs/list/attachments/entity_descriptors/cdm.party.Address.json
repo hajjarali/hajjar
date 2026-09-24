@@ -1,0 +1,118 @@
+{
+  "descriptors" : [ {
+    "name" : "cdm.party.Address",
+    "className" : "cyai.cdm.party.Address",
+    "entityType" : "BEAN",
+    "label" : "Address",
+    "description" : "One postal or street address — realising the CDM bean cdm.base.staticdata.party.Address, embedded in a ContactInformation.",
+    "group" : "cdm.party",
+    "fieldDescriptors" : {
+      "street" : {
+        "name" : "street",
+        "fieldType" : "LIST",
+        "label" : "Street Lines",
+        "description" : "The street lines of the address — the CDM List<String> street, one entry per line.",
+        "persistenceDescriptor" : {
+          "columnName" : "street"
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "EMBEDDED",
+          "hideInSearchResults" : true
+        },
+        "componentName" : {
+          "jsontype" : "entity.desc.entityKey",
+          "name" : "cdm.party.StreetLine",
+          "version" : 0
+        },
+        "systemField" : false
+      },
+      "city" : {
+        "name" : "city",
+        "fieldType" : "STRING",
+        "label" : "City",
+        "description" : "The city or town.",
+        "persistenceDescriptor" : {
+          "columnName" : "city",
+          "length" : 255
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT",
+          "defaultSize" : 160
+        },
+        "systemField" : false
+      },
+      "state" : {
+        "name" : "state",
+        "fieldType" : "STRING",
+        "label" : "State",
+        "description" : "The state, province or region.",
+        "persistenceDescriptor" : {
+          "columnName" : "state",
+          "length" : 255
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT",
+          "defaultSize" : 160
+        },
+        "systemField" : false
+      },
+      "country" : {
+        "name" : "country",
+        "fieldType" : "STRING",
+        "label" : "Country",
+        "description" : "The country — an ISO 3166 two-letter code, per the CDM metadata-scheme string.",
+        "persistenceDescriptor" : {
+          "columnName" : "country",
+          "length" : 2
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "COUNTRY",
+          "defaultSize" : 140
+        },
+        "systemField" : false
+      },
+      "postalCode" : {
+        "name" : "postalCode",
+        "fieldType" : "STRING",
+        "label" : "Postal Code",
+        "description" : "The postal or ZIP code.",
+        "persistenceDescriptor" : {
+          "columnName" : "postal_code",
+          "length" : 20
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT",
+          "defaultSize" : 120
+        },
+        "systemField" : false
+      }
+    },
+    "relationships" : { },
+    "version" : 1
+  } ]
+}

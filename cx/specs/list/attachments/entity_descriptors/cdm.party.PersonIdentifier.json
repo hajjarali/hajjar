@@ -1,0 +1,77 @@
+{
+  "descriptors" : [ {
+    "name" : "cdm.party.PersonIdentifier",
+    "className" : "cyai.cdm.party.PersonIdentifier",
+    "entityType" : "BEAN",
+    "label" : "Person Identifier",
+    "description" : "One identifier for a natural person with its type and issuing country — realising the CDM bean cdm.base.staticdata.party.PersonIdentifier, embedded in a NaturalPerson row.",
+    "group" : "cdm.party",
+    "fieldDescriptors" : {
+      "identifier" : {
+        "name" : "identifier",
+        "fieldType" : "STRING",
+        "label" : "Identifier",
+        "description" : "The identifier value itself — a passport number, national ID, tax ID, etc.",
+        "persistenceDescriptor" : {
+          "columnName" : "identifier",
+          "length" : 255,
+          "sensitivityName" : "PII"
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT",
+          "defaultSize" : 220
+        },
+        "systemField" : false
+      },
+      "identifierType" : {
+        "name" : "identifierType",
+        "fieldType" : "ENUM",
+        "label" : "Identifier Type",
+        "description" : "What the identifier is — the CDM PersonIdentifierTypeEnum values verbatim.",
+        "persistenceDescriptor" : {
+          "columnName" : "identifier_type",
+          "length" : 10,
+          "sensitivityName" : "PII"
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "AUTOCOMPLETE",
+          "defaultSize" : 160
+        },
+        "systemField" : false
+      },
+      "country" : {
+        "name" : "country",
+        "fieldType" : "STRING",
+        "label" : "Country",
+        "description" : "The country that issued the identifier — an ISO 3166 two-letter code, per the CDM metadata-scheme string.",
+        "persistenceDescriptor" : {
+          "columnName" : "country",
+          "length" : 2,
+          "sensitivityName" : "PII"
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "COUNTRY",
+          "defaultSize" : 140
+        },
+        "systemField" : false
+      }
+    },
+    "relationships" : { },
+    "version" : 1
+  } ]
+}

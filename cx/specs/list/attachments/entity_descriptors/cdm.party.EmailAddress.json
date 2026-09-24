@@ -1,0 +1,35 @@
+{
+  "descriptors" : [ {
+    "name" : "cdm.party.EmailAddress",
+    "className" : "cyai.cdm.party.EmailAddress",
+    "entityType" : "BEAN",
+    "label" : "Email Address",
+    "description" : "One entry of the CDM List<String> email on a ContactInformation. A platform-shape carrier (extension per company standing rule R9), not a CDM type.",
+    "group" : "cdm.party",
+    "fieldDescriptors" : {
+      "value" : {
+        "name" : "value",
+        "fieldType" : "STRING",
+        "label" : "Email",
+        "description" : "The email address itself.",
+        "persistenceDescriptor" : {
+          "columnName" : "value",
+          "length" : 255,
+          "sensitivityName" : "PII"
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "EMAIL",
+          "defaultSize" : 220
+        },
+        "systemField" : false
+      }
+    },
+    "relationships" : { },
+    "version" : 1
+  } ]
+}

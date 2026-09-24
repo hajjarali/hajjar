@@ -1,0 +1,35 @@
+{
+  "descriptors" : [ {
+    "name" : "cdm.party.StreetLine",
+    "className" : "cyai.cdm.party.StreetLine",
+    "entityType" : "BEAN",
+    "label" : "Street Line",
+    "description" : "One entry of the CDM List<String> street on an Address. A platform-shape carrier (extension per company standing rule R9), not a CDM type.",
+    "group" : "cdm.party",
+    "fieldDescriptors" : {
+      "value" : {
+        "name" : "value",
+        "fieldType" : "STRING",
+        "label" : "Street Line",
+        "description" : "One line of the street address.",
+        "persistenceDescriptor" : {
+          "columnName" : "value",
+          "length" : 255,
+          "sensitivityName" : "PII"
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT",
+          "defaultSize" : 200
+        },
+        "systemField" : false
+      }
+    },
+    "relationships" : { },
+    "version" : 1
+  } ]
+}
