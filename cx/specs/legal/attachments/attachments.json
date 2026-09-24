@@ -1,0 +1,27 @@
+{
+  "attachments" : [ {
+    "name" : "entity_descriptors/school.School.json",
+    "type" : "ENTITY_DESCRIPTORS",
+    "size_bytes" : 2242,
+    "uploaded_at" : "2026-09-24T10:25:05.926426600Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "entity_descriptors/school.Student.json",
+    "type" : "ENTITY_DESCRIPTORS",
+    "size_bytes" : 3243,
+    "uploaded_at" : "2026-09-24T10:31:02.122924700Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "ui/school.School.js",
+    "type" : "UI",
+    "size_bytes" : 3612,
+    "uploaded_at" : "2026-09-24T10:25:44.807331300Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "ui/school.Student.js",
+    "type" : "UI",
+    "size_bytes" : 3756,
+    "uploaded_at" : "2026-09-24T10:25:54.211920800Z",
+    "origin" : "AGENT"
+  } ]
+}

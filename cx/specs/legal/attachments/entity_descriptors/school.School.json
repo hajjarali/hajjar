@@ -1,0 +1,81 @@
+{
+  "descriptors" : [ {
+    "name" : "school.School",
+    "className" : "cyai.school.School",
+    "entityType" : "PERSISTABLE_BEAN",
+    "label" : "School",
+    "description" : "A school in the register, holding its name, location and ranking.",
+    "group" : "school",
+    "persistenceDescriptor" : {
+      "tableName" : "school",
+      "idGenerationStrategy" : "AUTO_INCREMENT",
+      "indexGroups" : {
+        "by_ranking" : [ "ranking" ]
+      },
+      "naturalKeyGroups" : { },
+      "cacheDescriptor" : {
+        "strategy" : "NONE"
+      }
+    },
+    "fieldDescriptors" : {
+      "name" : {
+        "name" : "name",
+        "fieldType" : "STRING",
+        "label" : "Name",
+        "description" : "The school's name.",
+        "persistenceDescriptor" : {
+          "columnName" : "name",
+          "length" : 255
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "location" : {
+        "name" : "location",
+        "fieldType" : "STRING",
+        "label" : "Location",
+        "description" : "Where the school is located.",
+        "persistenceDescriptor" : {
+          "columnName" : "location",
+          "length" : 255
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "ranking" : {
+        "name" : "ranking",
+        "fieldType" : "INTEGER",
+        "label" : "Ranking",
+        "description" : "The school's ranking, 1 being the best.",
+        "persistenceDescriptor" : {
+          "columnName" : "ranking"
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : true
+        },
+        "viewDescriptor" : {
+          "viewType" : "INTEGER"
+        },
+        "systemField" : false
+      }
+    },
+    "relationships" : { },
+    "version" : 1
+  } ]
+}

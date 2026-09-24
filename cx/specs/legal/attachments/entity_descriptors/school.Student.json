@@ -1,0 +1,116 @@
+{
+  "descriptors" : [ {
+    "name" : "school.Student",
+    "className" : "cyai.school.Student",
+    "entityType" : "PERSISTABLE_BEAN",
+    "label" : "Student",
+    "description" : "A student enrolled at a school, holding a name, a class, an age and the school they attend.",
+    "group" : "school",
+    "persistenceDescriptor" : {
+      "tableName" : "student",
+      "idGenerationStrategy" : "AUTO_INCREMENT",
+      "indexGroups" : {
+        "by_school" : [ "school_id" ]
+      },
+      "naturalKeyGroups" : { },
+      "cacheDescriptor" : {
+        "strategy" : "NONE"
+      }
+    },
+    "fieldDescriptors" : {
+      "name" : {
+        "name" : "name",
+        "fieldType" : "STRING",
+        "label" : "Name",
+        "description" : "The student's name.",
+        "persistenceDescriptor" : {
+          "columnName" : "name",
+          "length" : 255
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "className" : {
+        "name" : "className",
+        "fieldType" : "STRING",
+        "label" : "Class",
+        "description" : "The class the student is in, e.g. 7B.",
+        "persistenceDescriptor" : {
+          "columnName" : "class_name",
+          "length" : 64
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "age" : {
+        "name" : "age",
+        "fieldType" : "INTEGER",
+        "label" : "Age",
+        "description" : "The student's age in years.",
+        "persistenceDescriptor" : {
+          "columnName" : "age"
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : true
+        },
+        "viewDescriptor" : {
+          "viewType" : "INTEGER"
+        },
+        "systemField" : false
+      },
+      "school" : {
+        "name" : "school",
+        "fieldType" : "REFERENCE",
+        "label" : "School",
+        "description" : "The school the student attends.",
+        "persistenceDescriptor" : {
+          "columnName" : "school_id"
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "REFERENCE"
+        },
+        "componentName" : {
+          "jsontype" : "entity.desc.entityKey",
+          "name" : "school.School",
+          "version" : 1
+        },
+        "systemField" : false
+      }
+    },
+    "relationships" : {
+      "school" : {
+        "name" : "school",
+        "cardinality" : "MANY_TO_ONE",
+        "targetEntityName" : {
+          "jsontype" : "entity.desc.entityKey",
+          "name" : "school.School",
+          "version" : 1
+        },
+        "fieldName" : "school",
+        "owning" : true
+      }
+    },
+    "version" : 1
+  } ]
+}
