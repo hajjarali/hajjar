@@ -1,0 +1,296 @@
+{
+  "descriptors" : [ {
+    "name" : "loyalty.Member",
+    "className" : "cyai.loyalty.member.Member",
+    "entityType" : "PERSISTABLE_BEAN",
+    "label" : "Member",
+    "description" : "A member of the loyalty programme: identity, tier, membership status, points balance and consent, with their home address and issued cards embedded in the record.",
+    "group" : "loyalty",
+    "persistenceDescriptor" : {
+      "tableName" : "loyalty_member",
+      "idGenerationStrategy" : "AUTO_INCREMENT",
+      "indexGroups" : {
+        "by_status" : [ "status" ],
+        "by_tier" : [ "tier" ]
+      },
+      "naturalKeyGroups" : {
+        "by_member_number" : [ "memberNumber" ]
+      },
+      "cacheDescriptor" : {
+        "strategy" : "NONE"
+      }
+    },
+    "fieldDescriptors" : {
+      "fullName" : {
+        "name" : "fullName",
+        "fieldType" : "STRING",
+        "label" : "Full Name",
+        "description" : "The member's full name.",
+        "persistenceDescriptor" : {
+          "columnName" : "full_name",
+          "length" : 255
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT",
+          "defaultSize" : 220
+        },
+        "systemField" : false
+      },
+      "memberNumber" : {
+        "name" : "memberNumber",
+        "fieldType" : "STRING",
+        "label" : "Member Number",
+        "description" : "The member's number — unique across the register and never changes once given.",
+        "persistenceDescriptor" : {
+          "columnName" : "member_number",
+          "length" : 50
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : true,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT",
+          "defaultSize" : 140
+        },
+        "systemField" : false
+      },
+      "tier" : {
+        "name" : "tier",
+        "fieldType" : "ENUM",
+        "label" : "Tier",
+        "description" : "The member's loyalty tier.",
+        "persistenceDescriptor" : {
+          "columnName" : "tier",
+          "length" : 20
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "SELECT_POPUP"
+        },
+        "componentName" : {
+          "jsontype" : "entity.desc.entityKey",
+          "name" : "cyai.loyalty.member.MemberTier",
+          "version" : 0
+        },
+        "systemField" : false
+      },
+      "status" : {
+        "name" : "status",
+        "fieldType" : "ENUM",
+        "label" : "Status",
+        "description" : "The member's status: pending, active, frozen or closed — new members start as pending.",
+        "persistenceDescriptor" : {
+          "columnName" : "status",
+          "length" : 20,
+          "defaultValue" : "PENDING"
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "SELECT_POPUP"
+        },
+        "componentName" : {
+          "jsontype" : "entity.desc.entityKey",
+          "name" : "cyai.loyalty.member.MemberStatus",
+          "version" : 0
+        },
+        "systemField" : false
+      },
+      "pointsBalance" : {
+        "name" : "pointsBalance",
+        "fieldType" : "LONG",
+        "label" : "Points Balance",
+        "description" : "The member's points balance.",
+        "persistenceDescriptor" : {
+          "columnName" : "points_balance",
+          "defaultValue" : "0"
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : true
+        },
+        "viewDescriptor" : {
+          "viewType" : "INTEGER"
+        },
+        "systemField" : false
+      },
+      "joinedDate" : {
+        "name" : "joinedDate",
+        "fieldType" : "DATE",
+        "label" : "Joined Date",
+        "description" : "The date the member joined the programme.",
+        "persistenceDescriptor" : {
+          "columnName" : "joined_date"
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "DATE"
+        },
+        "systemField" : false
+      },
+      "birthday" : {
+        "name" : "birthday",
+        "fieldType" : "DATE",
+        "label" : "Birthday",
+        "description" : "The member's birthday.",
+        "persistenceDescriptor" : {
+          "columnName" : "birthday"
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "DATE"
+        },
+        "systemField" : false
+      },
+      "marketingConsent" : {
+        "name" : "marketingConsent",
+        "fieldType" : "BOOLEAN",
+        "label" : "Marketing Consent",
+        "description" : "Whether the member agreed to marketing emails.",
+        "persistenceDescriptor" : {
+          "columnName" : "marketing_consent",
+          "defaultValue" : "false"
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "CHECKBOX"
+        },
+        "systemField" : false
+      },
+      "notes" : {
+        "name" : "notes",
+        "fieldType" : "STRING",
+        "label" : "Notes",
+        "description" : "Free notes about the member.",
+        "persistenceDescriptor" : {
+          "columnName" : "notes",
+          "length" : 4000
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT",
+          "viewParameter" : {
+            "jsontype" : "entity.desc.textFieldViewParameter",
+            "multiline" : true
+          }
+        },
+        "systemField" : false
+      },
+      "address" : {
+        "name" : "address",
+        "fieldType" : "EMBEDDED",
+        "label" : "Home Address",
+        "description" : "The member's home address.",
+        "persistenceDescriptor" : {
+          "columnName" : "address",
+          "columnPrefix" : "address_"
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "EMBEDDED"
+        },
+        "componentName" : {
+          "jsontype" : "entity.desc.entityKey",
+          "name" : "loyalty.Address",
+          "version" : 0
+        },
+        "systemField" : false
+      },
+      "cards" : {
+        "name" : "cards",
+        "fieldType" : "LIST",
+        "label" : "Cards",
+        "description" : "The loyalty cards issued to this member.",
+        "persistenceDescriptor" : {
+          "columnName" : "cards"
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "EMBEDDED"
+        },
+        "componentName" : {
+          "jsontype" : "entity.desc.entityKey",
+          "name" : "loyalty.LoyaltyCard",
+          "version" : 0
+        },
+        "systemField" : false
+      },
+      "referredBy" : {
+        "name" : "referredBy",
+        "fieldType" : "REFERENCE",
+        "label" : "Referred By",
+        "description" : "The member who referred this member, if any.",
+        "persistenceDescriptor" : {
+          "columnName" : "referred_by_id"
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "REFERENCE"
+        },
+        "componentName" : {
+          "jsontype" : "entity.desc.entityKey",
+          "name" : "loyalty.Member",
+          "version" : 1
+        },
+        "systemField" : false
+      }
+    },
+    "relationships" : {
+      "referredBy" : {
+        "name" : "referredBy",
+        "cardinality" : "MANY_TO_ONE",
+        "targetEntityName" : {
+          "jsontype" : "entity.desc.entityKey",
+          "name" : "loyalty.Member",
+          "version" : 1
+        },
+        "fieldName" : "referredBy",
+        "owning" : true
+      }
+    },
+    "version" : 1
+  } ]
+}

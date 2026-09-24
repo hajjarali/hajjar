@@ -1,0 +1,21 @@
+{
+  "attachments" : [ {
+    "name" : "entity_descriptors/loyalty.Address.json",
+    "type" : "ENTITY_DESCRIPTORS",
+    "size_bytes" : 2051,
+    "uploaded_at" : "2026-09-24T07:28:48.691472Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "entity_descriptors/loyalty.LoyaltyCard.json",
+    "type" : "ENTITY_DESCRIPTORS",
+    "size_bytes" : 2277,
+    "uploaded_at" : "2026-09-24T07:28:48.694635800Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "entity_descriptors/loyalty.Member.json",
+    "type" : "ENTITY_DESCRIPTORS",
+    "size_bytes" : 8884,
+    "uploaded_at" : "2026-09-24T07:28:41.279806700Z",
+    "origin" : "AGENT"
+  } ]
+}

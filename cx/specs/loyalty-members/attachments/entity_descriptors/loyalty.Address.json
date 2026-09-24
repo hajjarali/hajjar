@@ -1,0 +1,74 @@
+{
+  "descriptors" : [ {
+    "name" : "loyalty.Address",
+    "className" : "cyai.loyalty.member.Address",
+    "entityType" : "BEAN",
+    "label" : "Address",
+    "description" : "A member's home postal address — lives inside the member record, not persisted on its own.",
+    "group" : "loyalty",
+    "fieldDescriptors" : {
+      "street" : {
+        "name" : "street",
+        "fieldType" : "STRING",
+        "label" : "Street",
+        "description" : "The street and house number.",
+        "persistenceDescriptor" : {
+          "columnName" : "street",
+          "length" : 255
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT",
+          "defaultSize" : 240
+        },
+        "systemField" : false
+      },
+      "city" : {
+        "name" : "city",
+        "fieldType" : "STRING",
+        "label" : "City",
+        "description" : "The city.",
+        "persistenceDescriptor" : {
+          "columnName" : "city",
+          "length" : 120
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT",
+          "defaultSize" : 160
+        },
+        "systemField" : false
+      },
+      "country" : {
+        "name" : "country",
+        "fieldType" : "STRING",
+        "label" : "Country",
+        "description" : "The country.",
+        "persistenceDescriptor" : {
+          "columnName" : "country",
+          "length" : 80
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT",
+          "defaultSize" : 140
+        },
+        "systemField" : false
+      }
+    },
+    "relationships" : { },
+    "version" : 1
+  } ]
+}

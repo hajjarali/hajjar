@@ -1,0 +1,76 @@
+{
+  "descriptors" : [ {
+    "name" : "loyalty.LoyaltyCard",
+    "className" : "cyai.loyalty.member.LoyaltyCard",
+    "entityType" : "BEAN",
+    "label" : "Loyalty Card",
+    "description" : "A loyalty card issued to a member (physical or digital) — lives inside the member record, not persisted on its own.",
+    "group" : "loyalty",
+    "fieldDescriptors" : {
+      "lastFour" : {
+        "name" : "lastFour",
+        "fieldType" : "STRING",
+        "label" : "Last Four",
+        "description" : "The last four digits of the card number.",
+        "persistenceDescriptor" : {
+          "columnName" : "last_four",
+          "length" : 4
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT",
+          "defaultSize" : 90
+        },
+        "systemField" : false
+      },
+      "issuedDate" : {
+        "name" : "issuedDate",
+        "fieldType" : "DATE",
+        "label" : "Issued Date",
+        "description" : "The date the card was issued.",
+        "persistenceDescriptor" : {
+          "columnName" : "issued_date"
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "DATE"
+        },
+        "systemField" : false
+      },
+      "cardType" : {
+        "name" : "cardType",
+        "fieldType" : "ENUM",
+        "label" : "Card Type",
+        "description" : "Whether the card is a physical or a digital card.",
+        "persistenceDescriptor" : {
+          "columnName" : "card_type",
+          "length" : 20
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "SELECT_POPUP"
+        },
+        "componentName" : {
+          "jsontype" : "entity.desc.entityKey",
+          "name" : "cyai.loyalty.member.CardType",
+          "version" : 0
+        },
+        "systemField" : false
+      }
+    },
+    "relationships" : { },
+    "version" : 1
+  } ]
+}
