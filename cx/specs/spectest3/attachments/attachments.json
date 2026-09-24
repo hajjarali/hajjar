@@ -14,14 +14,14 @@
   }, {
     "name" : "ui/cdm.party.EntityIdentifier.js",
     "type" : "UI",
-    "size_bytes" : 1596,
+    "size_bytes" : 1631,
     "uploaded_at" : "2026-09-23T19:24:17.857443700Z",
     "origin" : "AGENT"
   }, {
     "name" : "ui/cdm.party.LegalEntity.js",
     "type" : "UI",
-    "size_bytes" : 2326,
-    "uploaded_at" : "2026-09-23T19:24:44.729048300Z",
+    "size_bytes" : 4090,
+    "uploaded_at" : "2026-09-24T05:12:59.509579200Z",
     "origin" : "AGENT"
   } ]
 }
