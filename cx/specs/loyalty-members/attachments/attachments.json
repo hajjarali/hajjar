@@ -17,5 +17,23 @@
     "size_bytes" : 8884,
     "uploaded_at" : "2026-09-24T07:28:41.279806700Z",
     "origin" : "AGENT"
+  }, {
+    "name" : "ui/loyalty.Address.js",
+    "type" : "UI",
+    "size_bytes" : 986,
+    "uploaded_at" : "2026-09-24T07:30:13.674395300Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "ui/loyalty.LoyaltyCard.js",
+    "type" : "UI",
+    "size_bytes" : 1138,
+    "uploaded_at" : "2026-09-24T07:30:28.954564900Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "ui/loyalty.Member.js",
+    "type" : "UI",
+    "size_bytes" : 6818,
+    "uploaded_at" : "2026-09-24T07:34:11.330638400Z",
+    "origin" : "AGENT"
   } ]
 }
