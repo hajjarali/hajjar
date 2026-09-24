@@ -1,0 +1,71 @@
+{
+  "descriptors" : [ {
+    "name" : "party.Contact",
+    "className" : "cyai.party.Contact",
+    "entityType" : "BEAN",
+    "label" : "Contact",
+    "description" : "A contact of a counterparty, embedded in the counterparty that holds it.",
+    "group" : "party",
+    "fieldDescriptors" : {
+      "fullName" : {
+        "name" : "fullName",
+        "fieldType" : "STRING",
+        "label" : "Full Name",
+        "description" : "The contact's full name.",
+        "persistenceDescriptor" : {
+          "columnName" : "full_name",
+          "length" : 255
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "email" : {
+        "name" : "email",
+        "fieldType" : "STRING",
+        "label" : "Email",
+        "description" : "The contact's email address.",
+        "persistenceDescriptor" : {
+          "columnName" : "email",
+          "length" : 255
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "EMAIL"
+        },
+        "systemField" : false
+      },
+      "role" : {
+        "name" : "role",
+        "fieldType" : "ENUM",
+        "label" : "Role",
+        "description" : "The contact's role: primary or billing. Optional.",
+        "persistenceDescriptor" : {
+          "columnName" : "role",
+          "length" : 32
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "SELECT_POPUP"
+        },
+        "systemField" : false
+      }
+    },
+    "relationships" : { },
+    "version" : 1
+  } ]
+}

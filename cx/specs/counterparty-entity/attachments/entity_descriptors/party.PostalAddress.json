@@ -1,0 +1,71 @@
+{
+  "descriptors" : [ {
+    "name" : "party.PostalAddress",
+    "className" : "cyai.party.PostalAddress",
+    "entityType" : "BEAN",
+    "label" : "Postal Address",
+    "description" : "A postal address embedded in the counterparty that holds it.",
+    "group" : "party",
+    "fieldDescriptors" : {
+      "line1" : {
+        "name" : "line1",
+        "fieldType" : "STRING",
+        "label" : "Street",
+        "description" : "The street line of the address.",
+        "persistenceDescriptor" : {
+          "columnName" : "line1",
+          "length" : 255
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "city" : {
+        "name" : "city",
+        "fieldType" : "STRING",
+        "label" : "City",
+        "description" : "The city of the address.",
+        "persistenceDescriptor" : {
+          "columnName" : "city",
+          "length" : 255
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "country" : {
+        "name" : "country",
+        "fieldType" : "STRING",
+        "label" : "Country",
+        "description" : "The country of the address.",
+        "persistenceDescriptor" : {
+          "columnName" : "country",
+          "length" : 255
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      }
+    },
+    "relationships" : { },
+    "version" : 1
+  } ]
+}

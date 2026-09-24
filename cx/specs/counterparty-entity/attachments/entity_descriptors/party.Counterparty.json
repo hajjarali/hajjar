@@ -1,0 +1,261 @@
+{
+  "descriptors" : [ {
+    "name" : "party.Counterparty",
+    "className" : "cyai.party.Counterparty",
+    "entityType" : "PERSISTABLE_BEAN",
+    "label" : "Counterparty",
+    "description" : "A counterparty the firm does business with - bank, corporate or fund - with its lifecycle status, credit limit, onboarding date, sanctions-screening flag, registered address and contacts.",
+    "group" : "party",
+    "persistenceDescriptor" : {
+      "tableName" : "counterparty",
+      "idGenerationStrategy" : "AUTO_INCREMENT",
+      "indexGroups" : {
+        "by_status" : [ "status" ],
+        "by_parent" : [ "parent_id" ]
+      },
+      "naturalKeyGroups" : { },
+      "cacheDescriptor" : {
+        "strategy" : "NONE"
+      }
+    },
+    "fieldDescriptors" : {
+      "legalName" : {
+        "name" : "legalName",
+        "fieldType" : "STRING",
+        "label" : "Legal Name",
+        "description" : "The counterparty's full legal name.",
+        "persistenceDescriptor" : {
+          "columnName" : "legal_name",
+          "length" : 255
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : true,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "shortCode" : {
+        "name" : "shortCode",
+        "fieldType" : "STRING",
+        "label" : "Short Code",
+        "description" : "The short code identifying the counterparty. Immutable once set.",
+        "persistenceDescriptor" : {
+          "columnName" : "short_code",
+          "length" : 64
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : true,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT",
+          "readOnly" : true
+        },
+        "systemField" : false
+      },
+      "type" : {
+        "name" : "type",
+        "fieldType" : "ENUM",
+        "label" : "Type",
+        "description" : "The counterparty's type: bank, corporate or fund.",
+        "persistenceDescriptor" : {
+          "columnName" : "type",
+          "length" : 32
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TOGGLE_BUTTON_GROUP"
+        },
+        "systemField" : false
+      },
+      "status" : {
+        "name" : "status",
+        "fieldType" : "ENUM",
+        "label" : "Status",
+        "description" : "The counterparty's lifecycle status: draft, active or retired. Defaults to draft.",
+        "persistenceDescriptor" : {
+          "columnName" : "status",
+          "length" : 32,
+          "defaultValue" : "DRAFT"
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "STATUS_BADGE"
+        },
+        "systemField" : false
+      },
+      "creditLimit" : {
+        "name" : "creditLimit",
+        "fieldType" : "BIG_DECIMAL",
+        "label" : "Credit Limit",
+        "description" : "The credit limit granted to the counterparty. Never negative.",
+        "persistenceDescriptor" : {
+          "columnName" : "credit_limit"
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : true
+        },
+        "viewDescriptor" : {
+          "viewType" : "CURRENCY",
+          "defaultSize" : 140
+        },
+        "systemField" : false
+      },
+      "onboardedOn" : {
+        "name" : "onboardedOn",
+        "fieldType" : "DATE",
+        "label" : "Onboarded On",
+        "description" : "The date the counterparty was onboarded.",
+        "persistenceDescriptor" : {
+          "columnName" : "onboarded_on"
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "DATE"
+        },
+        "systemField" : false
+      },
+      "sanctionsScreened" : {
+        "name" : "sanctionsScreened",
+        "fieldType" : "BOOLEAN",
+        "label" : "Sanctions Screened",
+        "description" : "Whether the counterparty has passed sanctions screening. Defaults to false.",
+        "persistenceDescriptor" : {
+          "columnName" : "sanctions_screened",
+          "defaultValue" : "false"
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "CHECKBOX"
+        },
+        "systemField" : false
+      },
+      "notes" : {
+        "name" : "notes",
+        "fieldType" : "STRING",
+        "label" : "Notes",
+        "description" : "Free-form notes about the counterparty.",
+        "persistenceDescriptor" : {
+          "columnName" : "notes",
+          "length" : 4000
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "registeredAddress" : {
+        "name" : "registeredAddress",
+        "fieldType" : "EMBEDDED",
+        "label" : "Registered Address",
+        "description" : "The counterparty's registered postal address.",
+        "persistenceDescriptor" : {
+          "columnName" : "registered_address",
+          "columnPrefix" : "registered_address_"
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "EMBEDDED"
+        },
+        "componentName" : {
+          "jsontype" : "entity.desc.entityKey",
+          "name" : "party.PostalAddress",
+          "version" : 0
+        },
+        "systemField" : false
+      },
+      "contacts" : {
+        "name" : "contacts",
+        "fieldType" : "LIST",
+        "label" : "Contacts",
+        "description" : "The counterparty's contacts, each with a name, an email and a role.",
+        "persistenceDescriptor" : {
+          "columnName" : "contacts"
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "EMBEDDED"
+        },
+        "componentName" : {
+          "jsontype" : "entity.desc.entityKey",
+          "name" : "party.Contact",
+          "version" : 0
+        },
+        "systemField" : false
+      },
+      "parent" : {
+        "name" : "parent",
+        "fieldType" : "REFERENCE",
+        "label" : "Parent",
+        "description" : "The counterparty's parent within its group, if any.",
+        "persistenceDescriptor" : {
+          "columnName" : "parent_id"
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "REFERENCE"
+        },
+        "componentName" : {
+          "jsontype" : "entity.desc.entityKey",
+          "name" : "party.Counterparty",
+          "version" : 1
+        },
+        "systemField" : false
+      }
+    },
+    "relationships" : {
+      "parent" : {
+        "name" : "parent",
+        "cardinality" : "MANY_TO_ONE",
+        "targetEntityName" : {
+          "jsontype" : "entity.desc.entityKey",
+          "name" : "party.Counterparty",
+          "version" : 1
+        },
+        "fieldName" : "parent",
+        "owning" : true
+      }
+    },
+    "version" : 1
+  } ]
+}

@@ -1,0 +1,39 @@
+{
+  "attachments" : [ {
+    "name" : "entity_descriptors/party.Contact.json",
+    "type" : "ENTITY_DESCRIPTORS",
+    "size_bytes" : 1982,
+    "uploaded_at" : "2026-09-24T07:15:03.928241800Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "entity_descriptors/party.Counterparty.json",
+    "type" : "ENTITY_DESCRIPTORS",
+    "size_bytes" : 8017,
+    "uploaded_at" : "2026-09-24T07:21:22.840213700Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "entity_descriptors/party.PostalAddress.json",
+    "type" : "ENTITY_DESCRIPTORS",
+    "size_bytes" : 1960,
+    "uploaded_at" : "2026-09-24T07:15:01.505036700Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "ui/party.Contact.js",
+    "type" : "UI",
+    "size_bytes" : 1170,
+    "uploaded_at" : "2026-09-24T07:20:54.434363600Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "ui/party.Counterparty.js",
+    "type" : "UI",
+    "size_bytes" : 6093,
+    "uploaded_at" : "2026-09-24T07:25:21.633179400Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "ui/party.PostalAddress.js",
+    "type" : "UI",
+    "size_bytes" : 1042,
+    "uploaded_at" : "2026-09-24T07:15:59.582005900Z",
+    "origin" : "AGENT"
+  } ]
+}

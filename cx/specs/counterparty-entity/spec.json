@@ -1,1 +1,1 @@
-{"spec_id":"2a0cc34f-e668-4e59-a9c7-a39057bf323d","name":"counterparty-entity","property_metadata":{}}
+{"spec_id":"2a0cc34f-e668-4e59-a9c7-a39057bf323d","name":"counterparty-entity","property_metadata":{"dataClass":"INTERNAL","descriptorGroup":"party","domain":"reference-data","entityCluster":"reference-data","keyEntity":"Counterparty","reuseGate":"platformEntities (61 entities) and platformSpecs (4 specs) checked — no counterparty entity, no overlap; company corpus read for counterparty vocabulary (FCY standing rules cite counterparties but own no register)"}}
