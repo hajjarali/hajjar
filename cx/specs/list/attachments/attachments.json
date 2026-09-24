@@ -9,7 +9,7 @@
     "name" : "entity_descriptors/cdm.party.ContactInformation.json",
     "type" : "ENTITY_DESCRIPTORS",
     "size_bytes" : 3468,
-    "uploaded_at" : "2026-09-24T12:57:20.760574400Z",
+    "uploaded_at" : "2026-09-24T13:03:25.324812300Z",
     "origin" : "AGENT"
   }, {
     "name" : "entity_descriptors/cdm.party.EmailAddress.json",
@@ -48,64 +48,52 @@
     "uploaded_at" : "2026-09-24T12:47:49.532143600Z",
     "origin" : "AGENT"
   }, {
-    "name" : "entity_descriptors/cdm.party.WebPageAddress.json",
-    "type" : "ENTITY_DESCRIPTORS",
-    "size_bytes" : 1027,
-    "uploaded_at" : "2026-09-24T12:47:54.455668200Z",
-    "origin" : "AGENT"
-  }, {
     "name" : "ui/cdm.party.Address.js",
     "type" : "UI",
-    "size_bytes" : 1334,
+    "size_bytes" : 1361,
     "uploaded_at" : "2026-09-24T12:51:51.394031800Z",
     "origin" : "AGENT"
   }, {
     "name" : "ui/cdm.party.ContactInformation.js",
     "type" : "UI",
     "size_bytes" : 2229,
-    "uploaded_at" : "2026-09-24T12:57:24.844997Z",
+    "uploaded_at" : "2026-09-24T13:03:40.784651200Z",
     "origin" : "AGENT"
   }, {
     "name" : "ui/cdm.party.EmailAddress.js",
     "type" : "UI",
-    "size_bytes" : 309,
+    "size_bytes" : 316,
     "uploaded_at" : "2026-09-24T12:51:52.007831300Z",
     "origin" : "AGENT"
   }, {
     "name" : "ui/cdm.party.NamePart.js",
     "type" : "UI",
-    "size_bytes" : 309,
+    "size_bytes" : 316,
     "uploaded_at" : "2026-09-24T12:51:51.288956300Z",
     "origin" : "AGENT"
   }, {
     "name" : "ui/cdm.party.NaturalPerson.js",
     "type" : "UI",
-    "size_bytes" : 2801,
+    "size_bytes" : 2857,
     "uploaded_at" : "2026-09-24T12:51:33.698439300Z",
     "origin" : "AGENT"
   }, {
     "name" : "ui/cdm.party.PersonIdentifier.js",
     "type" : "UI",
-    "size_bytes" : 1017,
+    "size_bytes" : 1037,
     "uploaded_at" : "2026-09-24T12:51:46.114136700Z",
     "origin" : "AGENT"
   }, {
     "name" : "ui/cdm.party.StreetLine.js",
     "type" : "UI",
-    "size_bytes" : 309,
+    "size_bytes" : 316,
     "uploaded_at" : "2026-09-24T12:51:50.881857500Z",
     "origin" : "AGENT"
   }, {
     "name" : "ui/cdm.party.TelephoneNumber.js",
     "type" : "UI",
-    "size_bytes" : 928,
+    "size_bytes" : 947,
     "uploaded_at" : "2026-09-24T12:51:40.795806600Z",
-    "origin" : "AGENT"
-  }, {
-    "name" : "ui/cdm.party.WebPageAddress.js",
-    "type" : "UI",
-    "size_bytes" : 309,
-    "uploaded_at" : "2026-09-24T12:51:52.624334800Z",
     "origin" : "AGENT"
   } ]
 }

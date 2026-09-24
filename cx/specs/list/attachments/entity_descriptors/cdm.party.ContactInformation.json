@@ -94,7 +94,7 @@
           "nonNegative" : false
         },
         "viewDescriptor" : {
-          "viewType" : "LINK",
+          "viewType" : "TEXT",
           "defaultSize" : 220
         },
         "systemField" : false
