@@ -20,19 +20,19 @@
   }, {
     "name" : "ui/party.Contact.js",
     "type" : "UI",
-    "size_bytes" : 1170,
+    "size_bytes" : 1197,
     "uploaded_at" : "2026-09-24T07:20:54.434363600Z",
     "origin" : "AGENT"
   }, {
     "name" : "ui/party.Counterparty.js",
     "type" : "UI",
-    "size_bytes" : 6093,
-    "uploaded_at" : "2026-09-24T07:25:21.633179400Z",
+    "size_bytes" : 6259,
+    "uploaded_at" : "2026-09-24T08:07:26.835396400Z",
     "origin" : "AGENT"
   }, {
     "name" : "ui/party.PostalAddress.js",
     "type" : "UI",
-    "size_bytes" : 1042,
+    "size_bytes" : 1067,
     "uploaded_at" : "2026-09-24T07:15:59.582005900Z",
     "origin" : "AGENT"
   } ]

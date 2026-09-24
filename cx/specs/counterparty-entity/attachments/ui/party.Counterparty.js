@@ -28,9 +28,11 @@
         // The expand arrows. `expandIcon` cannot carry a component descriptor in a dynamic
         // tree, so the pair is drawn as sibling icons: expandMore visible when collapsed,
         // expandLess when expanded; the summary's click flips both, tracking the accordion.
+        // Each icon starts in the state matching the panel's initial expansion, so exactly
+        // one arrow is visible before the first click.
         const moreId = accordionId + "_more";
         const lessId = accordionId + "_less";
-        const more = { id: moreId, jsontype: "mui.icon",
+        const more = { id: moreId, jsontype: "mui.icon", hidden: expanded,
             props: { children: "expandMore", sx: { color: 'text.secondary' } } };
         const less = { id: lessId, jsontype: "mui.icon", hidden: !expanded,
             props: { children: "expandLess", sx: { color: 'text.secondary' } } };
