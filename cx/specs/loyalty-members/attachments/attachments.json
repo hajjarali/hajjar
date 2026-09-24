@@ -26,14 +26,14 @@
   }, {
     "name" : "ui/loyalty.LoyaltyCard.js",
     "type" : "UI",
-    "size_bytes" : 1138,
-    "uploaded_at" : "2026-09-24T07:30:28.954564900Z",
+    "size_bytes" : 4311,
+    "uploaded_at" : "2026-09-24T07:38:42.439235100Z",
     "origin" : "AGENT"
   }, {
     "name" : "ui/loyalty.Member.js",
     "type" : "UI",
-    "size_bytes" : 8687,
-    "uploaded_at" : "2026-09-24T07:35:49.643869400Z",
+    "size_bytes" : 9483,
+    "uploaded_at" : "2026-09-24T07:38:32.090405400Z",
     "origin" : "AGENT"
   } ]
 }
