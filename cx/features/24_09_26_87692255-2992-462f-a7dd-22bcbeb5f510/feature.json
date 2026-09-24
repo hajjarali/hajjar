@@ -1,0 +1,2498 @@
+{
+  "content" : [ {
+    "id" : "4298af49",
+    "type" : "heading",
+    "props" : {
+      "level" : 1
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "CDM LegalEntity — a first-class, servable entity"
+    } ]
+  }, {
+    "id" : "fbfc355c",
+    "type" : "heading",
+    "props" : {
+      "level" : 2
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Design"
+    } ]
+  }, {
+    "id" : "c19e2b0c",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "What is being built"
+    } ]
+  }, {
+    "id" : "7933ddf6",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "A "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " register for this deployment, modelled on CDM "
+    }, {
+      "type" : "text",
+      "text" : "cdm.base.staticdata.party.LegalEntity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " — a required name plus an optional list of entity identifiers — served through the platform's standard entity surface. It is the record CDM's "
+    }, {
+      "type" : "text",
+      "text" : "Ref<LegalEntity>",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " pointers (in "
+    }, {
+      "type" : "text",
+      "text" : "IssuerName",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "AncillaryEntity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "CreditSupportProviderElection",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ") resolve against."
+    } ]
+  }, {
+    "id" : "b648a98c",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Grounding checks performed before this design:",
+      "styles" : {
+        "bold" : true
+      }
+    } ]
+  }, {
+    "id" : "ec32c3bd",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "platformEntities",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " — no "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " or similar exists in this deployment (61 entities, none in the party domain). Both beans are genuinely new."
+    } ]
+  }, {
+    "id" : "e03f140e",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The CDM corpus — the ported repo defines "
+    }, {
+      "type" : "text",
+      "text" : "cyai.cdm.base.staticdata.party.LegalEntity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (persistable, table "
+    }, {
+      "type" : "text",
+      "text" : "legal_entity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "), "
+    }, {
+      "type" : "text",
+      "text" : "cyai.cdm.base.staticdata.party.EntityIdentifier",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (embedded bean) and "
+    }, {
+      "type" : "text",
+      "text" : "cyai.cdm.base.staticdata.party.EntityIdentifierTypeEnum",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (values BIC, LEI, MIC, REDID, COUNTRY_CODE, OTHER), and an existing "
+    }, {
+      "type" : "text",
+      "text" : "cyai.cdm.sheets.LegalEntitySheet",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " extending "
+    }, {
+      "type" : "text",
+      "text" : "AbstractCdmEntityInstanceSheet",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " — the CDM adapter of the platform's writable entity-instance base. The sheet plane is already bootstrapped; this feature does not create one."
+    } ]
+  }, {
+    "id" : "47a80577",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The spec's attachments — "
+    }, {
+      "type" : "text",
+      "text" : "entity_descriptors/cdm.party.LegalEntity.json",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "entity_descriptors/cdm.party.EntityIdentifier.json",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "ui/cdm.party.LegalEntity.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and "
+    }, {
+      "type" : "text",
+      "text" : "ui/cdm.party.EntityIdentifier.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " are authored at spec time and are used "
+    }, {
+      "type" : "text",
+      "text" : "verbatim",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (see Tasks 1 and 4). Their field sets, types and layout decisions are the design's inputs, not re-derivations."
+    } ]
+  }, {
+    "id" : "c318a452",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "FCY standing rule R7 (no free-text counterparty names — identifiers over names) and R8 (CDM enum values verbatim) are respected by the field set and enum values below."
+    } ]
+  }, {
+    "id" : "a43cc96f",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "bean: LegalEntity"
+    } ]
+  }, {
+    "id" : "57f2c6aa",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "A "
+    }, {
+      "type" : "text",
+      "text" : "PERSISTABLE_BEAN",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " ("
+    }, {
+      "type" : "text",
+      "text" : "extends AbstractRdbmsEntity<LegalEntity>",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "), table "
+    }, {
+      "type" : "text",
+      "text" : "legal_entity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "SEQUENCE",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " id generation. Two fields, exactly the CDM field set — nothing added:"
+    } ]
+  }, {
+    "id" : "9aa8766f",
+    "type" : "table",
+    "content" : {
+      "type" : "tableContent",
+      "rows" : [ {
+        "cells" : [ [ {
+          "type" : "text",
+          "text" : "Field"
+        } ], [ {
+          "type" : "text",
+          "text" : "Java type"
+        } ], [ {
+          "type" : "text",
+          "text" : "FieldType"
+        } ], [ {
+          "type" : "text",
+          "text" : "ViewType"
+        } ], [ {
+          "type" : "text",
+          "text" : "Nullable"
+        } ], [ {
+          "type" : "text",
+          "text" : "Notes"
+        } ] ]
+      }, {
+        "cells" : [ [ {
+          "type" : "text",
+          "text" : "`name`"
+        } ], [ {
+          "type" : "text",
+          "text" : "`String`"
+        } ], [ {
+          "type" : "text",
+          "text" : "STRING"
+        } ], [ {
+          "type" : "text",
+          "text" : "TEXT"
+        } ], [ {
+          "type" : "text",
+          "text" : "no"
+        } ], [ {
+          "type" : "text",
+          "text" : "length 255; indexed (`by_name` index group)"
+        } ] ]
+      }, {
+        "cells" : [ [ {
+          "type" : "text",
+          "text" : "`entityIdentifier`"
+        } ], [ {
+          "type" : "text",
+          "text" : "`List<EntityIdentifier>`"
+        } ], [ {
+          "type" : "text",
+          "text" : "LIST (component `cdm.party.EntityIdentifier`)"
+        } ], [ {
+          "type" : "text",
+          "text" : "EMBEDDED"
+        } ], [ {
+          "type" : "text",
+          "text" : "yes"
+        } ], [ {
+          "type" : "text",
+          "text" : "one JSON column `entity_identifier`; `hideInSearchResults` (opaque JSON is not a useful grid column)"
+        } ] ]
+      } ],
+      "headerRows" : 1
+    }
+  }, {
+    "id" : "c34e8526",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The CDM "
+    }, {
+      "type" : "text",
+      "text" : "[metadata reference]",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " persistence reason carries over: the bean is persistable, not embedded, because other CDM types hold "
+    }, {
+      "type" : "text",
+      "text" : "Ref<LegalEntity>",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " to it."
+    } ]
+  }, {
+    "id" : "907e50c3",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "bean: EntityIdentifier"
+    } ]
+  }, {
+    "id" : "ef248dfb",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "An embedded "
+    }, {
+      "type" : "text",
+      "text" : "BEAN",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " ("
+    }, {
+      "type" : "text",
+      "text" : "implements IJsonObject",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", no persistence descriptor, no table, no sheet) — CDM owns it inline; its CDM "
+    }, {
+      "type" : "text",
+      "text" : "[metadata key]",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " is dropped on port. Two fields:"
+    } ]
+  }, {
+    "id" : "6c75046e",
+    "type" : "table",
+    "content" : {
+      "type" : "tableContent",
+      "rows" : [ {
+        "cells" : [ [ {
+          "type" : "text",
+          "text" : "Field"
+        } ], [ {
+          "type" : "text",
+          "text" : "Java type"
+        } ], [ {
+          "type" : "text",
+          "text" : "FieldType"
+        } ], [ {
+          "type" : "text",
+          "text" : "ViewType"
+        } ], [ {
+          "type" : "text",
+          "text" : "Nullable"
+        } ], [ {
+          "type" : "text",
+          "text" : "Notes"
+        } ] ]
+      }, {
+        "cells" : [ [ {
+          "type" : "text",
+          "text" : "`identifier`"
+        } ], [ {
+          "type" : "text",
+          "text" : "`String`"
+        } ], [ {
+          "type" : "text",
+          "text" : "STRING"
+        } ], [ {
+          "type" : "text",
+          "text" : "TEXT"
+        } ], [ {
+          "type" : "text",
+          "text" : "no"
+        } ], [ {
+          "type" : "text",
+          "text" : "length 255"
+        } ] ]
+      }, {
+        "cells" : [ [ {
+          "type" : "text",
+          "text" : "`identifierType`"
+        } ], [ {
+          "type" : "text",
+          "text" : "`EntityIdentifierTypeEnum`"
+        } ], [ {
+          "type" : "text",
+          "text" : "ENUM"
+        } ], [ {
+          "type" : "text",
+          "text" : "SELECT_POPUP"
+        } ], [ {
+          "type" : "text",
+          "text" : "no"
+        } ], [ {
+          "type" : "text",
+          "text" : "column length 20"
+        } ] ]
+      } ],
+      "headerRows" : 1
+    }
+  }, {
+    "id" : "e1847773",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "enum: EntityIdentifierTypeEnum"
+    } ]
+  }, {
+    "id" : "1e90d6e5",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "An "
+    }, {
+      "type" : "text",
+      "text" : "IDisplayableEnum",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " with exactly the CDM values, verbatim (R8): "
+    }, {
+      "type" : "text",
+      "text" : "BIC",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "LEI",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "MIC",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "REDID",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "COUNTRY_CODE",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "OTHER",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". The CDM source "
+    }, {
+      "type" : "text",
+      "text" : "extends PartyIdentifierTypeEnum",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", so the parent's values ("
+    }, {
+      "type" : "text",
+      "text" : "BIC",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "/"
+    }, {
+      "type" : "text",
+      "text" : "LEI",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "/"
+    }, {
+      "type" : "text",
+      "text" : "MIC",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ") are flattened in ahead of this enum's own tokens ("
+    }, {
+      "type" : "text",
+      "text" : "REDID",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "/"
+    }, {
+      "type" : "text",
+      "text" : "CountryCode",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "/"
+    }, {
+      "type" : "text",
+      "text" : "Other",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ") — recorded as a deviation in the port's "
+    }, {
+      "type" : "text",
+      "text" : "manifest.yml",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "."
+    } ]
+  }, {
+    "id" : "e154ad59",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Validation"
+    } ]
+  }, {
+    "id" : "ff600bb6",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Three rules, none expressible by a per-field "
+    }, {
+      "type" : "text",
+      "text" : "validationDescriptor",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " flag alone — all live in a "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntityValidator",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " ("
+    }, {
+      "type" : "text",
+      "text" : "IBeanValidator",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", naming-convention discovery beside the entity class):"
+    } ]
+  }, {
+    "id" : "e8366b88",
+    "type" : "numberedListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "R1 / A1–A2",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " — an identifier of type "
+    }, {
+      "type" : "text",
+      "text" : "LEI",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " must be exactly 20 alphanumeric characters (ISO 17442). Reported as a "
+    }, {
+      "type" : "text",
+      "text" : "field-scoped",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " error on the offending row's "
+    }, {
+      "type" : "text",
+      "text" : "identifier",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " field so it surfaces inline as the user types, not only at Save."
+    } ]
+  }, {
+    "id" : "9dd0e459",
+    "type" : "numberedListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "P1 / A3",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " — within one legal entity, an identifier value must not appear more than once on the record, regardless of identifier type (no duplicate rows, and no same value under two different types). Reported as a "
+    }, {
+      "type" : "text",
+      "text" : "bean-level",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " error — it is genuinely cross-row, so it surfaces in the form's summary at Save."
+    } ]
+  }, {
+    "id" : "242c8922",
+    "type" : "numberedListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "P2 / A4",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " — the identifier-type values are the CDM "
+    }, {
+      "type" : "text",
+      "text" : "EntityIdentifierTypeEnum",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " set, verbatim. Enforced by the enum itself; the picker offers exactly those six values and no others."
+    } ]
+  }, {
+    "id" : "1b211daf",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Embedded validation recurses: a blocking error inside an "
+    }, {
+      "type" : "text",
+      "text" : "EntityIdentifier",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " row bubbles up and disables the parent "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " form's Save. The parent's layout hand-draws the embedded rows, so it must read "
+    }, {
+      "type" : "text",
+      "text" : "entry.getBeanModel().getHasBlockingErrors().get()",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and mark the row visually — otherwise a validator fires, Save goes disabled, and the row looks fine."
+    } ]
+  }, {
+    "id" : "94f2ddbe",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "View layouts"
+    } ]
+  }, {
+    "id" : "de95a785",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The spec's attachments carry the authored layout JS for both beans ("
+    }, {
+      "type" : "text",
+      "text" : "ui/cdm.party.LegalEntity.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "ui/cdm.party.EntityIdentifier.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ") and are used verbatim — the design's decisions are already in them:"
+    } ]
+  }, {
+    "id" : "67461f42",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "LegalEntity form",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " — a decorative \"CDM\" emblem (a "
+    }, {
+      "type" : "text",
+      "text" : "ui.svg",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " node) centered at the top, above both sections; it follows the theme, carries no data and no interaction. Below it, two sections: \"Legal Entity\" (the "
+    }, {
+      "type" : "text",
+      "text" : "name",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " field) and \"Entity Identifiers\" (the embedded identifier rows), each field label-above-field, helper text carrying the LEI format rule."
+    } ]
+  }, {
+    "id" : "c2b8d7df",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "EntityIdentifier row",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " — a compact inline form in the Stripe-style metadata-row pattern: identifier type and value side by side on one line (type narrower at grid size 5, value wider at size 7), proper labels above each field, no decorative emblem, no card chrome beyond a thin left accent border, and no per-row submit — the row saves with its parent "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "."
+    } ]
+  }, {
+    "id" : "b4b80e68",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The bean's standard search/listing screen is the platform's default for a "
+    }, {
+      "type" : "text",
+      "text" : "PERSISTABLE_BEAN",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " with a "
+    }, {
+      "type" : "text",
+      "text" : "@ServesEntity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " sheet — no bespoke layout is authored for it."
+    } ]
+  }, {
+    "id" : "e9f3c225",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Persistence"
+    } ]
+  }, {
+    "id" : "7d070b85",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "One table, "
+    }, {
+      "type" : "text",
+      "text" : "legal_entity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", created by the initial "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntity_V0_V1",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " migration: system columns plus "
+    }, {
+      "type" : "text",
+      "text" : "name",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (STRING 255, not null) and "
+    }, {
+      "type" : "text",
+      "text" : "entity_identifier",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (the single JSON column the embedded list serialises into). An index on "
+    }, {
+      "type" : "text",
+      "text" : "name",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " per the "
+    }, {
+      "type" : "text",
+      "text" : "by_name",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " index group. "
+    }, {
+      "type" : "text",
+      "text" : "EntityIdentifier",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " gets no migration, no table and no sheet — it lives inside the row of the bean that embeds it."
+    } ]
+  }, {
+    "id" : "5aa0fa1b",
+    "type" : "heading",
+    "props" : {
+      "level" : 2
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Tasks"
+    } ]
+  }, {
+    "id" : "52794178",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Task 1: Author the LegalEntity and EntityIdentifier classes and enum"
+    } ]
+  }, {
+    "id" : "e57612f0",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Depends on",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": None"
+    } ]
+  }, {
+    "id" : "955a65ec",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Create three Java classes in "
+    }, {
+      "type" : "text",
+      "text" : "cyai.cdm.base.staticdata.party",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "37ee2a80",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "EntityIdentifierTypeEnum",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " — an "
+    }, {
+      "type" : "text",
+      "text" : "IDisplayableEnum",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " with exactly the six CDM values ("
+    }, {
+      "type" : "text",
+      "text" : "BIC",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "LEI",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "MIC",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "REDID",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "COUNTRY_CODE",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "OTHER",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "), verbatim per R8. Carries "
+    }, {
+      "type" : "text",
+      "text" : "@JsonTypeName",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and a "
+    }, {
+      "type" : "text",
+      "text" : "jsontypes.json",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " entry."
+    } ]
+  }, {
+    "id" : "fbd6e562",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "EntityIdentifier",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " — an embedded "
+    }, {
+      "type" : "text",
+      "text" : "BEAN",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " ("
+    }, {
+      "type" : "text",
+      "text" : "implements IJsonObject",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", not "
+    }, {
+      "type" : "text",
+      "text" : "AbstractRdbmsEntity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "): "
+    }, {
+      "type" : "text",
+      "text" : "identifier",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (String) and "
+    }, {
+      "type" : "text",
+      "text" : "identifierType",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (the enum), both final and non-null. "
+    }, {
+      "type" : "text",
+      "text" : "@JsonTypeName",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "@JsonDeserialize(builder)",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", a no-arg probe constructor, a "
+    }, {
+      "type" : "text",
+      "text" : "@JsonPOJOBuilder",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " builder, value "
+    }, {
+      "type" : "text",
+      "text" : "equals",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "/"
+    }, {
+      "type" : "text",
+      "text" : "hashCode",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "/"
+    }, {
+      "type" : "text",
+      "text" : "toString",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "."
+    } ]
+  }, {
+    "id" : "bede145f",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "LegalEntity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " — a "
+    }, {
+      "type" : "text",
+      "text" : "PERSISTABLE_BEAN",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " ("
+    }, {
+      "type" : "text",
+      "text" : "extends AbstractRdbmsEntity<LegalEntity>",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "): "
+    }, {
+      "type" : "text",
+      "text" : "name",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (String) and "
+    }, {
+      "type" : "text",
+      "text" : "entityIdentifier",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " ("
+    }, {
+      "type" : "text",
+      "text" : "List<EntityIdentifier>",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", never null — empty when absent). "
+    }, {
+      "type" : "text",
+      "text" : "@JsonDeserialize(builder)",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "@JsonPOJOBuilder(withPrefix = \"with\")",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "copy(long)",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", the "
+    }, {
+      "type" : "text",
+      "text" : "internalToString",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "/"
+    }, {
+      "type" : "text",
+      "text" : "internalHashCode",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "/"
+    }, {
+      "type" : "text",
+      "text" : "internalEquals",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " trio, "
+    }, {
+      "type" : "text",
+      "text" : "ENTITY_NAME",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "/"
+    }, {
+      "type" : "text",
+      "text" : "ENTITY_CLASS_KEY",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " constants."
+    } ]
+  }, {
+    "id" : "71568fd2",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Register both beans' "
+    }, {
+      "type" : "text",
+      "text" : "jsontypes.json",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " entries. Ship the standard test set: descriptor-integrity, JSON round-trip at each bean level, light builder/equality, and the metadata-resolution smoke test for the "
+    }, {
+      "type" : "text",
+      "text" : "PERSISTABLE_BEAN",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "."
+    } ]
+  }, {
+    "id" : "8002d830",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "12029ba8",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Both classes compile and pass the descriptor-integrity suite (every field's "
+    }, {
+      "type" : "text",
+      "text" : "fieldType",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " matches its Java type; the "
+    }, {
+      "type" : "text",
+      "text" : "BEAN",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " carries no type-level "
+    }, {
+      "type" : "text",
+      "text" : "persistenceDescriptor",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "; the "
+    }, {
+      "type" : "text",
+      "text" : "PERSISTABLE_BEAN",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " carries one)."
+    } ]
+  }, {
+    "id" : "a2a353f8",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "JSON round-trip preserves both beans' values and their "
+    }, {
+      "type" : "text",
+      "text" : "jsontype",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " discriminators."
+    } ]
+  }, {
+    "id" : "2335ccab",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Task 2: Register the entity descriptors"
+    } ]
+  }, {
+    "id" : "112e9585",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Depends on",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": Task-1"
+    } ]
+  }, {
+    "id" : "3cc2a4f0",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Copy the spec-time descriptors "
+    }, {
+      "type" : "text",
+      "text" : "verbatim",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " into the entity-descriptor registry:"
+    } ]
+  }, {
+    "id" : "6a587694",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "entity_descriptors/cdm.party.LegalEntity.json",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " → "
+    }, {
+      "type" : "text",
+      "text" : "cdm.party.LegalEntity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " ("
+    }, {
+      "type" : "text",
+      "text" : "PERSISTABLE_BEAN",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", table "
+    }, {
+      "type" : "text",
+      "text" : "legal_entity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "SEQUENCE",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " id, "
+    }, {
+      "type" : "text",
+      "text" : "by_name",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " index group; "
+    }, {
+      "type" : "text",
+      "text" : "name",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " STRING/TEXT not-null; "
+    }, {
+      "type" : "text",
+      "text" : "entityIdentifier",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " LIST/EMBEDDED with "
+    }, {
+      "type" : "text",
+      "text" : "componentName",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " "
+    }, {
+      "type" : "text",
+      "text" : "cdm.party.EntityIdentifier",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ")."
+    } ]
+  }, {
+    "id" : "278b4ece",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "entity_descriptors/cdm.party.EntityIdentifier.json",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " → "
+    }, {
+      "type" : "text",
+      "text" : "cdm.party.EntityIdentifier",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " ("
+    }, {
+      "type" : "text",
+      "text" : "BEAN",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", no persistence descriptor; "
+    }, {
+      "type" : "text",
+      "text" : "identifier",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " STRING/TEXT not-null; "
+    }, {
+      "type" : "text",
+      "text" : "identifierType",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " ENUM/SELECT_POPUP not-null)."
+    } ]
+  }, {
+    "id" : "01eb1e68",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "9cb15adf",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Both descriptors load via "
+    }, {
+      "type" : "text",
+      "text" : "EntityDescriptorClassLoader",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " with no orphans; the "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " descriptor's "
+    }, {
+      "type" : "text",
+      "text" : "entityIdentifier",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " field resolves its component to the "
+    }, {
+      "type" : "text",
+      "text" : "EntityIdentifier",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " descriptor."
+    } ]
+  }, {
+    "id" : "f9d1a1b6",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Task 3: Author the initial migration"
+    } ]
+  }, {
+    "id" : "4b3728f7",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Depends on",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": Task-2"
+    } ]
+  }, {
+    "id" : "7d96f93d",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Create "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntity_V0_V1",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " beside the entity class, implementing "
+    }, {
+      "type" : "text",
+      "text" : "IMigration",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": "
+    }, {
+      "type" : "text",
+      "text" : "createTable(\"legal_entity\")",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " with "
+    }, {
+      "type" : "text",
+      "text" : "withSystemColumns()",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "ColumnDef.typeString(\"name\", 255).notNull()",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", and the single JSON column for the embedded list ("
+    }, {
+      "type" : "text",
+      "text" : "entity_identifier",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " — no column per embedded bean field; the whole list serialises into it). Add the "
+    }, {
+      "type" : "text",
+      "text" : "by_name",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " index on "
+    }, {
+      "type" : "text",
+      "text" : "name",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". Bump the descriptor's "
+    }, {
+      "type" : "text",
+      "text" : "version",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " to match via "
+    }, {
+      "type" : "text",
+      "text" : "saveEntityDescriptor",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "."
+    } ]
+  }, {
+    "id" : "cf97b76c",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "de4be9dd",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The migration runs on a fresh database and on a "
+    }, {
+      "type" : "text",
+      "text" : "persistence.cmm",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " location (checked, not executed) without error; the table's shape matches the descriptor."
+    } ]
+  }, {
+    "id" : "b2fafb59",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Task 4: Ship the view layouts verbatim from the spec"
+    } ]
+  }, {
+    "id" : "2ef158d3",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Depends on",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": Task-2"
+    } ]
+  }, {
+    "id" : "3a8a5c4d",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Copy the spec-time layout JS "
+    }, {
+      "type" : "text",
+      "text" : "verbatim",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " into the beans' resource paths, beside the entity classes:"
+    } ]
+  }, {
+    "id" : "cc7a7fc1",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "ui/cdm.party.LegalEntity.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " → the "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " default form: the decorative \"CDM\" emblem ("
+    }, {
+      "type" : "text",
+      "text" : "ui.svg",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ") centered above both sections, then the \"Legal Entity\" section ("
+    }, {
+      "type" : "text",
+      "text" : "name",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ") and the \"Entity Identifiers\" section (the embedded rows), each field label-above-field, helper text carrying the LEI format rule."
+    } ]
+  }, {
+    "id" : "35fb1281",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "ui/cdm.party.EntityIdentifier.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " → the embedded row's default form: identifier type (grid size 5) and value (grid size 7) side by side on one line, labels above each field, no decorative emblem, no per-row submit."
+    } ]
+  }, {
+    "id" : "5fc849e6",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "108f8079",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " form renders the emblem, both sections and the embedded rows; the "
+    }, {
+      "type" : "text",
+      "text" : "EntityIdentifier",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " row renders type and value side by side with no per-row submit."
+    } ]
+  }, {
+    "id" : "fda4af6f",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Task 5: Author the LegalEntityValidator"
+    } ]
+  }, {
+    "id" : "a60410d9",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Depends on",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": Task-1"
+    } ]
+  }, {
+    "id" : "c8778b47",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Create "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntityValidator",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " beside the entity class (naming-convention discovery, no registration), implementing "
+    }, {
+      "type" : "text",
+      "text" : "IBeanValidator",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". Two rules in "
+    }, {
+      "type" : "text",
+      "text" : "validate(ctx)",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "47d04508",
+    "type" : "numberedListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "R1 (A1, A2)",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " — for each row in "
+    }, {
+      "type" : "text",
+      "text" : "entityIdentifier",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " whose "
+    }, {
+      "type" : "text",
+      "text" : "identifierType",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " is "
+    }, {
+      "type" : "text",
+      "text" : "LEI",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", the "
+    }, {
+      "type" : "text",
+      "text" : "identifier",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " value must be exactly 20 alphanumeric characters (ISO 17442). Report as a "
+    }, {
+      "type" : "text",
+      "text" : "field-scoped",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " "
+    }, {
+      "type" : "text",
+      "text" : "BeanValidationError.field(...)",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " on the offending row's "
+    }, {
+      "type" : "text",
+      "text" : "identifier",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " path so it surfaces inline as the user types, not only at Save."
+    } ]
+  }, {
+    "id" : "360a0b7f",
+    "type" : "numberedListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "P1 (A3)",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " — no identifier value may appear more than once across the record, regardless of type (no duplicate rows, and no same value under two different types). Report as a "
+    }, {
+      "type" : "text",
+      "text" : "bean-level",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " "
+    }, {
+      "type" : "text",
+      "text" : "BeanValidationError.bean(...)",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " — genuinely cross-row, so it surfaces in the form's summary at Save."
+    } ]
+  }, {
+    "id" : "5fe0ca1b",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "P2 (A4) needs no validator code — the enum itself fixes the picker's value set."
+    } ]
+  }, {
+    "id" : "36537954",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Embedded validation recurses: a blocking error inside an "
+    }, {
+      "type" : "text",
+      "text" : "EntityIdentifier",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " row bubbles up and disables the parent form's Save. The parent's layout hand-draws the embedded rows, so it must read "
+    }, {
+      "type" : "text",
+      "text" : "entry.getBeanModel().getHasBlockingErrors().get()",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and mark the row visually — otherwise a validator fires, Save goes disabled, and the row looks fine."
+    } ]
+  }, {
+    "id" : "351a4749",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Ship unit tests driving "
+    }, {
+      "type" : "text",
+      "text" : "configure",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "/"
+    }, {
+      "type" : "text",
+      "text" : "validate",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " against a fake "
+    }, {
+      "type" : "text",
+      "text" : "IBeanContext",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": a valid LEI passes (A2), a malformed one is rejected with a field-scoped error naming the identifier field (A1), a duplicate value under the same type twice and under two different types is each rejected as a duplicate (A3)."
+    } ]
+  }, {
+    "id" : "2d2934c0",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "245df7ea",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A1) a legal entity saved with an LEI-typed identifier whose value is not exactly 20 alphanumeric characters is rejected with a validation error naming the identifier field."
+    } ]
+  }, {
+    "id" : "7f88b8bf",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A2) a legal entity saved with an LEI-typed identifier whose value is exactly 20 alphanumeric characters is accepted."
+    } ]
+  }, {
+    "id" : "4612fc71",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A3) a legal entity carrying two identifier rows with the same value — same type twice, or two different types — is rejected as a duplicate."
+    } ]
+  }, {
+    "id" : "203d8eeb",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Task 6: Serve the entity through its observer sheet"
+    } ]
+  }, {
+    "id" : "6ee2b91d",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Depends on",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": Task-1, Task-3"
+    } ]
+  }, {
+    "id" : "755a6642",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Create "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntitySheet",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " in "
+    }, {
+      "type" : "text",
+      "text" : "cyai.cdm.sheets",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", extending the existing "
+    }, {
+      "type" : "text",
+      "text" : "AbstractCdmEntityInstanceSheet",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (the CDM adapter of the platform's writable entity-instance base — the sheet plane is already bootstrapped; this task creates no caller sheet, no seeder and no domain adapter). The class is annotations plus a name constant: "
+    }, {
+      "type" : "text",
+      "text" : "@ServesEntity(entity = LegalEntity.class, mode = AccessMode.READ_WRITE, ...)",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and "
+    }, {
+      "type" : "text",
+      "text" : "@Sheet(name = ..., classVersion = 1, callerSheet = ...)",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", mirroring the existing CDM sheets (e.g. "
+    }, {
+      "type" : "text",
+      "text" : "AccountSheet",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "). This gives the entity its full standard surface — point read, roster, filtered/paged search, count, upsert, delete, bulk import, agent tools — which is what makes it browsable and what lets the referencing CDM types' "
+    }, {
+      "type" : "text",
+      "text" : "Ref<LegalEntity>",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " pointers resolve."
+    } ]
+  }, {
+    "id" : "dadebd37",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Ship the standard test set for the sheet: a save through the "
+    }, {
+      "type" : "text",
+      "text" : "save",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " cell round-trips a "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " row (A2's save path end to end), and a roster read lists saved rows."
+    } ]
+  }, {
+    "id" : "2f5ff0e0",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "0add3a37",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A2) a legal entity with a valid 20-character LEI saves through the sheet's "
+    }, {
+      "type" : "text",
+      "text" : "save",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " cell and reads back with its values intact."
+    } ]
+  }, {
+    "id" : "ebcd886a",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Task 7: End-to-end acceptance — save-time rules enforced through the sheet"
+    } ]
+  }, {
+    "id" : "59075efd",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Depends on",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": Task-5, Task-6"
+    } ]
+  }, {
+    "id" : "f5d8fd00",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Drive the three save-time rules through the sheet's "
+    }, {
+      "type" : "text",
+      "text" : "save",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " cell, not just the form validator, so the \"system SHALL reject\" wording of A1 and A3 is proven at the entity's actual remote surface — the same place a bulk import or an agent tool would hit it. A malformed LEI (A1) and a duplicate identifier value (A3) are each rejected; a valid LEI (A2) saves. Confirm A4 by rendering the identifier-type picker from the descriptor and asserting its option set is exactly the six CDM values."
+    } ]
+  }, {
+    "id" : "c84e6f79",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "1aba0e4c",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A1) a save carrying an LEI-typed identifier whose value is not exactly 20 alphanumeric characters is rejected with a validation error naming the identifier field."
+    } ]
+  }, {
+    "id" : "011e4f0e",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A3) a save carrying two identifier rows with the same value — same type twice, or two different types — is rejected as a duplicate."
+    } ]
+  }, {
+    "id" : "50acdc30",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A4) the identifier-type picker offers exactly BIC, LEI, MIC, REDID, COUNTRY_CODE, OTHER and no other value."
+    } ]
+  } ],
+  "comments" : [ ],
+  "metadata" : {
+    "createdAt" : "2026-09-24T08:27:33.279918500Z"
+  }
+}

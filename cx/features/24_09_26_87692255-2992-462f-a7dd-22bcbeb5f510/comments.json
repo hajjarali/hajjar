@@ -1,0 +1,85 @@
+[ {
+  "threadId" : "a2954646-a01c-4ce5-8557-4b467254daae",
+  "text" : "Tasks",
+  "occurrence" : 0,
+  "resolved" : false,
+  "comments" : [ {
+    "id" : "fde545bb-77c2-4a15-8fff-888c32d41ac3",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "A5, A6 are verified by no task. Every spec acceptance criterion must appear on at least one task's acceptance criteria (\"(A2) saving a duplicate LEI is refused\") — a criterion nothing implements is work nobody planned.",
+    "createdAt" : "2026-09-24T08:27:33.279918500Z"
+  } ]
+}, {
+  "threadId" : "828e6724-c15a-4572-a996-27ae3c4ed49a",
+  "text" : "the parent's values (`BIC`/`LEI`/`MIC`) are flattened in ahead of this enum's own tokens (`REDID`/`CountryCode`/`Other`)",
+  "occurrence" : 0,
+  "resolved" : false,
+  "comments" : [ {
+    "id" : "ec83da68-2a7a-478f-9320-af97cfb35f07",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "The design contradicts itself on the enum's literal token names: the same section first states the values verbatim as `COUNTRY_CODE`, `OTHER` (per P2), then says the enum's own tokens are `CountryCode`/`Other` (CDM Java casing). If the implementer follows the parenthetical, A4 fails — the picker would offer `CountryCode`/`Other` instead of the spec's verbatim set. State the exact constant names the enum carries (COUNTRY_CODE, OTHER) and clarify whether `CountryCode`/`Other` are only the CDM source's Java identifiers, with the platform enum using the P2 spelling (or a display-name mapping).",
+    "createdAt" : "2026-09-24T08:27:33.279918500Z"
+  } ]
+}, {
+  "threadId" : "1101eb5e-92fe-43de-a8c6-dc7a06cb1277",
+  "text" : "`entityIdentifier` (`List<EntityIdentifier>`, never null — empty when absent)",
+  "occurrence" : 0,
+  "resolved" : false,
+  "comments" : [ {
+    "id" : "a4c44585-c80c-4dd2-bc9a-0e9b418eb278",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "The design's field table marks `entityIdentifier` as Nullable: yes, but Task 1 declares the list never null (empty when absent). These cannot both be true — the descriptor registered in Task 2 and the descriptor-integrity test in Task 1 will disagree. Pick one invariant (never-null-empty is the better fit for a CDM list) and update the design table's Nullable column and the descriptor note to match.",
+    "createdAt" : "2026-09-24T08:27:33.279918500Z"
+  } ]
+}, {
+  "threadId" : "c2921e73-e056-4d51-8087-fcb48d62be4a",
+  "text" : "it must read `entry.getBeanModel().getHasBlockingErrors().get()` and mark the row visually",
+  "occurrence" : 0,
+  "resolved" : false,
+  "comments" : [ {
+    "id" : "6789fb43-a682-4e1f-9ea6-56570e98c8d3",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "This row-marking is layout work, but Task 4 ships `ui/cdm.party.LegalEntity.js` verbatim from the spec attachment — so either the spec attachment already reads `getHasBlockingErrors()` and marks the row (in which case this sentence is narration and should be deleted from Task 5), or it does not (in which case no task delivers the change and 'verbatim' copying is wrong — name the edit Task 4 must make). Note also this paragraph appears word-for-word in both the design's Validation section and Task 5; keep the decision in one place.",
+    "createdAt" : "2026-09-24T08:27:33.279918500Z"
+  } ]
+}, {
+  "threadId" : "db929515-1fe7-4dc9-a1c8-bd9fa1db7ada",
+  "text" : "a no-arg probe constructor, a `@JsonPOJOBuilder` builder, value `equals`/`hashCode`/`toString`",
+  "occurrence" : 0,
+  "resolved" : false,
+  "comments" : [ {
+    "id" : "c4e0e5c3-b8be-4a4c-a9b8-11af4724dbd3",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "Task 1 enumerates the full base-class contract (`@JsonDeserialize(builder)`, probe constructor, builder, equals/hashCode/toString, the `internal*` trio, `ENTITY_NAME`/`ENTITY_CLASS_KEY`) — boilerplate every entity class carries per the platform guide. Trim to the non-boilerplate decisions (the field sets, the enum's six values, embedded-vs-persistable distinction, `jsontypes.json` entries) and cite the entity guide for the rest; the enumeration will drift independently of the guide it restates.",
+    "createdAt" : "2026-09-24T08:27:33.279918500Z"
+  } ]
+}, {
+  "threadId" : "a7621231-4b96-43de-b2ce-432098353f9a",
+  "text" : "### Task 7: End-to-end acceptance — save-time rules enforced through the sheet",
+  "occurrence" : 0,
+  "resolved" : false,
+  "comments" : [ {
+    "id" : "b9a2f2a2-df23-4f71-a3ac-027e3cdc06f8",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "Constructive: the dual-path test split is sound and well-justified — Task 5's unit tests drive the validator directly against a fake context while Task 7 proves A1/A3 at the sheet's `save` cell (the actual remote surface), and Task 6 already carries the A2 save-path citation, so Task 7's criteria correctly omit a redundant A2 line. No change needed; recorded so the reviewer chain knows the apparent A1/A3 overlap between Tasks 5 and 7 is deliberate, not duplication.",
+    "createdAt" : "2026-09-24T08:27:33.279918500Z"
+  } ]
+} ]
