@@ -8,6 +8,15 @@
         return { id: id + "_gi", jsontype: "mui.grid", props: { size: size }, elements: { [el.id]: el } };
     }
 
+    // For fields whose widget takes no label props (e.g. a reference picker):
+    // place the server element BARE and draw the label as layout chrome beside it.
+    function gridFieldBare(id, size, label) {
+        const el = viewUtils.buildUIElement(id);
+        const cap = { id: id + "_cap", jsontype: "mui.typography",
+            props: { variant: "caption", children: label, sx: { textTransform: "none", color: "text.secondary", display: "block", mb: 0.5 } } };
+        return { id: id + "_gi", jsontype: "mui.grid", props: { size: size }, elements: { [cap.id]: cap, [el.id]: el } };
+    }
+
     function section(sectionId, accent, title, items) {
         const grid = sectionId + "_g";
         const children = {};
@@ -60,7 +69,7 @@
 
         const enrolment = section(root + "_enrolment", "secondary", "Enrolment", [
             gridField(fid("className"), 6, "Class", "e.g. 7B"),
-            gridField(fid("school"), 6, "School")
+            gridFieldBare(fid("school"), 6, "School")
         ]);
 
         return { sx: { p: 2, maxWidth: 720, mx: "auto", minWidth: 320 },
