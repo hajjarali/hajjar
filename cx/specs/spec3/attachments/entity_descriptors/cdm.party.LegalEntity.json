@@ -1,0 +1,69 @@
+{
+  "descriptors" : [ {
+    "name" : "cdm.party.LegalEntity",
+    "className" : "cyai.cdm.party.LegalEntity",
+    "entityType" : "PERSISTABLE_BEAN",
+    "label" : "Legal Entity",
+    "description" : "A legal entity — a named institution with an optional set of identifiers such as the LEI. Realises cdm.base.staticdata.party.LegalEntity; the firm's register of the counterparties it faces and its own booking entities.",
+    "group" : "cdm.party",
+    "persistenceDescriptor" : {
+      "tableName" : "legal_entity",
+      "idGenerationStrategy" : "AUTO_INCREMENT",
+      "indexGroups" : {
+        "by_name" : [ "name" ]
+      },
+      "naturalKeyGroups" : {
+        "by_name" : [ "name" ]
+      },
+      "cacheDescriptor" : {
+        "strategy" : "NONE"
+      }
+    },
+    "fieldDescriptors" : {
+      "name" : {
+        "name" : "name",
+        "fieldType" : "STRING",
+        "label" : "Name",
+        "description" : "The legal entity's legal name, e.g. \"BlackRock Investment Management (UK) Limited\".",
+        "persistenceDescriptor" : {
+          "columnName" : "name",
+          "length" : 255
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "entityIdentifier" : {
+        "name" : "entityIdentifier",
+        "fieldType" : "LIST",
+        "label" : "Entity Identifiers",
+        "description" : "The entity's identifiers — LEI, BIC, RED pair id, MIC, country code — in CDM's own shape.",
+        "persistenceDescriptor" : {
+          "columnName" : "entity_identifier"
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "EMBEDDED"
+        },
+        "componentName" : {
+          "jsontype" : "entity.desc.entityKey",
+          "name" : "cdm.party.EntityIdentifier",
+          "version" : 0
+        },
+        "systemField" : false
+      }
+    },
+    "relationships" : { },
+    "version" : 1
+  } ]
+}
