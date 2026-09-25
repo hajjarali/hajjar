@@ -1,1 +1,1 @@
-{"spec_id":"682fca8c-168f-48a6-9578-696a155a616a","name":"spec3","property_metadata":{}}
+{"spec_id":"682fca8c-168f-48a6-9578-696a155a616a","name":"spec3","property_metadata":{"domain":"trading","entityCluster":"reference-data","keyEntity":"LegalEntity","reuseGate":"entity catalog checked (61 entities, no party/legal-entity noun — no overlap); spec registry checked (spec3 only); cdm corpus read for LegalEntity, EntityIdentifier, EntityIdentifierTypeEnum; company corpus read for standing rules R7/R8, counterparties, glossary, firm-profile"}}
