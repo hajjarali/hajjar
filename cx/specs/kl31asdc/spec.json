@@ -1,1 +1,1 @@
-{"spec_id":"c77d8d9d-615d-4249-9e07-282fa5ef84c1","name":"kl31asdc","property_metadata":{}}
+{"spec_id":"c77d8d9d-615d-4249-9e07-282fa5ef84c1","name":"kl31asdc","property_metadata":{"dataClass":"INTERNAL","domain":"onboarding","entityCluster":"reference-data","keyEntity":"LegalEntity","reuseGate":"Entity catalog (68 entities) and spec registry (1 spec, this one) checked — no existing entity or spec covers legal entities; CDM corpus read for LegalEntity/Party vocabulary; company corpus read for counterparty terminology and standing rules R7/R19."}}

@@ -1,0 +1,181 @@
+{
+  "descriptors" : [ {
+    "name" : "cdm.party.LegalEntity",
+    "className" : "cyai.cdm.party.LegalEntity",
+    "entityType" : "PERSISTABLE_BEAN",
+    "label" : "Legal Entity",
+    "description" : "A legal entity FCY does business with — the house 'counterparty'. Carries its LEI, EMIR counterparty category, business segment and lifecycle status. Realises CDM cyai.cdm.base.staticdata.party.LegalEntity.",
+    "group" : "cdm.party",
+    "persistenceDescriptor" : {
+      "tableName" : "legal_entity",
+      "idGenerationStrategy" : "AUTO_INCREMENT",
+      "indexGroups" : {
+        "by_status" : [ "status" ],
+        "by_name" : [ "name" ]
+      },
+      "naturalKeyGroups" : { },
+      "cacheDescriptor" : {
+        "strategy" : "NONE"
+      }
+    },
+    "fieldDescriptors" : {
+      "name" : {
+        "name" : "name",
+        "fieldType" : "STRING",
+        "label" : "Legal Name",
+        "description" : "The legal name as it appears on the governing agreement.",
+        "persistenceDescriptor" : {
+          "columnName" : "name",
+          "length" : 255
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "lei" : {
+        "name" : "lei",
+        "fieldType" : "STRING",
+        "label" : "LEI",
+        "description" : "The Legal Entity Identifier (ISO 17442, 20 alphanumeric characters). Unique across the register when present; an LEI belongs to one entity permanently, so retirement does not free it for re-use.",
+        "persistenceDescriptor" : {
+          "columnName" : "lei",
+          "length" : 20
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : true,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "status" : {
+        "name" : "status",
+        "fieldType" : "ENUM",
+        "label" : "Status",
+        "description" : "Lifecycle: draft | active | retired. A retired entity is excluded from new business but kept for history.",
+        "persistenceDescriptor" : {
+          "columnName" : "status",
+          "length" : 20,
+          "defaultValue" : "draft"
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "SELECT_POPUP"
+        },
+        "componentName" : {
+          "jsontype" : "entity.desc.entityKey",
+          "name" : "cyai.cdm.party.LegalEntityStatus",
+          "version" : 0
+        },
+        "systemField" : false
+      },
+      "emirCategory" : {
+        "name" : "emirCategory",
+        "fieldType" : "ENUM",
+        "label" : "EMIR Category",
+        "description" : "EMIR counterparty classification: FC (financial counterpart), NFC (non-financial), NFC_MINUS (non-financial below the clearing threshold).",
+        "persistenceDescriptor" : {
+          "columnName" : "emir_category",
+          "length" : 20,
+          "defaultValue" : "FC"
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "SELECT_POPUP"
+        },
+        "componentName" : {
+          "jsontype" : "entity.desc.entityKey",
+          "name" : "cyai.cdm.party.EmirCategory",
+          "version" : 0
+        },
+        "systemField" : false
+      },
+      "segment" : {
+        "name" : "segment",
+        "fieldType" : "ENUM",
+        "label" : "Segment",
+        "description" : "The counterparty-population segment: asset manager, insurer or pension scheme, bank or building society, corporate treasury, interdealer or other.",
+        "persistenceDescriptor" : {
+          "columnName" : "segment",
+          "length" : 40,
+          "defaultValue" : "INTERDEALER_OTHER"
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "SELECT_POPUP"
+        },
+        "componentName" : {
+          "jsontype" : "entity.desc.entityKey",
+          "name" : "cyai.cdm.party.CounterpartySegment",
+          "version" : 0
+        },
+        "systemField" : false
+      },
+      "country" : {
+        "name" : "country",
+        "fieldType" : "ENUM",
+        "label" : "Country",
+        "description" : "The entity's jurisdiction scope: GB (United Kingdom) or EEA_OTHER (elsewhere in the EEA). All current counterparties are UK or EEA.",
+        "persistenceDescriptor" : {
+          "columnName" : "country",
+          "length" : 20
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "SELECT_POPUP"
+        },
+        "componentName" : {
+          "jsontype" : "entity.desc.entityKey",
+          "name" : "cyai.cdm.party.CountryScope",
+          "version" : 0
+        },
+        "systemField" : false
+      },
+      "retiredOn" : {
+        "name" : "retiredOn",
+        "fieldType" : "DATE",
+        "label" : "Retired On",
+        "description" : "The date the entity was retired; set when status becomes retired.",
+        "persistenceDescriptor" : {
+          "columnName" : "retired_on"
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "DATE"
+        },
+        "systemField" : false
+      }
+    },
+    "relationships" : { },
+    "version" : 1
+  } ]
+}
