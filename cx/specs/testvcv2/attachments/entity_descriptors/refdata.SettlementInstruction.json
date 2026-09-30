@@ -57,7 +57,7 @@
         "componentName" : {
           "jsontype" : "entity.desc.entityKey",
           "name" : "refdata.LegalEntity",
-          "version" : 0
+          "version" : 1
         },
         "systemField" : false
       },
@@ -192,7 +192,7 @@
         "targetEntityName" : {
           "jsontype" : "entity.desc.entityKey",
           "name" : "refdata.LegalEntity",
-          "version" : 0
+          "version" : 1
         },
         "fieldName" : "counterparty",
         "owning" : true

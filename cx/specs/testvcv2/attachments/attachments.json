@@ -18,6 +18,12 @@
     "uploaded_at" : "2026-09-30T10:45:29.617031800Z",
     "origin" : "AGENT"
   }, {
+    "name" : "entity_descriptors/refdata.LegalEntity.json",
+    "type" : "ENTITY_DESCRIPTORS",
+    "size_bytes" : 1899,
+    "uploaded_at" : "2026-09-30T10:53:35.610802500Z",
+    "origin" : "AGENT"
+  }, {
     "name" : "entity_descriptors/refdata.SettlementContact.json",
     "type" : "ENTITY_DESCRIPTORS",
     "size_bytes" : 2604,
@@ -27,7 +33,7 @@
     "name" : "entity_descriptors/refdata.SettlementInstruction.json",
     "type" : "ENTITY_DESCRIPTORS",
     "size_bytes" : 6566,
-    "uploaded_at" : "2026-09-30T10:42:18.501812800Z",
+    "uploaded_at" : "2026-09-30T10:58:38.200381800Z",
     "origin" : "AGENT"
   }, {
     "name" : "entity_descriptors/refdata.SettlementMethod.json",
@@ -38,37 +44,43 @@
   }, {
     "name" : "ui/refdata.BankTransfer.js",
     "type" : "UI",
-    "size_bytes" : 1935,
+    "size_bytes" : 1973,
     "uploaded_at" : "2026-09-30T10:44:32.851600900Z",
     "origin" : "AGENT"
   }, {
     "name" : "ui/refdata.CashSweep.js",
     "type" : "UI",
-    "size_bytes" : 1910,
+    "size_bytes" : 1947,
     "uploaded_at" : "2026-09-30T10:44:31.008115800Z",
     "origin" : "AGENT"
   }, {
     "name" : "ui/refdata.CustodyAccount.js",
     "type" : "UI",
-    "size_bytes" : 1930,
+    "size_bytes" : 1967,
     "uploaded_at" : "2026-09-30T10:44:32.954123400Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "ui/refdata.LegalEntity.js",
+    "type" : "UI",
+    "size_bytes" : 1934,
+    "uploaded_at" : "2026-09-30T10:53:51.550105600Z",
     "origin" : "AGENT"
   }, {
     "name" : "ui/refdata.SettlementContact.js",
     "type" : "UI",
-    "size_bytes" : 1805,
+    "size_bytes" : 1841,
     "uploaded_at" : "2026-09-30T10:44:23.278525200Z",
     "origin" : "AGENT"
   }, {
     "name" : "ui/refdata.SettlementInstruction.js",
     "type" : "UI",
-    "size_bytes" : 9784,
+    "size_bytes" : 9953,
     "uploaded_at" : "2026-09-30T10:45:38.616716400Z",
     "origin" : "AGENT"
   }, {
     "name" : "ui/refdata.SettlementMethod.js",
     "type" : "UI",
-    "size_bytes" : 1710,
+    "size_bytes" : 1744,
     "uploaded_at" : "2026-09-30T10:44:23.370934200Z",
     "origin" : "AGENT"
   } ]
