@@ -1,0 +1,51 @@
+{
+  "descriptors" : [ {
+    "name" : "refdata.ForgeLink",
+    "className" : "cyai.refdata.ForgeLink",
+    "entityType" : "BEAN",
+    "label" : "Forge Link",
+    "description" : "A forge association on a legal entity — pointing at one of the deployment's configured forge connections in the context of this entity. An owned child record: it references the live forge configuration rather than copying it, so credentials and connection details stay in one place.",
+    "group" : "refdata",
+    "fieldDescriptors" : {
+      "forge" : {
+        "name" : "forge",
+        "fieldType" : "REFERENCE",
+        "description" : "The forge connection this link points at.",
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "REFERENCE"
+        },
+        "componentName" : {
+          "jsontype" : "entity.desc.entityKey",
+          "name" : "system.integration.Forge",
+          "version" : 1
+        },
+        "systemField" : false
+      },
+      "note" : {
+        "name" : "note",
+        "fieldType" : "STRING",
+        "description" : "Why this entity carries this forge link.",
+        "persistenceDescriptor" : {
+          "length" : 512
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT",
+          "defaultSize" : 260
+        },
+        "systemField" : false
+      }
+    },
+    "relationships" : { },
+    "version" : 1
+  } ]
+}
