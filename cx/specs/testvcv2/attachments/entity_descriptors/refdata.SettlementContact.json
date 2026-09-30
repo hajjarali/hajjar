@@ -4,7 +4,7 @@
     "className" : "cyai.refdata.SettlementContact",
     "entityType" : "BEAN",
     "label" : "Settlement Contact",
-    "description" : "An operational contact held inline on a settlement instruction — who to involve when the instruction is used. Never a root entity.",
+    "description" : "An operational contact for a settlement instruction — name, email, optional phone and role. Held inline inside the instruction's contacts list; never a root entity.",
     "group" : "refdata",
     "fieldDescriptors" : {
       "name" : {
@@ -33,7 +33,7 @@
         "description" : "The contact's email address.",
         "persistenceDescriptor" : {
           "columnName" : "email",
-          "length" : 254
+          "length" : 255
         },
         "validationDescriptor" : {
           "nullable" : false,
@@ -68,7 +68,7 @@
         "name" : "role",
         "fieldType" : "STRING",
         "label" : "Role",
-        "description" : "The contact's role for this instruction, e.g. 'Ops', 'Escalation'.",
+        "description" : "The contact's role in the settlement process, e.g. 'operations', 'escalation'.",
         "persistenceDescriptor" : {
           "columnName" : "role",
           "length" : 64

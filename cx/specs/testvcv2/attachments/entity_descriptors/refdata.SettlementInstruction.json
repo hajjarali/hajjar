@@ -156,7 +156,7 @@
         "componentName" : {
           "jsontype" : "entity.desc.entityKey",
           "name" : "refdata.SettlementMethod",
-          "version" : 0
+          "version" : 1
         },
         "systemField" : false
       },
@@ -180,7 +180,7 @@
         "componentName" : {
           "jsontype" : "entity.desc.entityKey",
           "name" : "refdata.SettlementContact",
-          "version" : 0
+          "version" : 1
         },
         "systemField" : false
       }
