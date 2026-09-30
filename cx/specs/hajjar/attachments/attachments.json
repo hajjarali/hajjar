@@ -1,0 +1,21 @@
+{
+  "attachments" : [ {
+    "name" : "entity_descriptors/refdata.Address.json",
+    "type" : "ENTITY_DESCRIPTORS",
+    "size_bytes" : 4145,
+    "uploaded_at" : "2026-09-30T08:15:10.847977500Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "entity_descriptors/refdata.Identifier.json",
+    "type" : "ENTITY_DESCRIPTORS",
+    "size_bytes" : 1882,
+    "uploaded_at" : "2026-09-30T08:15:10.829044300Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "entity_descriptors/refdata.LegalEntity.json",
+    "type" : "ENTITY_DESCRIPTORS",
+    "size_bytes" : 10373,
+    "uploaded_at" : "2026-09-30T08:17:19.670921300Z",
+    "origin" : "AGENT"
+  } ]
+}

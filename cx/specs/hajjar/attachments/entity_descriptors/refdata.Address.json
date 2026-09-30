@@ -1,0 +1,138 @@
+{
+  "descriptors" : [ {
+    "name" : "refdata.Address",
+    "className" : "cyai.refdata.Address",
+    "entityType" : "BEAN",
+    "label" : "Address",
+    "description" : "An address held on a legal entity — its registered, trading or mailing address. An owned child record: it exists only as part of its entity and is edited inline on the entity's form.",
+    "group" : "refdata",
+    "fieldDescriptors" : {
+      "addressType" : {
+        "name" : "addressType",
+        "fieldType" : "ENUM",
+        "label" : "Address Type",
+        "description" : "The address's role: registered, trading or mailing. At most one registered address per entity.",
+        "persistenceDescriptor" : {
+          "columnName" : "address_type",
+          "length" : 16
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "AUTOCOMPLETE",
+          "viewParameter" : {
+            "jsontype" : "entity.desc.autoCompleteFieldViewParameter",
+            "options" : [ "registered", "trading", "mailing" ]
+          },
+          "defaultSize" : 130
+        },
+        "systemField" : false
+      },
+      "line1" : {
+        "name" : "line1",
+        "fieldType" : "STRING",
+        "label" : "Address Line 1",
+        "description" : "Street address, first line.",
+        "persistenceDescriptor" : {
+          "columnName" : "line1",
+          "length" : 256
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT",
+          "defaultSize" : 240
+        },
+        "systemField" : false
+      },
+      "line2" : {
+        "name" : "line2",
+        "fieldType" : "STRING",
+        "label" : "Address Line 2",
+        "description" : "Street address, second line.",
+        "persistenceDescriptor" : {
+          "columnName" : "line2",
+          "length" : 256
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT",
+          "defaultSize" : 240
+        },
+        "systemField" : false
+      },
+      "city" : {
+        "name" : "city",
+        "fieldType" : "STRING",
+        "label" : "City",
+        "description" : "The city or town.",
+        "persistenceDescriptor" : {
+          "columnName" : "city",
+          "length" : 128
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT",
+          "defaultSize" : 140
+        },
+        "systemField" : false
+      },
+      "postalCode" : {
+        "name" : "postalCode",
+        "fieldType" : "STRING",
+        "label" : "Postal Code",
+        "description" : "The postal or zip code.",
+        "persistenceDescriptor" : {
+          "columnName" : "postal_code",
+          "length" : 32
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT",
+          "defaultSize" : 110
+        },
+        "systemField" : false
+      },
+      "country" : {
+        "name" : "country",
+        "fieldType" : "STRING",
+        "label" : "Country",
+        "description" : "The country or region.",
+        "persistenceDescriptor" : {
+          "columnName" : "country",
+          "length" : 64
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "COUNTRY",
+          "defaultSize" : 140
+        },
+        "systemField" : false
+      }
+    },
+    "relationships" : { },
+    "version" : 1
+  } ]
+}

@@ -1,0 +1,58 @@
+{
+  "descriptors" : [ {
+    "name" : "refdata.Identifier",
+    "className" : "cyai.refdata.Identifier",
+    "entityType" : "BEAN",
+    "label" : "Identifier",
+    "description" : "An additional identifier on a legal entity beyond its LEI — a DUNS, a tax ID, a BIC, or an internal counterparty code. An owned child record, edited inline on the entity's form.",
+    "group" : "refdata",
+    "fieldDescriptors" : {
+      "identifierType" : {
+        "name" : "identifierType",
+        "fieldType" : "ENUM",
+        "label" : "Identifier Type",
+        "description" : "The kind of identifier: DUNS, tax ID, BIC or an internal counterparty code.",
+        "persistenceDescriptor" : {
+          "columnName" : "identifier_type",
+          "length" : 16
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "AUTOCOMPLETE",
+          "viewParameter" : {
+            "jsontype" : "entity.desc.autoCompleteFieldViewParameter",
+            "options" : [ "duns", "taxId", "bic", "internal" ]
+          },
+          "defaultSize" : 130
+        },
+        "systemField" : false
+      },
+      "value" : {
+        "name" : "value",
+        "fieldType" : "STRING",
+        "label" : "Value",
+        "description" : "The identifier's value as issued.",
+        "persistenceDescriptor" : {
+          "columnName" : "value",
+          "length" : 64
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT",
+          "defaultSize" : 180
+        },
+        "systemField" : false
+      }
+    },
+    "relationships" : { },
+    "version" : 1
+  } ]
+}

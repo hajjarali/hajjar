@@ -1,0 +1,324 @@
+{
+  "descriptors" : [ {
+    "name" : "refdata.LegalEntity",
+    "className" : "cyai.refdata.LegalEntity",
+    "entityType" : "PERSISTABLE_BEAN",
+    "label" : "Legal Entity",
+    "description" : "A legal entity the firm does business with, held as counterparty trading reference data: identified by legal name, LEI, registration number and jurisdiction, classified by entity type, tracked through a draft/active/retired lifecycle, with an optional direct parent reference, its addresses and additional identifiers held inline, and an optional SCM connection reference.",
+    "group" : "refdata",
+    "persistenceDescriptor" : {
+      "tableName" : "legal_entity",
+      "idGenerationStrategy" : "AUTO_INCREMENT",
+      "indexGroups" : {
+        "byStatus" : [ "status" ],
+        "searchable" : [ "legalName", "lei", "jurisdiction", "entityType", "status" ]
+      },
+      "naturalKeyGroups" : {
+        "by_lei" : [ "lei" ]
+      },
+      "cacheDescriptor" : {
+        "strategy" : "NONE"
+      }
+    },
+    "fieldDescriptors" : {
+      "addresses" : {
+        "name" : "addresses",
+        "fieldType" : "LIST",
+        "label" : "Addresses",
+        "description" : "The entity's addresses (registered, trading, mailing), held inline and edited on its form.",
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "EMBEDDED"
+        },
+        "componentName" : {
+          "jsontype" : "entity.desc.entityKey",
+          "name" : "refdata.Address",
+          "version" : 1
+        },
+        "systemField" : false
+      },
+      "createdAt" : {
+        "name" : "createdAt",
+        "fieldType" : "INSTANT",
+        "description" : "Timestamp when the row was first created.",
+        "persistenceDescriptor" : {
+          "columnName" : "created_at"
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "DATE_TIME",
+          "hideInSearchResults" : true,
+          "defaultSize" : 170
+        },
+        "systemField" : true
+      },
+      "entityType" : {
+        "name" : "entityType",
+        "fieldType" : "ENUM",
+        "description" : "The kind of legal entity.",
+        "persistenceDescriptor" : {
+          "columnName" : "entity_type",
+          "length" : 32
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "AUTOCOMPLETE",
+          "viewParameter" : {
+            "jsontype" : "entity.desc.autoCompleteFieldViewParameter",
+            "options" : [ "company", "fund", "partnership", "trust", "government" ]
+          },
+          "defaultSize" : 140
+        },
+        "systemField" : false
+      },
+      "id" : {
+        "name" : "id",
+        "fieldType" : "LONG",
+        "description" : "Unique system-generated identifier for the row.",
+        "persistenceDescriptor" : {
+          "columnName" : "id"
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "LONG",
+          "hideInSearchResults" : false,
+          "defaultSize" : 90
+        },
+        "systemField" : true
+      },
+      "identifiers" : {
+        "name" : "identifiers",
+        "fieldType" : "LIST",
+        "label" : "Identifiers",
+        "description" : "Additional identifiers beyond the LEI (DUNS, tax ID, BIC, internal), held inline and edited on its form.",
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "EMBEDDED"
+        },
+        "componentName" : {
+          "jsontype" : "entity.desc.entityKey",
+          "name" : "refdata.Identifier",
+          "version" : 1
+        },
+        "systemField" : false
+      },
+      "jurisdiction" : {
+        "name" : "jurisdiction",
+        "fieldType" : "STRING",
+        "description" : "The country or state of incorporation.",
+        "persistenceDescriptor" : {
+          "columnName" : "jurisdiction",
+          "length" : 64
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT",
+          "defaultSize" : 140
+        },
+        "systemField" : false
+      },
+      "legalName" : {
+        "name" : "legalName",
+        "fieldType" : "STRING",
+        "description" : "The entity's legal name as registered.",
+        "persistenceDescriptor" : {
+          "columnName" : "legal_name",
+          "length" : 512
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT",
+          "defaultSize" : 260
+        },
+        "systemField" : false
+      },
+      "lei" : {
+        "name" : "lei",
+        "fieldType" : "STRING",
+        "description" : "The 20-character alphanumeric Legal Identifier under ISO 17442; unique across the register.",
+        "persistenceDescriptor" : {
+          "columnName" : "lei",
+          "length" : 20
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : true,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT",
+          "defaultSize" : 180
+        },
+        "systemField" : false
+      },
+      "parent" : {
+        "name" : "parent",
+        "fieldType" : "REFERENCE",
+        "description" : "The entity's direct parent; must reference an active entity and must not form a cycle.",
+        "persistenceDescriptor" : {
+          "columnName" : "parent_id"
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "REFERENCE"
+        },
+        "componentName" : {
+          "jsontype" : "entity.desc.entityKey",
+          "name" : "refdata.LegalEntity",
+          "version" : 1
+        },
+        "systemField" : false
+      },
+      "registrationNumber" : {
+        "name" : "registrationNumber",
+        "fieldType" : "STRING",
+        "description" : "The jurisdiction's company registration number.",
+        "persistenceDescriptor" : {
+          "columnName" : "registration_number",
+          "length" : 64
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT",
+          "hideInSearchResults" : true,
+          "defaultSize" : 180
+        },
+        "systemField" : false
+      },
+      "scm" : {
+        "name" : "scm",
+        "fieldType" : "REFERENCE",
+        "description" : "The SCM connection associated with this entity, held for a rare later case; optional.",
+        "persistenceDescriptor" : {
+          "columnName" : "scm_id"
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "REFERENCE"
+        },
+        "componentName" : {
+          "jsontype" : "entity.desc.entityKey",
+          "name" : "system.integration.Scm",
+          "version" : 1
+        },
+        "systemField" : false
+      },
+      "status" : {
+        "name" : "status",
+        "fieldType" : "STRING",
+        "description" : "The lifecycle state: draft while being onboarded, active for live business, retired when wound up. Retired entities are excluded from selection for new business.",
+        "persistenceDescriptor" : {
+          "columnName" : "status",
+          "length" : 16,
+          "defaultValue" : "draft"
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "STATUS_BADGE",
+          "viewParameter" : {
+            "jsontype" : "entity.desc.statusBadgeFieldViewParameter",
+            "variant" : "soft"
+          },
+          "defaultSize" : 110
+        },
+        "systemField" : false
+      },
+      "uid" : {
+        "name" : "uid",
+        "fieldType" : "UUID",
+        "description" : "Globally unique identifier (UUID) for the row.",
+        "persistenceDescriptor" : {
+          "columnName" : "uid"
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT",
+          "hideInSearchResults" : true,
+          "defaultSize" : 290
+        },
+        "systemField" : true
+      },
+      "updatedAt" : {
+        "name" : "updatedAt",
+        "fieldType" : "INSTANT",
+        "description" : "Timestamp when the row was last updated.",
+        "persistenceDescriptor" : {
+          "columnName" : "updated_at"
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "DATE_TIME",
+          "hideInSearchResults" : true,
+          "defaultSize" : 170
+        },
+        "systemField" : true
+      }
+    },
+    "relationships" : {
+      "parent" : {
+        "name" : "parent",
+        "cardinality" : "MANY_TO_ONE",
+        "targetEntityName" : {
+          "jsontype" : "entity.desc.entityKey",
+          "name" : "refdata.LegalEntity",
+          "version" : 1
+        },
+        "fieldName" : "parent",
+        "owning" : true
+      }
+    },
+    "version" : 1
+  } ]
+}

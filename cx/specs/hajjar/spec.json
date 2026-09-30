@@ -1,1 +1,1 @@
-{"spec_id":"0af33219-ed68-46c7-93a0-51f0e492940b","name":"hajjar","property_metadata":{}}
+{"spec_id":"0af33219-ed68-46c7-93a0-51f0e492940b","name":"hajjar","property_metadata":{"domain":"reference-data","entityCluster":"reference-data","keyEntity":"LegalEntity","reuseGate":"entity catalog checked (70 entities) for the scm ref target: system.integration.Scm found live and reused; spec registry not re-checked this turn (no new nouns beyond scm)."}}
