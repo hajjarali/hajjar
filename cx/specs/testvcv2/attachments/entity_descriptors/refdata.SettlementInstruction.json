@@ -1,0 +1,203 @@
+{
+  "descriptors" : [ {
+    "name" : "refdata.SettlementInstruction",
+    "className" : "cyai.refdata.SettlementInstruction",
+    "entityType" : "PERSISTABLE_BEAN",
+    "label" : "Settlement Instruction",
+    "description" : "How the firm settles trades with one counterparty, per currency — the standing settlement instruction. Carries a polymorphic method (BankTransfer, CustodyAccount or CashSweep) and an optional inline list of operational contacts. Lifecycle: draft, active, retired.",
+    "group" : "refdata",
+    "persistenceDescriptor" : {
+      "tableName" : "settlement_instruction",
+      "idGenerationStrategy" : "AUTO_INCREMENT",
+      "indexGroups" : {
+        "byCounterpartyCurrency" : [ "counterparty", "currency" ],
+        "activeLookup" : [ "counterparty", "currency", "status" ]
+      },
+      "naturalKeyGroups" : { },
+      "cacheDescriptor" : {
+        "strategy" : "NONE"
+      }
+    },
+    "fieldDescriptors" : {
+      "name" : {
+        "name" : "name",
+        "fieldType" : "STRING",
+        "label" : "Name",
+        "description" : "The instruction's display name, e.g. 'Goldman USD wire'.",
+        "persistenceDescriptor" : {
+          "columnName" : "name",
+          "length" : 128
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "counterparty" : {
+        "name" : "counterparty",
+        "fieldType" : "REFERENCE",
+        "label" : "Counterparty",
+        "description" : "The legal entity the firm settles with — an owning many-to-one to refdata.LegalEntity.",
+        "persistenceDescriptor" : {
+          "columnName" : "counterparty_id"
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "REFERENCE"
+        },
+        "componentName" : {
+          "jsontype" : "entity.desc.entityKey",
+          "name" : "refdata.LegalEntity",
+          "version" : 0
+        },
+        "systemField" : false
+      },
+      "currency" : {
+        "name" : "currency",
+        "fieldType" : "STRING",
+        "label" : "Currency",
+        "description" : "The 3-letter ISO 4217 currency code this instruction settles in.",
+        "persistenceDescriptor" : {
+          "columnName" : "currency",
+          "length" : 3
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "CURRENCY_CODE"
+        },
+        "systemField" : false
+      },
+      "status" : {
+        "name" : "status",
+        "fieldType" : "ENUM",
+        "label" : "Status",
+        "description" : "The instruction's lifecycle status: draft, active or retired. Defaults to draft.",
+        "persistenceDescriptor" : {
+          "columnName" : "status",
+          "length" : 16,
+          "defaultValue" : "draft"
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "STATUS_BADGE"
+        },
+        "systemField" : false
+      },
+      "effectiveFrom" : {
+        "name" : "effectiveFrom",
+        "fieldType" : "DATE",
+        "label" : "Effective From",
+        "description" : "The date the instruction takes effect.",
+        "persistenceDescriptor" : {
+          "columnName" : "effective_from"
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "DATE"
+        },
+        "systemField" : false
+      },
+      "effectiveTo" : {
+        "name" : "effectiveTo",
+        "fieldType" : "DATE",
+        "label" : "Effective To",
+        "description" : "The date the instruction ceases to be effective, optional. Must be after effectiveFrom.",
+        "persistenceDescriptor" : {
+          "columnName" : "effective_to"
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "DATE"
+        },
+        "systemField" : false
+      },
+      "method" : {
+        "name" : "method",
+        "fieldType" : "EMBEDDED",
+        "label" : "Method",
+        "description" : "How the money moves — one polymorphic part stored as JSON, a BankTransfer, CustodyAccount or CashSweep.",
+        "persistenceDescriptor" : {
+          "columnName" : "method",
+          "length" : 4000
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "EMBEDDED"
+        },
+        "componentName" : {
+          "jsontype" : "entity.desc.entityKey",
+          "name" : "refdata.SettlementMethod",
+          "version" : 0
+        },
+        "systemField" : false
+      },
+      "contacts" : {
+        "name" : "contacts",
+        "fieldType" : "LIST",
+        "label" : "Contacts",
+        "description" : "The operational contacts for this instruction, held inline and edited on the form. Optional.",
+        "persistenceDescriptor" : {
+          "columnName" : "contacts",
+          "length" : 4000
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "EMBEDDED"
+        },
+        "componentName" : {
+          "jsontype" : "entity.desc.entityKey",
+          "name" : "refdata.SettlementContact",
+          "version" : 0
+        },
+        "systemField" : false
+      }
+    },
+    "relationships" : {
+      "counterparty" : {
+        "name" : "counterparty",
+        "cardinality" : "MANY_TO_ONE",
+        "targetEntityName" : {
+          "jsontype" : "entity.desc.entityKey",
+          "name" : "refdata.LegalEntity",
+          "version" : 0
+        },
+        "fieldName" : "counterparty",
+        "owning" : true
+      }
+    },
+    "version" : 1
+  } ]
+}

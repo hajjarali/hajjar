@@ -1,0 +1,142 @@
+{
+  "descriptors" : [ {
+    "name" : "refdata.BankTransfer",
+    "className" : "cyai.refdata.BankTransfer",
+    "entityType" : "PERSISTABLE_BEAN",
+    "label" : "Bank Transfer",
+    "description" : "A settlement method that moves money by bank transfer — IBAN and BIC of the beneficiary bank, with an optional intermediary BIC. Subtype of refdata.SettlementMethod.",
+    "group" : "refdata",
+    "persistenceDescriptor" : {
+      "tableName" : "bank_transfer",
+      "idGenerationStrategy" : "AUTO_INCREMENT",
+      "indexGroups" : { },
+      "naturalKeyGroups" : { },
+      "cacheDescriptor" : {
+        "strategy" : "NONE"
+      }
+    },
+    "fieldDescriptors" : {
+      "label" : {
+        "name" : "label",
+        "fieldType" : "STRING",
+        "label" : "Label",
+        "description" : "Short human-readable label for this method, e.g. 'USD Chase wire'.",
+        "persistenceDescriptor" : {
+          "columnName" : "label",
+          "length" : 128
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "notes" : {
+        "name" : "notes",
+        "fieldType" : "STRING",
+        "label" : "Notes",
+        "description" : "Optional free-text notes about the method (cut-off times, correspondent details).",
+        "persistenceDescriptor" : {
+          "columnName" : "notes",
+          "length" : 2000
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "iban" : {
+        "name" : "iban",
+        "fieldType" : "STRING",
+        "label" : "IBAN",
+        "description" : "The beneficiary account's IBAN.",
+        "persistenceDescriptor" : {
+          "columnName" : "iban",
+          "length" : 34
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "bic" : {
+        "name" : "bic",
+        "fieldType" : "STRING",
+        "label" : "BIC",
+        "description" : "The beneficiary bank's BIC (SWIFT code).",
+        "persistenceDescriptor" : {
+          "columnName" : "bic",
+          "length" : 11
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "bankName" : {
+        "name" : "bankName",
+        "fieldType" : "STRING",
+        "label" : "Bank Name",
+        "description" : "The beneficiary bank's name.",
+        "persistenceDescriptor" : {
+          "columnName" : "bank_name",
+          "length" : 128
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "intermediaryBic" : {
+        "name" : "intermediaryBic",
+        "fieldType" : "STRING",
+        "label" : "Intermediary BIC",
+        "description" : "The intermediary bank's BIC, when the payment routes through one. Optional.",
+        "persistenceDescriptor" : {
+          "columnName" : "intermediary_bic",
+          "length" : 11
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      }
+    },
+    "relationships" : { },
+    "parentEntityName" : {
+      "jsontype" : "entity.desc.entityKey",
+      "name" : "refdata.SettlementMethod",
+      "version" : 0
+    },
+    "version" : 1
+  } ]
+}

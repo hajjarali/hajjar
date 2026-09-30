@@ -1,0 +1,75 @@
+{
+  "attachments" : [ {
+    "name" : "entity_descriptors/refdata.BankTransfer.json",
+    "type" : "ENTITY_DESCRIPTORS",
+    "size_bytes" : 4262,
+    "uploaded_at" : "2026-09-30T10:45:29.607896200Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "entity_descriptors/refdata.CashSweep.json",
+    "type" : "ENTITY_DESCRIPTORS",
+    "size_bytes" : 3736,
+    "uploaded_at" : "2026-09-30T10:45:29.624890200Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "entity_descriptors/refdata.CustodyAccount.json",
+    "type" : "ENTITY_DESCRIPTORS",
+    "size_bytes" : 3770,
+    "uploaded_at" : "2026-09-30T10:45:29.617031800Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "entity_descriptors/refdata.SettlementContact.json",
+    "type" : "ENTITY_DESCRIPTORS",
+    "size_bytes" : 2604,
+    "uploaded_at" : "2026-09-30T10:42:02.845357400Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "entity_descriptors/refdata.SettlementInstruction.json",
+    "type" : "ENTITY_DESCRIPTORS",
+    "size_bytes" : 6566,
+    "uploaded_at" : "2026-09-30T10:42:18.501812800Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "entity_descriptors/refdata.SettlementMethod.json",
+    "type" : "ENTITY_DESCRIPTORS",
+    "size_bytes" : 1670,
+    "uploaded_at" : "2026-09-30T10:42:02.834891500Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "ui/refdata.BankTransfer.js",
+    "type" : "UI",
+    "size_bytes" : 1935,
+    "uploaded_at" : "2026-09-30T10:44:32.851600900Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "ui/refdata.CashSweep.js",
+    "type" : "UI",
+    "size_bytes" : 1910,
+    "uploaded_at" : "2026-09-30T10:44:31.008115800Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "ui/refdata.CustodyAccount.js",
+    "type" : "UI",
+    "size_bytes" : 1930,
+    "uploaded_at" : "2026-09-30T10:44:32.954123400Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "ui/refdata.SettlementContact.js",
+    "type" : "UI",
+    "size_bytes" : 1805,
+    "uploaded_at" : "2026-09-30T10:44:23.278525200Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "ui/refdata.SettlementInstruction.js",
+    "type" : "UI",
+    "size_bytes" : 9784,
+    "uploaded_at" : "2026-09-30T10:45:38.616716400Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "ui/refdata.SettlementMethod.js",
+    "type" : "UI",
+    "size_bytes" : 1710,
+    "uploaded_at" : "2026-09-30T10:44:23.370934200Z",
+    "origin" : "AGENT"
+  } ]
+}

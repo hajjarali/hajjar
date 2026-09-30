@@ -1,0 +1,123 @@
+{
+  "descriptors" : [ {
+    "name" : "refdata.CustodyAccount",
+    "className" : "cyai.refdata.CustodyAccount",
+    "entityType" : "PERSISTABLE_BEAN",
+    "label" : "Custody Account",
+    "description" : "A settlement method that settles into a custody account — custodian, account number and optional safekeeping location. Subtype of refdata.SettlementMethod.",
+    "group" : "refdata",
+    "persistenceDescriptor" : {
+      "tableName" : "custody_account",
+      "idGenerationStrategy" : "AUTO_INCREMENT",
+      "indexGroups" : { },
+      "naturalKeyGroups" : { },
+      "cacheDescriptor" : {
+        "strategy" : "NONE"
+      }
+    },
+    "fieldDescriptors" : {
+      "label" : {
+        "name" : "label",
+        "fieldType" : "STRING",
+        "label" : "Label",
+        "description" : "Short human-readable label for this method, e.g. 'USD Chase wire'.",
+        "persistenceDescriptor" : {
+          "columnName" : "label",
+          "length" : 128
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "notes" : {
+        "name" : "notes",
+        "fieldType" : "STRING",
+        "label" : "Notes",
+        "description" : "Optional free-text notes about the method (cut-off times, correspondent details).",
+        "persistenceDescriptor" : {
+          "columnName" : "notes",
+          "length" : 2000
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "custodianName" : {
+        "name" : "custodianName",
+        "fieldType" : "STRING",
+        "label" : "Custodian Name",
+        "description" : "The custodian holding the account.",
+        "persistenceDescriptor" : {
+          "columnName" : "custodian_name",
+          "length" : 128
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "accountNumber" : {
+        "name" : "accountNumber",
+        "fieldType" : "STRING",
+        "label" : "Account Number",
+        "description" : "The custody account number.",
+        "persistenceDescriptor" : {
+          "columnName" : "account_number",
+          "length" : 64
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "safekeepingLocation" : {
+        "name" : "safekeepingLocation",
+        "fieldType" : "STRING",
+        "label" : "Safekeeping Location",
+        "description" : "Where the assets are safekept, optional.",
+        "persistenceDescriptor" : {
+          "columnName" : "safekeeping_location",
+          "length" : 128
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      }
+    },
+    "relationships" : { },
+    "parentEntityName" : {
+      "jsontype" : "entity.desc.entityKey",
+      "name" : "refdata.SettlementMethod",
+      "version" : 0
+    },
+    "version" : 1
+  } ]
+}

@@ -1,0 +1,52 @@
+{
+  "descriptors" : [ {
+    "name" : "refdata.SettlementMethod",
+    "className" : "cyai.refdata.SettlementMethod",
+    "entityType" : "BEAN",
+    "label" : "Settlement Method",
+    "description" : "How the money moves for a settlement instruction — the abstract polymorphic base of BankTransfer, CustodyAccount and CashSweep, stored as JSON inside the instruction. Never persisted on its own.",
+    "group" : "refdata",
+    "fieldDescriptors" : {
+      "label" : {
+        "name" : "label",
+        "fieldType" : "STRING",
+        "label" : "Label",
+        "description" : "Short human-readable label for this method, e.g. 'USD Chase wire'.",
+        "persistenceDescriptor" : {
+          "columnName" : "label",
+          "length" : 128
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "notes" : {
+        "name" : "notes",
+        "fieldType" : "STRING",
+        "label" : "Notes",
+        "description" : "Optional free-text notes about the method (cut-off times, correspondent details).",
+        "persistenceDescriptor" : {
+          "columnName" : "notes",
+          "length" : 2000
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      }
+    },
+    "relationships" : { },
+    "version" : 1
+  } ]
+}

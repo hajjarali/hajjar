@@ -1,0 +1,122 @@
+{
+  "descriptors" : [ {
+    "name" : "refdata.CashSweep",
+    "className" : "cyai.refdata.CashSweep",
+    "entityType" : "PERSISTABLE_BEAN",
+    "label" : "Cash Sweep",
+    "description" : "A settlement method that sweeps cash to a target account when a threshold is reached, on a daily or weekly frequency. Subtype of refdata.SettlementMethod.",
+    "group" : "refdata",
+    "persistenceDescriptor" : {
+      "tableName" : "cash_sweep",
+      "idGenerationStrategy" : "AUTO_INCREMENT",
+      "indexGroups" : { },
+      "naturalKeyGroups" : { },
+      "cacheDescriptor" : {
+        "strategy" : "NONE"
+      }
+    },
+    "fieldDescriptors" : {
+      "label" : {
+        "name" : "label",
+        "fieldType" : "STRING",
+        "label" : "Label",
+        "description" : "Short human-readable label for this method, e.g. 'USD Chase wire'.",
+        "persistenceDescriptor" : {
+          "columnName" : "label",
+          "length" : 128
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "notes" : {
+        "name" : "notes",
+        "fieldType" : "STRING",
+        "label" : "Notes",
+        "description" : "Optional free-text notes about the method (cut-off times, correspondent details).",
+        "persistenceDescriptor" : {
+          "columnName" : "notes",
+          "length" : 2000
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "targetAccountId" : {
+        "name" : "targetAccountId",
+        "fieldType" : "STRING",
+        "label" : "Target Account ID",
+        "description" : "The identifier of the account cash is swept to.",
+        "persistenceDescriptor" : {
+          "columnName" : "target_account_id",
+          "length" : 64
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "sweepThreshold" : {
+        "name" : "sweepThreshold",
+        "fieldType" : "BIG_DECIMAL",
+        "label" : "Sweep Threshold",
+        "description" : "The balance above which cash is swept.",
+        "persistenceDescriptor" : {
+          "columnName" : "sweep_threshold"
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "CURRENCY"
+        },
+        "systemField" : false
+      },
+      "frequency" : {
+        "name" : "frequency",
+        "fieldType" : "ENUM",
+        "label" : "Frequency",
+        "description" : "How often the sweep runs — daily or weekly.",
+        "persistenceDescriptor" : {
+          "columnName" : "frequency",
+          "length" : 16
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "AUTOCOMPLETE"
+        },
+        "systemField" : false
+      }
+    },
+    "relationships" : { },
+    "parentEntityName" : {
+      "jsontype" : "entity.desc.entityKey",
+      "name" : "refdata.SettlementMethod",
+      "version" : 0
+    },
+    "version" : 1
+  } ]
+}

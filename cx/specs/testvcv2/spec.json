@@ -1,1 +1,1 @@
-{"spec_id":"e826176d-96ed-4b47-9cbd-3c4a0c3551f1","name":"testvcv2","property_metadata":{}}
+{"spec_id":"e826176d-96ed-4b47-9cbd-3c4a0c3551f1","name":"testvcv2","property_metadata":{"dataClass":"PII","domain":"settlement","entityCluster":"refdata","keyEntity":"SettlementInstruction","reuseGate":"platformEntities (70 entities) and platformSpecs (1 spec) checked — no overlap; refdata.LegalEntity named by the request is NOT live and is cited under Dependencies; company corpus read for the settlement process and standing rules R9/R11"}}
