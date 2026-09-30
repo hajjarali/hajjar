@@ -1,0 +1,54 @@
+{
+  "descriptors" : [ {
+    "name" : "refdata.Forge",
+    "className" : "cyai.refdata.Forge",
+    "entityType" : "BEAN",
+    "label" : "Forge",
+    "description" : "A forge on a legal entity, held inline like its identifiers — the forge platform and its URL, authored directly on the entity.",
+    "group" : "refdata",
+    "fieldDescriptors" : {
+      "forgeType" : {
+        "name" : "forgeType",
+        "fieldType" : "ENUM",
+        "description" : "The forge platform.",
+        "persistenceDescriptor" : {
+          "length" : 32
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "AUTOCOMPLETE",
+          "viewParameter" : {
+            "jsontype" : "entity.desc.autoCompleteFieldViewParameter",
+            "options" : [ "gitlab", "github", "bitbucket" ]
+          },
+          "defaultSize" : 140
+        },
+        "systemField" : false
+      },
+      "url" : {
+        "name" : "url",
+        "fieldType" : "STRING",
+        "description" : "The forge's base URL.",
+        "persistenceDescriptor" : {
+          "length" : 512
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT",
+          "defaultSize" : 260
+        },
+        "systemField" : false
+      }
+    },
+    "relationships" : { },
+    "version" : 1
+  } ]
+}

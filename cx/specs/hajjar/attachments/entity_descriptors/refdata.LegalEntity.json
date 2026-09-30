@@ -4,7 +4,7 @@
     "className" : "cyai.refdata.LegalEntity",
     "entityType" : "PERSISTABLE_BEAN",
     "label" : "Legal Entity",
-    "description" : "A legal entity the firm does business with, held as counterparty trading reference data: identified by legal name, LEI, registration number and jurisdiction, classified by entity type, tracked through a draft/active/retired lifecycle, with an optional direct parent reference, its addresses and additional identifiers held inline, a single forge association, and an optional SCM connection reference.",
+    "description" : "A legal entity the firm does business with, held as counterparty trading reference data: identified by legal name, LEI, registration number and jurisdiction, classified by entity type, tracked through a draft/active/retired lifecycle, with an optional direct parent reference, its addresses, additional identifiers and forge held inline, and an optional SCM connection reference.",
     "group" : "refdata",
     "persistenceDescriptor" : {
       "tableName" : "legal_entity",
@@ -83,11 +83,11 @@
         },
         "systemField" : false
       },
-      "forgeLink" : {
-        "name" : "forgeLink",
+      "forge" : {
+        "name" : "forge",
         "fieldType" : "OBJECT",
-        "label" : "Forge Link",
-        "description" : "The entity's single forge association, pointing at a configured forge connection; held inline and edited on its form.",
+        "label" : "Forge",
+        "description" : "The entity's forge, held inline and edited on its form.",
         "validationDescriptor" : {
           "nullable" : true,
           "unique" : false,
@@ -98,7 +98,7 @@
         },
         "componentName" : {
           "jsontype" : "entity.desc.entityKey",
-          "name" : "refdata.ForgeLink",
+          "name" : "refdata.Forge",
           "version" : 1
         },
         "systemField" : false
