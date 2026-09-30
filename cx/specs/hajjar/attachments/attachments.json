@@ -20,8 +20,8 @@
   }, {
     "name" : "entity_descriptors/refdata.LegalEntity.json",
     "type" : "ENTITY_DESCRIPTORS",
-    "size_bytes" : 11059,
-    "uploaded_at" : "2026-09-30T08:19:31.657431200Z",
+    "size_bytes" : 11081,
+    "uploaded_at" : "2026-09-30T08:20:26.651808100Z",
     "origin" : "AGENT"
   } ]
 }
