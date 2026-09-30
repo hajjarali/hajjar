@@ -1,0 +1,15 @@
+{
+  "attachments" : [ {
+    "name" : "entity_descriptors/demo.ReleaseProfile.json",
+    "type" : "ENTITY_DESCRIPTORS",
+    "size_bytes" : 3475,
+    "uploaded_at" : "2026-09-30T12:20:41.952848800Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "ui/demo.ReleaseProfile.js",
+    "type" : "UI",
+    "size_bytes" : 2142,
+    "uploaded_at" : "2026-09-30T12:21:04.404703100Z",
+    "origin" : "AGENT"
+  } ]
+}

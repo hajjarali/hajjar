@@ -1,0 +1,113 @@
+{
+  "descriptors" : [ {
+    "name" : "demo.ReleaseProfile",
+    "className" : "cyai.demo.release.ReleaseProfile",
+    "entityType" : "PERSISTABLE_BEAN",
+    "label" : "Release Profile",
+    "description" : "A release profile describing how one product line publishes its build artifacts: which Maven coordinates it publishes to and which release channel it serves.",
+    "group" : "demo",
+    "persistenceDescriptor" : {
+      "tableName" : "demo_release_profile",
+      "idGenerationStrategy" : "AUTO_INCREMENT",
+      "indexGroups" : {
+        "searchable" : [ "name", "channel" ]
+      },
+      "naturalKeyGroups" : {
+        "by_name" : [ "name" ]
+      },
+      "cacheDescriptor" : {
+        "strategy" : "NONE"
+      }
+    },
+    "fieldDescriptors" : {
+      "name" : {
+        "name" : "name",
+        "fieldType" : "STRING",
+        "label" : "Name",
+        "description" : "The release profile's unique name.",
+        "persistenceDescriptor" : {
+          "columnName" : "name",
+          "length" : 255
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : true,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "description" : {
+        "name" : "description",
+        "fieldType" : "STRING",
+        "label" : "Description",
+        "description" : "An optional human description of what this profile publishes.",
+        "persistenceDescriptor" : {
+          "columnName" : "description",
+          "length" : 4000
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT",
+          "viewParameter" : {
+            "jsontype" : "entity.desc.textFieldViewParameter",
+            "multiline" : true
+          }
+        },
+        "systemField" : false
+      },
+      "channel" : {
+        "name" : "channel",
+        "fieldType" : "ENUM",
+        "label" : "Channel",
+        "description" : "The release channel this profile serves: stable, beta or nightly.",
+        "persistenceDescriptor" : {
+          "columnName" : "channel",
+          "length" : 20,
+          "defaultValue" : "stable"
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "AUTOCOMPLETE"
+        },
+        "systemField" : false
+      },
+      "artifacts" : {
+        "name" : "artifacts",
+        "fieldType" : "EMBEDDED",
+        "label" : "Artifacts",
+        "description" : "The Maven coordinates this profile publishes to.",
+        "persistenceDescriptor" : {
+          "columnName" : "artifacts",
+          "columnPrefix" : "artifacts_"
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "EMBEDDED"
+        },
+        "componentName" : {
+          "jsontype" : "entity.desc.entityKey",
+          "name" : "system.build.MavenArtifactsConfig",
+          "version" : 0
+        },
+        "systemField" : false
+      }
+    },
+    "relationships" : { },
+    "version" : 1
+  } ]
+}

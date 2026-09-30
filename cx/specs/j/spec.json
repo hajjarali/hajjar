@@ -1,1 +1,1 @@
-{"spec_id":"1b22d9c9-75e7-4992-8802-f94cf80d78e5","name":"j","property_metadata":{}}
+{"spec_id":"1b22d9c9-75e7-4992-8802-f94cf80d78e5","name":"j","property_metadata":{"dataClass":"INTERNAL","domain":"build","keyEntity":"ReleaseProfile","reuseGate":"Entity catalog checked (70 entities): no ReleaseProfile exists; MavenArtifactsConfig is not a served entity (embedded platform bean, cited under Dependencies). Spec registry: only 'j' and 'testvcv2', no overlap."}}
