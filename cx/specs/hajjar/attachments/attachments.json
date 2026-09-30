@@ -12,12 +12,6 @@
     "uploaded_at" : "2026-09-30T08:22:05.552249200Z",
     "origin" : "AGENT"
   }, {
-    "name" : "entity_descriptors/refdata.ForgeLink.json",
-    "type" : "ENTITY_DESCRIPTORS",
-    "size_bytes" : 1670,
-    "uploaded_at" : "2026-09-30T08:19:27.693732200Z",
-    "origin" : "AGENT"
-  }, {
     "name" : "entity_descriptors/refdata.Identifier.json",
     "type" : "ENTITY_DESCRIPTORS",
     "size_bytes" : 1882,
