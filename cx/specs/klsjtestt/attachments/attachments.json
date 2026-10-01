@@ -7,6 +7,13 @@
     "uploaded_at" : "2026-10-01T05:16:22.973567700Z",
     "origin" : "USER"
   }, {
+    "name" : "documents/cortexis-lockup-color-drawing-944max-1.png",
+    "type" : "DOCUMENTS",
+    "size_bytes" : 62088,
+    "uploaded_by" : "System Admin",
+    "uploaded_at" : "2026-10-01T07:58:03.585115600Z",
+    "origin" : "USER"
+  }, {
     "name" : "documents/cortexis-lockup-color-drawing-944max.png",
     "type" : "DOCUMENTS",
     "size_bytes" : 62088,
