@@ -1,24 +1,15 @@
 {
   "attachments" : [ {
-    "name" : "documents/SNA Health Proposal.pdf",
-    "type" : "DOCUMENTS",
-    "size_bytes" : 4463255,
-    "uploaded_by" : "System Admin",
-    "uploaded_at" : "2026-09-23T13:32:24.533593500Z",
-    "origin" : "USER"
+    "name" : "entity_descriptors/simpledao.DemoSignin.json",
+    "type" : "ENTITY_DESCRIPTORS",
+    "size_bytes" : 2039,
+    "uploaded_at" : "2026-10-01T13:27:09.467891100Z",
+    "origin" : "AGENT"
   }, {
-    "name" : "documents/Screenshot 2026-09-23 095417.png",
-    "type" : "DOCUMENTS",
-    "size_bytes" : 11037,
-    "uploaded_by" : "System Admin",
-    "uploaded_at" : "2026-09-23T13:32:24.503197400Z",
-    "origin" : "USER"
-  }, {
-    "name" : "documents/text.txt",
-    "type" : "DOCUMENTS",
-    "size_bytes" : 633,
-    "uploaded_by" : "System Admin",
-    "uploaded_at" : "2026-09-23T13:32:24.519084100Z",
-    "origin" : "USER"
+    "name" : "ui/simpledao.DemoSignin.js",
+    "type" : "UI",
+    "size_bytes" : 2540,
+    "uploaded_at" : "2026-10-01T13:29:38.874345800Z",
+    "origin" : "AGENT"
   } ]
 }

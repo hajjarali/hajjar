@@ -1,0 +1,61 @@
+{
+  "descriptors" : [ {
+    "name" : "simpledao.DemoSignin",
+    "className" : "cyai.simpledao.demo.DemoSignin",
+    "entityType" : "PERSISTABLE_BEAN",
+    "label" : "Demo Signin",
+    "description" : "Demo/showcase entity rendering a sign-in-style form: an 'Email or username' input, a masked password input with a reveal toggle, and a SUBMIT button. Carries no authentication, session or credential logic.",
+    "group" : "simpledao",
+    "persistenceDescriptor" : {
+      "tableName" : "demo_signin",
+      "idGenerationStrategy" : "AUTO_INCREMENT",
+      "indexGroups" : { },
+      "naturalKeyGroups" : { },
+      "cacheDescriptor" : {
+        "strategy" : "NONE"
+      }
+    },
+    "fieldDescriptors" : {
+      "identifier" : {
+        "name" : "identifier",
+        "fieldType" : "STRING",
+        "label" : "Email or username",
+        "description" : "The 'Email or username' input of the mock — accepts either form, no format rule.",
+        "persistenceDescriptor" : {
+          "columnName" : "identifier",
+          "length" : 255
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "password" : {
+        "name" : "password",
+        "fieldType" : "STRING",
+        "label" : "Password",
+        "description" : "The 'Password' input of the mock — rendered masked by the PASSWORD view type, whose own latching eye toggles visibility.",
+        "persistenceDescriptor" : {
+          "columnName" : "password",
+          "length" : 255
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "PASSWORD"
+        },
+        "systemField" : false
+      }
+    },
+    "relationships" : { },
+    "version" : 1
+  } ]
+}
