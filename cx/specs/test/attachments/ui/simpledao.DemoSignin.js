@@ -25,12 +25,12 @@
             props: { sx: { mb: 1 } },
             elements: { [password.id]: password } };
 
-        // SUBMIT — the mock's full-width red button. Saving itself is the bean form's
-        // standard action row (platform-owned); this button is the mock's chrome.
+        // SUBMIT — the mock's full-width button, blue (theme primary). Saving itself
+        // is the bean form's standard action row (platform-owned); this is the chrome.
         const btnId = root + "_submit";
         const submit = { id: btnId, jsontype: "mui.button",
             disabled: readOnly.boolValue(),
-            props: { variant: "contained", color: "error", children: "SUBMIT",
+            props: { variant: "contained", color: "primary", children: "SUBMIT",
                      sx: { width: '100%', mt: 3, py: 1.2, borderRadius: 2, fontWeight: 600 } } };
 
         // The white rounded card, centred on the grey page.
