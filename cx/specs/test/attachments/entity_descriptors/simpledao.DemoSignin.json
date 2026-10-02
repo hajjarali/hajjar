@@ -20,13 +20,13 @@
         "name" : "identifier",
         "fieldType" : "STRING",
         "label" : "Email or username",
-        "description" : "The 'Email or username' input of the mock — accepts either form, no format rule.",
+        "description" : "The 'Email or username' input of the mock — accepts either form, no format rule. Optional for the demo.",
         "persistenceDescriptor" : {
           "columnName" : "identifier",
           "length" : 255
         },
         "validationDescriptor" : {
-          "nullable" : false,
+          "nullable" : true,
           "unique" : false,
           "nonNegative" : false
         },
@@ -39,13 +39,13 @@
         "name" : "password",
         "fieldType" : "STRING",
         "label" : "Password",
-        "description" : "The 'Password' input of the mock — rendered masked by the PASSWORD view type, whose own latching eye toggles visibility.",
+        "description" : "The 'Password' input of the mock — rendered masked by the PASSWORD view type, whose own latching eye toggles visibility. Optional for the demo.",
         "persistenceDescriptor" : {
           "columnName" : "password",
           "length" : 255
         },
         "validationDescriptor" : {
-          "nullable" : false,
+          "nullable" : true,
           "unique" : false,
           "nonNegative" : false
         },

@@ -33,16 +33,18 @@
             props: { variant: "contained", color: "primary", children: "SUBMIT",
                      sx: { width: '100%', mt: 3, py: 1.2, borderRadius: 2, fontWeight: 600 } } };
 
-        // The white rounded card, centred on the grey page.
+        // The white rounded card, centred on the grey page. The card hugs its
+        // content: no forced minHeight and only a light vertical margin, so the
+        // card ends just below SUBMIT instead of leaving dead space under it.
         const cardId = root + "_card";
         const card = { id: cardId, jsontype: "mui.card",
-            props: { sx: { maxWidth: 420, width: '100%', p: 3, borderRadius: 3, my: 6 } },
+            props: { sx: { maxWidth: 420, width: '100%', p: 3, borderRadius: 3, my: 2 } },
             elements: { [identBoxId]: identBox, [passBoxId]: passBox, [btnId]: submit } };
 
         const outerId = root + "_outer";
         const outer = { id: outerId, jsontype: "mui.box",
             props: { sx: { p: 2, display: 'flex', justifyContent: 'center',
-                           bgcolor: 'background.default', minHeight: 420, minWidth: 320 } },
+                           bgcolor: 'background.default', minWidth: 320 } },
             elements: { [cardId]: card } };
 
         return { sx: {}, elements: { [outerId]: outer } };
