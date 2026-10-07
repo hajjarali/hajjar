@@ -1,0 +1,83 @@
+{
+  "descriptors" : [ {
+    "name" : "party.Person",
+    "className" : "cyai.party.Person",
+    "entityType" : "PERSISTABLE_BEAN",
+    "label" : "Person",
+    "description" : "A person the business deals with, held as a name, an age and a lifecycle status.",
+    "group" : "party",
+    "persistenceDescriptor" : {
+      "tableName" : "person",
+      "idGenerationStrategy" : "AUTO_INCREMENT",
+      "indexGroups" : {
+        "by_name" : [ "name" ]
+      },
+      "naturalKeyGroups" : { },
+      "cacheDescriptor" : {
+        "strategy" : "NONE"
+      },
+      "starSchemaRole" : "DIM"
+    },
+    "fieldDescriptors" : {
+      "name" : {
+        "name" : "name",
+        "fieldType" : "STRING",
+        "label" : "Name",
+        "description" : "The person's full name.",
+        "persistenceDescriptor" : {
+          "columnName" : "name",
+          "length" : 255
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "age" : {
+        "name" : "age",
+        "fieldType" : "INTEGER",
+        "label" : "Age",
+        "description" : "The person's age in whole years (0–150).",
+        "persistenceDescriptor" : {
+          "columnName" : "age"
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : true
+        },
+        "viewDescriptor" : {
+          "viewType" : "INTEGER"
+        },
+        "systemField" : false
+      },
+      "status" : {
+        "name" : "status",
+        "fieldType" : "ENUM",
+        "label" : "Status",
+        "description" : "Lifecycle status: draft | active | retired.",
+        "persistenceDescriptor" : {
+          "columnName" : "status",
+          "length" : 50,
+          "defaultValue" : "draft"
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "AUTOCOMPLETE"
+        },
+        "systemField" : false
+      }
+    },
+    "relationships" : { },
+    "version" : 1
+  } ]
+}
