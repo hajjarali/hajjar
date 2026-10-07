@@ -1,0 +1,89 @@
+{
+  "descriptors" : [ {
+    "name" : "cdm.party.LegalEntity",
+    "className" : "cyai.cdm.party.LegalEntity",
+    "entityType" : "PERSISTABLE_BEAN",
+    "label" : "Legal Entity",
+    "description" : "A legal entity on the firm-wide register — every bank, fund, insurer, treasury or interdealer the firm faces, identified by its LEI where one exists. Realises the CDM LegalEntity type.",
+    "group" : "cdm",
+    "persistenceDescriptor" : {
+      "tableName" : "legal_entity",
+      "idGenerationStrategy" : "AUTO_INCREMENT",
+      "indexGroups" : {
+        "by_status" : [ "status" ]
+      },
+      "naturalKeyGroups" : { },
+      "cacheDescriptor" : {
+        "strategy" : "NONE"
+      },
+      "starSchemaRole" : "DIM"
+    },
+    "fieldDescriptors" : {
+      "name" : {
+        "name" : "name",
+        "fieldType" : "STRING",
+        "label" : "Name",
+        "description" : "The legal entity's name, as it appears on its governing documents.",
+        "persistenceDescriptor" : {
+          "columnName" : "name",
+          "length" : 255
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "lei" : {
+        "name" : "lei",
+        "fieldType" : "STRING",
+        "label" : "LEI",
+        "description" : "The Legal Entity Identifier — 20 alphanumeric characters, unique across the register when present.",
+        "persistenceDescriptor" : {
+          "columnName" : "lei",
+          "length" : 20
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : true,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "status" : {
+        "name" : "status",
+        "fieldType" : "ENUM",
+        "label" : "Status",
+        "description" : "The record's lifecycle: draft, active or retired. A retired entity is excluded from selection for new business.",
+        "persistenceDescriptor" : {
+          "columnName" : "status",
+          "length" : 20,
+          "defaultValue" : "DRAFT"
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "SELECT_POPUP"
+        },
+        "componentName" : {
+          "jsontype" : "entity.desc.entityKey",
+          "name" : "cyai.cdm.party.LegalEntityStatus",
+          "version" : 0
+        },
+        "systemField" : false
+      }
+    },
+    "relationships" : { },
+    "version" : 1
+  } ]
+}
