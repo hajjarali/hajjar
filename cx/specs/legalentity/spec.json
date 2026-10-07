@@ -1,1 +1,1 @@
-{"spec_id":"b3895d0d-a050-4ee6-be47-809fab831311","name":"legalentity","property_metadata":{}}
+{"spec_id":"b3895d0d-a050-4ee6-be47-809fab831311","name":"legalentity","property_metadata":{"dataClass":"PII","keyEntity":"Person","reuseGate":"Entity catalog checked (70 entities, no Person or near-miss; simpledao.Demo* are demo rows, system.iam.User is an identity shadow); spec registry checked (klsjtestt unrelated)."}}

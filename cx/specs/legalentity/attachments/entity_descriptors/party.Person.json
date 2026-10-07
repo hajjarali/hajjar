@@ -1,0 +1,64 @@
+{
+  "descriptors" : [ {
+    "name" : "party.Person",
+    "className" : "cyai.party.Person",
+    "entityType" : "PERSISTABLE_BEAN",
+    "label" : "Person",
+    "description" : "A natural person recorded in the person register, with a name and an age.",
+    "group" : "party",
+    "persistenceDescriptor" : {
+      "tableName" : "person",
+      "idGenerationStrategy" : "AUTO_INCREMENT",
+      "indexGroups" : {
+        "searchable" : [ "name" ]
+      },
+      "naturalKeyGroups" : { },
+      "cacheDescriptor" : {
+        "strategy" : "NONE"
+      }
+    },
+    "fieldDescriptors" : {
+      "name" : {
+        "name" : "name",
+        "fieldType" : "STRING",
+        "label" : "Name",
+        "description" : "The person's name.",
+        "persistenceDescriptor" : {
+          "columnName" : "name",
+          "length" : 255
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT",
+          "defaultSize" : 220
+        },
+        "systemField" : false
+      },
+      "age" : {
+        "name" : "age",
+        "fieldType" : "INTEGER",
+        "label" : "Age",
+        "description" : "The person's age in whole years; left empty when unknown.",
+        "persistenceDescriptor" : {
+          "columnName" : "age"
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : true
+        },
+        "viewDescriptor" : {
+          "viewType" : "INTEGER",
+          "defaultSize" : 120
+        },
+        "systemField" : false
+      }
+    },
+    "relationships" : { },
+    "version" : 1
+  } ]
+}
