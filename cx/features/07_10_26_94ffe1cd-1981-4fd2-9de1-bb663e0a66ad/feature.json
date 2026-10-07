@@ -20,11 +20,808 @@
       "text" : "Design"
     } ]
   }, {
-    "id" : "0736402b",
+    "id" : "101c8bd5",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Entity: "
+    }, {
+      "type" : "text",
+      "text" : "cdm.party.LegalEntity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " — new"
+    } ]
+  }, {
+    "id" : "4ba6f135",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
-      "text" : "What is being built and how — the entities, their fields and types, what is persisted, how they relate, and what the screens show."
+      "text" : "One new persistable entity, "
+    }, {
+      "type" : "text",
+      "text" : "cdm.party.LegalEntity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (class "
+    }, {
+      "type" : "text",
+      "text" : "cyai.cdm.party.LegalEntity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", table "
+    }, {
+      "type" : "text",
+      "text" : "legal_entity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "), exactly as the spec's descriptor attachment fixes it. The reuse gate confirms it is genuinely new: "
+    }, {
+      "type" : "text",
+      "text" : "platformEntities",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " lists 70 served entities, none a legal-entity register, and the workspace source is a bare skeleton ("
+    }, {
+      "type" : "text",
+      "text" : "com.example.App",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " only) — nothing to extend, no domain plane to fit into. It realises the CDM type "
+    }, {
+      "type" : "text",
+      "text" : "cdm.base.staticdata.party.LegalEntity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (cdm corpus: a required "
+    }, {
+      "type" : "text",
+      "text" : "name",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and a "
+    }, {
+      "type" : "text",
+      "text" : "List<EntityIdentifier>",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ") as vocabulary: the CDM type carries "
+    }, {
+      "type" : "text",
+      "text" : "entityIdentifier",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " as a list of "
+    }, {
+      "type" : "text",
+      "text" : "EntityIdentifier",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " beans ("
+    }, {
+      "type" : "text",
+      "text" : "identifier",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " + "
+    }, {
+      "type" : "text",
+      "text" : "EntityIdentifierTypeEnum",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "), and this register narrows that to the one identifier FCY's standing rule R7 keys on — the LEI — held flat, per the spec's own rationale. A second identifier scheme would widen the field back to an embedded list without changing consumers; nothing in this design pre-builds that."
+    } ]
+  }, {
+    "id" : "8bac08e0",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The descriptor is "
+    }, {
+      "type" : "text",
+      "text" : "shipped verbatim",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " from the spec attachment "
+    }, {
+      "type" : "text",
+      "text" : "entity_descriptors/cdm.party.LegalEntity.json",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " to the entity's descriptor home — it is spec-time authored, not redesigned here. Its shape, for reference: "
+    }, {
+      "type" : "text",
+      "text" : "PERSISTABLE_BEAN",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", version 1, "
+    }, {
+      "type" : "text",
+      "text" : "AUTO_INCREMENT",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " ids, "
+    }, {
+      "type" : "text",
+      "text" : "starSchemaRole: DIM",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (master data other entities point at), cache "
+    }, {
+      "type" : "text",
+      "text" : "NONE",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", one index group "
+    }, {
+      "type" : "text",
+      "text" : "by_status",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", no natural-key group, no relationships."
+    } ]
+  }, {
+    "id" : "e6e6258c",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Fields"
+    } ]
+  }, {
+    "id" : "b7c461b2",
+    "type" : "table",
+    "content" : {
+      "type" : "tableContent",
+      "rows" : [ {
+        "cells" : [ [ {
+          "type" : "text",
+          "text" : "field"
+        } ], [ {
+          "type" : "text",
+          "text" : "fieldType"
+        } ], [ {
+          "type" : "text",
+          "text" : "persistence"
+        } ], [ {
+          "type" : "text",
+          "text" : "validation"
+        } ], [ {
+          "type" : "text",
+          "text" : "view"
+        } ] ]
+      }, {
+        "cells" : [ [ {
+          "type" : "text",
+          "text" : "`name`"
+        } ], [ {
+          "type" : "text",
+          "text" : "`STRING` (255)"
+        } ], [ {
+          "type" : "text",
+          "text" : "`name`"
+        } ], [ {
+          "type" : "text",
+          "text" : "`nullable: false`"
+        } ], [ {
+          "type" : "text",
+          "text" : "`TEXT`"
+        } ] ]
+      }, {
+        "cells" : [ [ {
+          "type" : "text",
+          "text" : "`lei`"
+        } ], [ {
+          "type" : "text",
+          "text" : "`STRING` (20)"
+        } ], [ {
+          "type" : "text",
+          "text" : "`lei`"
+        } ], [ {
+          "type" : "text",
+          "text" : "`nullable: true`, `unique: true`"
+        } ], [ {
+          "type" : "text",
+          "text" : "`TEXT`"
+        } ] ]
+      }, {
+        "cells" : [ [ {
+          "type" : "text",
+          "text" : "`status`"
+        } ], [ {
+          "type" : "text",
+          "text" : "`ENUM` `cyai.cdm.party.LegalEntityStatus` (20)"
+        } ], [ {
+          "type" : "text",
+          "text" : "`status`, default `DRAFT`"
+        } ], [ {
+          "type" : "text",
+          "text" : "`nullable: false`"
+        } ], [ {
+          "type" : "text",
+          "text" : "`SELECT_POPUP`"
+        } ] ]
+      } ],
+      "headerRows" : 1
+    }
+  }, {
+    "id" : "8243e8d4",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A3) required name",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " is the static "
+    }, {
+      "type" : "text",
+      "text" : "nullable: false",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " flag on "
+    }, {
+      "type" : "text",
+      "text" : "name",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " — the framework's "
+    }, {
+      "type" : "text",
+      "text" : "RequiredFieldRules",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " turns it into a blocking error ahead of any validator; nothing custom is needed."
+    } ]
+  }, {
+    "id" : "cf3473bf",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A1) unique-when-present LEI",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " is the static "
+    }, {
+      "type" : "text",
+      "text" : "unique: true",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " flag — a single-column "
+    }, {
+      "type" : "text",
+      "text" : "UNIQUE",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " constraint, which most stores honour as \"unique among non-null values\", so multiple LEI-less records coexist. The flag is the backstop; the message A1 demands is the validator's job (below)."
+    } ]
+  }, {
+    "id" : "3309d7ab",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "status",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " is the lifecycle enum "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntityStatus",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " with constants "
+    }, {
+      "type" : "text",
+      "text" : "DRAFT",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " / "
+    }, {
+      "type" : "text",
+      "text" : "ACTIVE",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " / "
+    }, {
+      "type" : "text",
+      "text" : "RETIRED",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (labels Draft / Active / Retired), an "
+    }, {
+      "type" : "text",
+      "text" : "IDisplayableEnum",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " with its "
+    }, {
+      "type" : "text",
+      "text" : "jsontypes.json",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " entry per the entity-class pattern. The column default "
+    }, {
+      "type" : "text",
+      "text" : "DRAFT",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " carries the spec's default(draft); the "
+    }, {
+      "type" : "text",
+      "text" : "by_status",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " index is what makes a consumer's \"exclude retired\" filter index-covered. The spec declares no transition rules between statuses — any status change is permitted, and a retired record keeps its history (rows are never deleted to retire)."
+    } ]
+  }, {
+    "id" : "4016d210",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "The validator: "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntityValidator",
+      "styles" : {
+        "code" : true
+      }
+    } ]
+  }, {
+    "id" : "8a23eed1",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Two rules the descriptor flags cannot express, both carried by one "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntityValidator",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " code-behind class beside the entity (the "
+    }, {
+      "type" : "text",
+      "text" : "bean-validators",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " naming convention, no registration):"
+    } ]
+  }, {
+    "id" : "b91da6c2",
+    "type" : "numberedListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A1) name the conflicting record.",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " "
+    }, {
+      "type" : "text",
+      "text" : "unique: true",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " rejects a duplicate but its message is generic. The validator's "
+    }, {
+      "type" : "text",
+      "text" : "validate()",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " — when "
+    }, {
+      "type" : "text",
+      "text" : "lei",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " is present — resolves any other row carrying the same LEI through "
+    }, {
+      "type" : "text",
+      "text" : "ctx.persister()",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and returns a "
+    }, {
+      "type" : "text",
+      "text" : "field-scoped blocking error on ",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "lei",
+      "styles" : {
+        "bold" : true,
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " whose message names that record (its name and LEI). At ~40 rows the per-change lookup is trivial; the DB constraint remains the race backstop."
+    } ]
+  }, {
+    "id" : "7e746bac",
+    "type" : "numberedListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A1-adjacent, spec rule) LEI format.",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " 20 alphanumeric characters, checked field-scoped on "
+    }, {
+      "type" : "text",
+      "text" : "lei",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " when present — "
+    }, {
+      "type" : "text",
+      "text" : "validationDescriptor",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " has no format flag, so this is the validator's second check. The column's "
+    }, {
+      "type" : "text",
+      "text" : "length: 20",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " bounds storage; the validator bounds content."
+    } ]
+  }, {
+    "id" : "7667bf61",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "No "
+    }, {
+      "type" : "text",
+      "text" : "configure()",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " bindings are needed — no picker scoping, no enablement gates, no cross-field reactions on a three-field form."
+    } ]
+  }, {
+    "id" : "48b8012c",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Persistence, migration and surface"
+    } ]
+  }, {
+    "id" : "06cccc1f",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Migration",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": the initial V0→V1 creation of "
+    }, {
+      "type" : "text",
+      "text" : "legal_entity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (three columns plus the framework's system columns, the "
+    }, {
+      "type" : "text",
+      "text" : "by_status",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " index, the "
+    }, {
+      "type" : "text",
+      "text" : "lei",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " unique constraint). New entity, register starts empty — no data migration, per the spec."
+    } ]
+  }, {
+    "id" : "90c203ab",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Observer sheet",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": a "
+    }, {
+      "type" : "text",
+      "text" : "@ServesEntity(entity = LegalEntity.class, mode = AccessMode.READ_WRITE)",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " sheet extending the writable entity-instance base — the register is caller-editable by design (any signed-in user, the platform's default authorization). "
+    }, {
+      "type" : "text",
+      "text" : "The ",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "cdm",
+      "styles" : {
+        "bold" : true,
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " domain has no sheet plane yet in this deployment",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (the source tree is empty), so the sheet's task carries the once-per-domain scaffolding the observer-entity-sheet pattern requires: the domain caller sheet over the domain's "
+    }, {
+      "type" : "text",
+      "text" : "@Dao",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " factory, the seeder, and the thin writable adapter. No secret-API seam — no credential-bearing field."
+    } ]
+  }, {
+    "id" : "efc82c1a",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Screens",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": the platform's standard screens. The edit form is the spec's default form shipped verbatim from "
+    }, {
+      "type" : "text",
+      "text" : "ui/cdm.party.LegalEntity.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (one \"Identification\" section: name, LEI, status — no custom surface to design). The search listing is the standard candidates-driven grid over the sheet's "
+    }, {
+      "type" : "text",
+      "text" : "candidates",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "/"
+    }, {
+      "type" : "text",
+      "text" : "candidatesCount",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " cells, filterable by "
+    }, {
+      "type" : "text",
+      "text" : "status",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and searchable by "
+    }, {
+      "type" : "text",
+      "text" : "name",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and "
+    }, {
+      "type" : "text",
+      "text" : "lei",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " — the descriptor's scalar fields make all three filterable without custom work."
+    } ]
+  }, {
+    "id" : "2e53b74c",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "R2's boundary (A2)"
+    } ]
+  }, {
+    "id" : "2a4fd029",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The register's contribution to A2 is exactly what the spec's data model says it is: "
+    }, {
+      "type" : "text",
+      "text" : "status",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " is persisted, indexed and exposed through the sheet, so a consumer filtering on status excludes retired records by construction. The exclusion rule itself — \"not offered as a selectable counterparty for new business\" — binds the consuming surfaces (trade booking), which this spec declares out of scope; there is no surface here that offers counterparties for new business. The task covering A2 verifies the register's half: a retired record is stored with status retired and the sheet's candidate query filters on it index-covered."
     } ]
   }, {
     "id" : "feature-tasks-h",
