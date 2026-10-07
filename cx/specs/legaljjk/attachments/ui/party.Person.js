@@ -39,12 +39,14 @@
         // in this runtime getElement() hands back the element's layout data (a
         // BoxData), which exposes no options accessor. Each chip writes the real
         // Status field via a value-carrying dispatch, exactly as picking in the
-        // Status picker does — pending the form's Save.
+        // Status picker does — pending the form's Save. Each chip carries a THEME
+        // colour slot per lifecycle value (no literal colours): draft neutral,
+        // active success, retired warning.
         const statusFieldId = fid("status");
         const options = [
-            { jsontype: "ui.displayableEnum", name: "DRAFT", value: "draft", label: "Draft" },
-            { jsontype: "ui.displayableEnum", name: "ACTIVE", value: "active", label: "Active" },
-            { jsontype: "ui.displayableEnum", name: "RETIRED", value: "retired", label: "Retired" }
+            { jsontype: "ui.displayableEnum", name: "DRAFT", value: "draft", label: "Draft", color: "default" },
+            { jsontype: "ui.displayableEnum", name: "ACTIVE", value: "active", label: "Active", color: "success" },
+            { jsontype: "ui.displayableEnum", name: "RETIRED", value: "retired", label: "Retired", color: "warning" }
         ];
 
         const nameEl = viewUtils.buildUIElement(fid("name"), { label: "Name", variant: "outlined" });
@@ -74,7 +76,7 @@
             const opt = options[i];
             const chipId = stripId + "_chip" + i;
             chips[chipId] = { id: chipId, jsontype: "mui.chip",
-                props: { children: opt.label, variant: "outlined" },
+                props: { children: opt.label, variant: "outlined", color: opt.color },
                 disabled: readOnly.boolValue(),
                 actions: viewUtils.actions(viewUtils.onClick([
                     viewUtils.triggerChange(statusFieldId, opt)
