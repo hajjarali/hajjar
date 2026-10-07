@@ -72,7 +72,11 @@
           "nonNegative" : false
         },
         "viewDescriptor" : {
-          "viewType" : "AUTOCOMPLETE"
+          "viewType" : "AUTOCOMPLETE",
+          "viewParameter" : {
+            "jsontype" : "entity.desc.autoCompleteFieldViewParameter",
+            "options" : [ "draft", "active", "retired" ]
+          }
         },
         "systemField" : false
       }

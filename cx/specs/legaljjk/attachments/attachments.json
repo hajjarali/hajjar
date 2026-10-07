@@ -2,14 +2,14 @@
   "attachments" : [ {
     "name" : "entity_descriptors/party.Person.json",
     "type" : "ENTITY_DESCRIPTORS",
-    "size_bytes" : 2322,
-    "uploaded_at" : "2026-10-07T12:08:42.691356700Z",
+    "size_bytes" : 2497,
+    "uploaded_at" : "2026-10-07T13:34:02.466709700Z",
     "origin" : "AGENT"
   }, {
     "name" : "ui/party.Person.js",
     "type" : "UI",
-    "size_bytes" : 5265,
-    "uploaded_at" : "2026-10-07T13:31:15.158168800Z",
+    "size_bytes" : 5134,
+    "uploaded_at" : "2026-10-07T13:35:57.255879700Z",
     "origin" : "AGENT"
   } ]
 }

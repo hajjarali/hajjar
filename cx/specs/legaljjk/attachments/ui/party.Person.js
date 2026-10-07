@@ -33,20 +33,18 @@
         const dividerId = root + "_divider";
         const divider = { id: dividerId, jsontype: "mui.divider", sx: { mb: 2.5 } };
 
-        // Status chip selector: the options are the bean's own DECLARED lifecycle
-        // (draft | active | retired — the same value set the entity descriptor
-        // carries for the status field), not a live read off the mounted element:
-        // in this runtime getElement() hands back the element's layout data (a
-        // BoxData), which exposes no options accessor. Each chip writes the real
-        // Status field via a value-carrying dispatch, exactly as picking in the
-        // Status picker does — pending the form's Save. Each chip carries a THEME
-        // colour slot per lifecycle value (no literal colours): draft neutral,
-        // active success, retired warning.
+        // Status quick-set buttons: HARDCODED — one button per lifecycle value of
+        // the bean's declared status set (draft | active | retired, the value set
+        // the entity descriptor carries), each with a literal label and a theme
+        // colour slot. (mui.chip rendered blank in the preview; mui.button is the
+        // reliable control.) Each button writes the real Status field via a
+        // value-carrying dispatch, exactly as picking in the Status picker does —
+        // pending the form's Save; a button never saves on its own.
         const statusFieldId = fid("status");
-        const options = [
-            { jsontype: "ui.displayableEnum", name: "DRAFT", value: "draft", label: "Draft", color: "default" },
-            { jsontype: "ui.displayableEnum", name: "ACTIVE", value: "active", label: "Active", color: "success" },
-            { jsontype: "ui.displayableEnum", name: "RETIRED", value: "retired", label: "Retired", color: "warning" }
+        const statusButtons = [
+            { label: "Draft",   color: "primary",  value: "draft" },
+            { label: "Active",  color: "success",  value: "active" },
+            { label: "Retired", color: "warning",  value: "retired" }
         ];
 
         const nameEl = viewUtils.buildUIElement(fid("name"), { label: "Name", variant: "outlined" });
@@ -70,25 +68,26 @@
         const elements = { [headerId]: header, [dividerId]: divider };
 
         const stripId = root + "_statusstrip";
-        const chipsId = stripId + "_chips";
-        const chips = {};
-        for (let i = 0; i < options.length; i++) {
-            const opt = options[i];
-            const chipId = stripId + "_chip" + i;
-            chips[chipId] = { id: chipId, jsontype: "mui.chip",
-                props: { children: opt.label, variant: "outlined", color: opt.color },
+        const buttonsId = stripId + "_buttons";
+        const buttons = {};
+        for (let i = 0; i < statusButtons.length; i++) {
+            const b = statusButtons[i];
+            const btnId = stripId + "_btn" + i;
+            buttons[btnId] = { id: btnId, jsontype: "mui.button",
+                props: { children: b.label, variant: "outlined", color: b.color },
                 disabled: readOnly.boolValue(),
                 actions: viewUtils.actions(viewUtils.onClick([
-                    viewUtils.triggerChange(statusFieldId, opt)
+                    viewUtils.triggerChange(statusFieldId,
+                        { jsontype: "ui.displayableEnum", name: b.value.toUpperCase(), value: b.value, label: b.label })
                 ])) };
         }
         const stripLabelId = stripId + "_label";
         const stripLabel = { id: stripLabelId, jsontype: "mui.typography",
             props: { variant: "subtitle2", children: "Status", sx: { mb: 0.5 } } };
-        const chipRow = { id: chipsId, jsontype: "mui.stack",
-            props: { direction: "row", spacing: 1 }, elements: chips };
+        const buttonRow = { id: buttonsId, jsontype: "mui.stack",
+            props: { direction: "row", spacing: 1 }, elements: buttons };
         const strip = { id: stripId, jsontype: "mui.box", sx: { mb: 2.5 },
-            elements: { [stripLabelId]: stripLabel, [chipsId]: chipRow } };
+            elements: { [stripLabelId]: stripLabel, [buttonsId]: buttonRow } };
         elements[stripId] = strip;
 
         elements[gridId] = grid;
