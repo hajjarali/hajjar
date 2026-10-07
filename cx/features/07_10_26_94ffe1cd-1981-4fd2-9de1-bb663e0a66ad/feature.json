@@ -834,12 +834,19 @@
       "text" : "Tasks"
     } ]
   }, {
-    "id" : "459b991d",
-    "type" : "paragraph",
+    "id" : "3f94bd41",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
     "content" : [ {
       "type" : "text",
-      "text" : "The design decomposed into tasks, each a '### Task N: Title' heading with a '"
-    }, {
+      "text" : "Task 1: The LegalEntity entity — class, enum, descriptor, migration"
+    } ]
+  }, {
+    "id" : "d6f0b2f9",
+    "type" : "paragraph",
+    "content" : [ {
       "type" : "text",
       "text" : "Depends on",
       "styles" : {
@@ -847,7 +854,662 @@
       }
     }, {
       "type" : "text",
-      "text" : "' line naming its direct prerequisites."
+      "text" : ": None"
+    } ]
+  }, {
+    "id" : "7b6ef522",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Create the "
+    }, {
+      "type" : "text",
+      "text" : "cdm.party.LegalEntity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " persistable entity per the design: the "
+    }, {
+      "type" : "text",
+      "text" : "cyai.cdm.party.LegalEntityStatus",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " enum ("
+    }, {
+      "type" : "text",
+      "text" : "DRAFT",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "/"
+    }, {
+      "type" : "text",
+      "text" : "ACTIVE",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "/"
+    }, {
+      "type" : "text",
+      "text" : "RETIRED",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "IDisplayableEnum",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " + jsontypes entry), the entity class extending "
+    }, {
+      "type" : "text",
+      "text" : "AbstractRdbmsEntity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " with its three fields, the jsontypes entry, and the initial V0→V1 migration creating "
+    }, {
+      "type" : "text",
+      "text" : "legal_entity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (columns "
+    }, {
+      "type" : "text",
+      "text" : "name",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "/"
+    }, {
+      "type" : "text",
+      "text" : "lei",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "/"
+    }, {
+      "type" : "text",
+      "text" : "status",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " plus the framework system columns, the "
+    }, {
+      "type" : "text",
+      "text" : "by_status",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " index, the "
+    }, {
+      "type" : "text",
+      "text" : "lei",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " single-column UNIQUE constraint, "
+    }, {
+      "type" : "text",
+      "text" : "status",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " default "
+    }, {
+      "type" : "text",
+      "text" : "DRAFT",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "). Merge the spec's entity-descriptor attachment "
+    }, {
+      "type" : "text",
+      "text" : "entity_descriptors/cdm.party.LegalEntity.json",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " "
+    }, {
+      "type" : "text",
+      "text" : "verbatim",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " into the module's descriptor file — it is spec-time authored; do not re-derive or edit it. Generated entity tests cover the table rules: a save without a name is refused (A3), a duplicate LEI is refused by the constraint, a new row defaults to draft, and a second LEI-less row saves alongside an existing one."
+    } ]
+  }, {
+    "id" : "b33ab6c0",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Must not touch: no other entity, no view JS (Task 5 owns the form), no sheet (Task 4 owns the surface)."
+    } ]
+  }, {
+    "id" : "6e3a00f5",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Delivers",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "ee3bc7f4",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "LegalEntity - persistence.entity"
+    } ]
+  }, {
+    "id" : "71e354f2",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "LegalEntity.lei - validation.rule (unique when present)"
+    } ]
+  }, {
+    "id" : "f2a4ca47",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "LegalEntity.status - validation.rule (default(draft))"
+    } ]
+  }, {
+    "id" : "c8622d78",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "275aff32",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A3) Saving a legal entity without a name is rejected."
+    } ]
+  }, {
+    "id" : "3643c56e",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Saving a legal entity whose LEI another record already carries is refused by the unique constraint (the message A1 demands is Task 2's)."
+    } ]
+  }, {
+    "id" : "a60ad1fc",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "A saved legal entity with no status set carries status draft."
+    } ]
+  }, {
+    "id" : "8cf54177",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Task 2: The "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntityValidator",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " — duplicate-LEI message and LEI format"
+    } ]
+  }, {
+    "id" : "4a7a27ec",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Depends on",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": Task-1"
+    } ]
+  }, {
+    "id" : "39e07a54",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Add the "
+    }, {
+      "type" : "text",
+      "text" : "cyai.cdm.party.LegalEntityValidator",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " code-behind class beside the entity (naming-convention discovery, no registration), with "
+    }, {
+      "type" : "text",
+      "text" : "validate()",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " only — no "
+    }, {
+      "type" : "text",
+      "text" : "configure()",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " bindings. Two field-scoped blocking checks on "
+    }, {
+      "type" : "text",
+      "text" : "lei",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", both only when a value is present: (1) the 20-alphanumeric format rule — reject anything else with a message saying so; (2) the duplicate-LEI rule — resolve any other row carrying the same LEI through the context's persister and return a blocking error on "
+    }, {
+      "type" : "text",
+      "text" : "lei",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " whose message "
+    }, {
+      "type" : "text",
+      "text" : "names the conflicting record",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (its name and LEI), which the bare unique constraint cannot do. Unit-test the validator directly against a fake context per the bean-validators pattern: format rejections, the duplicate case naming the record, and the clean case (no LEI, unique LEI, own row on update)."
+    } ]
+  }, {
+    "id" : "1fdc86d3",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Must not touch: the descriptor's "
+    }, {
+      "type" : "text",
+      "text" : "unique",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " flag (Task 1's backstop stands unchanged) or the entity class."
+    } ]
+  }, {
+    "id" : "6b54514a",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Delivers",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "d1692773",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "LegalEntity.lei - validation.rule (format(20 alphanumeric))"
+    } ]
+  }, {
+    "id" : "77c2bfd7",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "82b4a671",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A1) Saving a legal entity whose LEI another record already carries is rejected with a message naming that conflicting record."
+    } ]
+  }, {
+    "id" : "17ee21ba",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Saving a legal entity with an LEI that is not 20 alphanumeric characters is rejected."
+    } ]
+  }, {
+    "id" : "3af6d021",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Task 3: The observer sheet and the cdm domain plane"
+    } ]
+  }, {
+    "id" : "6bf917e9",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Depends on",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": Task-1"
+    } ]
+  }, {
+    "id" : "a35e4e01",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Stand up the "
+    }, {
+      "type" : "text",
+      "text" : "cdm",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " domain's observer plane — this deployment has none yet (the source tree is empty): the domain caller sheet over the domain's "
+    }, {
+      "type" : "text",
+      "text" : "@Dao",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " factory, the startup seeder, and the thin writable adapter (no secret-API seam — the entity carries no credential). Then add the entity's sheet: "
+    }, {
+      "type" : "text",
+      "text" : "@ServesEntity(entity = LegalEntity.class, mode = AccessMode.READ_WRITE)",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " over the writable base, three lines plus the "
+    }, {
+      "type" : "text",
+      "text" : "NAME",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " constant, per the observer-entity-sheet pattern. Verify the register's half of A2 through the sheet: a record saved with status retired is stored as retired, and a "
+    }, {
+      "type" : "text",
+      "text" : "candidatesQuery",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " filtered on status excludes it — the "
+    }, {
+      "type" : "text",
+      "text" : "by_status",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " index covers the filter."
+    } ]
+  }, {
+    "id" : "75c01b20",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Delivers",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "939634f6",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "LegalEntity - observer.sheet"
+    } ]
+  }, {
+    "id" : "5d725243",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "e4bc1e52",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A2) A legal entity in status retired is stored and exposed so that a candidates query filtering on status excludes it from selection."
+    } ]
+  }, {
+    "id" : "4486b580",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Task 4: The register's screens — default form and search listing"
+    } ]
+  }, {
+    "id" : "c3477c04",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Depends on",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": Task-1, Task-3"
+    } ]
+  }, {
+    "id" : "00da60a2",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Ship the spec's default form "
+    }, {
+      "type" : "text",
+      "text" : "verbatim",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " from the attachment "
+    }, {
+      "type" : "text",
+      "text" : "ui/cdm.party.LegalEntity.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " to its application resource path beside the entity class — spec-time authored, one \"Identification\" section (name, LEI, status); do not redesign it. Wire the register's search listing as the standard candidates-driven grid over the sheet's "
+    }, {
+      "type" : "text",
+      "text" : "candidates",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "/"
+    }, {
+      "type" : "text",
+      "text" : "candidatesCount",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " cells: filterable by "
+    }, {
+      "type" : "text",
+      "text" : "status",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", searchable by "
+    }, {
+      "type" : "text",
+      "text" : "name",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and "
+    }, {
+      "type" : "text",
+      "text" : "lei",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " — no custom surface. Verify end to end through the screens: the form renders and saves the three fields, and the listing filters and searches as above."
+    } ]
+  }, {
+    "id" : "5bb2a943",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Delivers",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "7a860fc7",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "LegalEntity - ui.defaultForm"
+    } ]
+  }, {
+    "id" : "d9fc27e3",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "e4533d7c",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The edit form renders name, LEI and status and saves a legal entity through the sheet."
+    } ]
+  }, {
+    "id" : "4035f228",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The search listing filters by status and searches by name and LEI."
     } ]
   } ],
   "comments" : [ ],

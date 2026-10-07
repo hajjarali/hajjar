@@ -1,1 +1,15 @@
-[ ]
+[ {
+  "threadId" : "24510aad-2607-4836-8cc9-630d6435ac4f",
+  "text" : "no view JS (Task 5 owns the form), no sheet (Task 4 owns the surface)",
+  "occurrence" : 0,
+  "resolved" : false,
+  "comments" : [ {
+    "id" : "86b28fbf-d50d-41af-a01f-cdb94e1c539f",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "Both cross-references are stale: there is no Task 5 — the default form is Task 4 ('The register's screens — default form and search listing') — and the observer sheet is Task 3, not Task 4. An implementing agent honouring 'Must not touch' would skip the form entirely and avoid the wrong task. Rewrite the line as 'no view JS (Task 4 owns the form), no sheet (Task 3 owns the surface)'.",
+    "createdAt" : "2026-10-07T14:35:50.133368900Z"
+  } ]
+} ]
