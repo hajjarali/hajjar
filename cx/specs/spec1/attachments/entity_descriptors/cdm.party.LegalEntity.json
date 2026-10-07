@@ -1,0 +1,88 @@
+{
+  "descriptors" : [ {
+    "name" : "cdm.party.LegalEntity",
+    "className" : "cyai.cdm.base.staticdata.party.LegalEntity",
+    "entityType" : "PERSISTABLE_BEAN",
+    "label" : "Legal Entity",
+    "description" : "A legal entity, with a required name and optional identifiers (LEI, BIC, MIC, RED ID, country code, other). Ported from CDM cdm.base.staticdata.party.LegalEntity; the status lifecycle is this spec's addition.",
+    "group" : "cdm.party",
+    "persistenceDescriptor" : {
+      "tableName" : "legal_entity",
+      "idGenerationStrategy" : "AUTO_INCREMENT",
+      "indexGroups" : {
+        "by_name" : [ "name" ]
+      },
+      "naturalKeyGroups" : { },
+      "cacheDescriptor" : {
+        "strategy" : "NONE"
+      },
+      "starSchemaRole" : "DIM"
+    },
+    "fieldDescriptors" : {
+      "name" : {
+        "name" : "name",
+        "fieldType" : "STRING",
+        "label" : "Name",
+        "description" : "The legal entity's name.",
+        "persistenceDescriptor" : {
+          "columnName" : "name",
+          "length" : 255
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "status" : {
+        "name" : "status",
+        "fieldType" : "ENUM",
+        "label" : "Status",
+        "description" : "The record's lifecycle: draft, active or retired.",
+        "persistenceDescriptor" : {
+          "columnName" : "status",
+          "length" : 16,
+          "defaultValue" : "DRAFT"
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "STATUS_BADGE"
+        },
+        "systemField" : false
+      },
+      "identifiers" : {
+        "name" : "identifiers",
+        "fieldType" : "LIST",
+        "label" : "Identifiers",
+        "description" : "The entity's identifiers, each with its type (BIC, LEI, MIC, RED ID, country code, other).",
+        "persistenceDescriptor" : {
+          "columnName" : "identifiers"
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "COLLECTION"
+        },
+        "componentName" : {
+          "jsontype" : "entity.desc.entityKey",
+          "name" : "cdm.party.EntityIdentifier",
+          "version" : 0
+        },
+        "systemField" : false
+      }
+    },
+    "relationships" : { },
+    "version" : 1
+  } ]
+}

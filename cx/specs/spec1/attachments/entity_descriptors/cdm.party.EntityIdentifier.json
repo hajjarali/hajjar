@@ -1,0 +1,52 @@
+{
+  "descriptors" : [ {
+    "name" : "cdm.party.EntityIdentifier",
+    "className" : "cyai.cdm.base.staticdata.party.EntityIdentifier",
+    "entityType" : "BEAN",
+    "label" : "Entity Identifier",
+    "description" : "One identifier of a legal entity, with its source type. Ported from CDM cdm.base.staticdata.party.EntityIdentifier.",
+    "group" : "cdm.party",
+    "fieldDescriptors" : {
+      "identifier" : {
+        "name" : "identifier",
+        "fieldType" : "STRING",
+        "label" : "Identifier",
+        "description" : "The identifier's value.",
+        "persistenceDescriptor" : {
+          "columnName" : "identifier",
+          "length" : 64
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "identifierType" : {
+        "name" : "identifierType",
+        "fieldType" : "ENUM",
+        "label" : "Identifier Type",
+        "description" : "The identifier's source type: BIC, LEI, MIC, RED ID, country code or other.",
+        "persistenceDescriptor" : {
+          "columnName" : "identifier_type",
+          "length" : 16
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "SELECT_POPUP"
+        },
+        "systemField" : false
+      }
+    },
+    "relationships" : { },
+    "version" : 1
+  } ]
+}

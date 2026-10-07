@@ -1,0 +1,27 @@
+{
+  "attachments" : [ {
+    "name" : "entity_descriptors/cdm.party.EntityIdentifier.json",
+    "type" : "ENTITY_DESCRIPTORS",
+    "size_bytes" : 1624,
+    "uploaded_at" : "2026-10-07T14:54:20.653495200Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "entity_descriptors/cdm.party.LegalEntity.json",
+    "type" : "ENTITY_DESCRIPTORS",
+    "size_bytes" : 2753,
+    "uploaded_at" : "2026-10-07T14:54:04.315489400Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "ui/cdm.party.EntityIdentifier.js",
+    "type" : "UI",
+    "size_bytes" : 1754,
+    "uploaded_at" : "2026-10-07T14:55:29.504957800Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "ui/cdm.party.LegalEntity.js",
+    "type" : "UI",
+    "size_bytes" : 2000,
+    "uploaded_at" : "2026-10-07T14:55:25.073639800Z",
+    "origin" : "AGENT"
+  } ]
+}
