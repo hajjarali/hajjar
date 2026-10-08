@@ -1,0 +1,63 @@
+{
+  "descriptors" : [ {
+    "name" : "core.Person",
+    "className" : "cyai.core.Person",
+    "entityType" : "PERSISTABLE_BEAN",
+    "label" : "Person",
+    "description" : "A named individual with an age, held in the person register.",
+    "group" : "core",
+    "persistenceDescriptor" : {
+      "tableName" : "person",
+      "idGenerationStrategy" : "AUTO_INCREMENT",
+      "indexGroups" : {
+        "by_name" : [ "name" ]
+      },
+      "naturalKeyGroups" : { },
+      "cacheDescriptor" : {
+        "strategy" : "NONE"
+      },
+      "starSchemaRole" : "DIM"
+    },
+    "fieldDescriptors" : {
+      "name" : {
+        "name" : "name",
+        "fieldType" : "STRING",
+        "label" : "Name",
+        "description" : "The person's display name.",
+        "persistenceDescriptor" : {
+          "columnName" : "name",
+          "length" : 255
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "age" : {
+        "name" : "age",
+        "fieldType" : "INTEGER",
+        "label" : "Age",
+        "description" : "The person's age in whole years.",
+        "persistenceDescriptor" : {
+          "columnName" : "age"
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : true
+        },
+        "viewDescriptor" : {
+          "viewType" : "INTEGER"
+        },
+        "systemField" : false
+      }
+    },
+    "relationships" : { },
+    "version" : 1
+  } ]
+}

@@ -1,0 +1,15 @@
+{
+  "attachments" : [ {
+    "name" : "entity_descriptors/core.Person.json",
+    "type" : "ENTITY_DESCRIPTORS",
+    "size_bytes" : 1703,
+    "uploaded_at" : "2026-10-08T07:35:25.943437200Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "ui/core.Person.js",
+    "type" : "UI",
+    "size_bytes" : 2070,
+    "uploaded_at" : "2026-10-08T07:35:54.834719100Z",
+    "origin" : "AGENT"
+  } ]
+}
