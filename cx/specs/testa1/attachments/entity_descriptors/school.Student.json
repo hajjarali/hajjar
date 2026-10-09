@@ -1,0 +1,118 @@
+{
+  "descriptors" : [ {
+    "name" : "school.Student",
+    "className" : "cyai.school.Student",
+    "entityType" : "PERSISTABLE_BEAN",
+    "label" : "Student",
+    "description" : "A student enrolled at a school; one shared registry, so a student may belong to several classes.",
+    "group" : "school",
+    "persistenceDescriptor" : {
+      "tableName" : "school_student",
+      "idGenerationStrategy" : "AUTO_INCREMENT",
+      "indexGroups" : { },
+      "naturalKeyGroups" : { },
+      "cacheDescriptor" : {
+        "strategy" : "NONE"
+      },
+      "starSchemaRole" : "DIM"
+    },
+    "fieldDescriptors" : {
+      "fullName" : {
+        "name" : "fullName",
+        "fieldType" : "STRING",
+        "label" : "Full Name",
+        "description" : "The student's full name.",
+        "persistenceDescriptor" : {
+          "columnName" : "full_name",
+          "length" : 255
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "studentNumber" : {
+        "name" : "studentNumber",
+        "fieldType" : "STRING",
+        "label" : "Student Number",
+        "description" : "The student's number within the school; unique when present.",
+        "persistenceDescriptor" : {
+          "columnName" : "student_number",
+          "length" : 64
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : true,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "dateOfBirth" : {
+        "name" : "dateOfBirth",
+        "fieldType" : "DATE",
+        "label" : "Date of Birth",
+        "description" : "The student's date of birth.",
+        "persistenceDescriptor" : {
+          "columnName" : "date_of_birth"
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "DATE"
+        },
+        "systemField" : false
+      },
+      "guardianName" : {
+        "name" : "guardianName",
+        "fieldType" : "STRING",
+        "label" : "Guardian Name",
+        "description" : "The guardian's name.",
+        "persistenceDescriptor" : {
+          "columnName" : "guardian_name",
+          "length" : 255
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "guardianContact" : {
+        "name" : "guardianContact",
+        "fieldType" : "STRING",
+        "label" : "Guardian Contact",
+        "description" : "The guardian's phone or email, as entered.",
+        "persistenceDescriptor" : {
+          "columnName" : "guardian_contact",
+          "length" : 255
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      }
+    },
+    "relationships" : { },
+    "version" : 1
+  } ]
+}

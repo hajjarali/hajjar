@@ -1,0 +1,169 @@
+{
+  "descriptors" : [ {
+    "name" : "school.SchoolClass",
+    "className" : "cyai.school.SchoolClass",
+    "entityType" : "PERSISTABLE_BEAN",
+    "label" : "Class",
+    "description" : "A teaching group within one school, holding its roster of students.",
+    "group" : "school",
+    "persistenceDescriptor" : {
+      "tableName" : "school_class",
+      "idGenerationStrategy" : "AUTO_INCREMENT",
+      "indexGroups" : { },
+      "naturalKeyGroups" : { },
+      "cacheDescriptor" : {
+        "strategy" : "NONE"
+      },
+      "starSchemaRole" : "DIM"
+    },
+    "fieldDescriptors" : {
+      "name" : {
+        "name" : "name",
+        "fieldType" : "STRING",
+        "label" : "Name",
+        "description" : "The class's name, unique among the classes of its school.",
+        "persistenceDescriptor" : {
+          "columnName" : "name",
+          "length" : 255
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "school" : {
+        "name" : "school",
+        "fieldType" : "REFERENCE",
+        "label" : "School",
+        "description" : "The school the class belongs to.",
+        "persistenceDescriptor" : {
+          "columnName" : "school_id"
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "REFERENCE"
+        },
+        "componentName" : {
+          "jsontype" : "entity.desc.entityKey",
+          "name" : "school.School",
+          "version" : 1
+        },
+        "systemField" : false
+      },
+      "room" : {
+        "name" : "room",
+        "fieldType" : "STRING",
+        "label" : "Room",
+        "description" : "The room the class meets in.",
+        "persistenceDescriptor" : {
+          "columnName" : "room",
+          "length" : 64
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "term" : {
+        "name" : "term",
+        "fieldType" : "STRING",
+        "label" : "Term",
+        "description" : "The term the class runs in, e.g. \"2025 Spring\".",
+        "persistenceDescriptor" : {
+          "columnName" : "term",
+          "length" : 64
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "teacher" : {
+        "name" : "teacher",
+        "fieldType" : "STRING",
+        "label" : "Teacher",
+        "description" : "The teacher's name, entered as free text (not a managed record).",
+        "persistenceDescriptor" : {
+          "columnName" : "teacher",
+          "length" : 255
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "students" : {
+        "name" : "students",
+        "fieldType" : "REFERENCE_LIST",
+        "label" : "Students",
+        "description" : "The class's roster; a student may sit on several rosters.",
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "REFERENCE"
+        },
+        "componentName" : {
+          "jsontype" : "entity.desc.entityKey",
+          "name" : "school.Student",
+          "version" : 1
+        },
+        "systemField" : false
+      }
+    },
+    "relationships" : {
+      "school" : {
+        "name" : "school",
+        "cardinality" : "MANY_TO_ONE",
+        "targetEntityName" : {
+          "jsontype" : "entity.desc.entityKey",
+          "name" : "school.School",
+          "version" : 1
+        },
+        "fieldName" : "school",
+        "owning" : true
+      },
+      "students" : {
+        "name" : "students",
+        "cardinality" : "MANY_TO_MANY",
+        "targetEntityName" : {
+          "jsontype" : "entity.desc.entityKey",
+          "name" : "school.Student",
+          "version" : 1
+        },
+        "fieldName" : "students",
+        "owning" : true,
+        "joinTableName" : "school_class_student",
+        "joinColumnName" : "school_class_id",
+        "inverseJoinColumnName" : "student_id"
+      }
+    },
+    "version" : 1
+  } ]
+}

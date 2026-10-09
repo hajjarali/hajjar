@@ -1,0 +1,81 @@
+{
+  "descriptors" : [ {
+    "name" : "school.School",
+    "className" : "cyai.school.School",
+    "entityType" : "PERSISTABLE_BEAN",
+    "label" : "School",
+    "description" : "A school: the top of the registry, holding its classes.",
+    "group" : "school",
+    "persistenceDescriptor" : {
+      "tableName" : "school",
+      "idGenerationStrategy" : "AUTO_INCREMENT",
+      "indexGroups" : { },
+      "naturalKeyGroups" : { },
+      "cacheDescriptor" : {
+        "strategy" : "NONE"
+      },
+      "starSchemaRole" : "DIM"
+    },
+    "fieldDescriptors" : {
+      "name" : {
+        "name" : "name",
+        "fieldType" : "STRING",
+        "label" : "Name",
+        "description" : "The school's name.",
+        "persistenceDescriptor" : {
+          "columnName" : "name",
+          "length" : 255
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "address" : {
+        "name" : "address",
+        "fieldType" : "STRING",
+        "label" : "Address",
+        "description" : "The school's address.",
+        "persistenceDescriptor" : {
+          "columnName" : "address",
+          "length" : 255
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "contactEmail" : {
+        "name" : "contactEmail",
+        "fieldType" : "STRING",
+        "label" : "Contact Email",
+        "description" : "The school office's contact email address.",
+        "persistenceDescriptor" : {
+          "columnName" : "contact_email",
+          "length" : 255
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "EMAIL"
+        },
+        "systemField" : false
+      }
+    },
+    "relationships" : { },
+    "version" : 1
+  } ]
+}
