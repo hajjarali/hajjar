@@ -1,0 +1,15 @@
+{
+  "attachments" : [ {
+    "name" : "entity_descriptors/cdm.base.staticdata.party.LegalEntity.json",
+    "type" : "ENTITY_DESCRIPTORS",
+    "size_bytes" : 2063,
+    "uploaded_at" : "2026-10-13T10:11:40.013357500Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "ui/cdm.base.staticdata.party.LegalEntity.js",
+    "type" : "UI",
+    "size_bytes" : 4759,
+    "uploaded_at" : "2026-10-13T10:12:27.055811700Z",
+    "origin" : "AGENT"
+  } ]
+}

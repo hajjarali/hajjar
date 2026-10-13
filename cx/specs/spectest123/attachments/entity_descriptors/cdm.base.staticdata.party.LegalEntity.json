@@ -1,0 +1,64 @@
+{
+  "descriptors" : [ {
+    "name" : "cdm.base.staticdata.party.LegalEntity",
+    "className" : "cyai.cdm.base.staticdata.party.LegalEntity",
+    "entityType" : "PERSISTABLE_BEAN",
+    "label" : "Legal Entity",
+    "description" : "A legal entity FCY faces — a counterparty, fund or booking entity — identified by its name and its Legal Entity Identifier (LEI). Realises the CDM type cdm.base.staticdata.party.LegalEntity, narrowed to exactly one required LEI per entity (FCY standing rule R7).",
+    "group" : "cdm.base.staticdata.party",
+    "persistenceDescriptor" : {
+      "tableName" : "legal_entity",
+      "idGenerationStrategy" : "SEQUENCE",
+      "indexGroups" : {
+        "by_name" : [ "name" ]
+      },
+      "naturalKeyGroups" : { },
+      "cacheDescriptor" : {
+        "strategy" : "NONE"
+      },
+      "starSchemaRole" : "DIM"
+    },
+    "fieldDescriptors" : {
+      "name" : {
+        "name" : "name",
+        "fieldType" : "STRING",
+        "label" : "Name",
+        "description" : "The legal entity's name.",
+        "persistenceDescriptor" : {
+          "columnName" : "name",
+          "length" : 255
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "lei" : {
+        "name" : "lei",
+        "fieldType" : "STRING",
+        "label" : "LEI",
+        "description" : "The Legal Entity Identifier — 20 alphanumeric characters, unique across the register.",
+        "persistenceDescriptor" : {
+          "columnName" : "lei",
+          "length" : 20
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : true,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      }
+    },
+    "relationships" : { },
+    "version" : 1
+  } ]
+}
