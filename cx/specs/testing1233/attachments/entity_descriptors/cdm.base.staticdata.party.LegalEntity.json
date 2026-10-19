@@ -1,0 +1,96 @@
+{
+  "descriptors" : [ {
+    "name" : "cdm.base.staticdata.party.LegalEntity",
+    "className" : "cyai.cdm.base.staticdata.party.LegalEntity",
+    "entityType" : "PERSISTABLE_BEAN",
+    "label" : "Legal Entity",
+    "description" : "An organisation with legal personality, as CDM LegalEntity defines it: a name and a list of entity identifiers. The status is an extension to CDM.",
+    "group" : "cdm.base.staticdata.party",
+    "persistenceDescriptor" : {
+      "tableName" : "legal_entity",
+      "idGenerationStrategy" : "AUTO_INCREMENT",
+      "indexGroups" : {
+        "searchable" : [ "name", "status" ]
+      },
+      "naturalKeyGroups" : { },
+      "cacheDescriptor" : {
+        "strategy" : "NONE"
+      },
+      "starSchemaRole" : "DIM"
+    },
+    "fieldDescriptors" : {
+      "name" : {
+        "name" : "name",
+        "fieldType" : "STRING",
+        "label" : "Name",
+        "description" : "The legal name of the entity.",
+        "persistenceDescriptor" : {
+          "columnName" : "name",
+          "length" : 255
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT",
+          "defaultSize" : 280
+        },
+        "systemField" : false
+      },
+      "entityIdentifier" : {
+        "name" : "entityIdentifier",
+        "fieldType" : "LIST",
+        "label" : "Entity Identifiers",
+        "description" : "The identifiers of the legal entity with the source of each (LEI, BIC, MIC, REDID, country code, other). May be empty.",
+        "persistenceDescriptor" : {
+          "columnName" : "entity_identifier"
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "EMBEDDED",
+          "hideInSearchResults" : true
+        },
+        "componentName" : {
+          "jsontype" : "entity.desc.entityKey",
+          "name" : "cdm.base.staticdata.party.EntityIdentifier",
+          "version" : 0
+        },
+        "systemField" : false
+      },
+      "status" : {
+        "name" : "status",
+        "fieldType" : "STRING",
+        "label" : "Status",
+        "description" : "Lifecycle status: draft, active or retired. An extension to CDM, not a CDM field. A retired legal entity stays on record but is not offered for new references.",
+        "persistenceDescriptor" : {
+          "columnName" : "status",
+          "length" : 16,
+          "defaultValue" : "draft"
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "AUTOCOMPLETE",
+          "viewParameter" : {
+            "jsontype" : "entity.desc.autoCompleteFieldViewParameter",
+            "options" : [ "draft", "active", "retired" ],
+            "freeSolo" : false
+          },
+          "defaultSize" : 120
+        },
+        "systemField" : false
+      }
+    },
+    "relationships" : { },
+    "version" : 1
+  } ]
+}

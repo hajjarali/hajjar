@@ -1,0 +1,33 @@
+{
+  "attachments" : [ {
+    "name" : "entity_descriptors/cdm.base.staticdata.party.EntityIdentifier.json",
+    "type" : "ENTITY_DESCRIPTORS",
+    "size_bytes" : 2042,
+    "uploaded_at" : "2026-10-19T07:11:27.448471100Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "entity_descriptors/cdm.base.staticdata.party.LegalEntity.json",
+    "type" : "ENTITY_DESCRIPTORS",
+    "size_bytes" : 3231,
+    "uploaded_at" : "2026-10-19T07:11:35.188983900Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "ui/cdm.base.staticdata.party.EntityIdentifier.js",
+    "type" : "UI",
+    "size_bytes" : 3397,
+    "uploaded_at" : "2026-10-19T07:12:42.366654Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "ui/cdm.base.staticdata.party.LegalEntity.js",
+    "type" : "UI",
+    "size_bytes" : 11965,
+    "uploaded_at" : "2026-10-19T07:14:39.454310800Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "ui/legal-entities.screen.js",
+    "type" : "UI",
+    "size_bytes" : 8305,
+    "uploaded_at" : "2026-10-19T07:16:00.017945900Z",
+    "origin" : "AGENT"
+  } ]
+}

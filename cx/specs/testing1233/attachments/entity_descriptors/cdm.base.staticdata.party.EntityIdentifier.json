@@ -1,0 +1,59 @@
+{
+  "descriptors" : [ {
+    "name" : "cdm.base.staticdata.party.EntityIdentifier",
+    "className" : "cyai.cdm.base.staticdata.party.EntityIdentifier",
+    "entityType" : "BEAN",
+    "label" : "Entity Identifier",
+    "description" : "One identifier of a legal entity and the source that issued it, as CDM EntityIdentifier defines it. Stored inline in its legal entity's row.",
+    "group" : "cdm.base.staticdata.party",
+    "fieldDescriptors" : {
+      "identifier" : {
+        "name" : "identifier",
+        "fieldType" : "STRING",
+        "label" : "Identifier",
+        "description" : "The identifier value, e.g. the 20-character LEI.",
+        "persistenceDescriptor" : {
+          "columnName" : "identifier",
+          "length" : 255
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT",
+          "defaultSize" : 220
+        },
+        "systemField" : false
+      },
+      "identifierType" : {
+        "name" : "identifierType",
+        "fieldType" : "STRING",
+        "label" : "Identifier Type",
+        "description" : "The source of the identifier: BIC, LEI, MIC, REDID, COUNTRY_CODE or OTHER (CDM EntityIdentifierTypeEnum values).",
+        "persistenceDescriptor" : {
+          "columnName" : "identifier_type",
+          "length" : 32
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "AUTOCOMPLETE",
+          "viewParameter" : {
+            "jsontype" : "entity.desc.autoCompleteFieldViewParameter",
+            "options" : [ "BIC", "LEI", "MIC", "REDID", "COUNTRY_CODE", "OTHER" ],
+            "freeSolo" : false
+          },
+          "defaultSize" : 160
+        },
+        "systemField" : false
+      }
+    },
+    "relationships" : { },
+    "version" : 0
+  } ]
+}

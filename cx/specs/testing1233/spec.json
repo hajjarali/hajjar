@@ -1,1 +1,1 @@
-{"spec_id":"0c7d9788-75d4-4611-9b54-74f141b3b8dd","name":"testing1233","property_metadata":{}}
+{"spec_id":"0c7d9788-75d4-4611-9b54-74f141b3b8dd","name":"testing1233","property_metadata":{"dataClass":"INTERNAL","domain":"reference-data","keyEntity":"LegalEntity","reuseGate":"Entity catalog (72 entities) checked: no LegalEntity or Party; spec registry has only this spec; company corpus read (standing rules R7-R9, counterparties, glossary); cdm LegalEntity, EntityIdentifier, EntityIdentifierTypeEnum read; cdmplus has no register type."}}
