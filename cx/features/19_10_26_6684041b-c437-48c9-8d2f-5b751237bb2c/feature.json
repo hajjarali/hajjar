@@ -20,11 +20,907 @@
       "text" : "Design"
     } ]
   }, {
-    "id" : "c0e5127c",
+    "id" : "8b7547c5",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Grounding"
+    } ]
+  }, {
+    "id" : "dfe22970",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Live catalog.",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " "
+    }, {
+      "type" : "text",
+      "text" : "platformEntities",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (72 served) and "
+    }, {
+      "type" : "text",
+      "text" : "catalogEntity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " on both names show neither "
+    }, {
+      "type" : "text",
+      "text" : "cdm.base.staticdata.party.LegalEntity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " nor "
+    }, {
+      "type" : "text",
+      "text" : "cdm.base.staticdata.party.EntityIdentifier",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " is served, so both are new here. "
+    }, {
+      "type" : "text",
+      "text" : "platformSpecs",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " holds only this spec, so there is nothing to reuse or extend."
+    } ]
+  }, {
+    "id" : "07a2160e",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "CDM corpus",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " ("
+    }, {
+      "type" : "text",
+      "text" : "base/staticdata/party/LegalEntity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "EntityIdentifier",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "EntityIdentifierTypeEnum",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "). The model is CDM's unchanged: "
+    }, {
+      "type" : "text",
+      "text" : "name",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " 1..1, "
+    }, {
+      "type" : "text",
+      "text" : "entityIdentifier",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " 0..*, "
+    }, {
+      "type" : "text",
+      "text" : "identifier",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " 1..1, "
+    }, {
+      "type" : "text",
+      "text" : "identifierType",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " 0..1, six type tokens verbatim (R8). The corpus ships these types as vocabulary only (\"no CDM table exists, no CDM sheet is served\"), so this feature builds its own persistable class at the FQN the spec's descriptor fixes, "
+    }, {
+      "type" : "text",
+      "text" : "cyai.cdm.base.staticdata.party.LegalEntity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". A CDM jar on the same classpath would collide with that name, so the implementing agent confirms none is present."
+    } ]
+  }, {
+    "id" : "01c1a429",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Company rules.",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " R7 keeps the "
+    }, {
+      "type" : "text",
+      "text" : "Party",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " link out of scope. R8 puts the type tokens in verbatim. R9: status is the only non-CDM field and its descriptor description labels it \"extension to CDM\"."
+    } ]
+  }, {
+    "id" : "837fd47b",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Repository.",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " It is a bare Maven project ("
+    }, {
+      "type" : "text",
+      "text" : "com.example:hajjar",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "): a "
+    }, {
+      "type" : "text",
+      "text" : "pom.xml",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " with no dependencies and a placeholder "
+    }, {
+      "type" : "text",
+      "text" : "App.java",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". Every class below is new, in the root module "
+    }, {
+      "type" : "text",
+      "text" : ".",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". The one existing file that changes is "
+    }, {
+      "type" : "text",
+      "text" : "pom.xml",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", which needs the platform dependencies the entity, sheet and application-module classes compile against. The coordinates are not in the repo, so the implementing agent takes them from the platform's published build."
+    } ]
+  }, {
+    "id" : "3e013585",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "The two beans"
+    } ]
+  }, {
+    "id" : "53373e04",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
-      "text" : "What is being built and how — the entities, their fields and types, what is persisted, how they relate, and what the screens show."
+      "text" : "LegalEntity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " is a "
+    }, {
+      "type" : "text",
+      "text" : "PERSISTABLE_BEAN",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": table "
+    }, {
+      "type" : "text",
+      "text" : "legal_entity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", AUTO_INCREMENT id, "
+    }, {
+      "type" : "text",
+      "text" : "starSchemaRole",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " DIM, no cache, and a "
+    }, {
+      "type" : "text",
+      "text" : "searchable",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " index group on "
+    }, {
+      "type" : "text",
+      "text" : "name",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and "
+    }, {
+      "type" : "text",
+      "text" : "status",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". It has three fields: "
+    }, {
+      "type" : "text",
+      "text" : "name",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (required, deliberately not unique, since only the LEI is), "
+    }, {
+      "type" : "text",
+      "text" : "entityIdentifier",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and "
+    }, {
+      "type" : "text",
+      "text" : "status",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (required). "
+    }, {
+      "type" : "text",
+      "text" : "EntityIdentifier",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " is a "
+    }, {
+      "type" : "text",
+      "text" : "BEAN",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " with no table, so it needs no migration and no sheet. A legal entity's identifier list is one JSON column, "
+    }, {
+      "type" : "text",
+      "text" : "entity_identifier",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", and the bean has a jsontype entry, a no-arg constructor and value equality."
+    } ]
+  }, {
+    "id" : "3eb8b0bb",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "status",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and "
+    }, {
+      "type" : "text",
+      "text" : "identifierType",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " are STRING fields in the shipped descriptor, shown as closed AUTOCOMPLETE lists. The Java fields are therefore "
+    }, {
+      "type" : "text",
+      "text" : "String",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and no Java enum is written: the descriptor's field type decides the class, and the CDM tokens live in the options list."
+    } ]
+  }, {
+    "id" : "e2c3fc6b",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Descriptors and default forms are shipped verbatim, never redesigned. Both descriptor attachments are merged into one "
+    }, {
+      "type" : "text",
+      "text" : "src/main/resources/cyai/entity/desc/entity_descriptors.json",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". The two form attachments are copied to "
+    }, {
+      "type" : "text",
+      "text" : "src/main/resources/cyai/cdm/base/staticdata/party/LegalEntity.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and "
+    }, {
+      "type" : "text",
+      "text" : "EntityIdentifier.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". A "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntity_V0_V1",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " migration creates "
+    }, {
+      "type" : "text",
+      "text" : "legal_entity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". There are no existing rows, so nothing is backfilled."
+    } ]
+  }, {
+    "id" : "9012ed8c",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "validation.rule: LegalEntity.status",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (default draft) is enforced three ways. The descriptor carries the column default. The entity Builder starts "
+    }, {
+      "type" : "text",
+      "text" : "status",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " at \"draft\". The column is not null. The spec states no transition rule, so any status may follow any other."
+    } ]
+  }, {
+    "id" : "77026d2a",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Rules the table cannot carry (R1, P1)"
+    } ]
+  }, {
+    "id" : "653cb7db",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "A pure "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntityRules",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " class in the entity's package holds the rules. Given one legal entity's identifiers and the LEIs held by the other rows of the register, it returns findings:"
+    } ]
+  }, {
+    "id" : "b6cc1b0b",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "R1.",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " Every identifier typed LEI must be exactly 20 characters from A–Z, a–z, 0–9. Identifiers of other types are never checked. Here alphanumeric means ASCII letters and digits, taken literally from the spec, with no trimming and no case folding. A lowercase LEI is valid and distinct from its uppercase twin."
+    } ]
+  }, {
+    "id" : "1fe5fc83",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "P1.",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " A LEI value may appear once across the register. The rule fires when a value repeats inside the same list (A2's second example) and when another row already carries it. The message names the other legal entity. \"Other rows\" excludes the row being saved, so re-saving a row unchanged with its own LEI is accepted."
+    } ]
+  }, {
+    "id" : "0fd208ea",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Status guard.",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " A status outside draft, active and retired is refused. The descriptor types it STRING, so nothing else enforces the list server-side."
+    } ]
+  }, {
+    "id" : "3a90a022",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Three enforcement points call the rules, because the sheet is the entity's only remote surface and a form-only check would be bypassed by agent and bulk writes:"
+    } ]
+  }, {
+    "id" : "bfa812c2",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "EntityIdentifierValidator",
+      "styles" : {
+        "bold" : true,
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", beside the bean, applies R1 inline on the "
+    }, {
+      "type" : "text",
+      "text" : "identifier",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " field in the identifier dialog."
+    } ]
+  }, {
+    "id" : "d4f18d7b",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "LegalEntityValidator",
+      "styles" : {
+        "bold" : true,
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", beside the entity, applies R1 and P1 as bean-level findings that name the offending identifier. The shipped identifier table draws no row error state, and a field-scoped message on a hand-drawn list is never shown, so a bean-level finding is the one the form's summary displays. It reads the other rows through the form's persister."
+    } ]
+  }, {
+    "id" : "6c365611",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "LegalEntitySheet",
+      "styles" : {
+        "bold" : true,
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " refuses the write on "
+    }, {
+      "type" : "text",
+      "text" : "save",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and "
+    }, {
+      "type" : "text",
+      "text" : "saveAll",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " with the same findings, reading the other rows through the caller session. The seam is whatever the writable base in observer-ext exposes, or an override of those cells that delegates to the base. The implementing agent reads that source to decide."
+    } ]
+  }, {
+    "id" : "3217bd54",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Consequence of the JSON column.",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " Identifier values cannot be indexed. The searchable group is name and status only, and the identifiers are hidden from search. P1 is therefore a bounded scan of the caller-tenant register compared in memory, which is fine at the register's scale. A database unique constraint is impossible. Two concurrent saves of one LEI could both pass the check, which the spec's constraints do not rule out. A shadow \"unique LEI\" entity was considered and rejected: it would be a new noun outside the spec's Data model."
+    } ]
+  }, {
+    "id" : "b2b14e1b",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Retired entities and pickers (R2)"
+    } ]
+  }, {
+    "id" : "a17bc19f",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "No entity in this spec references "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", because the "
+    }, {
+      "type" : "text",
+      "text" : "Party",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " link is out of scope. R2 is therefore delivered as a reusable scope that referrers plug in. "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntityPickerScope",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " returns the picker filter \"status is not retired\", for use with the platform's "
+    }, {
+      "type" : "text",
+      "text" : "pickerFilter",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " seam, which ANDs it into the reference picker of whichever entity points at "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". Draft and active rows are offered and only retired rows drop out."
+    } ]
+  }, {
+    "id" : "d65f2a1c",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The exclusion lives in the picker filter and not in the sheet's "
+    }, {
+      "type" : "text",
+      "text" : "candidates",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", because the Legal entities screen reads the same sheet unscoped and must keep showing retired rows."
+    } ]
+  }, {
+    "id" : "0c18c627",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "\"References stay unchanged\" is structural. A reference holds only the row id. Retiring a row rewrites that row and nothing on any referrer. Resolving a reference to a retired row still loads it, since the scope applies only when rows are offered."
+    } ]
+  }, {
+    "id" : "14b8ac92",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Observer sheet"
+    } ]
+  }, {
+    "id" : "3853cc9f",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "LegalEntitySheet",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " is the writable (READ_WRITE) entity-instance sheet for "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". The screen creates, edits and deletes rows, so it needs the write surface. It follows the CDM adapter pattern from the cdm corpus ("
+    }, {
+      "type" : "text",
+      "text" : "AbstractCdmEntityInstanceSheet",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", hosted by the simpledao container): the caller sheet named in "
+    }, {
+      "type" : "text",
+      "text" : "@Sheet(callerSheet = …)",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and the secret seams unset, since no field here holds a credential. The rules guard above is the only addition to the inherited cells."
+    } ]
+  }, {
+    "id" : "feature-view-layouts-h",
+    "type" : "heading",
+    "props" : {
+      "level" : 2
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "View Layouts"
+    } ]
+  }, {
+    "id" : "4ce35fe3",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The Legal entities screen is the spec's "
+    }, {
+      "type" : "link",
+      "href" : "#spec-attachment/ui/legal-entities.screen.js",
+      "content" : [ {
+        "type" : "text",
+        "text" : "Screen mock"
+      } ]
+    }, {
+      "type" : "text",
+      "text" : " built for real, with the same three regions in the same order. It is a list-detail screen that follows "
+    }, {
+      "type" : "text",
+      "text" : "examples/layout-list-detail-panel.md",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and "
+    }, {
+      "type" : "text",
+      "text" : "guides/ui-screen-design-guidelines.md",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". It is composed from the platform's entity search over the sheet's "
+    }, {
+      "type" : "text",
+      "text" : "candidates",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and a docked form pane, with no hand-rolled table. A class "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntitiesTabModel",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " holds it."
+    } ]
+  }, {
+    "id" : "889a728b",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Filter bar",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (name, status, identifier, Search). Name and status are server-side filters over the indexed group. Identifier narrows the returned rows in the tab model by a case-insensitive substring over the identifier values, because the list is a JSON column. A LEI fragment therefore finds its entity."
+    } ]
+  }, {
+    "id" : "43d6aa82",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Table.",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " The title reads \"Legal entities (n)\" with \"New legal entity\" in its header. Each row has the name first, then the status as a soft chip (active success, draft warning, retired neutral, as in the mock), then the identifiers as monospace \"TYPE value\" text. Row actions are open (edit icon) and delete, and delete confirms through the dialogs manager. Retired rows stay visible. An empty register and a load failure each get their own message, and the failure also offers Retry."
+    } ]
+  }, {
+    "id" : "6463eb89",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Side panel",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", about 360px on the right with a left border. It hosts the shipped "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " default form for the selected row through the platform's form pane, so identifier editing, the Save/Cancel footer and both validators come with it. The mock draws only name, status and a note (\"Identifiers: table with Add identifier, as on the default form\"). The real panel never re-draws form fields. With nothing selected it shows a one-line placeholder, and \"New\" opens an empty form that starts as draft."
+    } ]
+  }, {
+    "id" : "31ee230d",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Navigation: "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntityApplicationModule",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " registers the leaf \"Legal entities\" under the \"Reference data\" group. It declares the group with the idempotent shared-group call, since other modules may share it. The module is discovered through "
+    }, {
+      "type" : "text",
+      "text" : "META-INF/services/cyai.uiai.model.IApplicationModule",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". The spec names no icon, so the implementing agent picks an existing "
+    }, {
+      "type" : "text",
+      "text" : "Icon",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " constant."
     } ]
   }, {
     "id" : "feature-tasks-h",
