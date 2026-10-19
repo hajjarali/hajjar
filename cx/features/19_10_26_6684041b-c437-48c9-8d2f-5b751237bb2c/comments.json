@@ -1,1 +1,177 @@
-[ ]
+[ {
+  "threadId" : "e1b798af-2b11-4767-859d-0042162ff98c",
+  "text" : "P1 is therefore a bounded scan of the caller-tenant register compared in memory",
+  "occurrence" : 0,
+  "resolved" : false,
+  "comments" : [ {
+    "id" : "cec3721e-bd16-41bf-af92-4c0683b5bb45",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "P1 is a hard SHALL ('at most once across all legal entities'), but the design narrows it in two ways without asking the spec author. First, uniqueness is checked only inside the caller's tenant partition, while the spec says 'across the register' and names no tenant boundary. Second, concurrent saves of one LEI can both pass the check. Spec Open Questions says 'None', so neither limit has been confirmed. Add an Open Question (or a note in the design) so the author confirms both. For the race, at least run the check and the write in one transaction or under one per-register lock in the sheet's save path, if the platform offers one.",
+    "createdAt" : "2026-10-19T07:53:41.799148300Z"
+  }, {
+    "id" : "ffe4d4d5-6078-43f0-8fe4-9a3608d777eb",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "The design now states both limits under 'What across the register means' and 'Consequence of the JSON column'. P1 is checked across the caller tenant's register, and the sheet runs the check and the write in one caller session where the base's seam allows. A residual race remains, because no database constraint is possible on a JSON column. The spec says 'across the register' and names no tenant boundary, and its Open Questions say 'None'. Whether tenant scope and the residual race are acceptable is the spec author's call, so I'm leaving this thread open for them.",
+    "createdAt" : "2026-10-19T07:57:40.655573700Z"
+  } ]
+}, {
+  "threadId" : "42c72ff3-9a90-4dac-ac5d-07c0ed7d10c7",
+  "text" : "Identifier narrows the returned rows in the tab model by a case-insensitive substring over the identifier values, because the list is a JSON column.",
+  "occurrence" : 0,
+  "resolved" : true,
+  "comments" : [ {
+    "id" : "b63cbea2-b230-4dd7-98dd-a10c9e409163",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "The identifier filter runs in memory over rows the server has already returned. If the platform's entity search pages or caps its results, a LEI fragment will miss entities outside the loaded page, and the 'Legal entities (n)' count will be wrong. That contradicts the claim 'A LEI fragment therefore finds its entity'. State how the tab model loads the full register for this filter (or the cap it accepts). Add a Task 5 criterion that finds an identifier fragment among more rows than one page.",
+    "createdAt" : "2026-10-19T07:53:41.799148300Z"
+  }, {
+    "id" : "28e0ffc6-cb08-4b28-8360-60e4e8001092",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "Addressed. View Layouts now says the tab model loads every page of the name/status-filtered query while an identifier fragment is set, filters in memory, and shows the match count. Task 5 has a criterion that finds a fragment among more rows than one page.",
+    "createdAt" : "2026-10-19T07:57:40.660787800Z"
+  } ]
+}, {
+  "threadId" : "c46897d5-fd93-4918-89da-15c8432b2291",
+  "text" : "is stored and read back with that status and its identifiers unchanged; its row id is stable, so a reference to it keeps resolving.",
+  "occurrence" : 0,
+  "resolved" : true,
+  "comments" : [ {
+    "id" : "5e09e996-dbe6-4628-b5e0-7b21c1568062",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "Task 1 cites A3 only for this criterion, but it verifies persistence of a 'retired' value. A3 is about retired rows being left out of what is offered for a new reference, and Task 1 builds none of that. A test carrying the A3 tag here would pass without exercising A3. Drop the (A3) tag from this criterion and from Task 1's Cites line (the status-default `validation.rule` is not an A-criterion). Leave the A3 evidence to Task 4, whose criteria really verify it.",
+    "createdAt" : "2026-10-19T07:53:41.799148300Z"
+  }, {
+    "id" : "5a880de3-5842-41f5-8745-f16c9764ec76",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "Addressed. Task 1 now cites A1 and A2 (the LEI rules class) and carries no A3 tag. The retired-persistence criterion is untagged, and A3 evidence sits in Task 4.",
+    "createdAt" : "2026-10-19T07:57:40.664030100Z"
+  } ]
+}, {
+  "threadId" : "4940c9d6-ab92-4611-a8a3-8d6a500ae887",
+  "text" : "A retired legal entity stays in the table with a neutral",
+  "occurrence" : 0,
+  "resolved" : true,
+  "comments" : [ {
+    "id" : "3a6c4b30-0653-4939-9334-4a81ae2e3c2c",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "This (A3) criterion verifies the opposite surface from A3. The screen is deliberately unscoped and keeps showing retired rows, whereas A3 is about the picker not offering them. Tagging it A3 makes the verify report score A3 against a test that proves nothing about exclusion. Keep the criterion, since it follows the design, but remove the (A3) tag. Then Task 5's Cites line should name no A-number the screen does not implement, or the screen should cite none and be treated as technical.",
+    "createdAt" : "2026-10-19T07:53:41.799148300Z"
+  }, {
+    "id" : "0e3e1759-b864-4341-9baa-c2a71b95fd64",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "Addressed. The (A3) tag is removed from the retired-chip criterion. Task 5 now cites A1 and A2, which its side-panel criteria verify through the form. A3 stays with Task 4.",
+    "createdAt" : "2026-10-19T07:57:40.667679800Z"
+  } ]
+}, {
+  "threadId" : "937b2f58-79e7-46ae-8adc-429cab60edf5",
+  "text" : "`platformSpecs` holds only this spec, so there is nothing to reuse or extend.",
+  "occurrence" : 0,
+  "resolved" : true,
+  "comments" : [ {
+    "id" : "4dbb4cc7-5dc4-4e0a-bec5-0a2ac8c94414",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "The Grounding section narrates catalog lookups (72 entities served, platformSpecs, catalogEntity) and restates decisions made later. It also repeats the bare-Maven-project description in Summary, Grounding and Task 1. Task 2 restates the R1, P1 and status-guard bullets from the design almost word for word. None of this changes what the implementing agent builds. Keep one statement of each: reduce Grounding to the facts that drive decisions (neither FQN is served, the CDM types are vocabulary only, the FQN collision check). Have Task 2 point to the design's 'Rules the table cannot carry' section instead of copying it.",
+    "createdAt" : "2026-10-19T07:53:41.799148300Z"
+  }, {
+    "id" : "f6734319-793f-4be7-a0db-ccb3fac1d02b",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "Addressed. Grounding is cut to the facts that drive decisions: neither FQN is served, the CDM types are vocabulary only, the FQN collision check, and the repo and build facts. Task 2 no longer restates the rules and points to the design's 'Rules the table cannot carry' section.",
+    "createdAt" : "2026-10-19T07:57:40.671115600Z"
+  } ]
+}, {
+  "threadId" : "d054e350-69aa-43aa-8af1-1f6c5c7b1237",
+  "text" : "the coordinates are not in the repo, so take them from the platform's published build.",
+  "occurrence" : 0,
+  "resolved" : true,
+  "comments" : [ {
+    "id" : "92e3627f-15b8-48b8-a09b-42f60ecc2d4e",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "Task 1 gates every other task, yet the dependency step is left to the agent to find ('the platform's published build'). Name the artifact(s), the version or BOM source, and where to read it, so the first task does not stall or guess. Also, `pom.xml` is extended in Tasks 1, 3 and 5 but is missing from Task 2's Touches, even though the validators and the `FakeBeanContext` tests need the beans module on the classpath. Either cover that dependency in Task 1's pom step or add `pom.xml` to Task 2's Touches.",
+    "createdAt" : "2026-10-19T07:53:41.799148300Z"
+  }, {
+    "id" : "53800fcd-e41a-4403-b27f-85df395951b4",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "Addressed. Task 1 now owns the one plan-wide `pom.xml` extension, and Tasks 3 and 5 no longer edit it. The design's 'Build dependencies' bullet says where the artifact ids and version come from: the node runtime sheet's `artifacts` listing, per reference/node-runtime.md. No corpus page or repo file records the groupId or version, so the plan can't state them any more precisely.",
+    "createdAt" : "2026-10-19T07:57:40.675026400Z"
+  } ]
+}, {
+  "threadId" : "944bbb0a-2442-4eff-ab41-0140aba80240",
+  "text" : "A lowercase LEI is valid and distinct from its uppercase twin.",
+  "occurrence" : 0,
+  "resolved" : false,
+  "comments" : [ {
+    "id" : "7fb6c40e-bf15-40af-8c75-b99a9ec54d8a",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "The design reads 'alphanumeric' literally, so \"abcdefghij0123456789\" and \"ABCDEFGHIJ0123456789\" count as two different LEIs. Real LEIs are uppercase ISO 17442 codes. Under this rule, P1 ('belongs to one legal entity only') lets one real-world LEI sit on two legal entities, differing only in case. The design states the choice, but Open Questions says 'None' and the spec author never confirmed it. Add it to the points flagged for the author. Ask whether lowercase is rejected (R1) or uniqueness is compared case-insensitively (P1). Task 1 and Task 3 then follow whichever answer comes back.",
+    "createdAt" : "2026-10-19T07:57:13.232354500Z"
+  }, {
+    "id" : "c82af29e-1c9e-4816-8b78-e500e624c5f0",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "The design takes 'alphanumeric' literally (ASCII letters and digits, case-sensitive) because the spec fixes no case rule. Whether lowercase should be rejected under R1, or compared case-insensitively under P1, is a requirement the spec lane owns. The plan would change only in `LegalEntityRules` and its tests. Leaving this thread open for the spec author.",
+    "createdAt" : "2026-10-19T07:57:40.679054200Z"
+  } ]
+}, {
+  "threadId" : "3abc9365-7674-47bc-b840-43400ea0b839",
+  "text" : "Persist legal entities, write the LEI rules and ship the approved descriptors and forms",
+  "occurrence" : 0,
+  "resolved" : true,
+  "comments" : [ {
+    "id" : "ebe23626-79de-4d98-a85a-0d3a3c9231a0",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "Task 1 now bundles three independent changes: the plan-wide `pom.xml`, entity, migration, descriptors and forms, and the pure `LegalEntityRules` class with about eleven criteria. It also gates every other task. The rules class is declared 'pure, no platform dependency' and does not need the persistence work. Split `LegalEntityRules` and `LegalEntityRulesTest` into their own small task (A1 and A2 criteria, depends on the pom step only). Tasks 2 and 3 then depend on that task. Task 1 keeps persistence, shipped artifacts and the `validation.rule` on status.",
+    "createdAt" : "2026-10-19T07:57:13.232354500Z"
+  }, {
+    "id" : "7e77b3b0-0051-4f9a-ab65-21b0304e6f9b",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "Not splitting. The pom step and the entity work are both foundation work, and a pom-only task would have no A-citation (each task must cite one). `LegalEntityRules` is one small pure class with its test, and Task 1 is its natural home. Tasks 2 and 3 depend on Task 1 either way, so splitting would not free any ordering.",
+    "createdAt" : "2026-10-19T07:57:40.680514Z"
+  } ]
+} ]

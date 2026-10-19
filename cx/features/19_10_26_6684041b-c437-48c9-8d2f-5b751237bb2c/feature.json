@@ -10,6 +10,68 @@
       "text" : "testing1233"
     } ]
   }, {
+    "id" : "feature-summary-h",
+    "type" : "heading",
+    "props" : {
+      "level" : 2
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Summary"
+    } ]
+  }, {
+    "id" : "3a955c3a",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Builds a register of legal entities in a bare Maven project. A persistable "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (name, status defaulting to draft) embeds a list of "
+    }, {
+      "type" : "text",
+      "text" : "EntityIdentifier",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " beans in one JSON column, with the spec's approved descriptors and default forms shipped verbatim. LEI format and uniqueness live in one pure "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntityRules",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " class. It is enforced inline by the form validators and again by a writable "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntitySheet",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", so agent and bulk writes meet the same rules. A reusable "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntityPickerScope",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " excludes retired entities from pickers without touching existing references. The Legal entities screen is built from its mock, with a filter bar, a table and a side panel hosting the default form, and is registered under Reference data. Five tasks: persistence, shipped artifacts and the LEI rules; form validators; sheet; picker scope; screen with navigation."
+    } ]
+  }, {
     "id" : "feature-design-h",
     "type" : "heading",
     "props" : {
@@ -30,35 +92,17 @@
       "text" : "Grounding"
     } ]
   }, {
-    "id" : "dfe22970",
+    "id" : "1ee17cd4",
     "type" : "bulletListItem",
     "content" : [ {
       "type" : "text",
-      "text" : "Live catalog.",
+      "text" : "Catalog.",
       "styles" : {
         "bold" : true
       }
     }, {
       "type" : "text",
-      "text" : " "
-    }, {
-      "type" : "text",
-      "text" : "platformEntities",
-      "styles" : {
-        "code" : true
-      }
-    }, {
-      "type" : "text",
-      "text" : " (72 served) and "
-    }, {
-      "type" : "text",
-      "text" : "catalogEntity",
-      "styles" : {
-        "code" : true
-      }
-    }, {
-      "type" : "text",
-      "text" : " on both names show neither "
+      "text" : " Neither "
     }, {
       "type" : "text",
       "text" : "cdm.base.staticdata.party.LegalEntity",
@@ -76,56 +120,20 @@
       }
     }, {
       "type" : "text",
-      "text" : " is served, so both are new here. "
-    }, {
-      "type" : "text",
-      "text" : "platformSpecs",
-      "styles" : {
-        "code" : true
-      }
-    }, {
-      "type" : "text",
-      "text" : " holds only this spec, so there is nothing to reuse or extend."
+      "text" : " is served by this deployment, and this spec is the only one registered, so both beans are new."
     } ]
   }, {
-    "id" : "07a2160e",
+    "id" : "12c222ef",
     "type" : "bulletListItem",
     "content" : [ {
       "type" : "text",
-      "text" : "CDM corpus",
+      "text" : "CDM corpus.",
       "styles" : {
         "bold" : true
       }
     }, {
       "type" : "text",
-      "text" : " ("
-    }, {
-      "type" : "text",
-      "text" : "base/staticdata/party/LegalEntity",
-      "styles" : {
-        "code" : true
-      }
-    }, {
-      "type" : "text",
-      "text" : ", "
-    }, {
-      "type" : "text",
-      "text" : "EntityIdentifier",
-      "styles" : {
-        "code" : true
-      }
-    }, {
-      "type" : "text",
-      "text" : ", "
-    }, {
-      "type" : "text",
-      "text" : "EntityIdentifierTypeEnum",
-      "styles" : {
-        "code" : true
-      }
-    }, {
-      "type" : "text",
-      "text" : "). The model is CDM's unchanged: "
+      "text" : " The model is CDM's unchanged: "
     }, {
       "type" : "text",
       "text" : "name",
@@ -161,7 +169,7 @@
       }
     }, {
       "type" : "text",
-      "text" : " 0..1, six type tokens verbatim (R8). The corpus ships these types as vocabulary only (\"no CDM table exists, no CDM sheet is served\"), so this feature builds its own persistable class at the FQN the spec's descriptor fixes, "
+      "text" : " 0..1, six type tokens verbatim (R8). The corpus ships these types as vocabulary only, with no table or sheet, so this feature builds its own persistable class at the FQN the spec's descriptor fixes, "
     }, {
       "type" : "text",
       "text" : "cyai.cdm.base.staticdata.party.LegalEntity",
@@ -173,7 +181,7 @@
       "text" : ". A CDM jar on the same classpath would collide with that name, so the implementing agent confirms none is present."
     } ]
   }, {
-    "id" : "01c1a429",
+    "id" : "c23d34c3",
     "type" : "bulletListItem",
     "content" : [ {
       "type" : "text",
@@ -192,10 +200,10 @@
       }
     }, {
       "type" : "text",
-      "text" : " link out of scope. R8 puts the type tokens in verbatim. R9: status is the only non-CDM field and its descriptor description labels it \"extension to CDM\"."
+      "text" : " link out of scope. R9: status is the only non-CDM field, and its descriptor description labels it an extension."
     } ]
   }, {
-    "id" : "837fd47b",
+    "id" : "74079f91",
     "type" : "bulletListItem",
     "content" : [ {
       "type" : "text",
@@ -205,7 +213,7 @@
       }
     }, {
       "type" : "text",
-      "text" : " It is a bare Maven project ("
+      "text" : " A bare Maven project ("
     }, {
       "type" : "text",
       "text" : "com.example:hajjar",
@@ -241,7 +249,20 @@
       }
     }, {
       "type" : "text",
-      "text" : ". The one existing file that changes is "
+      "text" : "."
+    } ]
+  }, {
+    "id" : "07fb46f4",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Build dependencies.",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " "
     }, {
       "type" : "text",
       "text" : "pom.xml",
@@ -250,7 +271,34 @@
       }
     }, {
       "type" : "text",
-      "text" : ", which needs the platform dependencies the entity, sheet and application-module classes compile against. The coordinates are not in the repo, so the implementing agent takes them from the platform's published build."
+      "text" : " is the one existing file that changes. Task 1 declares, once, every platform dependency the plan compiles against: the entity, JSON-contract, migration, observer (API and server base), bean-validation and UI-model packages. No corpus page or repo file records the groupId or version. The implementing agent reads the artifact ids and version from the node's runtime sheet ("
+    }, {
+      "type" : "text",
+      "text" : "artifacts",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", which lists the jars in the distribution's "
+    }, {
+      "type" : "text",
+      "text" : "lib/",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "; "
+    }, {
+      "type" : "text",
+      "text" : "reference/node-runtime.md",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ")."
     } ]
   }, {
     "id" : "3e013585",
@@ -263,7 +311,7 @@
       "text" : "The two beans"
     } ]
   }, {
-    "id" : "53373e04",
+    "id" : "cd8216af",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -384,7 +432,7 @@
       "text" : ", and the bean has a jsontype entry, a no-arg constructor and value equality."
     } ]
   }, {
-    "id" : "3eb8b0bb",
+    "id" : "998f98c4",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -415,7 +463,7 @@
       "text" : " and no Java enum is written: the descriptor's field type decides the class, and the CDM tokens live in the options list."
     } ]
   }, {
-    "id" : "e2c3fc6b",
+    "id" : "d5865992",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -467,7 +515,7 @@
       "text" : ". There are no existing rows, so nothing is backfilled."
     } ]
   }, {
-    "id" : "9012ed8c",
+    "id" : "6a6250c7",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -499,7 +547,7 @@
       "text" : "Rules the table cannot carry (R1, P1)"
     } ]
   }, {
-    "id" : "653cb7db",
+    "id" : "3aa00a7f",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -515,7 +563,7 @@
       "text" : " class in the entity's package holds the rules. Given one legal entity's identifiers and the LEIs held by the other rows of the register, it returns findings:"
     } ]
   }, {
-    "id" : "b6cc1b0b",
+    "id" : "69547511",
     "type" : "bulletListItem",
     "content" : [ {
       "type" : "text",
@@ -528,7 +576,7 @@
       "text" : " Every identifier typed LEI must be exactly 20 characters from A–Z, a–z, 0–9. Identifiers of other types are never checked. Here alphanumeric means ASCII letters and digits, taken literally from the spec, with no trimming and no case folding. A lowercase LEI is valid and distinct from its uppercase twin."
     } ]
   }, {
-    "id" : "1fe5fc83",
+    "id" : "368de828",
     "type" : "bulletListItem",
     "content" : [ {
       "type" : "text",
@@ -541,7 +589,7 @@
       "text" : " A LEI value may appear once across the register. The rule fires when a value repeats inside the same list (A2's second example) and when another row already carries it. The message names the other legal entity. \"Other rows\" excludes the row being saved, so re-saving a row unchanged with its own LEI is accepted."
     } ]
   }, {
-    "id" : "0fd208ea",
+    "id" : "7dfda7d7",
     "type" : "bulletListItem",
     "content" : [ {
       "type" : "text",
@@ -554,14 +602,14 @@
       "text" : " A status outside draft, active and retired is refused. The descriptor types it STRING, so nothing else enforces the list server-side."
     } ]
   }, {
-    "id" : "3a90a022",
+    "id" : "dc129f96",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
       "text" : "Three enforcement points call the rules, because the sheet is the entity's only remote surface and a form-only check would be bypassed by agent and bulk writes:"
     } ]
   }, {
-    "id" : "bfa812c2",
+    "id" : "23298dc1",
     "type" : "bulletListItem",
     "content" : [ {
       "type" : "text",
@@ -584,7 +632,7 @@
       "text" : " field in the identifier dialog."
     } ]
   }, {
-    "id" : "d4f18d7b",
+    "id" : "0e875b2f",
     "type" : "bulletListItem",
     "content" : [ {
       "type" : "text",
@@ -598,7 +646,7 @@
       "text" : ", beside the entity, applies R1 and P1 as bean-level findings that name the offending identifier. The shipped identifier table draws no row error state, and a field-scoped message on a hand-drawn list is never shown, so a bean-level finding is the one the form's summary displays. It reads the other rows through the form's persister."
     } ]
   }, {
-    "id" : "6c365611",
+    "id" : "ac98cbdf",
     "type" : "bulletListItem",
     "content" : [ {
       "type" : "text",
@@ -630,7 +678,20 @@
       "text" : " with the same findings, reading the other rows through the caller session. The seam is whatever the writable base in observer-ext exposes, or an override of those cells that delegates to the base. The implementing agent reads that source to decide."
     } ]
   }, {
-    "id" : "3217bd54",
+    "id" : "0008123f",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "What \"across the register\" means.",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " The platform scopes every row set to the caller's tenant (a platform fact, not a spec choice), so P1 is checked across the caller tenant's register. The spec names no cross-tenant register, and the check reads exactly what the caller's session sees."
+    } ]
+  }, {
+    "id" : "62ce7eac",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -640,7 +701,7 @@
       }
     }, {
       "type" : "text",
-      "text" : " Identifier values cannot be indexed. The searchable group is name and status only, and the identifiers are hidden from search. P1 is therefore a bounded scan of the caller-tenant register compared in memory, which is fine at the register's scale. A database unique constraint is impossible. Two concurrent saves of one LEI could both pass the check, which the spec's constraints do not rule out. A shadow \"unique LEI\" entity was considered and rejected: it would be a new noun outside the spec's Data model."
+      "text" : " Identifier values cannot be indexed. The searchable group is name and status only, and the identifiers are hidden from search. P1 is therefore a bounded scan of the register compared in memory, which is fine at the register's scale. A database unique constraint is impossible. The sheet runs the check and the write in the one caller session where the base's seam allows it. Even so, two simultaneous saves of one LEI could both pass the check. That residual race is accepted, because the spec's constraints rule out neither it nor a database-level guard, and it is flagged here for the spec author. A shadow \"unique LEI\" entity was considered and rejected: it would be a new noun outside the spec's Data model."
     } ]
   }, {
     "id" : "b2b14e1b",
@@ -653,7 +714,7 @@
       "text" : "Retired entities and pickers (R2)"
     } ]
   }, {
-    "id" : "a17bc19f",
+    "id" : "867a7762",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -705,7 +766,7 @@
       "text" : ". Draft and active rows are offered and only retired rows drop out."
     } ]
   }, {
-    "id" : "d65f2a1c",
+    "id" : "46b18d83",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -721,7 +782,7 @@
       "text" : ", because the Legal entities screen reads the same sheet unscoped and must keep showing retired rows."
     } ]
   }, {
-    "id" : "0c18c627",
+    "id" : "f509b17e",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -738,7 +799,7 @@
       "text" : "Observer sheet"
     } ]
   }, {
-    "id" : "3853cc9f",
+    "id" : "57467cb2",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -788,7 +849,7 @@
       "text" : "View Layouts"
     } ]
   }, {
-    "id" : "4ce35fe3",
+    "id" : "72f90a8f",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -841,7 +902,7 @@
       "text" : " holds it."
     } ]
   }, {
-    "id" : "889a728b",
+    "id" : "aa366d5e",
     "type" : "bulletListItem",
     "content" : [ {
       "type" : "text",
@@ -851,10 +912,10 @@
       }
     }, {
       "type" : "text",
-      "text" : " (name, status, identifier, Search). Name and status are server-side filters over the indexed group. Identifier narrows the returned rows in the tab model by a case-insensitive substring over the identifier values, because the list is a JSON column. A LEI fragment therefore finds its entity."
+      "text" : " (name, status, identifier, Search). Name and status are server-side filters over the indexed group. The identifier filter is a case-insensitive substring over the identifier values, applied in the tab model because the list is a JSON column. While an identifier fragment is set, the tab model loads every page of the name/status-filtered query (the register is bounded reference data) before filtering, so a fragment finds its entity wherever it sits. The table count is then the number of matches. Without a fragment the table pages normally."
     } ]
   }, {
-    "id" : "43d6aa82",
+    "id" : "6396c6d3",
     "type" : "bulletListItem",
     "content" : [ {
       "type" : "text",
@@ -867,7 +928,7 @@
       "text" : " The title reads \"Legal entities (n)\" with \"New legal entity\" in its header. Each row has the name first, then the status as a soft chip (active success, draft warning, retired neutral, as in the mock), then the identifiers as monospace \"TYPE value\" text. Row actions are open (edit icon) and delete, and delete confirms through the dialogs manager. Retired rows stay visible. An empty register and a load failure each get their own message, and the failure also offers Retry."
     } ]
   }, {
-    "id" : "6463eb89",
+    "id" : "bafc0e23",
     "type" : "bulletListItem",
     "content" : [ {
       "type" : "text",
@@ -889,7 +950,7 @@
       "text" : " default form for the selected row through the platform's form pane, so identifier editing, the Save/Cancel footer and both validators come with it. The mock draws only name, status and a note (\"Identifiers: table with Add identifier, as on the default form\"). The real panel never re-draws form fields. With nothing selected it shows a one-line placeholder, and \"New\" opens an empty form that starts as draft."
     } ]
   }, {
-    "id" : "31ee230d",
+    "id" : "0c343013",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -923,6 +984,185 @@
       "text" : " constant."
     } ]
   }, {
+    "id" : "feature-touches-h",
+    "type" : "heading",
+    "props" : {
+      "level" : 2
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Touches"
+    } ]
+  }, {
+    "id" : "79c1a780",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "module: ."
+    } ],
+    "children" : [ {
+      "id" : "390b7087",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry: pom.xml"
+      } ]
+    }, {
+      "id" : "8a717e69",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): cyai.cdm.base.staticdata.party.EntityIdentifier"
+      } ]
+    }, {
+      "id" : "13b7cfbe",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): cyai.cdm.base.staticdata.party.LegalEntity"
+      } ]
+    }, {
+      "id" : "941a035d",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): cyai.cdm.base.staticdata.party.LegalEntity_V0_V1"
+      } ]
+    }, {
+      "id" : "28204abc",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/cyai/entity/desc/entity_descriptors.json"
+      } ]
+    }, {
+      "id" : "ba234ecd",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/jsontypes.json"
+      } ]
+    }, {
+      "id" : "e3261769",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/cyai/cdm/base/staticdata/party/LegalEntity.js"
+      } ]
+    }, {
+      "id" : "6e4ed251",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/cyai/cdm/base/staticdata/party/EntityIdentifier.js"
+      } ]
+    }, {
+      "id" : "6bffb21e",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): cyai.cdm.base.staticdata.party.LegalEntityPersistenceTest"
+      } ]
+    }, {
+      "id" : "8fc0b210",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): cyai.cdm.base.staticdata.party.LegalEntityRules"
+      } ]
+    }, {
+      "id" : "11993949",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): cyai.cdm.base.staticdata.party.LegalEntityValidator"
+      } ]
+    }, {
+      "id" : "ad8c24a4",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): cyai.cdm.base.staticdata.party.EntityIdentifierValidator"
+      } ]
+    }, {
+      "id" : "454d8ffa",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): cyai.cdm.base.staticdata.party.LegalEntityRulesTest"
+      } ]
+    }, {
+      "id" : "50c39b7a",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): cyai.cdm.base.staticdata.party.LegalEntityValidatorTest"
+      } ]
+    }, {
+      "id" : "d86dc8db",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): cyai.cdm.base.staticdata.party.EntityIdentifierValidatorTest"
+      } ]
+    }, {
+      "id" : "4ba88ce5",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): cyai.cdm.base.staticdata.party.LegalEntitySheet"
+      } ]
+    }, {
+      "id" : "d2be450c",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): cyai.cdm.base.staticdata.party.LegalEntitySheetTest"
+      } ]
+    }, {
+      "id" : "560bf533",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): cyai.cdm.base.staticdata.party.LegalEntityPickerScope"
+      } ]
+    }, {
+      "id" : "079c084c",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): cyai.cdm.base.staticdata.party.LegalEntityPickerScopeTest"
+      } ]
+    }, {
+      "id" : "32bfc751",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): cyai.cdm.base.staticdata.party.ui.LegalEntitiesTabModel"
+      } ]
+    }, {
+      "id" : "86a61f47",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): cyai.cdm.base.staticdata.party.ui.LegalEntityApplicationModule"
+      } ]
+    }, {
+      "id" : "dac2e46c",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/META-INF/services/cyai.uiai.model.IApplicationModule"
+      } ]
+    }, {
+      "id" : "529bce22",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): cyai.cdm.base.staticdata.party.ui.LegalEntitiesScreenTest"
+      } ]
+    } ]
+  }, {
     "id" : "feature-tasks-h",
     "type" : "heading",
     "props" : {
@@ -933,12 +1173,19 @@
       "text" : "Tasks"
     } ]
   }, {
-    "id" : "3bb46199",
-    "type" : "paragraph",
+    "id" : "c78dfab7",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
     "content" : [ {
       "type" : "text",
-      "text" : "The design decomposed into tasks, each a '### Task N: Title' heading with a '"
-    }, {
+      "text" : "Task 1: Persist legal entities, write the LEI rules and ship the approved descriptors and forms"
+    } ]
+  }, {
+    "id" : "1e9ff827",
+    "type" : "paragraph",
+    "content" : [ {
       "type" : "text",
       "text" : "Depends on",
       "styles" : {
@@ -946,7 +1193,2013 @@
       }
     }, {
       "type" : "text",
-      "text" : "' line naming its direct prerequisites."
+      "text" : ": None"
+    } ]
+  }, {
+    "id" : "95773b7b",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Cites",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": A1, A2"
+    } ]
+  }, {
+    "id" : "81935608",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The repository is a bare Maven project ("
+    }, {
+      "type" : "text",
+      "text" : "pom.xml",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " with no dependencies, a placeholder "
+    }, {
+      "type" : "text",
+      "text" : "App.java",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "), so everything here is new except "
+    }, {
+      "type" : "text",
+      "text" : "pom.xml",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". Extend "
+    }, {
+      "type" : "text",
+      "text" : "pom.xml",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " once with every platform dependency the whole plan compiles against, as the design's \"Build dependencies\" bullet describes: entity, JSON contract, migration, observer API and server base, bean validation, UI model, and the test support the later tasks use. Take the artifact ids and version from the node's runtime sheet. No later task edits "
+    }, {
+      "type" : "text",
+      "text" : "pom.xml",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "."
+    } ]
+  }, {
+    "id" : "9a400c52",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Create "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " ("
+    }, {
+      "type" : "text",
+      "text" : "extends AbstractRdbmsEntity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", fields "
+    }, {
+      "type" : "text",
+      "text" : "name",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "entityIdentifier",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " as "
+    }, {
+      "type" : "text",
+      "text" : "List<EntityIdentifier>",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "status",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " as "
+    }, {
+      "type" : "text",
+      "text" : "String",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ") and "
+    }, {
+      "type" : "text",
+      "text" : "EntityIdentifier",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (an "
+    }, {
+      "type" : "text",
+      "text" : "IJsonObject",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " bean, fields "
+    }, {
+      "type" : "text",
+      "text" : "identifier",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and "
+    }, {
+      "type" : "text",
+      "text" : "identifierType",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " as "
+    }, {
+      "type" : "text",
+      "text" : "String",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ") in package "
+    }, {
+      "type" : "text",
+      "text" : "cyai.cdm.base.staticdata.party",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", following "
+    }, {
+      "type" : "text",
+      "text" : "guides/entity-class-pattern.md",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and the embedded-list worked example "
+    }, {
+      "type" : "text",
+      "text" : "examples/entity-embedded.md",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". The "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " Builder starts "
+    }, {
+      "type" : "text",
+      "text" : "status",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " at \"draft\". Register both in "
+    }, {
+      "type" : "text",
+      "text" : "src/main/resources/jsontypes.json",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". Write "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntity_V0_V1",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " creating "
+    }, {
+      "type" : "text",
+      "text" : "legal_entity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (system columns, "
+    }, {
+      "type" : "text",
+      "text" : "name",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", JSON column "
+    }, {
+      "type" : "text",
+      "text" : "entity_identifier",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "status",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " not null with default \"draft\", an index over "
+    }, {
+      "type" : "text",
+      "text" : "name",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and "
+    }, {
+      "type" : "text",
+      "text" : "status",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ")."
+    } ]
+  }, {
+    "id" : "5e846957",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Ship the spec's approved artifacts verbatim; do not redesign them:"
+    } ]
+  }, {
+    "id" : "4b3cf989",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Descriptors: the spec attachments "
+    }, {
+      "type" : "text",
+      "text" : "entity_descriptors/cdm.base.staticdata.party.LegalEntity.json",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and "
+    }, {
+      "type" : "text",
+      "text" : "entity_descriptors/cdm.base.staticdata.party.EntityIdentifier.json",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " are merged unchanged into one "
+    }, {
+      "type" : "text",
+      "text" : "src/main/resources/cyai/entity/desc/entity_descriptors.json",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "."
+    } ]
+  }, {
+    "id" : "00948d94",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Forms: the spec attachments "
+    }, {
+      "type" : "text",
+      "text" : "ui/cdm.base.staticdata.party.LegalEntity.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and "
+    }, {
+      "type" : "text",
+      "text" : "ui/cdm.base.staticdata.party.EntityIdentifier.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " are copied unchanged to "
+    }, {
+      "type" : "text",
+      "text" : "src/main/resources/cyai/cdm/base/staticdata/party/LegalEntity.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and "
+    }, {
+      "type" : "text",
+      "text" : "EntityIdentifier.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "."
+    } ]
+  }, {
+    "id" : "afc12ab2",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The "
+    }, {
+      "type" : "text",
+      "text" : "validation.rule",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " on "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntity.status",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " is the \"draft\" default, enforced three ways: the descriptor's column default, the Builder default and the not-null column."
+    } ]
+  }, {
+    "id" : "fb433eac",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Write "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntityRules",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " as a pure class with no platform dependency, implementing R1, P1 and the status guard exactly as the design's \"Rules the table cannot carry\" section states them."
+    } ]
+  }, {
+    "id" : "9d77e4ab",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "This task must NOT add the validators or the sheet. The spec's out-of-scope "
+    }, {
+      "type" : "text",
+      "text" : "Party",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " link is not modelled either."
+    } ]
+  }, {
+    "id" : "22523381",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Touches",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "6d53d541",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "module: ."
+    } ],
+    "children" : [ {
+      "id" : "41802f2c",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry: pom.xml"
+      } ]
+    }, {
+      "id" : "495042c0",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): cyai.cdm.base.staticdata.party.EntityIdentifier"
+      } ]
+    }, {
+      "id" : "f7702a1e",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): cyai.cdm.base.staticdata.party.LegalEntity"
+      } ]
+    }, {
+      "id" : "b82f528a",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): cyai.cdm.base.staticdata.party.LegalEntity_V0_V1"
+      } ]
+    }, {
+      "id" : "b5dc869c",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/cyai/entity/desc/entity_descriptors.json"
+      } ]
+    }, {
+      "id" : "575759c7",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/jsontypes.json"
+      } ]
+    }, {
+      "id" : "7cb05912",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/cyai/cdm/base/staticdata/party/LegalEntity.js"
+      } ]
+    }, {
+      "id" : "5f940f28",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/cyai/cdm/base/staticdata/party/EntityIdentifier.js"
+      } ]
+    }, {
+      "id" : "16ff9c16",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): cyai.cdm.base.staticdata.party.LegalEntityPersistenceTest"
+      } ]
+    }, {
+      "id" : "8db32a60",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): cyai.cdm.base.staticdata.party.LegalEntityRules"
+      } ]
+    }, {
+      "id" : "ec116dc8",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): cyai.cdm.base.staticdata.party.LegalEntityRulesTest"
+      } ]
+    } ]
+  }, {
+    "id" : "9f661065",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Delivers",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "3f6c73b1",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "persistence.entity: LegalEntity → cyai.cdm.base.staticdata.party.LegalEntity"
+    } ]
+  }, {
+    "id" : "2777ec36",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "embeddedBean: EntityIdentifier → cyai.cdm.base.staticdata.party.EntityIdentifier"
+    } ]
+  }, {
+    "id" : "2a9f9616",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "ui.defaultForm: LegalEntity → src/main/resources/cyai/cdm/base/staticdata/party/LegalEntity.js"
+    } ]
+  }, {
+    "id" : "27d2181f",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "ui.defaultForm: EntityIdentifier → src/main/resources/cyai/cdm/base/staticdata/party/EntityIdentifier.js"
+    } ]
+  }, {
+    "id" : "239443f1",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "validation.rule: LegalEntity.status → cyai.cdm.base.staticdata.party.LegalEntity#status"
+    } ]
+  }, {
+    "id" : "9e43d1a4",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "ea92aae4",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A1) "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntityRules",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " accepts a LEI identifier \"ABCDEFGHIJ0123456789\" (20 characters)."
+    } ]
+  }, {
+    "id" : "5e532b56",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A1) "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntityRules",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " rejects the LEI identifiers \"ABC123\" (6 characters), \"ABCDEFGHIJ01234567890\" (21 characters) and \"ABCDEFGHIJ-123456789\" (20 characters including a hyphen)."
+    } ]
+  }, {
+    "id" : "0771d014",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A2) "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntityRules",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " rejects a LEI already held by another row of the register, and the finding names that row."
+    } ]
+  }, {
+    "id" : "c2d5d0b1",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A2) "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntityRules",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " accepts a legal entity unchanged with its own LEI when the register contains its own saved row."
+    } ]
+  }, {
+    "id" : "287060b9",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A2) "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntityRules",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " rejects a legal entity carrying the same LEI value twice in its own identifier list."
+    } ]
+  }, {
+    "id" : "3e20d8ab",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "A lowercase LEI of 20 letters and digits is valid and distinct from its uppercase twin. A BIC, MIC, REDID, COUNTRY_CODE, OTHER or untyped identifier is never format-checked and may repeat across legal entities. A status outside draft, active and retired is a finding."
+    } ]
+  }, {
+    "id" : "1c898011",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "A legal entity saved without a status reads back as \"draft\", and "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntity.builder().build()",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " carries \"draft\". A legal entity saved with status \"retired\" reads back as retired with its row id unchanged."
+    } ]
+  }, {
+    "id" : "6b0c817e",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "A legal entity saved with two identifiers (an LEI and a BIC) reads back with both, in order, each keeping its identifier type. A legal entity with no identifier saves and reads back with an empty list."
+    } ]
+  }, {
+    "id" : "b3debf0e",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Saving a legal entity with no name is refused."
+    } ]
+  }, {
+    "id" : "6000ccbe",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The merged "
+    }, {
+      "type" : "text",
+      "text" : "entity_descriptors.json",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " loads and equals the two spec attachments entry for entry. Each field's descriptor type matches its Java field, "
+    }, {
+      "type" : "text",
+      "text" : "EntityIdentifier",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " has no persistence descriptor, and "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " has a table "
+    }, {
+      "type" : "text",
+      "text" : "legal_entity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "."
+    } ]
+  }, {
+    "id" : "bc35897f",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "A metadata-resolution smoke test resolves "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " through the server's persistence metadata path (or opens a real DAO on an in-memory database) without throwing ("
+    }, {
+      "type" : "text",
+      "text" : "guides/write-tests.md",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", item 7)."
+    } ]
+  }, {
+    "id" : "431ca579",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Task 2: Enforce the LEI rules in the form validators"
+    } ]
+  }, {
+    "id" : "cdc6d936",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Depends on",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": Task-1"
+    } ]
+  }, {
+    "id" : "b3251ac0",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Cites",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": A1, A2"
+    } ]
+  }, {
+    "id" : "f47917c7",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Write two validators beside the beans, discovered by the "
+    }, {
+      "type" : "text",
+      "text" : "<EntityFQN>Validator",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " naming convention ("
+    }, {
+      "type" : "text",
+      "text" : "reference/bean-validators.md",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": public class with a public no-arg constructor). Both call "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntityRules",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " from Task 1 and add no rule of their own:"
+    } ]
+  }, {
+    "id" : "d691d53f",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "EntityIdentifierValidator",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " applies R1 inline on the "
+    }, {
+      "type" : "text",
+      "text" : "identifier",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " field, so the identifier dialog shows the message."
+    } ]
+  }, {
+    "id" : "68e772c4",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "LegalEntityValidator",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " applies R1 and P1 as bean-level findings that name the offending identifier, for the reason the design gives. It reads the other rows through the form's persister. A blocking error in an embedded entry already disables the parent's Save."
+    } ]
+  }, {
+    "id" : "4dc9f77a",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Test both against the beans module's "
+    }, {
+      "type" : "text",
+      "text" : "FakeBeanContext",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "."
+    } ]
+  }, {
+    "id" : "15c6498a",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "This task must NOT touch the sheet, which Task 3 owns, and must not change the shipped descriptors or forms from Task 1."
+    } ]
+  }, {
+    "id" : "ba999dd9",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Touches",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "8ec78c94",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "module: ."
+    } ],
+    "children" : [ {
+      "id" : "f1df3019",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): cyai.cdm.base.staticdata.party.LegalEntityValidator"
+      } ]
+    }, {
+      "id" : "bf307057",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): cyai.cdm.base.staticdata.party.EntityIdentifierValidator"
+      } ]
+    }, {
+      "id" : "cabfe5b5",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): cyai.cdm.base.staticdata.party.LegalEntityValidatorTest"
+      } ]
+    }, {
+      "id" : "d33b9c7e",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): cyai.cdm.base.staticdata.party.EntityIdentifierValidatorTest"
+      } ]
+    } ]
+  }, {
+    "id" : "461032b2",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "06422425",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A1) A LEI identifier \"ABCDEFGHIJ0123456789\" produces no finding from either validator."
+    } ]
+  }, {
+    "id" : "c4d5de2c",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A1) A LEI identifier \"ABC123\", one of \"ABCDEFGHIJ01234567890\" and one of \"ABCDEFGHIJ-123456789\" each give a blocking finding on the "
+    }, {
+      "type" : "text",
+      "text" : "identifier",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " field from the identifier validator, and a blocking bean-level finding naming the identifier from the legal-entity validator."
+    } ]
+  }, {
+    "id" : "7a0d6a49",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A2) A legal entity whose LEI another legal entity already carries gives a blocking bean-level finding that names that legal entity."
+    } ]
+  }, {
+    "id" : "97875d5d",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A2) A legal entity unchanged with its own LEI, validated against a register that contains its own saved row, gives no finding."
+    } ]
+  }, {
+    "id" : "4f43acca",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A2) A legal entity carrying the same LEI value twice in its own list gives a blocking finding."
+    } ]
+  }, {
+    "id" : "f5738a37",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "A legal entity with no identifier, and one with non-LEI identifiers that repeat another row's, give no finding. A status outside draft, active and retired gives a finding."
+    } ]
+  }, {
+    "id" : "a0c1a1ae",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Task 3: Serve legal entities through a writable observer sheet that refuses rule-breaking writes"
+    } ]
+  }, {
+    "id" : "8b948812",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Depends on",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": Task-1"
+    } ]
+  }, {
+    "id" : "9b346c86",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Cites",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": A1, A2"
+    } ]
+  }, {
+    "id" : "a7e95ecf",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Create "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntitySheet",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " in "
+    }, {
+      "type" : "text",
+      "text" : "cyai.cdm.base.staticdata.party",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": the READ_WRITE entity-instance sheet for "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", written after the cdm corpus's "
+    }, {
+      "type" : "text",
+      "text" : "AbstractCdmEntityInstanceSheet",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " / "
+    }, {
+      "type" : "text",
+      "text" : "AccountSheet",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " pattern and "
+    }, {
+      "type" : "text",
+      "text" : "examples/observer-entity-sheet.md",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " ("
+    }, {
+      "type" : "text",
+      "text" : "@ServesEntity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " with label and description, "
+    }, {
+      "type" : "text",
+      "text" : "@Sheet",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " naming the caller sheet, secret seams left unset because no field holds a credential). Read the writable base in observer-ext and the container the sheet is hosted in before choosing the guard seam: either the base exposes a pre-write hook, or the sheet overrides "
+    }, {
+      "type" : "text",
+      "text" : "save",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and "
+    }, {
+      "type" : "text",
+      "text" : "saveAll",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and delegates to the base."
+    } ]
+  }, {
+    "id" : "174ab324",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The guard runs "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntityRules",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " from Task 1 on every legal entity written through "
+    }, {
+      "type" : "text",
+      "text" : "save",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and "
+    }, {
+      "type" : "text",
+      "text" : "saveAll",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". The sheet is the entity's only remote surface, so agent and bulk writes must meet the same rules as the form. It reads the other rows through the caller session (the caller's tenant partition, per the design) and excludes the row being saved by id. Where the base's seam allows, the check and the write share one caller session. In a "
+    }, {
+      "type" : "text",
+      "text" : "saveAll",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " batch the rows also count as \"other rows\" for each other, so one LEI cannot appear twice in a batch. A refused write persists nothing. The sheet adds no cell beyond the inherited ones."
+    } ]
+  }, {
+    "id" : "4ace08ad",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "This task must NOT add picker scoping to "
+    }, {
+      "type" : "text",
+      "text" : "candidates",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "; the screen reads the same sheet unscoped and must keep showing retired rows (Task 4 owns the scope)."
+    } ]
+  }, {
+    "id" : "f4969ac7",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Touches",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "0cb2987a",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "module: ."
+    } ],
+    "children" : [ {
+      "id" : "b324f58e",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): cyai.cdm.base.staticdata.party.LegalEntitySheet"
+      } ]
+    }, {
+      "id" : "15be1c5b",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): cyai.cdm.base.staticdata.party.LegalEntitySheetTest"
+      } ]
+    } ]
+  }, {
+    "id" : "132c1f5f",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Delivers",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "bdc07bad",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "observer.sheet: LegalEntity → cyai.cdm.base.staticdata.party.LegalEntitySheet"
+    } ]
+  }, {
+    "id" : "b0186cdb",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "b104e596",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A1) Saving through the sheet a legal entity with a LEI of \"ABCDEFGHIJ0123456789\" succeeds and the row reads back."
+    } ]
+  }, {
+    "id" : "b7fb30e3",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A1) Saving through the sheet a legal entity with a LEI of \"ABC123\", of \"ABCDEFGHIJ01234567890\" or of \"ABCDEFGHIJ-123456789\" is refused, and no row is written."
+    } ]
+  }, {
+    "id" : "52b5899e",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A2) Saving a legal entity with a LEI that another legal entity already carries is refused with a message naming the other legal entity, and the register is unchanged."
+    } ]
+  }, {
+    "id" : "362b794e",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A2) Re-saving a saved legal entity unchanged with its own LEI is accepted."
+    } ]
+  }, {
+    "id" : "169c3e70",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A2) Saving a legal entity that carries the same LEI value twice in its own identifier list is refused."
+    } ]
+  }, {
+    "id" : "2b98125a",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A2) A "
+    }, {
+      "type" : "text",
+      "text" : "saveAll",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " batch in which two rows carry the same LEI, or in which a row repeats a LEI already in the register, is refused as a whole and writes nothing."
+    } ]
+  }, {
+    "id" : "176c6cc1",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "A legal entity with no identifier, and one carrying only non-LEI identifiers that repeat another row's, both save."
+    } ]
+  }, {
+    "id" : "3346e1e8",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "A save with a status outside draft, active and retired is refused."
+    } ]
+  }, {
+    "id" : "98752f53",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The sheet is served READ_WRITE for "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", with its own "
+    }, {
+      "type" : "text",
+      "text" : "NAME",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " constant and the inherited "
+    }, {
+      "type" : "text",
+      "text" : "record",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "list",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "candidates",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "save",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "delete",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and "
+    }, {
+      "type" : "text",
+      "text" : "saveAll",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " cells."
+    } ]
+  }, {
+    "id" : "ddd8b301",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Task 4: Add the retired-excluding picker scope for references"
+    } ]
+  }, {
+    "id" : "d2f51e8e",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Depends on",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": Task-3"
+    } ]
+  }, {
+    "id" : "e797f680",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Cites",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": A3"
+    } ]
+  }, {
+    "id" : "667872a7",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Write "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntityPickerScope",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " in "
+    }, {
+      "type" : "text",
+      "text" : "cyai.cdm.base.staticdata.party",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": it returns the locked filter \"status is not retired\", to be handed to the platform's "
+    }, {
+      "type" : "text",
+      "text" : "pickerFilter",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " binding by whichever entity later references "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". No entity in this spec references "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", because the "
+    }, {
+      "type" : "text",
+      "text" : "Party",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " link is out of scope, so the scope is delivered as a reusable class with its test and is applied to no field here. A reference holds only the row id, so retiring a row rewrites that row and nothing on any referrer."
+    } ]
+  }, {
+    "id" : "2a1207b4",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Test it by seeding the scope as the "
+    }, {
+      "type" : "text",
+      "text" : "candidatesQuery",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " filter on the Task 3 sheet."
+    } ]
+  }, {
+    "id" : "924e16ab",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "This task must NOT change "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntitySheet",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "'s own "
+    }, {
+      "type" : "text",
+      "text" : "candidates",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " or the Legal entities screen; both stay unscoped."
+    } ]
+  }, {
+    "id" : "6f9aabb4",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Touches",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "09a6231d",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "module: ."
+    } ],
+    "children" : [ {
+      "id" : "4a54327a",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): cyai.cdm.base.staticdata.party.LegalEntityPickerScope"
+      } ]
+    }, {
+      "id" : "c4f6603e",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): cyai.cdm.base.staticdata.party.LegalEntityPickerScopeTest"
+      } ]
+    } ]
+  }, {
+    "id" : "c3bc9222",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "1dac5dc0",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A3) Given one draft, one active and one retired legal entity, a candidates query carrying the scope returns the draft and the active one and omits the retired one."
+    } ]
+  }, {
+    "id" : "6533445e",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A3) Setting a legal entity's status to retired removes it from the scoped candidates on the next query; setting it back to active returns it."
+    } ]
+  }, {
+    "id" : "54614fb3",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A3) A reference to a retired legal entity, held as its row id, still resolves: reading the retired row by id through the sheet returns it unchanged, and retiring it altered no other row."
+    } ]
+  }, {
+    "id" : "5de498b4",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The same candidates query without the scope still returns all three rows."
+    } ]
+  }, {
+    "id" : "c8c79b61",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Task 5: Build the Legal entities screen from its mock and register it in the navigation"
+    } ]
+  }, {
+    "id" : "9ecbe1fe",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Depends on",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": Task-1, Task-2, Task-3"
+    } ]
+  }, {
+    "id" : "864b0586",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Cites",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": A1, A2"
+    } ]
+  }, {
+    "id" : "22bbb961",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Build the Legal entities screen the spec's mock "
+    }, {
+      "type" : "text",
+      "text" : "ui/legal-entities.screen.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " designs (spec attachment "
+    }, {
+      "type" : "text",
+      "text" : "cx/specs/testing1233/attachments/ui/legal-entities.screen.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "). It uses the same three regions in the same order, as a list-detail screen following "
+    }, {
+      "type" : "text",
+      "text" : "examples/layout-list-detail-panel.md",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and "
+    }, {
+      "type" : "text",
+      "text" : "guides/ui-screen-design-guidelines.md",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". Compose it from the platform's entity search over "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntitySheet",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "'s "
+    }, {
+      "type" : "text",
+      "text" : "candidates",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and the form pane, not a hand-rolled table. The class is "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntitiesTabModel",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "."
+    } ]
+  }, {
+    "id" : "953c10e1",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Filter bar:",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " name, status and identifier, with Search. Name and status filter server-side. The identifier fragment loads every page of the name/status-filtered query and filters in memory, as the design's View Layouts section states, so the table count is the number of matches."
+    } ]
+  }, {
+    "id" : "88d04c51",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Table:",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " the title \"Legal entities (n)\" with \"New legal entity\" in the header. Each row shows the name first, the status as a soft chip (active success, draft warning, retired neutral, as in the mock) and the identifiers as monospace \"TYPE value\" text. Row actions are open and delete, and delete confirms through the dialogs manager. Retired rows stay listed. An empty register and a load failure each get their own message, and the failure offers Retry."
+    } ]
+  }, {
+    "id" : "92a7e44b",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Side panel:",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " about 360px wide, hosting the shipped "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " default form from Task 1 for the selected row through the platform's form pane. Identifier editing, the Save/Cancel footer and both validators from Task 2 come with it, and the panel never re-draws form fields. With nothing selected it shows a one-line placeholder. \"New\" opens an empty form that starts as draft."
+    } ]
+  }, {
+    "id" : "d654cb66",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Register the navigation entry with "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntityApplicationModule",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": leaf \"Legal entities\" in the \"Reference data\" group, declared with the idempotent shared-group call. Add the "
+    }, {
+      "type" : "text",
+      "text" : "META-INF/services/cyai.uiai.model.IApplicationModule",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " registration. The spec names no icon, so pick an existing "
+    }, {
+      "type" : "text",
+      "text" : "Icon",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " constant."
+    } ]
+  }, {
+    "id" : "a6978a7d",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "This task must NOT apply "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntityPickerScope",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " to the screen, and must NOT change the sheet or the shipped forms."
+    } ]
+  }, {
+    "id" : "b3637357",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Touches",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "61e2249d",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "module: ."
+    } ],
+    "children" : [ {
+      "id" : "95444aff",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): cyai.cdm.base.staticdata.party.ui.LegalEntitiesTabModel"
+      } ]
+    }, {
+      "id" : "352b24eb",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): cyai.cdm.base.staticdata.party.ui.LegalEntityApplicationModule"
+      } ]
+    }, {
+      "id" : "48fd781a",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/META-INF/services/cyai.uiai.model.IApplicationModule"
+      } ]
+    }, {
+      "id" : "3f6becc1",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): cyai.cdm.base.staticdata.party.ui.LegalEntitiesScreenTest"
+      } ]
+    } ]
+  }, {
+    "id" : "b71f5457",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Delivers",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "4de7a30d",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "ui.screen: Legal entities → cyai.cdm.base.staticdata.party.ui.LegalEntitiesTabModel"
+    } ]
+  }, {
+    "id" : "0177cda1",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "ui.navigation: Legal entities → cyai.cdm.base.staticdata.party.ui.LegalEntityApplicationModule"
+    } ]
+  }, {
+    "id" : "3256cf99",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "6f0c26d6",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The navigation entry \"Legal entities\" is registered under \"Reference data\" by "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntityApplicationModule",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", and the module is discoverable through the services file."
+    } ]
+  }, {
+    "id" : "d4b47beb",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Opening the screen builds the filter bar, the table and the side panel in that order, with the table title carrying the row count."
+    } ]
+  }, {
+    "id" : "d2a5035a",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A1) In the side panel, entering a LEI of \"ABC123\" on an identifier shows the finding and leaves Save disabled; entering \"ABCDEFGHIJ0123456789\" clears it."
+    } ]
+  }, {
+    "id" : "79afc59e",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A2) In the side panel, entering a LEI that another legal entity in the table already carries shows a finding naming that legal entity and leaves Save disabled; re-opening a row and saving it unchanged succeeds."
+    } ]
+  }, {
+    "id" : "7fd59d2f",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "A retired legal entity stays in the table with a neutral \"retired\" status chip, because the screen is the unscoped view, while draft and active rows show their own chips."
+    } ]
+  }, {
+    "id" : "d3903cbe",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Filtering by name and by status each narrows the table, and an empty result shows the empty-state message."
+    } ]
+  }, {
+    "id" : "203bdddc",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "An identifier fragment finds its legal entity even when the register holds more rows than one page, and the title count equals the number of matches."
+    } ]
+  }, {
+    "id" : "61a78f56",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Selecting a row shows that row's default form in the side panel. With no selection the panel shows its placeholder. \"New legal entity\" opens an empty form whose status is \"draft\"."
+    } ]
+  }, {
+    "id" : "550a2c7f",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Deleting a row asks for confirmation first and removes it only once confirmed."
     } ]
   } ],
   "comments" : [ ],
