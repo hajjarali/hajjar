@@ -1,0 +1,13 @@
+{
+  "toolchains" : {
+    "java" : "25"
+  },
+  "sourceEncoding" : "UTF-8",
+  "buildTool" : {
+    "jsontype" : "buildTool.maven",
+    "profiles" : [ ],
+    "properties" : { },
+    "args" : [ ]
+  },
+  "environment" : { }
+}
