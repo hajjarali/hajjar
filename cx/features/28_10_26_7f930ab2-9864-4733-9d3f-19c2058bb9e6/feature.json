@@ -1,0 +1,60 @@
+{
+  "content" : [ {
+    "id" : "1e4fa423",
+    "type" : "heading",
+    "props" : {
+      "level" : 1
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "spec2810"
+    } ]
+  }, {
+    "id" : "feature-design-h",
+    "type" : "heading",
+    "props" : {
+      "level" : 2
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Design"
+    } ]
+  }, {
+    "id" : "a1cb0dca",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "What is being built and how — the entities, their fields and types, what is persisted, how they relate, and what the screens show."
+    } ]
+  }, {
+    "id" : "feature-tasks-h",
+    "type" : "heading",
+    "props" : {
+      "level" : 2
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Tasks"
+    } ]
+  }, {
+    "id" : "a6ced200",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The design decomposed into tasks, each a '### Task N: Title' heading with a '"
+    }, {
+      "type" : "text",
+      "text" : "Depends on",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "' line naming its direct prerequisites."
+    } ]
+  } ],
+  "comments" : [ ],
+  "metadata" : {
+    "createdAt" : "2026-10-28T14:48:49.460469200Z"
+  }
+}
