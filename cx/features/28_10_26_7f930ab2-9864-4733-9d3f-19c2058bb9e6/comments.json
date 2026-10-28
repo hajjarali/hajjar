@@ -1,1 +1,15 @@
-[ ]
+[ {
+  "threadId" : "d61676d7-5e67-4601-9214-045d90fed4d2",
+  "text" : "- (A1) A legal entity set to retired is still stored and readable.",
+  "occurrence" : 0,
+  "resolved" : false,
+  "comments" : [ {
+    "id" : "7d4ef764-a4a0-47ac-b82d-87bb3943328c",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "The A1 citation on Task 1 is only half honest. The task's work covers the 'row remains' half of A1, while the 'no longer offered for selection' half is verified in Task 2. That is acceptable, but Task 1's three non-cited criteria also verify validation rules (default, unique, format) that the spec carries as validation.rule artifacts, not as A-numbers. No change is required; keep the A1 citation scoped to retention.",
+    "createdAt" : "2026-10-28T14:49:41.921723100Z"
+  } ]
+} ]

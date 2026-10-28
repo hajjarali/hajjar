@@ -10,6 +10,23 @@
       "text" : "spec2810"
     } ]
   }, {
+    "id" : "feature-summary-h",
+    "type" : "heading",
+    "props" : {
+      "level" : 2
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Summary"
+    } ]
+  }, {
+    "id" : "a6f2e0a1",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Adds a new LegalEntity root entity (name, unique 20-character alphanumeric lei, draft/active/retired status) with its spec-time descriptor and default form shipped verbatim. An observer sheet serves the register and a selection query that excludes retired rows. The Legal entities screen is built from its mock and registered under Reference data, in three tasks."
+    } ]
+  }, {
     "id" : "feature-design-h",
     "type" : "heading",
     "props" : {
@@ -203,6 +220,108 @@
       "text" : "The screen is the mock built for real, using the platform's table with side-panel pattern. The only decision beyond the mock is that retired rows get a distinct status marker in the table."
     } ]
   }, {
+    "id" : "feature-touches-h",
+    "type" : "heading",
+    "props" : {
+      "level" : 2
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Touches"
+    } ]
+  }, {
+    "id" : "907dfd97",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "module: ."
+    } ],
+    "children" : [ {
+      "id" : "dab53ed6",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry: pom.xml"
+      } ]
+    }, {
+      "id" : "c51b3b05",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): com.example.legalentity.LegalEntity"
+      } ]
+    }, {
+      "id" : "fca38b3b",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): com.example.legalentity.LegalEntityStatus"
+      } ]
+    }, {
+      "id" : "de85534d",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/entity_descriptors/cdm.base.staticdata.party.LegalEntity.json"
+      } ]
+    }, {
+      "id" : "dfc9d561",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): com.example.legalentity.LegalEntityTest"
+      } ]
+    }, {
+      "id" : "d4e90774",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): com.example.legalentity.LegalEntitySheet"
+      } ]
+    }, {
+      "id" : "66c62608",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/com/example/legalentity/LegalEntity.js"
+      } ]
+    }, {
+      "id" : "9bd17424",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): com.example.legalentity.LegalEntitySheetTest"
+      } ]
+    }, {
+      "id" : "d67de098",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): com.example.legalentity.LegalEntitiesScreenModel"
+      } ]
+    }, {
+      "id" : "0939212c",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/com/example/legalentity/legal-entities.screen.js"
+      } ]
+    }, {
+      "id" : "c0166f74",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): com.example.legalentity.LegalEntityApplicationModule"
+      } ]
+    }, {
+      "id" : "6820855f",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): com.example.legalentity.LegalEntitiesScreenTest"
+      } ]
+    } ]
+  }, {
     "id" : "feature-tasks-h",
     "type" : "heading",
     "props" : {
@@ -213,12 +332,19 @@
       "text" : "Tasks"
     } ]
   }, {
-    "id" : "a6ced200",
-    "type" : "paragraph",
+    "id" : "1c2c2a01",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
     "content" : [ {
       "type" : "text",
-      "text" : "The design decomposed into tasks, each a '### Task N: Title' heading with a '"
-    }, {
+      "text" : "Task 1: Persist LegalEntity with its status lifecycle and validation"
+    } ]
+  }, {
+    "id" : "425a9601",
+    "type" : "paragraph",
+    "content" : [ {
       "type" : "text",
       "text" : "Depends on",
       "styles" : {
@@ -226,7 +352,585 @@
       }
     }, {
       "type" : "text",
-      "text" : "' line naming its direct prerequisites."
+      "text" : ": None"
+    } ]
+  }, {
+    "id" : "1e4c9769",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Cites",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": A1"
+    } ]
+  }, {
+    "id" : "cfc285d8",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The repository is a bare Maven project ("
+    }, {
+      "type" : "text",
+      "text" : "pom.xml",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "com.example.App",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "), so the entity is new. Create "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " with name, lei and status, and the generated status enum "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntityStatus",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (draft, active, retired). Add the platform dependencies to "
+    }, {
+      "type" : "text",
+      "text" : "pom.xml",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " if the entity needs them. Copy the descriptor verbatim from spec attachment "
+    }, {
+      "type" : "text",
+      "text" : "entity_descriptors/cdm.base.staticdata.party.LegalEntity.json",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " to "
+    }, {
+      "type" : "text",
+      "text" : "src/main/resources/entity_descriptors/",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". Retiring only changes status. Do not touch "
+    }, {
+      "type" : "text",
+      "text" : "App.java",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "."
+    } ]
+  }, {
+    "id" : "e1c56b9e",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Touches",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "2f06cf15",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "module: ."
+    } ],
+    "children" : [ {
+      "id" : "61106ac8",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry: pom.xml"
+      } ]
+    }, {
+      "id" : "fbec73d0",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): com.example.legalentity.LegalEntity"
+      } ]
+    }, {
+      "id" : "468fbc38",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): com.example.legalentity.LegalEntityStatus"
+      } ]
+    }, {
+      "id" : "033b6086",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/entity_descriptors/cdm.base.staticdata.party.LegalEntity.json"
+      } ]
+    }, {
+      "id" : "8b964ecf",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): com.example.legalentity.LegalEntityTest"
+      } ]
+    } ]
+  }, {
+    "id" : "3a207c5b",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Delivers",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "f2488222",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "persistence.entity: LegalEntity → com.example.legalentity.LegalEntity"
+    } ]
+  }, {
+    "id" : "9564b64f",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "persistence.enum: LegalEntity.status → com.example.legalentity.LegalEntityStatus"
+    } ]
+  }, {
+    "id" : "16578976",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "validation.rule: LegalEntity.lei → com.example.legalentity.LegalEntity#lei"
+    } ]
+  }, {
+    "id" : "b27d6736",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "validation.rule: LegalEntity.status → com.example.legalentity.LegalEntity#status"
+    } ]
+  }, {
+    "id" : "be2de186",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "d8c79527",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "A new legal entity saves with status draft by default."
+    } ]
+  }, {
+    "id" : "f3db4744",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Saving a duplicate lei is refused."
+    } ]
+  }, {
+    "id" : "37fc64b9",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Saving an lei that is not 20 alphanumeric characters is refused."
+    } ]
+  }, {
+    "id" : "6a3e637a",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A1) A legal entity set to retired is still stored and readable."
+    } ]
+  }, {
+    "id" : "6d9c811c",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Task 2: Expose LegalEntity through its sheet, excluding retired from selection"
+    } ]
+  }, {
+    "id" : "75aff9bf",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Depends on",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": Task-1 (the sheet serves the LegalEntity entity and LegalEntityStatus)"
+    } ]
+  }, {
+    "id" : "3c662cec",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Cites",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": A1"
+    } ]
+  }, {
+    "id" : "7f44b593",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Add "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntitySheet",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": full reads and writes for the register, plus a selection query returning only draft and active rows for new business. Ship the default form verbatim from spec attachment "
+    }, {
+      "type" : "text",
+      "text" : "ui/cdm.base.staticdata.party.LegalEntity.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " to "
+    }, {
+      "type" : "text",
+      "text" : "src/main/resources/com/example/legalentity/LegalEntity.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "."
+    } ]
+  }, {
+    "id" : "592cb1b8",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Touches",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "d5f542dd",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "module: ."
+    } ],
+    "children" : [ {
+      "id" : "b4d4d356",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): com.example.legalentity.LegalEntitySheet"
+      } ]
+    }, {
+      "id" : "73052063",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/com/example/legalentity/LegalEntity.js"
+      } ]
+    }, {
+      "id" : "3829cc83",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): com.example.legalentity.LegalEntitySheetTest"
+      } ]
+    } ]
+  }, {
+    "id" : "05785bf4",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Delivers",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "e51c1d34",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "observer.sheet: LegalEntity → com.example.legalentity.LegalEntitySheet"
+    } ]
+  }, {
+    "id" : "e3c2c4e2",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "ui.defaultForm: LegalEntity → src/main/resources/com/example/legalentity/LegalEntity.js"
+    } ]
+  }, {
+    "id" : "ef340ce2",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "e4c35d65",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A1) After a legal entity is set to retired, the selection query no longer returns it."
+    } ]
+  }, {
+    "id" : "e1eef7ab",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A1) The register read still returns the retired row."
+    } ]
+  }, {
+    "id" : "f16408eb",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Task 3: Build the Legal entities screen from its mock and register it"
+    } ]
+  }, {
+    "id" : "05f5b7c7",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Depends on",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": Task-2 (the screen's table reads LegalEntitySheet and its side panel hosts the default form)"
+    } ]
+  }, {
+    "id" : "f50250cb",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Cites",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": A1"
+    } ]
+  }, {
+    "id" : "95befcbb",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Build the screen from mock "
+    }, {
+      "type" : "text",
+      "text" : "cx/specs/spec2810/attachments/ui/legal-entities.screen.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", region for region: the filter bar (name, lei, status, Search), the table (name, lei, status; Open, Delete) and the side panel (default form; Save, Cancel). Retired rows get a distinct marker. Register it under "
+    }, {
+      "type" : "text",
+      "text" : "Reference data › Legal entities",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " with an icon in "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntityApplicationModule",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". The table uses the register read, not the selection query."
+    } ]
+  }, {
+    "id" : "4d1d1a79",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Touches",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "67ef90d2",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "module: ."
+    } ],
+    "children" : [ {
+      "id" : "96deebdb",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): com.example.legalentity.LegalEntitiesScreenModel"
+      } ]
+    }, {
+      "id" : "fbf9ad33",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/com/example/legalentity/legal-entities.screen.js"
+      } ]
+    }, {
+      "id" : "147ff52f",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): com.example.legalentity.LegalEntityApplicationModule"
+      } ]
+    }, {
+      "id" : "a2bdffaa",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): com.example.legalentity.LegalEntitiesScreenTest"
+      } ]
+    } ]
+  }, {
+    "id" : "0c0f0ed4",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Delivers",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "64873a34",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "ui.screen: Legal entities → com.example.legalentity.LegalEntitiesScreenModel"
+    } ]
+  }, {
+    "id" : "e606e384",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "ui.navigation: Legal entities → com.example.legalentity.LegalEntityApplicationModule"
+    } ]
+  }, {
+    "id" : "2b2b93cb",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "17084e4a",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The navigation entry "
+    }, {
+      "type" : "text",
+      "text" : "Reference data › Legal entities",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " is registered and the screen opens."
+    } ]
+  }, {
+    "id" : "66108aec",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A1) A retired legal entity still appears in the table, visibly marked."
     } ]
   } ],
   "comments" : [ ],
