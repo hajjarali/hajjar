@@ -20,11 +20,187 @@
       "text" : "Design"
     } ]
   }, {
-    "id" : "a1cb0dca",
+    "id" : "3d3ca404",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Grounding"
+    } ]
+  }, {
+    "id" : "53447412",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
-      "text" : "What is being built and how — the entities, their fields and types, what is persisted, how they relate, and what the screens show."
+      "text" : "The spec names cdm.base.staticdata.party.LegalEntity as vocabulary only; it is not served in this deployment, so LegalEntity is a new root entity in the application module, using the spec's approved descriptor "
+    }, {
+      "type" : "text",
+      "text" : "entity_descriptors/cdm.base.staticdata.party.LegalEntity.json",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " verbatim."
+    } ]
+  }, {
+    "id" : "b009c59c",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "LegalEntity entity"
+    } ]
+  }, {
+    "id" : "a89c35e3",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Root bean with three required fields: "
+    }, {
+      "type" : "text",
+      "text" : "name",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (text, the legal name), "
+    }, {
+      "type" : "text",
+      "text" : "lei",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (text) and "
+    }, {
+      "type" : "text",
+      "text" : "status",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (lifecycle draft | active | retired, default draft). "
+    }, {
+      "type" : "text",
+      "text" : "lei",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " is unique and must match 20 alphanumeric characters; both rules are enforced on save by the entity's validation. The status lifecycle yields a generated enum "
+    }, {
+      "type" : "text",
+      "text" : "LegalEntity.status",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "; it is not hand-written beside the entity. The observer sheet is the entity's only remote surface."
+    } ]
+  }, {
+    "id" : "966ed68c",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Retired entities (R1 / A1)"
+    } ]
+  }, {
+    "id" : "c88ed9fb",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Retiring is a status change, never a delete: the row stays in the register. \"Selection for new business\" is the reference lookup of legal entities offered to other features. It is a query on the sheet that returns only non-retired rows (draft and active). The register screen itself uses the unfiltered query, so retired rows remain visible there."
+    } ]
+  }, {
+    "id" : "c2f2a189",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Default form and screen"
+    } ]
+  }, {
+    "id" : "ebaaaa9a",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The default form "
+    }, {
+      "type" : "text",
+      "text" : "ui/cdm.base.staticdata.party.LegalEntity.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " is shipped verbatim beside the entity class. The \"Legal entities\" screen follows the mock "
+    }, {
+      "type" : "text",
+      "text" : "ui/legal-entities.screen.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " region for region: a filter bar (name, lei, status), a dense table (name, lei, status; open, delete), and a side panel showing the default form (save, cancel). Retired rows are visibly marked. It is registered under "
+    }, {
+      "type" : "text",
+      "text" : "Reference data › Legal entities",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "."
+    } ]
+  }, {
+    "id" : "145a4e7c",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Migration"
+    } ]
+  }, {
+    "id" : "421ff0c3",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "None: new entity and new table."
+    } ]
+  }, {
+    "id" : "feature-view-layouts-h",
+    "type" : "heading",
+    "props" : {
+      "level" : 2
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "View Layouts"
+    } ]
+  }, {
+    "id" : "fac7bf1a",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The screen is the mock built for real, using the platform's table with side-panel pattern. The only decision beyond the mock is that retired rows get a distinct status marker in the table."
     } ]
   }, {
     "id" : "feature-tasks-h",
