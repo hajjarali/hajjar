@@ -1,0 +1,21 @@
+{
+  "attachments" : [ {
+    "name" : "entity_descriptors/cdm.base.staticdata.party.LegalEntity.json",
+    "type" : "ENTITY_DESCRIPTORS",
+    "size_bytes" : 2634,
+    "uploaded_at" : "2026-10-28T14:43:04.221418600Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "ui/cdm.base.staticdata.party.LegalEntity.js",
+    "type" : "UI",
+    "size_bytes" : 2690,
+    "uploaded_at" : "2026-10-28T14:43:27.457961600Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "ui/legal-entities.screen.js",
+    "type" : "UI",
+    "size_bytes" : 4907,
+    "uploaded_at" : "2026-10-28T14:43:59.504898100Z",
+    "origin" : "AGENT"
+  } ]
+}

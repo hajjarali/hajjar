@@ -1,0 +1,86 @@
+{
+  "descriptors" : [ {
+    "name" : "cdm.base.staticdata.party.LegalEntity",
+    "className" : "cyai.cdm.base.staticdata.party.LegalEntity",
+    "entityType" : "PERSISTABLE_BEAN",
+    "label" : "Legal Entity",
+    "description" : "An organisation the firm identifies by an LEI, with a lifecycle status.",
+    "group" : "cdm.base.staticdata.party",
+    "persistenceDescriptor" : {
+      "tableName" : "legal_entity",
+      "idGenerationStrategy" : "SEQUENCE",
+      "indexGroups" : { },
+      "naturalKeyGroups" : {
+        "by_lei" : [ "lei" ]
+      },
+      "cacheDescriptor" : {
+        "strategy" : "NONE"
+      },
+      "starSchemaRole" : "DIM"
+    },
+    "fieldDescriptors" : {
+      "name" : {
+        "name" : "name",
+        "fieldType" : "STRING",
+        "label" : "Name",
+        "description" : "The legal name of the entity.",
+        "persistenceDescriptor" : {
+          "columnName" : "name",
+          "length" : 255
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT",
+          "helperText" : "The legal name"
+        },
+        "systemField" : false
+      },
+      "lei" : {
+        "name" : "lei",
+        "fieldType" : "STRING",
+        "label" : "LEI",
+        "description" : "The Legal Entity Identifier (ISO 17442): 20 alphanumeric characters, unique across the register.",
+        "persistenceDescriptor" : {
+          "columnName" : "lei",
+          "length" : 20
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : true,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT",
+          "helperText" : "20 alphanumeric characters"
+        },
+        "systemField" : false
+      },
+      "status" : {
+        "name" : "status",
+        "fieldType" : "STRING",
+        "label" : "Status",
+        "description" : "Lifecycle status: draft, active or retired. A retired entity is excluded from selection for new business.",
+        "persistenceDescriptor" : {
+          "columnName" : "status",
+          "length" : 20,
+          "defaultValue" : "draft"
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "STATUS_BADGE"
+        },
+        "systemField" : false
+      }
+    },
+    "relationships" : { },
+    "version" : 1
+  } ]
+}
