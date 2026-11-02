@@ -10,6 +10,41 @@
       "text" : "spec123112"
     } ]
   }, {
+    "id" : "feature-summary-h",
+    "type" : "heading",
+    "props" : {
+      "level" : 2
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Summary"
+    } ]
+  }, {
+    "id" : "de1eec99",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Changes the existing "
+    }, {
+      "type" : "text",
+      "text" : "com.example.App",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " so the page shown after sign-in contains the fixed text \"Welcome\", and adds a JUnit test (with the test dependency in "
+    }, {
+      "type" : "text",
+      "text" : "pom.xml",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ") verifying it. No entities, storage or screens are involved; it is one task."
+    } ]
+  }, {
     "id" : "feature-design-h",
     "type" : "heading",
     "props" : {
@@ -72,6 +107,45 @@
       "text" : " is derived. The text is added to the existing post-sign-in landing page, as a fixed string. It is not configurable or personalised (out of scope per the spec). The task breakdown must locate that landing page in the real code and name it."
     } ]
   }, {
+    "id" : "feature-touches-h",
+    "type" : "heading",
+    "props" : {
+      "level" : 2
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Touches"
+    } ]
+  }, {
+    "id" : "891e511f",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "module: ."
+    } ],
+    "children" : [ {
+      "id" : "09912fdd",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry: com.example.App"
+      } ]
+    }, {
+      "id" : "8884c670",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry: pom.xml"
+      } ]
+    }, {
+      "id" : "3b06296c",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): com.example.AppTest"
+      } ]
+    } ]
+  }, {
     "id" : "feature-tasks-h",
     "type" : "heading",
     "props" : {
@@ -82,12 +156,19 @@
       "text" : "Tasks"
     } ]
   }, {
-    "id" : "06a63c82",
-    "type" : "paragraph",
+    "id" : "2a91c681",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
     "content" : [ {
       "type" : "text",
-      "text" : "The design decomposed into tasks, each a '### Task N: Title' heading with a '"
-    }, {
+      "text" : "Task 1: Show \"Welcome\" on the post-sign-in page"
+    } ]
+  }, {
+    "id" : "7e66abf0",
+    "type" : "paragraph",
+    "content" : [ {
       "type" : "text",
       "text" : "Depends on",
       "styles" : {
@@ -95,7 +176,156 @@
       }
     }, {
       "type" : "text",
-      "text" : "' line naming its direct prerequisites."
+      "text" : ": None"
+    } ]
+  }, {
+    "id" : "f0a9ef01",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Cites",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": A1"
+    } ]
+  }, {
+    "id" : "736eb554",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The repository holds only "
+    }, {
+      "type" : "text",
+      "text" : "com.example.App",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (a console "
+    }, {
+      "type" : "text",
+      "text" : "main",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " printing \"Hello, World!\") and no landing page, so App is the page a user lands on. Extend "
+    }, {
+      "type" : "text",
+      "text" : "App",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " to expose the fixed text \"Welcome\" and output it as the first thing shown on start (replacing the \"Hello, World!\" line). Add a JUnit test dependency to "
+    }, {
+      "type" : "text",
+      "text" : "pom.xml",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and a new "
+    }, {
+      "type" : "text",
+      "text" : "AppTest",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". Must NOT add configuration, storage or personalisation."
+    } ]
+  }, {
+    "id" : "555a7480",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Touches",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "100d984e",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "module: ."
+    } ],
+    "children" : [ {
+      "id" : "168cfe14",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry: com.example.App"
+      } ]
+    }, {
+      "id" : "aca347fb",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry: pom.xml"
+      } ]
+    }, {
+      "id" : "05994f9b",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): com.example.AppTest"
+      } ]
+    } ]
+  }, {
+    "id" : "bf19e4ef",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Delivers",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": None"
+    } ]
+  }, {
+    "id" : "9d62c95a",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "678f4746",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A1) The landing output of "
+    }, {
+      "type" : "text",
+      "text" : "App",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " after sign-in contains the text \"Welcome\"."
     } ]
   } ],
   "comments" : [ ],

@@ -1,1 +1,15 @@
-[ ]
+[ {
+  "threadId" : "c73362de-54ed-440e-b058-6f4de326c8cf",
+  "text" : "The landing output of `App` after sign-in contains the text \"Welcome\".",
+  "occurrence" : 0,
+  "resolved" : false,
+  "comments" : [ {
+    "id" : "c57d9517-6c23-46db-88b0-2c56b40ad40f",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "The task itself says App is a console `main` with no sign-in, yet the criterion speaks of output 'after sign-in'. Make it checkable as written: e.g. 'AppTest asserts the text App outputs on start (the landing output) contains \"Welcome\"', and note in the design that the console start stands in for sign-in landing so A1 is honestly verified.",
+    "createdAt" : "2026-11-02T07:43:45.839215300Z"
+  } ]
+} ]
