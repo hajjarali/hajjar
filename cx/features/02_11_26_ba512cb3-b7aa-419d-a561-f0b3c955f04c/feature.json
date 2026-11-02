@@ -20,11 +20,56 @@
       "text" : "Design"
     } ]
   }, {
-    "id" : "6dca2214",
+    "id" : "6e125529",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "No entities"
+    } ]
+  }, {
+    "id" : "d9224e02",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
-      "text" : "What is being built and how — the entities, their fields and types, what is persisted, how they relate, and what the screens show."
+      "text" : "The spec stores nothing (Data model: None; Artifacts: None), so this feature adds no entity, field, enum, persistence or migration. Nothing is reused or modelled; no catalog lookup applies."
+    } ]
+  }, {
+    "id" : "52e42d1e",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Welcome message"
+    } ]
+  }, {
+    "id" : "e42acbd3",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Requirement R1 (verified by A1) is a display-only behaviour: the page a user lands on after sign-in contains the text \"Welcome\". There is no root bean and no screen of its own (User interface: None), so no "
+    }, {
+      "type" : "text",
+      "text" : "ui.screen",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " or "
+    }, {
+      "type" : "text",
+      "text" : "ui.navigation",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " is derived. The text is added to the existing post-sign-in landing page, as a fixed string. It is not configurable or personalised (out of scope per the spec). The task breakdown must locate that landing page in the real code and name it."
     } ]
   }, {
     "id" : "feature-tasks-h",
