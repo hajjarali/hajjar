@@ -20,11 +20,35 @@
       "text" : "Design"
     } ]
   }, {
-    "id" : "783cc128",
+    "id" : "b13c156f",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Greeting behaviour"
+    } ]
+  }, {
+    "id" : "76bb010a",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
-      "text" : "What is being built and how — the entities, their fields and types, what is persisted, how they relate, and what the screens show."
+      "text" : "The spec stores nothing, has no screen and no artifacts: the Data model, User interface and Artifacts sections are all \"None\". No entity, enum, sheet or view is designed, so nothing was looked up in the entity catalog because there is nothing to reuse or create."
+    } ]
+  }, {
+    "id" : "57a89441",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The only behaviour is R1/A1: when a greeting is requested, the system responds with exactly the text \"Hello, world\". The text is a single constant with no personalisation or localisation. It must match exactly, with no trailing punctuation or whitespace changes."
+    } ]
+  }, {
+    "id" : "0da86603",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "There is no migration, dependency or constraint to carry. The breakdown should be a single task that implements the greeting response and cites A1."
     } ]
   }, {
     "id" : "feature-tasks-h",
