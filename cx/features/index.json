@@ -1,3 +1,7 @@
 {
-  "features" : [ ]
+  "features" : [ {
+    "slug" : "03_11_26_4f046d43-c96c-41ce-b41c-ee43867e0833",
+    "title" : "kli23",
+    "createdBy" : "svc:SDLCWorker"
+  } ]
 }
