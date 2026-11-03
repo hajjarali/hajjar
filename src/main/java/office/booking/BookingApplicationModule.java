@@ -43,6 +43,8 @@ public final class BookingApplicationModule implements IApplicationModule {
         model.ensureNavigationGroup(List.of(), GROUP, "Meeting rooms", Icon.DASHBOARD);
         model.addNavigationNode(List.of(GROUP), RoomsScreenModel.ID, "Rooms", Icon.DASHBOARD, true,
                 () -> new RoomsScreenModel(RoomsScreenModel.ID, surfaceCatalogs));
+        model.addNavigationNode(List.of(GROUP), BookingsScreenModel.ID, "Bookings", Icon.EVENT, true,
+                () -> new BookingsScreenModel(BookingsScreenModel.ID, surfaceCatalogs));
     }
 
     @Override
