@@ -1,3 +1,7 @@
 {
-  "features" : [ ]
+  "features" : [ {
+    "slug" : "03_11_26_70811453-a291-4209-821e-cb8ac680b745",
+    "title" : "meeting-room",
+    "createdBy" : "svc:SDLCWorker"
+  } ]
 }
