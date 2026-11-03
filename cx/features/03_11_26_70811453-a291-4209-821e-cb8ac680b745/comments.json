@@ -1,1 +1,57 @@
-[ ]
+[ {
+  "threadId" : "aa774317-a8fe-4ca0-b00f-9e076170ab28",
+  "text" : "**Cites**: A6\n\nCreate the enum `Equipment` and the entity `Room`",
+  "occurrence" : 0,
+  "resolved" : false,
+  "comments" : [ {
+    "id" : "0bde48e6-669c-486c-aa24-543cf173289b",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "Task 1 cites A6 (a Booking with 12 attendees in a capacity-12 room is accepted, 13 refused), but the task only persists Room and Equipment. Its criterion '(A6) A Room saves with capacity 12' does not verify the A6 behaviour, which concerns Booking attendees and is delivered in Task 4. Drop A6 from Task 1's Cites and its criterion, or cite nothing, since Task 1's rules (unique name, capacity min 1) trace to no A-number.",
+    "createdAt" : "2026-11-03T08:28:40.974659500Z"
+  } ]
+}, {
+  "threadId" : "2e2a2901-e241-422a-b397-f790e26f6eb3",
+  "text" : "(A6) Opening Meeting rooms › Rooms lists saved Rooms, and the selected Room is editable in the side panel.",
+  "occurrence" : 0,
+  "resolved" : false,
+  "comments" : [ {
+    "id" : "3490ecde-e636-4beb-a2a7-0a1f0763c457",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "Task 2 cites A6 but a Rooms list and edit panel does not verify the attendee-versus-capacity rule. This is a dishonest citation. Remove the A6 cite and leave the criterion as a technical one.",
+    "createdAt" : "2026-11-03T08:28:40.974659500Z"
+  } ]
+}, {
+  "threadId" : "51c74d64-80ba-4e14-a280-f65c8601f9f7",
+  "text" : "### Shipped artifacts (verbatim)",
+  "occurrence" : 0,
+  "resolved" : false,
+  "comments" : [ {
+    "id" : "3281a7ee-8f2b-4633-9f31-77ad2406eb51",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "This section restates what the task descriptions and the Booking/Room entity sections already say (verbatim copy of descriptors and forms), and View Layouts says the forms are shipped verbatim again. State it once, in the design, and have the tasks just name the copy.",
+    "createdAt" : "2026-11-03T08:28:40.974659500Z"
+  } ]
+}, {
+  "threadId" : "bcdc89fc-d7a5-42be-8b5e-40b998fdfef3",
+  "text" : "Whether confirmed to requested is allowed is not stated in the spec, so the lifecycle transition table in the descriptor is followed as shipped.",
+  "occurrence" : 0,
+  "resolved" : false,
+  "comments" : [ {
+    "id" : "1fd97266-8d3a-4c5d-bbff-5ebd5a7e667f",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "The design silently decides an unspecified transition (confirmed→requested) by deferring to the descriptor, while Task 4 only checks 'confirmed only from requested'. Surface this as an Open Question for confirmation, and make sure the validator and tests agree with the descriptor's table.",
+    "createdAt" : "2026-11-03T08:28:40.974659500Z"
+  } ]
+} ]

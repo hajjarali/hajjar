@@ -10,6 +10,23 @@
       "text" : "meeting-room"
     } ]
   }, {
+    "id" : "feature-summary-h",
+    "type" : "heading",
+    "props" : {
+      "level" : 2
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Summary"
+    } ]
+  }, {
+    "id" : "ad562973",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Builds the office.booking package. It adds the Equipment enum, the Room entity and the Booking entity with its requested/confirmed/cancelled lifecycle, all from the spec's shipped descriptors and forms. A BookingValidator enforces the time-window, capacity, status-transition and confirmed-overlap rules. Each bean gets an observer sheet, and the Rooms and Bookings screens are built from the spec mocks and registered under Meeting rooms. The work is five tasks: Room, Rooms screen, Booking, rules and Bookings screen."
+    } ]
+  }, {
     "id" : "feature-design-h",
     "type" : "heading",
     "props" : {
@@ -625,6 +642,136 @@
       "text" : ". These are status changes that run through the rules above, and a refusal is shown to the user."
     } ]
   }, {
+    "id" : "feature-touches-h",
+    "type" : "heading",
+    "props" : {
+      "level" : 2
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Touches"
+    } ]
+  }, {
+    "id" : "10a39ebe",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "module: ."
+    } ],
+    "children" : [ {
+      "id" : "681bf493",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): office.booking.Equipment"
+      } ]
+    }, {
+      "id" : "d7bd3c0e",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): office.booking.Room"
+      } ]
+    }, {
+      "id" : "82b47157",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/office/booking/Room.js"
+      } ]
+    }, {
+      "id" : "7ba8e5ec",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): office.booking.RoomTest"
+      } ]
+    }, {
+      "id" : "fbc1e44b",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): office.booking.RoomSheet"
+      } ]
+    }, {
+      "id" : "2c840646",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): office.booking.RoomsScreenModel"
+      } ]
+    }, {
+      "id" : "2a1af01f",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): office.booking.BookingApplicationModule"
+      } ]
+    }, {
+      "id" : "c54a61f6",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): office.booking.RoomsScreenTest"
+      } ]
+    }, {
+      "id" : "36e08441",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): office.booking.Booking"
+      } ]
+    }, {
+      "id" : "e7072773",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/office/booking/Booking.js"
+      } ]
+    }, {
+      "id" : "c3ded692",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): office.booking.BookingTest"
+      } ]
+    }, {
+      "id" : "c43a0b0b",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): office.booking.BookingValidator"
+      } ]
+    }, {
+      "id" : "40ce947d",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): office.booking.BookingRulesTest"
+      } ]
+    }, {
+      "id" : "b00087c9",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): office.booking.BookingSheet"
+      } ]
+    }, {
+      "id" : "94f92cae",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): office.booking.BookingsScreenModel"
+      } ]
+    }, {
+      "id" : "c2238a34",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): office.booking.BookingsScreenTest"
+      } ]
+    } ]
+  }, {
     "id" : "feature-tasks-h",
     "type" : "heading",
     "props" : {
@@ -635,12 +782,19 @@
       "text" : "Tasks"
     } ]
   }, {
-    "id" : "3891843d",
-    "type" : "paragraph",
+    "id" : "43b2c8ed",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
     "content" : [ {
       "type" : "text",
-      "text" : "The design decomposed into tasks, each a '### Task N: Title' heading with a '"
-    }, {
+      "text" : "Task 1: Persist Equipment and Room, ship the Room form"
+    } ]
+  }, {
+    "id" : "3ef0d4e0",
+    "type" : "paragraph",
+    "content" : [ {
       "type" : "text",
       "text" : "Depends on",
       "styles" : {
@@ -648,7 +802,1032 @@
       }
     }, {
       "type" : "text",
-      "text" : "' line naming its direct prerequisites."
+      "text" : ": None"
+    } ]
+  }, {
+    "id" : "f5677bd5",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Cites",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": A6"
+    } ]
+  }, {
+    "id" : "fb7a5b70",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Create the enum "
+    }, {
+      "type" : "text",
+      "text" : "Equipment",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and the entity "
+    }, {
+      "type" : "text",
+      "text" : "Room",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " from the spec descriptors "
+    }, {
+      "type" : "text",
+      "text" : "entity_descriptors/office.booking.Equipment.json",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and "
+    }, {
+      "type" : "text",
+      "text" : "entity_descriptors/office.booking.Room.json",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". Copy the form "
+    }, {
+      "type" : "text",
+      "text" : "ui/office.booking.Room.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " verbatim to "
+    }, {
+      "type" : "text",
+      "text" : "src/main/resources/office/booking/Room.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". The repository holds only a stub "
+    }, {
+      "type" : "text",
+      "text" : "App.java",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", so this task also adds whatever build wiring the entity needs. It must not touch Booking."
+    } ]
+  }, {
+    "id" : "869a144a",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Touches",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "99e0e9cf",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "module: ."
+    } ],
+    "children" : [ {
+      "id" : "b22db8f5",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): office.booking.Equipment"
+      } ]
+    }, {
+      "id" : "af617428",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): office.booking.Room"
+      } ]
+    }, {
+      "id" : "d1d816b1",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/office/booking/Room.js"
+      } ]
+    }, {
+      "id" : "67d7ea3e",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): office.booking.RoomTest"
+      } ]
+    } ]
+  }, {
+    "id" : "2ffd2263",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Delivers",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "d72aa878",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "persistence.enum: Equipment → office.booking.Equipment"
+    } ]
+  }, {
+    "id" : "fefccafc",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "persistence.entity: Room → office.booking.Room"
+    } ]
+  }, {
+    "id" : "e0280f77",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "ui.defaultForm: Room → src/main/resources/office/booking/Room.js"
+    } ]
+  }, {
+    "id" : "341710cb",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "validation.rule: Room.name → office.booking.Room#name"
+    } ]
+  }, {
+    "id" : "24d3ad14",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "validation.rule: Room.capacity → office.booking.Room#capacity"
+    } ]
+  }, {
+    "id" : "acb2c1c6",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "b8768053",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A6) A Room saves with capacity 12 and equipment of any combination of screen, whiteboard and videoCallKit."
+    } ]
+  }, {
+    "id" : "f72de546",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Saving a Room with a duplicate name is refused."
+    } ]
+  }, {
+    "id" : "13a419cc",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Saving a Room with capacity 0 is refused."
+    } ]
+  }, {
+    "id" : "5557e94a",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Task 2: Rooms sheet, screen and navigation"
+    } ]
+  }, {
+    "id" : "b79cebd3",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Depends on",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": Task-1 (the sheet serves the Room entity and the screen embeds the Room form)"
+    } ]
+  }, {
+    "id" : "d3229938",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Cites",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": A6"
+    } ]
+  }, {
+    "id" : "0a168df2",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Add the observer sheet "
+    }, {
+      "type" : "text",
+      "text" : "RoomSheet",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". Build the Rooms screen from the mock "
+    }, {
+      "type" : "text",
+      "text" : "ui/rooms.screen.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": a table (name, floor, capacity, equipment) with open, delete and new actions, and the selected Room's default form in a side panel with save and cancel. Register it under "
+    }, {
+      "type" : "text",
+      "text" : "Meeting rooms › Rooms",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " with icon "
+    }, {
+      "type" : "text",
+      "text" : "dashboard",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " in "
+    }, {
+      "type" : "text",
+      "text" : "BookingApplicationModule",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "."
+    } ]
+  }, {
+    "id" : "0b988748",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Touches",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "14270f65",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "module: ."
+    } ],
+    "children" : [ {
+      "id" : "c8176a8b",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): office.booking.RoomSheet"
+      } ]
+    }, {
+      "id" : "4cbf70ef",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): office.booking.RoomsScreenModel"
+      } ]
+    }, {
+      "id" : "9dc591a6",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): office.booking.BookingApplicationModule"
+      } ]
+    }, {
+      "id" : "ffaed8e3",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): office.booking.RoomsScreenTest"
+      } ]
+    } ]
+  }, {
+    "id" : "9fa2e635",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Delivers",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "0bc0c6fd",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "observer.sheet: Room → office.booking.RoomSheet"
+    } ]
+  }, {
+    "id" : "19568303",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "ui.screen: Rooms → office.booking.RoomsScreenModel"
+    } ]
+  }, {
+    "id" : "6415fe91",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "ui.navigation: Rooms → office.booking.BookingApplicationModule"
+    } ]
+  }, {
+    "id" : "971c4ca7",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "ac51f0b6",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A6) Opening Meeting rooms › Rooms lists saved Rooms, and the selected Room is editable in the side panel."
+    } ]
+  }, {
+    "id" : "fc6230ac",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The navigation entry is registered at "
+    }, {
+      "type" : "text",
+      "text" : "Meeting rooms › Rooms",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "."
+    } ]
+  }, {
+    "id" : "c030bfc3",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Task 3: Persist Booking with its lifecycle and ship the Booking form"
+    } ]
+  }, {
+    "id" : "89b3047f",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Depends on",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": Task-1 (the "
+    }, {
+      "type" : "text",
+      "text" : "room",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " reference targets the Room entity)"
+    } ]
+  }, {
+    "id" : "2547450c",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Cites",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": A7"
+    } ]
+  }, {
+    "id" : "f532058a",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Create the entity "
+    }, {
+      "type" : "text",
+      "text" : "Booking",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " from the descriptor "
+    }, {
+      "type" : "text",
+      "text" : "entity_descriptors/office.booking.Booking.json",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", including the lifecycle field "
+    }, {
+      "type" : "text",
+      "text" : "status",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (requested, confirmed, cancelled) defaulting to requested. Copy the form "
+    }, {
+      "type" : "text",
+      "text" : "ui/office.booking.Booking.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " verbatim to "
+    }, {
+      "type" : "text",
+      "text" : "src/main/resources/office/booking/Booking.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". The declarative rules (email format, attendees min 1, status default) are enforced here. The cross-field rules belong to Task 4."
+    } ]
+  }, {
+    "id" : "d3e04dc8",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Touches",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "9af100d6",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "module: ."
+    } ],
+    "children" : [ {
+      "id" : "8c5400d7",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): office.booking.Booking"
+      } ]
+    }, {
+      "id" : "2a5abc64",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/office/booking/Booking.js"
+      } ]
+    }, {
+      "id" : "0e4228cb",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): office.booking.BookingTest"
+      } ]
+    } ]
+  }, {
+    "id" : "1f2f281d",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Delivers",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "3f9b2bfb",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "persistence.entity: Booking → office.booking.Booking"
+    } ]
+  }, {
+    "id" : "4de6758a",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "ui.defaultForm: Booking → src/main/resources/office/booking/Booking.js"
+    } ]
+  }, {
+    "id" : "7c3a39c4",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "persistence.enum: Booking.status → office.booking.Booking#status"
+    } ]
+  }, {
+    "id" : "1790d99c",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "validation.rule: Booking.status → office.booking.Booking#status"
+    } ]
+  }, {
+    "id" : "21f867ae",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "validation.rule: Booking.organiserEmail → office.booking.Booking#organiserEmail"
+    } ]
+  }, {
+    "id" : "9f2be013",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "validation.rule: Booking.attendees → office.booking.Booking#attendees"
+    } ]
+  }, {
+    "id" : "c04bc73e",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "40abd246",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A7) A newly created Booking has status requested."
+    } ]
+  }, {
+    "id" : "49ad91ed",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Saving a Booking with a malformed organiserEmail or attendees 0 is refused."
+    } ]
+  }, {
+    "id" : "21c2da69",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Task 4: Booking time, capacity, status and overlap rules"
+    } ]
+  }, {
+    "id" : "daaddfd9",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Depends on",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": Task-3 (the validator guards saves of the Booking entity and its status lifecycle)"
+    } ]
+  }, {
+    "id" : "858bba9f",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Cites",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": A1, A2, A3, A4, A5, A6, A7, A8"
+    } ]
+  }, {
+    "id" : "3248d327",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Add "
+    }, {
+      "type" : "text",
+      "text" : "BookingValidator",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", which gates every Booking save. It checks the time window (same day, 08:00–20:00, end after start), attendees against the Room's capacity, and the status transitions (confirmed only from requested). When a Booking becomes confirmed, or a confirmed one changes room, start or end, it checks for overlap against other confirmed Bookings of the same Room, excluding itself. The overlap test is strict, so touching windows are accepted. A refusal leaves the stored row unchanged, and the check and the write are serialised per Room. It must not touch the screens."
+    } ]
+  }, {
+    "id" : "0c2286c6",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Touches",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "18827117",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "module: ."
+    } ],
+    "children" : [ {
+      "id" : "668ca12c",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): office.booking.BookingValidator"
+      } ]
+    }, {
+      "id" : "5e094245",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): office.booking.BookingRulesTest"
+      } ]
+    } ]
+  }, {
+    "id" : "41429f40",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Delivers",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": None"
+    } ]
+  }, {
+    "id" : "8172bc52",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "e2ae0eee",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A1) Confirming Atlas 10:30–11:30 beside a confirmed Atlas 10:00–11:00 is refused."
+    } ]
+  }, {
+    "id" : "88be1544",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A2) Confirming Atlas 11:00–12:00 beside a confirmed Atlas 10:00–11:00 is accepted."
+    } ]
+  }, {
+    "id" : "29a7edda",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A3) A requested Atlas 10:30–11:30 saves beside the confirmed one, and a confirmed 10:30–11:30 Booking of another room is accepted."
+    } ]
+  }, {
+    "id" : "d9074d9e",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A4) After the confirmed Atlas 10:00–11:00 is cancelled, confirming Atlas 10:30–11:30 is accepted."
+    } ]
+  }, {
+    "id" : "0296170b",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A5) 07:30–09:00, 19:00–20:30, 10:00–10:00, 11:00–10:00 and an overnight 19:00→09:00 are refused. 08:00–09:00 and 19:00–20:00 are accepted."
+    } ]
+  }, {
+    "id" : "3a8bfc3d",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A6) 12 attendees in a capacity-12 room is accepted and 13 is refused."
+    } ]
+  }, {
+    "id" : "6d8d4a07",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A7) requested→confirmed is accepted and cancelled→confirmed is refused."
+    } ]
+  }, {
+    "id" : "ce4649d0",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A8) Moving a confirmed Atlas 12:00–13:00 to 10:30–11:30 is refused and the Booking keeps 12:00–13:00."
+    } ]
+  }, {
+    "id" : "10e1ddf7",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Task 5: Bookings sheet, screen and navigation"
+    } ]
+  }, {
+    "id" : "ad2647f8",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Depends on",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": Task-4 (confirm and cancel booking run through BookingValidator), Task-2 (BookingApplicationModule, which it extends with the Bookings entry)"
+    } ]
+  }, {
+    "id" : "93212d6e",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Cites",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": A4, A7"
+    } ]
+  }, {
+    "id" : "e36c2772",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Add the observer sheet "
+    }, {
+      "type" : "text",
+      "text" : "BookingSheet",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". Build the Bookings screen from the mock "
+    }, {
+      "type" : "text",
+      "text" : "ui/bookings.screen.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": a table (title, room, start → end, attendees, status as a coloured tag) with open, delete and new actions, and the selected Booking's form in a side panel with save, cancel, confirm and cancel booking. The last two are status changes whose refusals are shown to the user. Register it under "
+    }, {
+      "type" : "text",
+      "text" : "Meeting rooms › Bookings",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " with icon "
+    }, {
+      "type" : "text",
+      "text" : "event",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " by extending "
+    }, {
+      "type" : "text",
+      "text" : "BookingApplicationModule",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "."
+    } ]
+  }, {
+    "id" : "3865e2ab",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Touches",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "2facd51a",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "module: ."
+    } ],
+    "children" : [ {
+      "id" : "0f14a420",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): office.booking.BookingSheet"
+      } ]
+    }, {
+      "id" : "3ce73f64",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): office.booking.BookingsScreenModel"
+      } ]
+    }, {
+      "id" : "15d905a4",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): office.booking.BookingApplicationModule"
+      } ]
+    }, {
+      "id" : "f0f51cf8",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): office.booking.BookingsScreenTest"
+      } ]
+    } ]
+  }, {
+    "id" : "b7cfc35b",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Delivers",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "eb723843",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "observer.sheet: Booking → office.booking.BookingSheet"
+    } ]
+  }, {
+    "id" : "403605a2",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "ui.screen: Bookings → office.booking.BookingsScreenModel"
+    } ]
+  }, {
+    "id" : "e4ace63f",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "ui.navigation: Bookings → office.booking.BookingApplicationModule"
+    } ]
+  }, {
+    "id" : "daf79ac6",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "f871426d",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The navigation entry is registered at "
+    }, {
+      "type" : "text",
+      "text" : "Meeting rooms › Bookings",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and the screen opens with the table and side panel."
+    } ]
+  }, {
+    "id" : "4a984fd4",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A7) Confirm on a requested Booking sets it to confirmed."
+    } ]
+  }, {
+    "id" : "52f4a615",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A4) Cancel booking on a confirmed Booking sets it to cancelled, and its slot can then be confirmed by another Booking."
     } ]
   } ],
   "comments" : [ ],
