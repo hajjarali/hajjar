@@ -1,3 +1,7 @@
 {
-  "features" : [ ]
+  "features" : [ {
+    "slug" : "03_11_26_debc425d-e93d-4811-adb7-939e832c89c1",
+    "title" : "meetingslotfinder",
+    "createdBy" : "svc:SDLCWorker"
+  } ]
 }
