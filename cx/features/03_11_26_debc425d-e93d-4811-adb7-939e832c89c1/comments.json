@@ -1,1 +1,29 @@
-[ ]
+[ {
+  "threadId" : "ce5eb400-a427-45c3-9270-619caa17eb9c",
+  "text" : "Clip every busy time to the working hours. Busy time wholly outside has no effect (R3).",
+  "occurrence" : 0,
+  "resolved" : false,
+  "comments" : [ {
+    "id" : "87b4368e-e20e-4fdc-a6c5-be3ef77b8db3",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "Clipping a busy time that lies wholly outside the working hours (e.g. 07:00–08:00, or 17:00–18:00) yields a zero-length or inverted range. The design also says `TimeRange` rejects end ≤ start at construction. State that such ranges are discarded before a `TimeRange` is built, or that clipping works on raw start/end values. Otherwise A7 can throw from the finder's own clipping step.",
+    "createdAt" : "2026-11-03T08:01:31.431237800Z"
+  } ]
+}, {
+  "threadId" : "e3d86d46-16a4-40b0-bbc0-8bbf7ade41f4",
+  "text" : "**Why it needs no state**: the class has no fields and no side effects, so it is safe to share. The same input always gives the same answer (P1).",
+  "occurrence" : 0,
+  "resolved" : false,
+  "comments" : [ {
+    "id" : "a653758b-0f61-4cf8-986c-c4c5f25257c1",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "This restates the spec's Constraints and P1, which the algorithm section already covers through sorting and merging. It would not change what the implementer builds, so drop it. The 'Reuse gate' sentence in 'Scope of the design' is similar filler.",
+    "createdAt" : "2026-11-03T08:01:31.432244Z"
+  } ]
+} ]

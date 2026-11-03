@@ -10,6 +10,59 @@
       "text" : "meetingslotfinder"
     } ]
   }, {
+    "id" : "feature-summary-h",
+    "type" : "heading",
+    "props" : {
+      "level" : 2
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Summary"
+    } ]
+  }, {
+    "id" : "4e2aa9a2",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Adds a stateless "
+    }, {
+      "type" : "text",
+      "text" : "MeetingSlotFinder",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " class and an immutable "
+    }, {
+      "type" : "text",
+      "text" : "TimeRange",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " type in "
+    }, {
+      "type" : "text",
+      "text" : "com.example.meeting",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", with JUnit added to the root pom. Task 1 sets up the build and input validation. Task 2 implements the algorithm: clip busy times to working hours, merge overlapping or touching blocks across attendees, and return the first gap that fits, starting on a 15-minute step, as an "
+    }, {
+      "type" : "text",
+      "text" : "Optional<TimeRange>",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". Tests carry the A-numbers of the acceptance examples."
+    } ]
+  }, {
     "id" : "feature-design-h",
     "type" : "heading",
     "props" : {
@@ -245,6 +298,59 @@
       "text" : "Acceptance examples A1–A15 map one-to-one to unit tests. Each test name carries its A-number, and the A13 cases are parameterised."
     } ]
   }, {
+    "id" : "feature-touches-h",
+    "type" : "heading",
+    "props" : {
+      "level" : 2
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Touches"
+    } ]
+  }, {
+    "id" : "bcc925cb",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "module: ."
+    } ],
+    "children" : [ {
+      "id" : "4bf3eb02",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry: pom.xml"
+      } ]
+    }, {
+      "id" : "7d72b725",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): com.example.meeting.TimeRange"
+      } ]
+    }, {
+      "id" : "47e50f27",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): com.example.meeting.MeetingSlotFinder"
+      } ]
+    }, {
+      "id" : "4c848ce2",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): com.example.meeting.MeetingSlotFinderValidationTest"
+      } ]
+    }, {
+      "id" : "8cafd58d",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): com.example.meeting.MeetingSlotFinderTest"
+      } ]
+    } ]
+  }, {
     "id" : "feature-tasks-h",
     "type" : "heading",
     "props" : {
@@ -255,12 +361,19 @@
       "text" : "Tasks"
     } ]
   }, {
-    "id" : "0fadd5d0",
-    "type" : "paragraph",
+    "id" : "59c89fb9",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
     "content" : [ {
       "type" : "text",
-      "text" : "The design decomposed into tasks, each a '### Task N: Title' heading with a '"
-    }, {
+      "text" : "Task 1: Add test dependency, TimeRange and input validation"
+    } ]
+  }, {
+    "id" : "539bf82a",
+    "type" : "paragraph",
+    "content" : [ {
       "type" : "text",
       "text" : "Depends on",
       "styles" : {
@@ -268,7 +381,383 @@
       }
     }, {
       "type" : "text",
-      "text" : "' line naming its direct prerequisites."
+      "text" : ": None"
+    } ]
+  }, {
+    "id" : "32df6401",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Cites",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": A13"
+    } ]
+  }, {
+    "id" : "17f7a4c2",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Extend the root "
+    }, {
+      "type" : "text",
+      "text" : "pom.xml",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (currently no dependencies; Java 25) with a JUnit 5 test dependency and the surefire plugin. Create the immutable "
+    }, {
+      "type" : "text",
+      "text" : "com.example.meeting.TimeRange",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (start, end as "
+    }, {
+      "type" : "text",
+      "text" : "LocalTime",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ") which rejects end not after start. Create "
+    }, {
+      "type" : "text",
+      "text" : "MeetingSlotFinder",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " with the "
+    }, {
+      "type" : "text",
+      "text" : "find",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " signature (attendees as a list of busy-time lists, working hours, length in minutes, returning "
+    }, {
+      "type" : "text",
+      "text" : "Optional<TimeRange>",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ") doing only validation for now. Must NOT touch "
+    }, {
+      "type" : "text",
+      "text" : "com.example.App",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "."
+    } ]
+  }, {
+    "id" : "d1434c97",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Touches",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "0b1f6a28",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "module: ."
+    } ],
+    "children" : [ {
+      "id" : "55d2b704",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry: pom.xml"
+      } ]
+    }, {
+      "id" : "3cb41dd5",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): com.example.meeting.TimeRange"
+      } ]
+    }, {
+      "id" : "ec584006",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): com.example.meeting.MeetingSlotFinder"
+      } ]
+    }, {
+      "id" : "7d8e1ebd",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): com.example.meeting.MeetingSlotFinderValidationTest"
+      } ]
+    } ]
+  }, {
+    "id" : "280a3fa7",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Delivers",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": None"
+    } ]
+  }, {
+    "id" : "3a9d4844",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "bc782cc9",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A13) Length 0 or −15, a busy time 10:00–10:00 or 10:30–10:00, working hours 17:00–09:00, an empty attendee list, and a null input (attendees, working hours, or a busy list) each raise an error and return no result."
+    } ]
+  }, {
+    "id" : "7bdff229",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Task 2: Compute the earliest common slot"
+    } ]
+  }, {
+    "id" : "3b589ce6",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Depends on",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": Task-1 (fills in MeetingSlotFinder#find and uses TimeRange and its validation)"
+    } ]
+  }, {
+    "id" : "74b3afec",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Cites",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12, A14, A15"
+    } ]
+  }, {
+    "id" : "baf7af4f",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Implement the algorithm from the design in "
+    }, {
+      "type" : "text",
+      "text" : "MeetingSlotFinder",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": clip busy times to working hours, merge all attendees' ranges (overlapping or touching), walk the gaps, round each gap start up to the next 15-minute step from midnight, return the first fit with exactly the requested minutes, otherwise empty. Keep it stateless and never mutate the caller's lists."
+    } ]
+  }, {
+    "id" : "c32fc74e",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Touches",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "c24ee3fe",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "module: ."
+    } ],
+    "children" : [ {
+      "id" : "fe77a42d",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry: com.example.meeting.MeetingSlotFinder"
+      } ]
+    }, {
+      "id" : "81eb6d84",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): com.example.meeting.MeetingSlotFinderTest"
+      } ]
+    } ]
+  }, {
+    "id" : "947c78db",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Delivers",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": None"
+    } ]
+  }, {
+    "id" : "6958093d",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "11955a00",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A1) Ana 09:00–10:00, Sam 09:30–11:00, 30 min gives 11:00–11:30."
+    } ]
+  }, {
+    "id" : "89a7b975",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A2) Touching busy times 09:00–10:00 and 10:00–10:30 give 10:30–11:00."
+    } ]
+  }, {
+    "id" : "48f144b5",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A3) A gap of exactly 30 minutes gives 10:00–10:30."
+    } ]
+  }, {
+    "id" : "046973eb",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A4) A 15-minute gap for a 30-minute meeting gives no slot."
+    } ]
+  }, {
+    "id" : "03e2407e",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A5) Busy 09:00–16:45 gives no slot."
+    } ]
+  }, {
+    "id" : "b54abc92",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A6) Busy 09:00–16:30 gives 16:30–17:00."
+    } ]
+  }, {
+    "id" : "0fcc9f0d",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A7) Busy outside working hours has no effect: 08:00–09:30 and 17:00–18:00 give 09:30–10:00; only 07:00–08:00 gives 09:00–09:30."
+    } ]
+  }, {
+    "id" : "940480dc",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A8) Nobody busy, 60 min gives 09:00–10:00."
+    } ]
+  }, {
+    "id" : "5862f605",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A9) An attendee with no busy times is free; Sam busy 09:00–12:00, 45 min gives 12:00–12:45."
+    } ]
+  }, {
+    "id" : "cb7fd3e9",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A10) 480 min with busy 12:00–12:15 gives no slot; with nobody busy gives 09:00–17:00."
+    } ]
+  }, {
+    "id" : "3f47bc92",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A11) Adjacent busy times of different attendees merge: gives 09:30–10:00."
+    } ]
+  }, {
+    "id" : "f8b87ac2",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A12) Reversed attendee and busy-time order, and a repeated call, all give 11:00–11:30."
+    } ]
+  }, {
+    "id" : "3969f709",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A14) Nobody busy, 20 min gives 09:00–09:20."
+    } ]
+  }, {
+    "id" : "913e18cd",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A15) Busy 09:10–09:40 gives 09:45–10:15; busy 09:00–09:10 gives 09:15–09:45."
     } ]
   } ],
   "comments" : [ ],
