@@ -1,0 +1,8 @@
+{
+  "group": null,
+  "version": null,
+  "jsontypes": [
+    { "jsontype": "office.booking.room", "className": "office.booking.Room" },
+    { "jsontype": "office.booking.equipment", "className": "office.booking.Equipment" }
+  ]
+}

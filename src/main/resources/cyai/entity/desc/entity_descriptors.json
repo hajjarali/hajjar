@@ -1,0 +1,123 @@
+{
+  "descriptors" : [ {
+    "name" : "office.booking.Equipment",
+    "className" : "office.booking.Equipment",
+    "entityType" : "ENUM",
+    "label" : "Equipment",
+    "description" : "Equipment a meeting room offers.",
+    "fieldDescriptors" : { },
+    "relationships" : { },
+    "version" : 0,
+    "values" : [ {
+      "value" : "screen",
+      "label" : "Screen",
+      "description" : "A display screen."
+    }, {
+      "value" : "whiteboard",
+      "label" : "Whiteboard",
+      "description" : "A whiteboard."
+    }, {
+      "value" : "videoCallKit",
+      "label" : "Video call kit",
+      "description" : "Camera, microphone and speakers for video calls."
+    } ]
+  }, {
+    "name" : "office.booking.Room",
+    "className" : "office.booking.Room",
+    "entityType" : "PERSISTABLE_BEAN",
+    "label" : "Room",
+    "description" : "A bookable meeting room.",
+    "group" : "office.booking",
+    "persistenceDescriptor" : {
+      "tableName" : "booking_room",
+      "idGenerationStrategy" : "AUTO_INCREMENT",
+      "indexGroups" : { },
+      "naturalKeyGroups" : { },
+      "cacheDescriptor" : {
+        "strategy" : "NONE"
+      },
+      "starSchemaRole" : "DIM"
+    },
+    "fieldDescriptors" : {
+      "name" : {
+        "name" : "name",
+        "fieldType" : "STRING",
+        "label" : "Name",
+        "description" : "The room's name, unique across rooms.",
+        "persistenceDescriptor" : {
+          "columnName" : "name",
+          "length" : 120
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : true,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "floor" : {
+        "name" : "floor",
+        "fieldType" : "INTEGER",
+        "label" : "Floor",
+        "description" : "The floor the room is on.",
+        "persistenceDescriptor" : {
+          "columnName" : "floor"
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "INTEGER"
+        },
+        "systemField" : false
+      },
+      "capacity" : {
+        "name" : "capacity",
+        "fieldType" : "INTEGER",
+        "label" : "Capacity",
+        "description" : "How many people the room seats (at least 1).",
+        "persistenceDescriptor" : {
+          "columnName" : "capacity"
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "POSITIVE_INT"
+        },
+        "systemField" : false
+      },
+      "equipment" : {
+        "name" : "equipment",
+        "fieldType" : "LIST",
+        "label" : "Equipment",
+        "description" : "Equipment the room offers: any of screen, whiteboard, video call kit.",
+        "persistenceDescriptor" : {
+          "columnName" : "equipment"
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TAGS"
+        },
+        "componentName" : {
+          "name" : "office.booking.Equipment",
+          "version" : 0
+        },
+        "systemField" : false
+      }
+    },
+    "relationships" : { },
+    "version" : 1
+  } ]
+}
