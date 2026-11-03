@@ -89,6 +89,46 @@ section { padding: 4rem 1.25rem; }
 #hero .photo-hero::after { content: ""; position: absolute; inset: 0; background: rgba(0, 0, 0, .55); }
 .hero-text { position: relative; max-width: 40rem; }
 footer { padding: 2rem 1.25rem; background: var(--sea); color: #fff; }
+img { max-width: 100%; }
+h1 { font-size: clamp(2.2rem, 6vw + 1rem, 4.5rem); line-height: 1.1; margin: 0 0 1rem; overflow-wrap: anywhere; }
+h2 { font-size: clamp(1.6rem, 3vw + 1rem, 2.6rem); margin: 0 0 1.5rem; color: var(--sea); overflow-wrap: anywhere; }
+h3 { font-size: clamp(1.1rem, 1vw + 1rem, 1.4rem); margin-block: 1rem .5rem; color: var(--sea); }
+p { font-size: clamp(1rem, .5vw + .9rem, 1.15rem); }
+#hero p { font-size: clamp(1.1rem, 1.5vw + .8rem, 1.5rem); }
+section:not(#hero) { max-width: 72rem; margin-inline: auto; }
+#plan { text-align: center; }
+.brand { font-weight: 700; text-decoration: none; }
+nav a { text-decoration: none; }
+nav a:hover { text-decoration: underline; }
+#lang-toggle { font: inherit; padding: .4rem 1rem; border: 2px solid #fff; border-radius: .5rem; background: transparent; color: #fff; cursor: pointer; }
+#lang-toggle:hover { background: #fff; color: var(--sea); }
+.cta:hover { background: #8a3119; }
+a:focus-visible, button:focus-visible { outline: 3px solid #ffbf47; outline-offset: 3px; }
+.card { box-shadow: 0 2px 8px rgba(11, 60, 93, .12); }
+@media (max-width: 480px) {
+  header { padding: .6rem .75rem; }
+  nav { gap: .5rem .9rem; font-size: .95rem; }
+  section { padding: 2.5rem .9rem; }
+  .grid { grid-template-columns: 1fr; }
+}
+@media (min-width: 768px) {
+  section { padding: 5rem 2rem; }
+}
+@media (min-width: 1280px) {
+  #hero { padding-inline: 8rem; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .card { transition: transform .25s ease, box-shadow .25s ease; }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(11, 60, 93, .22); }
+  .hero-text { animation: hero-in .9s ease-out both; }
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+  @keyframes hero-in { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
 </style>
 </head>
 <body>
@@ -291,6 +331,21 @@ footer { padding: 2rem 1.25rem; background: var(--sea); color: #fff; }
   }
   toggle.addEventListener("click", function () {
     apply(root.getAttribute("lang") === "ar" ? "en" : "ar");
+  });
+})();
+</script>
+<script>
+(function () {
+  if (!("IntersectionObserver" in window) || !window.matchMedia ||
+      !window.matchMedia("(prefers-reduced-motion: no-preference)").matches) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add("visible"); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll(".card, section:not(#hero) > h2").forEach(function (el) {
+    el.classList.add("reveal");
+    io.observe(el);
   });
 })();
 </script>
