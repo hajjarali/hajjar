@@ -3,6 +3,8 @@
   "version": null,
   "jsontypes": [
     { "jsontype": "office.booking.room", "className": "office.booking.Room" },
-    { "jsontype": "office.booking.equipment", "className": "office.booking.Equipment" }
+    { "jsontype": "office.booking.equipment", "className": "office.booking.Equipment" },
+    { "jsontype": "office.booking.booking", "className": "office.booking.Booking" },
+    { "jsontype": "office.booking.bookingStatus", "className": "office.booking.BookingStatus" }
   ]
 }
