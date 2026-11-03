@@ -20,11 +20,609 @@
       "text" : "Design"
     } ]
   }, {
-    "id" : "078f8070",
+    "id" : "6173ab64",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Grounding"
+    } ]
+  }, {
+    "id" : "60b6f6b1",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
-      "text" : "What is being built and how — the entities, their fields and types, what is persisted, how they relate, and what the screens show."
+      "text" : "The spec's Dependencies section records that the registry and entity catalog hold no Room or Booking, so all three types are new: the enum "
+    }, {
+      "type" : "text",
+      "text" : "Equipment",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", and the root beans "
+    }, {
+      "type" : "text",
+      "text" : "Room",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and "
+    }, {
+      "type" : "text",
+      "text" : "Booking",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " in package "
+    }, {
+      "type" : "text",
+      "text" : "office.booking",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". Nothing is reused or migrated (Migration: none)."
+    } ]
+  }, {
+    "id" : "7066443f",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Shipped artifacts (verbatim)"
+    } ]
+  }, {
+    "id" : "a85f26dd",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The spec's descriptors "
+    }, {
+      "type" : "text",
+      "text" : "entity_descriptors/office.booking.Equipment.json",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "office.booking.Room.json",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and "
+    }, {
+      "type" : "text",
+      "text" : "office.booking.Booking.json",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", and the default forms "
+    }, {
+      "type" : "text",
+      "text" : "ui/office.booking.Room.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and "
+    }, {
+      "type" : "text",
+      "text" : "ui/office.booking.Booking.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", are copied verbatim into the module beside their entity classes. They are not redesigned."
+    } ]
+  }, {
+    "id" : "60660e61",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Entities"
+    } ]
+  }, {
+    "id" : "894c7f22",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Equipment",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": enum with "
+    }, {
+      "type" : "text",
+      "text" : "screen",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "whiteboard",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and "
+    }, {
+      "type" : "text",
+      "text" : "videoCallKit",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", built from its descriptor. "
+    }, {
+      "type" : "text",
+      "text" : "Room.equipment",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " is an optional enumlist of it."
+    } ]
+  }, {
+    "id" : "42de23c6",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Room",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": "
+    }, {
+      "type" : "text",
+      "text" : "name",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (unique, required), "
+    }, {
+      "type" : "text",
+      "text" : "floor",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "capacity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (min 1) and "
+    }, {
+      "type" : "text",
+      "text" : "equipment",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". The declarative rules are "
+    }, {
+      "type" : "text",
+      "text" : "name",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " unique and "
+    }, {
+      "type" : "text",
+      "text" : "capacity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " min(1). There are no cross-field rules."
+    } ]
+  }, {
+    "id" : "424e3da9",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Booking",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": "
+    }, {
+      "type" : "text",
+      "text" : "room",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (required reference to Room), "
+    }, {
+      "type" : "text",
+      "text" : "title",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "organiserEmail",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (email format), "
+    }, {
+      "type" : "text",
+      "text" : "startTime",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and "
+    }, {
+      "type" : "text",
+      "text" : "endTime",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (datetime, office local time), "
+    }, {
+      "type" : "text",
+      "text" : "attendees",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (min 1) and "
+    }, {
+      "type" : "text",
+      "text" : "status",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". "
+    }, {
+      "type" : "text",
+      "text" : "status",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " is a lifecycle field over requested, confirmed and cancelled, defaulting to requested, and its states are the enum "
+    }, {
+      "type" : "text",
+      "text" : "Booking.status",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "."
+    } ]
+  }, {
+    "id" : "e605e5bc",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Booking rules (the part the descriptors cannot carry)"
+    } ]
+  }, {
+    "id" : "457a3132",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "These are enforced in a save-time validator on Booking, which reads the referenced Room and other Bookings."
+    } ]
+  }, {
+    "id" : "f419b559",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Time window (R1, A5)",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": end is strictly after start, both fall on the same calendar day, start is at or after 08:00, and end is at or before 20:00. A Booking may end exactly at 20:00. The check applies on every save, whatever the status."
+    } ]
+  }, {
+    "id" : "da1a3e83",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Capacity (R2, A6)",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": "
+    }, {
+      "type" : "text",
+      "text" : "attendees",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " is at most the referenced Room's "
+    }, {
+      "type" : "text",
+      "text" : "capacity",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". 12 of 12 is accepted and 13 is refused."
+    } ]
+  }, {
+    "id" : "feeb6157",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Status transitions (R4, A7)",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": a new Booking is created as requested. confirmed is reachable only from requested, so cancelled to confirmed is refused. cancelled is reachable from requested or confirmed. Whether confirmed to requested is allowed is not stated in the spec, so the lifecycle transition table in the descriptor is followed as shipped."
+    } ]
+  }, {
+    "id" : "5eb427d5",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "No overlap among confirmed Bookings (P1, R3, A1–A4, A8)",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ],
+    "children" : [ {
+      "id" : "68796f0d",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "The check runs when a Booking becomes confirmed, and when a Booking that is already confirmed is saved with a changed room, start or end."
+      } ]
+    }, {
+      "id" : "ceaec719",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "It looks only at other confirmed Bookings of the same Room, excluding the Booking itself."
+      } ]
+    }, {
+      "id" : "8ce9dc34",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "Two windows overlap when "
+      }, {
+        "type" : "text",
+        "text" : "a.start < b.end",
+        "styles" : {
+          "code" : true
+        }
+      }, {
+        "type" : "text",
+        "text" : " and "
+      }, {
+        "type" : "text",
+        "text" : "b.start < a.end",
+        "styles" : {
+          "code" : true
+        }
+      }, {
+        "type" : "text",
+        "text" : ". Touching windows therefore do not overlap (A2)."
+      } ]
+    }, {
+      "id" : "b83836f4",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "Requested and cancelled Bookings are never counted. Cancelling therefore frees the slot (R5, A4), and a requested Booking can be saved beside a confirmed one (A3)."
+      } ]
+    }, {
+      "id" : "8801e0e7",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "A refusal rejects the save and leaves the stored row unchanged (A8)."
+      } ]
+    }, {
+      "id" : "7c5c7fe5",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "Concurrent confirmations of the same Room must not both succeed. The check and the write run in the same transaction, serialised per Room."
+      } ]
+    } ]
+  }, {
+    "id" : "7be1dfb0",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "View Layouts"
+    } ]
+  }, {
+    "id" : "e9f46680",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Both default forms follow the spec's Notion-style design and are shipped verbatim. They have a large title, a grey summary line, a coloured status tag on Booking, label/value rows, coloured equipment tags, a single start → end range, and the room as an openable link."
+    } ]
+  }, {
+    "id" : "28753d01",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The two screens are built from the mocks "
+    }, {
+      "type" : "text",
+      "text" : "ui/rooms.screen.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and "
+    }, {
+      "type" : "text",
+      "text" : "ui/bookings.screen.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", region for region. Each has a table over the bean's sheet and the selected row's default form in a side panel."
+    } ]
+  }, {
+    "id" : "80ae1606",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Rooms",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (menu "
+    }, {
+      "type" : "text",
+      "text" : "Meeting rooms › Rooms",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", icon "
+    }, {
+      "type" : "text",
+      "text" : "dashboard",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "): actions are open, delete, new, save and cancel."
+    } ]
+  }, {
+    "id" : "707042c6",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Bookings",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (menu "
+    }, {
+      "type" : "text",
+      "text" : "Meeting rooms › Bookings",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", icon "
+    }, {
+      "type" : "text",
+      "text" : "event",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "): the same actions, plus "
+    }, {
+      "type" : "text",
+      "text" : "confirm",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and "
+    }, {
+      "type" : "text",
+      "text" : "cancel booking",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". These are status changes that run through the rules above, and a refusal is shown to the user."
     } ]
   }, {
     "id" : "feature-tasks-h",
