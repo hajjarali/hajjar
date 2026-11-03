@@ -20,11 +20,554 @@
       "text" : "Design"
     } ]
   }, {
-    "id" : "25c92da0",
+    "id" : "06ba4cd5",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Scope and grounding"
+    } ]
+  }, {
+    "id" : "ba65ad32",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
-      "text" : "What is being built and how — the entities, their fields and types, what is persisted, how they relate, and what the screens show."
+      "text" : "The spec has no Data model, no root bean, no screens and no Artifacts: the deliverable is one static, self-contained HTML file. No entity, enum or platform catalog applies, so none is reused or created; there is nothing to persist or migrate. The design is therefore the page's structure, its content model (an in-file bilingual dictionary) and its behaviours."
+    } ]
+  }, {
+    "id" : "9a409653",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Page structure (R2, R7)"
+    } ]
+  }, {
+    "id" : "e2d4b71e",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "One file, "
+    }, {
+      "type" : "text",
+      "text" : "beirut.html",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", with inline "
+    }, {
+      "type" : "text",
+      "text" : "<style>",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and "
+    }, {
+      "type" : "text",
+      "text" : "<script>",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " only (R1). Landmarks: a sticky "
+    }, {
+      "type" : "text",
+      "text" : "<header>",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (brand, section links, language toggle button), "
+    }, {
+      "type" : "text",
+      "text" : "<main>",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " holding five "
+    }, {
+      "type" : "text",
+      "text" : "<section>",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "s in order — hero (the only "
+    }, {
+      "type" : "text",
+      "text" : "<h1>",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", with tagline and the \"Plan your trip\" button), highlights (history, food, culture, seaside cards, "
+    }, {
+      "type" : "text",
+      "text" : "<h2>",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " + "
+    }, {
+      "type" : "text",
+      "text" : "<h3>",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " per card), neighbourhoods (card grid), best time to visit (season cards), closing call-to-action — then "
+    }, {
+      "type" : "text",
+      "text" : "<footer>",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " with the photo-provider credit. Headings never skip a level. Call-to-action links use "
+    }, {
+      "type" : "text",
+      "text" : "#plan",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " anchors or one "
+    }, {
+      "type" : "text",
+      "text" : "mailto:",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " link; there is no "
+    }, {
+      "type" : "text",
+      "text" : "<form>",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (R3)."
+    } ]
+  }, {
+    "id" : "cb6ec654",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Bilingual content model (R4)"
+    } ]
+  }, {
+    "id" : "bb7d48fb",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Every visible string is an element carrying a "
+    }, {
+      "type" : "text",
+      "text" : "data-i18n",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " key. One JS dictionary holds "
+    }, {
+      "type" : "text",
+      "text" : "en",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and "
+    }, {
+      "type" : "text",
+      "text" : "ar",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " values per key. The toggle sets "
+    }, {
+      "type" : "text",
+      "text" : "<html lang>",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and "
+    }, {
+      "type" : "text",
+      "text" : "dir",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", swaps the text, the "
+    }, {
+      "type" : "text",
+      "text" : "<title>",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "/meta description-independent labels and "
+    }, {
+      "type" : "text",
+      "text" : "alt",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " text, and stores nothing. English is the default markup so the page reads correctly without JS. Layout is mirrored using CSS logical properties ("
+    }, {
+      "type" : "text",
+      "text" : "margin-inline",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "inset-inline",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "text-align: start",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ") rather than a separate RTL stylesheet; Arabic uses a system Arabic font stack, since no external fonts are allowed."
+    } ]
+  }, {
+    "id" : "d9bcf86f",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Visual system (R5, R10)"
+    } ]
+  }, {
+    "id" : "8fb36c7f",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Palette as custom properties: deep sea blue, sandstone, terracotta accent; the text/background pairs are chosen at ≥ 4.5:1. Fluid type with "
+    }, {
+      "type" : "text",
+      "text" : "clamp()",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", CSS grid with "
+    }, {
+      "type" : "text",
+      "text" : "auto-fit",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " columns, a single-column layout at 360 px, and "
+    }, {
+      "type" : "text",
+      "text" : "overflow-x",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " guarded by "
+    }, {
+      "type" : "text",
+      "text" : "min-width: 0",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and wrapped text so nothing overlaps at 360, 768 and 1280 px. Smooth scrolling and IntersectionObserver scroll-reveal sit behind "
+    }, {
+      "type" : "text",
+      "text" : "prefers-reduced-motion: no-preference",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", so reduced-motion visitors get no reveal or hero animation. Every link, button and the toggle gets a visible "
+    }, {
+      "type" : "text",
+      "text" : ":focus-visible",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " outline."
+    } ]
+  }, {
+    "id" : "aea32f66",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Photos and fallback (R8, R9)"
+    } ]
+  }, {
+    "id" : "8d573a2c",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Photos are hotlinked royalty-free (Unsplash) "
+    }, {
+      "type" : "text",
+      "text" : "<img>",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " elements, each with descriptive translated "
+    }, {
+      "type" : "text",
+      "text" : "alt",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", explicit "
+    }, {
+      "type" : "text",
+      "text" : "width",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "/"
+    }, {
+      "type" : "text",
+      "text" : "height",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", and "
+    }, {
+      "type" : "text",
+      "text" : "loading=\"lazy\"",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " except the hero image. Each photo sits in a container with a CSS gradient background; a small "
+    }, {
+      "type" : "text",
+      "text" : "onerror",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " handler hides the failed image, so the gradient and the text show with no broken-image icon. The hero uses the same pattern under a dark overlay."
+    } ]
+  }, {
+    "id" : "125d1d13",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "SEO metadata (R6)"
+    } ]
+  }, {
+    "id" : "b0f43a89",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "In "
+    }, {
+      "type" : "text",
+      "text" : "<head>",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": a unique "
+    }, {
+      "type" : "text",
+      "text" : "<title>",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " of at most 60 characters, a 120–160 character meta description, a viewport tag, a canonical link, Open Graph ("
+    }, {
+      "type" : "text",
+      "text" : "og:title",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "og:description",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "og:image",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "og:type",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "og:url",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ") and Twitter card tags, and a JSON-LD "
+    }, {
+      "type" : "text",
+      "text" : "TouristDestination",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " block for Beirut written as valid JSON. These tags are static English, since the single URL has no per-language variants."
+    } ]
+  }, {
+    "id" : "5126ee8b",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Verification approach"
+    } ]
+  }, {
+    "id" : "60e6f8e4",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Because the page is a static file, acceptance is checked by a script that parses the source (no "
+    }, {
+      "type" : "text",
+      "text" : "<form>",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", no stylesheet link, no "
+    }, {
+      "type" : "text",
+      "text" : "script src",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", tag lengths, JSON-LD parse, one "
+    }, {
+      "type" : "text",
+      "text" : "<h1>",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", heading order, image attributes) and by headless-browser checks for the toggle, viewport widths, blocked photo host and reduced motion."
+    } ]
+  }, {
+    "id" : "feature-open-questions-h",
+    "type" : "heading",
+    "props" : {
+      "level" : 2
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Open Questions"
+    } ]
+  }, {
+    "id" : "c2d1b43c",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "None."
     } ]
   }, {
     "id" : "feature-tasks-h",
