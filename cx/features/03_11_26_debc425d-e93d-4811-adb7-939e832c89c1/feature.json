@@ -20,11 +20,229 @@
       "text" : "Design"
     } ]
   }, {
-    "id" : "1e022129",
+    "id" : "89486f86",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Scope of the design"
+    } ]
+  }, {
+    "id" : "89e170ea",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
-      "text" : "What is being built and how — the entities, their fields and types, what is persisted, how they relate, and what the screens show."
+      "text" : "The spec has no data model, screen, stored data or artifacts, so there are no entities, fields, views or persistence to design. Reuse gate: nothing to look up, because the spec names no noun that could be an entity. The feature is one stateless Java class, "
+    }, {
+      "type" : "text",
+      "text" : "MeetingSlotFinder",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", plus its input and result types."
+    } ]
+  }, {
+    "id" : "8b305542",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Types"
+    } ]
+  }, {
+    "id" : "319a62bb",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Input",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": attendees as a list of busy-time lists, and busy times as start–end pairs. Working hours are one start–end pair. The meeting length is in minutes. Times are "
+    }, {
+      "type" : "text",
+      "text" : "java.time.LocalTime",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", which fits the one-day, no-time-zone scope. Busy time and working hours can share one small immutable "
+    }, {
+      "type" : "text",
+      "text" : "TimeRange",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " value type (start, end, end after start)."
+    } ]
+  }, {
+    "id" : "03c59db4",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Result",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": \"no slot\" is a value, not an exception and not a bare null, so callers cannot confuse it with the rejected-input error (R5, R7). The result is "
+    }, {
+      "type" : "text",
+      "text" : "Optional<TimeRange>",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", and an empty optional means no slot."
+    } ]
+  }, {
+    "id" : "18c5275f",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Invalid input (R7)",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": a null input, an empty attendee list, a length of zero or less, a busy time or working hours whose end is not after its start. All of these throw "
+    }, {
+      "type" : "text",
+      "text" : "IllegalArgumentException",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", or "
+    }, {
+      "type" : "text",
+      "text" : "NullPointerException",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " for null, and return no result. Validation runs before any computation. "
+    }, {
+      "type" : "text",
+      "text" : "TimeRange",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " rejects end ≤ start at construction. The finder checks the null, empty-list and length cases itself."
+    } ]
+  }, {
+    "id" : "2e2f738a",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Algorithm"
+    } ]
+  }, {
+    "id" : "153d2b40",
+    "type" : "numberedListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Clip every busy time to the working hours. Busy time wholly outside has no effect (R3)."
+    } ]
+  }, {
+    "id" : "b164a9f7",
+    "type" : "numberedListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Merge all attendees' clipped busy times into one list. An attendee with no busy times adds nothing (R6). Sort by start and merge ranges that overlap or touch (end ≥ next start) into blocks (R2). Sorting and merging make the result independent of input order (P1)."
+    } ]
+  }, {
+    "id" : "1ac280c4",
+    "type" : "numberedListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Walk the free gaps in order, starting with the gap from the working-hours start to the first block, and ending with the gap after the last block."
+    } ],
+    "children" : [ {
+      "id" : "5a4c9452",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "In each gap, the candidate start is the gap start rounded UP to the next 15-minute step (R4, R8)."
+      } ]
+    }, {
+      "id" : "ff9370e7",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "The first candidate with candidate + length ≤ gap end, and so within the working hours, is the answer (R1, R3). Slot length is exactly the given minutes (R8)."
+      } ]
+    }, {
+      "id" : "e0c325ae",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "If no gap fits, return empty (R5)."
+      } ]
+    } ]
+  }, {
+    "id" : "2bf151b5",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Step alignment",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": steps are measured from midnight (:00, :15, :30, :45). The working-hours start itself may be off-step. In that case the first slot starts at the next step."
+    } ]
+  }, {
+    "id" : "4ecefc5e",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Why it needs no state",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": the class has no fields and no side effects, so it is safe to share. The same input always gives the same answer (P1)."
+    } ]
+  }, {
+    "id" : "f7a56001",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Test approach"
+    } ]
+  }, {
+    "id" : "3b41a603",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance examples A1–A15 map one-to-one to unit tests. Each test name carries its A-number, and the A13 cases are parameterised."
     } ]
   }, {
     "id" : "feature-tasks-h",
