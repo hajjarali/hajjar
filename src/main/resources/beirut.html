@@ -51,6 +51,8 @@ body {
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   line-height: 1.6;
 }
+html[lang="ar"] body { font-family: "Segoe UI", Tahoma, "Geeza Pro", "Noto Naskh Arabic", "Noto Sans Arabic", Arial, sans-serif; }
+body { text-align: start; }
 header {
   position: sticky;
   top: 0;
@@ -91,19 +93,19 @@ footer { padding: 2rem 1.25rem; background: var(--sea); color: #fff; }
 </head>
 <body>
 <header>
-  <a href="#hero" class="brand">Beirut</a>
-  <nav aria-label="Sections">
-    <a href="#highlights">Highlights</a>
-    <a href="#neighbourhoods">Neighbourhoods</a>
-    <a href="#best-time">Best time</a>
-    <a href="#plan">Plan</a>
+  <a href="#hero" class="brand" data-i18n="nav.brand">Beirut</a>
+  <nav aria-label="Sections" data-i18n-aria="nav.label">
+    <a href="#highlights" data-i18n="nav.highlights">Highlights</a>
+    <a href="#neighbourhoods" data-i18n="nav.neighbourhoods">Neighbourhoods</a>
+    <a href="#best-time" data-i18n="nav.besttime">Best time</a>
+    <a href="#plan" data-i18n="nav.plan">Plan</a>
   </nav>
-  <button type="button" id="lang-toggle">العربية</button>
+  <button type="button" id="lang-toggle" data-i18n="toggle.label" lang="ar">العربية</button>
 </header>
 <main>
   <section id="hero">
     <div class="photo photo-hero">
-      <img src="https://images.unsplash.com/photo-1579606032821-4e6161c81bd3?auto=format&amp;fit=crop&amp;w=1600&amp;q=70" alt="Beirut skyline and Mediterranean coast at sunset" width="1600" height="1000" onerror="this.style.display='none'">
+      <img src="https://images.unsplash.com/photo-1579606032821-4e6161c81bd3?auto=format&amp;fit=crop&amp;w=1600&amp;q=70" alt="Beirut skyline and Mediterranean coast at sunset" data-i18n-alt="img.hero" width="1600" height="1000" onerror="this.style.display='none'">
     </div>
     <div class="hero-text">
       <h1 data-i18n="hero.title">Beirut, the Pearl of the Mediterranean</h1>
@@ -115,22 +117,22 @@ footer { padding: 2rem 1.25rem; background: var(--sea); color: #fff; }
     <h2 data-i18n="highlights.title">Highlights</h2>
     <div class="grid">
       <article class="card">
-        <div class="photo"><img src="https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&amp;fit=crop&amp;w=600&amp;q=70" alt="Roman columns and ancient ruins in downtown Beirut" width="600" height="400" loading="lazy" onerror="this.style.display='none'"></div>
+        <div class="photo"><img src="https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&amp;fit=crop&amp;w=600&amp;q=70" alt="Roman columns and ancient ruins in downtown Beirut" data-i18n-alt="img.history" width="600" height="400" loading="lazy" onerror="this.style.display='none'"></div>
         <h3 data-i18n="highlights.history.title">History</h3>
         <p data-i18n="highlights.history.body">Walk through 5,000 years of Phoenician, Roman, Ottoman and French Mandate heritage.</p>
       </article>
       <article class="card">
-        <div class="photo"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&amp;fit=crop&amp;w=600&amp;q=70" alt="A table of Lebanese mezze dishes" width="600" height="400" loading="lazy" onerror="this.style.display='none'"></div>
+        <div class="photo"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&amp;fit=crop&amp;w=600&amp;q=70" alt="A table of Lebanese mezze dishes" data-i18n-alt="img.food" width="600" height="400" loading="lazy" onerror="this.style.display='none'"></div>
         <h3 data-i18n="highlights.food.title">Food</h3>
         <p data-i18n="highlights.food.body">Share mezze, fresh seafood and warm manakish in one of the world's great food cities.</p>
       </article>
       <article class="card">
-        <div class="photo"><img src="https://images.unsplash.com/photo-1518998053901-5348d3961a04?auto=format&amp;fit=crop&amp;w=600&amp;q=70" alt="Colourful street art on a Beirut wall" width="600" height="400" loading="lazy" onerror="this.style.display='none'"></div>
+        <div class="photo"><img src="https://images.unsplash.com/photo-1518998053901-5348d3961a04?auto=format&amp;fit=crop&amp;w=600&amp;q=70" alt="Colourful street art on a Beirut wall" data-i18n-alt="img.culture" width="600" height="400" loading="lazy" onerror="this.style.display='none'"></div>
         <h3 data-i18n="highlights.culture.title">Culture</h3>
         <p data-i18n="highlights.culture.body">Galleries, theatres, live music and street art make the city a creative capital.</p>
       </article>
       <article class="card">
-        <div class="photo"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&amp;fit=crop&amp;w=600&amp;q=70" alt="Turquoise Mediterranean sea along the Beirut corniche" width="600" height="400" loading="lazy" onerror="this.style.display='none'"></div>
+        <div class="photo"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&amp;fit=crop&amp;w=600&amp;q=70" alt="Turquoise Mediterranean sea along the Beirut corniche" data-i18n-alt="img.seaside" width="600" height="400" loading="lazy" onerror="this.style.display='none'"></div>
         <h3 data-i18n="highlights.seaside.title">Seaside</h3>
         <p data-i18n="highlights.seaside.body">Stroll the Corniche, swim from rocky coves and watch the sun set over the Mediterranean.</p>
       </article>
@@ -140,17 +142,17 @@ footer { padding: 2rem 1.25rem; background: var(--sea); color: #fff; }
     <h2 data-i18n="neighbourhoods.title">Neighbourhoods</h2>
     <div class="grid">
       <article class="card">
-        <div class="photo"><img src="https://images.unsplash.com/photo-1597655601841-214a4cfe8b2c?auto=format&amp;fit=crop&amp;w=600&amp;q=70" alt="Old stone buildings on a street in Gemmayzeh" width="600" height="400" loading="lazy" onerror="this.style.display='none'"></div>
+        <div class="photo"><img src="https://images.unsplash.com/photo-1597655601841-214a4cfe8b2c?auto=format&amp;fit=crop&amp;w=600&amp;q=70" alt="Old stone buildings on a street in Gemmayzeh" data-i18n-alt="img.gemmayzeh" width="600" height="400" loading="lazy" onerror="this.style.display='none'"></div>
         <h3 data-i18n="neighbourhoods.gemmayzeh.title">Gemmayzeh</h3>
         <p data-i18n="neighbourhoods.gemmayzeh.body">Heritage houses, cafes and bars along a lively hillside street.</p>
       </article>
       <article class="card">
-        <div class="photo"><img src="https://images.unsplash.com/photo-1580746738099-78d6833b1d2c?auto=format&amp;fit=crop&amp;w=600&amp;q=70" alt="Pigeon Rocks sea stacks off Raouche" width="600" height="400" loading="lazy" onerror="this.style.display='none'"></div>
+        <div class="photo"><img src="https://images.unsplash.com/photo-1580746738099-78d6833b1d2c?auto=format&amp;fit=crop&amp;w=600&amp;q=70" alt="Pigeon Rocks sea stacks off Raouche" data-i18n-alt="img.raouche" width="600" height="400" loading="lazy" onerror="this.style.display='none'"></div>
         <h3 data-i18n="neighbourhoods.raouche.title">Raouche</h3>
         <p data-i18n="neighbourhoods.raouche.body">Cliffside promenade facing the famous Pigeon Rocks, best at sunset.</p>
       </article>
       <article class="card">
-        <div class="photo"><img src="https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?auto=format&amp;fit=crop&amp;w=600&amp;q=70" alt="Waterfront buildings and marina in downtown Beirut" width="600" height="400" loading="lazy" onerror="this.style.display='none'"></div>
+        <div class="photo"><img src="https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?auto=format&amp;fit=crop&amp;w=600&amp;q=70" alt="Waterfront buildings and marina in downtown Beirut" data-i18n-alt="img.downtown" width="600" height="400" loading="lazy" onerror="this.style.display='none'"></div>
         <h3 data-i18n="neighbourhoods.downtown.title">Downtown</h3>
         <p data-i18n="neighbourhoods.downtown.body">Restored squares, Roman remains, grand mosques and churches, and the marina.</p>
       </article>
@@ -174,15 +176,123 @@ footer { padding: 2rem 1.25rem; background: var(--sea); color: #fff; }
     </div>
   </section>
   <section id="plan">
-    <h2>Plan your trip</h2>
-    <a class="cta" href="mailto:hello@example.com?subject=Plan%20my%20trip%20to%20Beirut">Plan your trip</a>
+    <h2 data-i18n="plan.title">Plan your trip</h2>
+    <a class="cta" href="mailto:hello@example.com?subject=Plan%20my%20trip%20to%20Beirut" data-i18n="cta.plan">Plan your trip</a>
   </section>
 </main>
 <footer>
-  <p>Photos courtesy of Unsplash, royalty-free for commercial use.</p>
+  <p data-i18n="footer.credit">Photos courtesy of Unsplash, royalty-free for commercial use.</p>
 </footer>
 <script>
-/* Language toggle and scroll-reveal are added by later tasks. */
+(function () {
+  var dict = {
+    en: {
+      "nav.brand": "Beirut", "nav.label": "Sections", "nav.highlights": "Highlights",
+      "nav.neighbourhoods": "Neighbourhoods", "nav.besttime": "Best time", "nav.plan": "Plan",
+      "toggle.label": "العربية",
+      "hero.title": "Beirut, the Pearl of the Mediterranean",
+      "hero.tagline": "History, food, culture and sea, all in one unforgettable city.",
+      "cta.plan": "Plan your trip",
+      "highlights.title": "Highlights",
+      "highlights.history.title": "History",
+      "highlights.history.body": "Walk through 5,000 years of Phoenician, Roman, Ottoman and French Mandate heritage.",
+      "highlights.food.title": "Food",
+      "highlights.food.body": "Share mezze, fresh seafood and warm manakish in one of the world's great food cities.",
+      "highlights.culture.title": "Culture",
+      "highlights.culture.body": "Galleries, theatres, live music and street art make the city a creative capital.",
+      "highlights.seaside.title": "Seaside",
+      "highlights.seaside.body": "Stroll the Corniche, swim from rocky coves and watch the sun set over the Mediterranean.",
+      "neighbourhoods.title": "Neighbourhoods",
+      "neighbourhoods.gemmayzeh.title": "Gemmayzeh",
+      "neighbourhoods.gemmayzeh.body": "Heritage houses, cafes and bars along a lively hillside street.",
+      "neighbourhoods.raouche.title": "Raouche",
+      "neighbourhoods.raouche.body": "Cliffside promenade facing the famous Pigeon Rocks, best at sunset.",
+      "neighbourhoods.downtown.title": "Downtown",
+      "neighbourhoods.downtown.body": "Restored squares, Roman remains, grand mosques and churches, and the marina.",
+      "besttime.title": "Best time to visit",
+      "besttime.spring.title": "Spring (April to June)",
+      "besttime.spring.body": "Warm days, blooming hills and ideal weather for walking the city.",
+      "besttime.summer.title": "Summer (July to September)",
+      "besttime.summer.body": "Hot, sunny beach weather and a busy calendar of festivals.",
+      "besttime.autumn.title": "Autumn (October to November)",
+      "besttime.autumn.body": "Warm sea, golden light and fewer crowds.",
+      "plan.title": "Plan your trip",
+      "footer.credit": "Photos courtesy of Unsplash, royalty-free for commercial use.",
+      "img.hero": "Beirut skyline and Mediterranean coast at sunset",
+      "img.history": "Roman columns and ancient ruins in downtown Beirut",
+      "img.food": "A table of Lebanese mezze dishes",
+      "img.culture": "Colourful street art on a Beirut wall",
+      "img.seaside": "Turquoise Mediterranean sea along the Beirut corniche",
+      "img.gemmayzeh": "Old stone buildings on a street in Gemmayzeh",
+      "img.raouche": "Pigeon Rocks sea stacks off Raouche",
+      "img.downtown": "Waterfront buildings and marina in downtown Beirut"
+    },
+    ar: {
+      "nav.brand": "بيروت", "nav.label": "الأقسام", "nav.highlights": "أبرز المعالم",
+      "nav.neighbourhoods": "الأحياء", "nav.besttime": "أفضل وقت", "nav.plan": "خطّط",
+      "toggle.label": "English",
+      "hero.title": "بيروت، لؤلؤة المتوسط",
+      "hero.tagline": "التاريخ والطعام والثقافة والبحر في مدينة واحدة لا تُنسى.",
+      "cta.plan": "خطّط لرحلتك",
+      "highlights.title": "أبرز المعالم",
+      "highlights.history.title": "التاريخ",
+      "highlights.history.body": "تجوّل عبر خمسة آلاف عام من التراث الفينيقي والروماني والعثماني والانتداب الفرنسي.",
+      "highlights.food.title": "الطعام",
+      "highlights.food.body": "تذوّق المازة والمأكولات البحرية والمناقيش الساخنة في إحدى أعظم مدن الطعام في العالم.",
+      "highlights.culture.title": "الثقافة",
+      "highlights.culture.body": "معارض ومسارح وموسيقى حيّة وفن الشارع تجعل المدينة عاصمة إبداعية.",
+      "highlights.seaside.title": "البحر",
+      "highlights.seaside.body": "تمشَّ على الكورنيش واسبح في الخلجان الصخرية وشاهد الغروب فوق المتوسط.",
+      "neighbourhoods.title": "الأحياء",
+      "neighbourhoods.gemmayzeh.title": "الجميزة",
+      "neighbourhoods.gemmayzeh.body": "بيوت تراثية ومقاهٍ وحانات على طول شارع حيوي على التلّة.",
+      "neighbourhoods.raouche.title": "الروشة",
+      "neighbourhoods.raouche.body": "كورنيش على الجرف تطل على صخرة الحمام الشهيرة، وأجملها عند الغروب.",
+      "neighbourhoods.downtown.title": "وسط المدينة",
+      "neighbourhoods.downtown.body": "ساحات مرمّمة وآثار رومانية ومساجد وكنائس عريقة والمرفأ السياحي.",
+      "besttime.title": "أفضل وقت للزيارة",
+      "besttime.spring.title": "الربيع (نيسان إلى حزيران)",
+      "besttime.spring.body": "أيام دافئة وتلال مزهرة وطقس مثالي للتجوّل في المدينة.",
+      "besttime.summer.title": "الصيف (تموز إلى أيلول)",
+      "besttime.summer.body": "طقس شاطئي حار مشمس وجدول حافل بالمهرجانات.",
+      "besttime.autumn.title": "الخريف (تشرين الأول إلى تشرين الثاني)",
+      "besttime.autumn.body": "بحر دافئ وضوء ذهبي وازدحام أقل.",
+      "plan.title": "خطّط لرحلتك",
+      "footer.credit": "الصور بإذن من Unsplash، مجانية للاستخدام التجاري.",
+      "img.hero": "أفق بيروت وساحل المتوسط عند الغروب",
+      "img.history": "أعمدة رومانية وآثار قديمة في وسط بيروت",
+      "img.food": "مائدة من أطباق المازة اللبنانية",
+      "img.culture": "فن شارع ملوّن على جدار في بيروت",
+      "img.seaside": "البحر المتوسط الفيروزي على كورنيش بيروت",
+      "img.gemmayzeh": "مبانٍ حجرية قديمة في شارع بالجميزة",
+      "img.raouche": "صخرة الحمام قبالة الروشة",
+      "img.downtown": "مبانٍ على الواجهة البحرية والمرفأ في وسط بيروت"
+    }
+  };
+  var root = document.documentElement;
+  var toggle = document.getElementById("lang-toggle");
+  function apply(lang) {
+    var d = dict[lang];
+    root.setAttribute("lang", lang);
+    root.setAttribute("dir", lang === "ar" ? "rtl" : "ltr");
+    document.querySelectorAll("[data-i18n]").forEach(function (el) {
+      var v = d[el.getAttribute("data-i18n")];
+      if (v !== undefined) el.textContent = v;
+    });
+    document.querySelectorAll("[data-i18n-alt]").forEach(function (el) {
+      var v = d[el.getAttribute("data-i18n-alt")];
+      if (v !== undefined) el.setAttribute("alt", v);
+    });
+    document.querySelectorAll("[data-i18n-aria]").forEach(function (el) {
+      var v = d[el.getAttribute("data-i18n-aria")];
+      if (v !== undefined) el.setAttribute("aria-label", v);
+    });
+    toggle.setAttribute("lang", lang === "ar" ? "en" : "ar");
+  }
+  toggle.addEventListener("click", function () {
+    apply(root.getAttribute("lang") === "ar" ? "en" : "ar");
+  });
+})();
 </script>
 </body>
 </html>
