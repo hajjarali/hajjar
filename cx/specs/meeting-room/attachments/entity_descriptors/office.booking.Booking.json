@@ -1,0 +1,178 @@
+{
+  "descriptors" : [ {
+    "name" : "office.booking.Booking",
+    "className" : "office.booking.Booking",
+    "entityType" : "PERSISTABLE_BEAN",
+    "label" : "Booking",
+    "description" : "A reservation of one room for a time window on one day.",
+    "group" : "office.booking",
+    "persistenceDescriptor" : {
+      "tableName" : "booking_booking",
+      "idGenerationStrategy" : "AUTO_INCREMENT",
+      "indexGroups" : {
+        "by_room_start" : [ "room", "startTime" ]
+      },
+      "naturalKeyGroups" : { },
+      "cacheDescriptor" : {
+        "strategy" : "NONE"
+      },
+      "starSchemaRole" : "FACT"
+    },
+    "fieldDescriptors" : {
+      "room" : {
+        "name" : "room",
+        "fieldType" : "REFERENCE",
+        "label" : "Room",
+        "description" : "The room this booking is for.",
+        "persistenceDescriptor" : {
+          "columnName" : "room_id"
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "REFERENCE"
+        },
+        "componentName" : {
+          "jsontype" : "entity.desc.entityKey",
+          "name" : "office.booking.Room",
+          "version" : 1
+        },
+        "systemField" : false
+      },
+      "title" : {
+        "name" : "title",
+        "fieldType" : "STRING",
+        "label" : "Title",
+        "description" : "What the meeting is called.",
+        "persistenceDescriptor" : {
+          "columnName" : "title",
+          "length" : 200
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "organiserEmail" : {
+        "name" : "organiserEmail",
+        "fieldType" : "STRING",
+        "label" : "Organiser Email",
+        "description" : "Email address of the organiser.",
+        "persistenceDescriptor" : {
+          "columnName" : "organiser_email",
+          "length" : 254
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "EMAIL"
+        },
+        "systemField" : false
+      },
+      "startTime" : {
+        "name" : "startTime",
+        "fieldType" : "DATE_TIME",
+        "label" : "Start",
+        "description" : "When the booking starts.",
+        "persistenceDescriptor" : {
+          "columnName" : "start_time"
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "DATE_TIME"
+        },
+        "systemField" : false
+      },
+      "endTime" : {
+        "name" : "endTime",
+        "fieldType" : "DATE_TIME",
+        "label" : "End",
+        "description" : "When the booking ends; after the start, same day, by 20:00.",
+        "persistenceDescriptor" : {
+          "columnName" : "end_time"
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "DATE_TIME"
+        },
+        "systemField" : false
+      },
+      "attendees" : {
+        "name" : "attendees",
+        "fieldType" : "INTEGER",
+        "label" : "Attendees",
+        "description" : "Number of attendees (at least 1, at most the room's capacity).",
+        "persistenceDescriptor" : {
+          "columnName" : "attendees"
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "POSITIVE_INT"
+        },
+        "systemField" : false
+      },
+      "status" : {
+        "name" : "status",
+        "fieldType" : "ENUM",
+        "label" : "Status",
+        "description" : "requested, confirmed or cancelled.",
+        "persistenceDescriptor" : {
+          "columnName" : "status",
+          "length" : 20,
+          "defaultValue" : "requested"
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "STATUS_BADGE"
+        },
+        "componentName" : {
+          "jsontype" : "entity.desc.entityKey",
+          "name" : "office.booking.BookingStatus",
+          "version" : 0
+        },
+        "systemField" : false
+      }
+    },
+    "relationships" : {
+      "room" : {
+        "name" : "room",
+        "cardinality" : "MANY_TO_ONE",
+        "targetEntityName" : {
+          "jsontype" : "entity.desc.entityKey",
+          "name" : "office.booking.Room",
+          "version" : 1
+        },
+        "fieldName" : "room",
+        "owning" : true
+      }
+    },
+    "version" : 1
+  } ]
+}

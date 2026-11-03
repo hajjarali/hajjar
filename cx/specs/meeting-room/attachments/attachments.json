@@ -1,0 +1,45 @@
+{
+  "attachments" : [ {
+    "name" : "entity_descriptors/office.booking.Booking.json",
+    "type" : "ENTITY_DESCRIPTORS",
+    "size_bytes" : 5191,
+    "uploaded_at" : "2026-11-03T08:19:52.652638500Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "entity_descriptors/office.booking.Equipment.json",
+    "type" : "ENTITY_DESCRIPTORS",
+    "size_bytes" : 704,
+    "uploaded_at" : "2026-11-03T08:19:30.967243Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "entity_descriptors/office.booking.Room.json",
+    "type" : "ENTITY_DESCRIPTORS",
+    "size_bytes" : 2923,
+    "uploaded_at" : "2026-11-03T08:19:34.089289500Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "ui/bookings.screen.js",
+    "type" : "UI",
+    "size_bytes" : 5913,
+    "uploaded_at" : "2026-11-03T08:23:26.235894900Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "ui/office.booking.Booking.js",
+    "type" : "UI",
+    "size_bytes" : 6879,
+    "uploaded_at" : "2026-11-03T08:22:44.815964400Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "ui/office.booking.Room.js",
+    "type" : "UI",
+    "size_bytes" : 2864,
+    "uploaded_at" : "2026-11-03T08:20:18.528390500Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "ui/rooms.screen.js",
+    "type" : "UI",
+    "size_bytes" : 4450,
+    "uploaded_at" : "2026-11-03T08:23:15.286656900Z",
+    "origin" : "AGENT"
+  } ]
+}

@@ -1,0 +1,25 @@
+{
+  "descriptors" : [ {
+    "name" : "office.booking.Equipment",
+    "className" : "office.booking.Equipment",
+    "entityType" : "ENUM",
+    "label" : "Equipment",
+    "description" : "Equipment a meeting room offers.",
+    "fieldDescriptors" : { },
+    "relationships" : { },
+    "version" : 0,
+    "values" : [ {
+      "value" : "screen",
+      "label" : "Screen",
+      "description" : "A display screen."
+    }, {
+      "value" : "whiteboard",
+      "label" : "Whiteboard",
+      "description" : "A whiteboard."
+    }, {
+      "value" : "videoCallKit",
+      "label" : "Video call kit",
+      "description" : "Camera, microphone and speakers for video calls."
+    } ]
+  } ]
+}
