@@ -10,6 +10,32 @@
       "text" : "kli23"
     } ]
   }, {
+    "id" : "feature-summary-h",
+    "type" : "heading",
+    "props" : {
+      "level" : 2
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Summary"
+    } ]
+  }, {
+    "id" : "555c98d5",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Builds one self-contained bilingual Beirut landing page, "
+    }, {
+      "type" : "text",
+      "text" : "src/main/resources/beirut.html",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", in four tasks: skeleton with SEO head and landmarks, section content with hotlinked photos and gradient fallbacks, an English/Arabic dictionary toggle with RTL mirroring, and responsive, accessible, reduced-motion-aware styling. JUnit tests parse the source to check each acceptance criterion."
+    } ]
+  }, {
     "id" : "feature-design-h",
     "type" : "heading",
     "props" : {
@@ -570,6 +596,66 @@
       "text" : "None."
     } ]
   }, {
+    "id" : "feature-touches-h",
+    "type" : "heading",
+    "props" : {
+      "level" : 2
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Touches"
+    } ]
+  }, {
+    "id" : "3a87db8c",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "module: ."
+    } ],
+    "children" : [ {
+      "id" : "1f3ce862",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry: pom.xml"
+      } ]
+    }, {
+      "id" : "5298a939",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/beirut.html"
+      } ]
+    }, {
+      "id" : "ff69895a",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): com.example.beirut.PageSourceTest"
+      } ]
+    }, {
+      "id" : "18f24109",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): com.example.beirut.PageContentTest"
+      } ]
+    }, {
+      "id" : "790334f4",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): com.example.beirut.PageI18nTest"
+      } ]
+    }, {
+      "id" : "b2dfcfa9",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): com.example.beirut.PageStyleTest"
+      } ]
+    } ]
+  }, {
     "id" : "feature-tasks-h",
     "type" : "heading",
     "props" : {
@@ -580,12 +666,19 @@
       "text" : "Tasks"
     } ]
   }, {
-    "id" : "32e6637b",
-    "type" : "paragraph",
+    "id" : "ff8d9c9b",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
     "content" : [ {
       "type" : "text",
-      "text" : "The design decomposed into tasks, each a '### Task N: Title' heading with a '"
-    }, {
+      "text" : "Task 1: Page skeleton, SEO head and landmarks"
+    } ]
+  }, {
+    "id" : "41fa39fe",
+    "type" : "paragraph",
+    "content" : [ {
       "type" : "text",
       "text" : "Depends on",
       "styles" : {
@@ -593,7 +686,803 @@
       }
     }, {
       "type" : "text",
-      "text" : "' line naming its direct prerequisites."
+      "text" : ": None"
+    } ]
+  }, {
+    "id" : "1b89f17f",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Cites",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": A1, A2, A3, A6, A7"
+    } ]
+  }, {
+    "id" : "4fd0a90b",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Repo is an empty Maven root project ("
+    }, {
+      "type" : "text",
+      "text" : "pom.xml",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", no sources). Edit "
+    }, {
+      "type" : "text",
+      "text" : "pom.xml",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " to add a JUnit 5 test dependency and surefire. Create "
+    }, {
+      "type" : "text",
+      "text" : "src/main/resources/beirut.html",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " with inline "
+    }, {
+      "type" : "text",
+      "text" : "<style>",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "/"
+    }, {
+      "type" : "text",
+      "text" : "<script>",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " only, the sticky "
+    }, {
+      "type" : "text",
+      "text" : "<header>",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "<main>",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " with the five "
+    }, {
+      "type" : "text",
+      "text" : "<section>",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "s in order (hero with the single "
+    }, {
+      "type" : "text",
+      "text" : "<h1>",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", highlights, neighbourhoods, best time, closing call-to-action) and "
+    }, {
+      "type" : "text",
+      "text" : "<footer>",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " with the photo credit. Head: title ≤ 60 chars, 120–160 char description, viewport, canonical, Open Graph, Twitter, JSON-LD "
+    }, {
+      "type" : "text",
+      "text" : "TouristDestination",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". CTAs use "
+    }, {
+      "type" : "text",
+      "text" : "#plan",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " or one "
+    }, {
+      "type" : "text",
+      "text" : "mailto:",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". Must NOT add a "
+    }, {
+      "type" : "text",
+      "text" : "<form>",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", external stylesheet, script src or font URL. Section bodies may be placeholders here; Task 2 fills them."
+    } ]
+  }, {
+    "id" : "32c2aefe",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Touches",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "037cd0f0",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "module: ."
+    } ],
+    "children" : [ {
+      "id" : "e644230d",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry: pom.xml"
+      } ]
+    }, {
+      "id" : "152acfec",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/beirut.html"
+      } ]
+    }, {
+      "id" : "3d97d6d5",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): com.example.beirut.PageSourceTest"
+      } ]
+    } ]
+  }, {
+    "id" : "04e16b3d",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "bf42e214",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A1) Source has no "
+    }, {
+      "type" : "text",
+      "text" : "<link rel=\"stylesheet\">",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", no "
+    }, {
+      "type" : "text",
+      "text" : "<script src>",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and no font URL."
+    } ]
+  }, {
+    "id" : "ede3f935",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A2) Sections appear in the order hero, highlights, neighbourhoods, best time, closing CTA, footer."
+    } ]
+  }, {
+    "id" : "ca4ecc89",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A3) No "
+    }, {
+      "type" : "text",
+      "text" : "<form>",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "; every CTA "
+    }, {
+      "type" : "text",
+      "text" : "href",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " starts with "
+    }, {
+      "type" : "text",
+      "text" : "#",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " or "
+    }, {
+      "type" : "text",
+      "text" : "mailto:",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "."
+    } ]
+  }, {
+    "id" : "5e8d293b",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A6) Title ≤ 60, description 120–160, canonical/og/twitter/viewport tags present, JSON-LD parses with "
+    }, {
+      "type" : "text",
+      "text" : "@type",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " "
+    }, {
+      "type" : "text",
+      "text" : "TouristDestination",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "."
+    } ]
+  }, {
+    "id" : "01a8ea4b",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A7) Exactly one "
+    }, {
+      "type" : "text",
+      "text" : "<h1>",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", no skipped heading level, header/main/footer landmarks present."
+    } ]
+  }, {
+    "id" : "693dd4b1",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Task 2: Section content and photos with gradient fallback"
+    } ]
+  }, {
+    "id" : "12c1dd0b",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Depends on",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": Task-1 (fills the sections of "
+    }, {
+      "type" : "text",
+      "text" : "beirut.html",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " Task 1 creates)"
+    } ]
+  }, {
+    "id" : "17a92c59",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Cites",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": A8, A9"
+    } ]
+  }, {
+    "id" : "4104e3d6",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Fill highlights (history, food, culture, seaside cards), neighbourhoods and best-time content in English with "
+    }, {
+      "type" : "text",
+      "text" : "data-i18n",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " keys. Add hotlinked Unsplash "
+    }, {
+      "type" : "text",
+      "text" : "<img>",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "s, each with non-empty alt, width and height, "
+    }, {
+      "type" : "text",
+      "text" : "loading=\"lazy\"",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " except the hero; each sits in a container with a CSS gradient background and an "
+    }, {
+      "type" : "text",
+      "text" : "onerror",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " handler hiding the broken image. Must NOT change the SEO head or section order."
+    } ]
+  }, {
+    "id" : "3da9f70b",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Touches",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "8da907d2",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "module: ."
+    } ],
+    "children" : [ {
+      "id" : "8bf9da90",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/beirut.html"
+      } ]
+    }, {
+      "id" : "4d04586d",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): com.example.beirut.PageContentTest"
+      } ]
+    } ]
+  }, {
+    "id" : "930c8c42",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "8c702de0",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A8) Every "
+    }, {
+      "type" : "text",
+      "text" : "<img>",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " has non-empty alt, width, height; all non-hero images are lazy."
+    } ]
+  }, {
+    "id" : "9732ca05",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A9) Every image container has a gradient background and an error handler that hides the image."
+    } ]
+  }, {
+    "id" : "7bbc1e0f",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Task 3: English/Arabic toggle with RTL mirroring"
+    } ]
+  }, {
+    "id" : "0501efcf",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Depends on",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": Task-2 (translates the "
+    }, {
+      "type" : "text",
+      "text" : "data-i18n",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " text and alts Task 2 adds)"
+    } ]
+  }, {
+    "id" : "615d1987",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Cites",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": A4"
+    } ]
+  }, {
+    "id" : "9f9b198f",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Add the inline "
+    }, {
+      "type" : "text",
+      "text" : "en",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "/"
+    }, {
+      "type" : "text",
+      "text" : "ar",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " dictionary covering every "
+    }, {
+      "type" : "text",
+      "text" : "data-i18n",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " key and "
+    }, {
+      "type" : "text",
+      "text" : "alt",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", a header toggle button that sets "
+    }, {
+      "type" : "text",
+      "text" : "<html lang>",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "/"
+    }, {
+      "type" : "text",
+      "text" : "dir",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", swaps text and alts, and back. Mirror layout via CSS logical properties; Arabic system font stack, no external fonts."
+    } ]
+  }, {
+    "id" : "d6d76d4d",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Touches",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "76ac9d4f",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "module: ."
+    } ],
+    "children" : [ {
+      "id" : "3a979d45",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/beirut.html"
+      } ]
+    }, {
+      "id" : "a3c32113",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): com.example.beirut.PageI18nTest"
+      } ]
+    } ]
+  }, {
+    "id" : "37bae1c3",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "4302b5f8",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A4) Every "
+    }, {
+      "type" : "text",
+      "text" : "data-i18n",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " key has English and Arabic entries; toggling sets "
+    }, {
+      "type" : "text",
+      "text" : "lang=\"ar\" dir=\"rtl\"",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and back to "
+    }, {
+      "type" : "text",
+      "text" : "lang=\"en\" dir=\"ltr\"",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "; no physical left/right properties break mirroring."
+    } ]
+  }, {
+    "id" : "6ae508e7",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Task 4: Responsive layout, accessibility and reduced motion"
+    } ]
+  }, {
+    "id" : "da6778d9",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Depends on",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": Task-2 (styles the sections and cards Task 2 populates)"
+    } ]
+  }, {
+    "id" : "1771b5bd",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Cites",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": A5, A10"
+    } ]
+  }, {
+    "id" : "d5d9ce38",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Warm Mediterranean palette with ≥ 4.5:1 text contrast, fluid "
+    }, {
+      "type" : "text",
+      "text" : "clamp()",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " type, auto-fit grids, single column at 360 px, no horizontal overflow at 360/768/1280. "
+    }, {
+      "type" : "text",
+      "text" : ":focus-visible",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " outline on links, buttons and the toggle; scroll-reveal and hero animation only under "
+    }, {
+      "type" : "text",
+      "text" : "prefers-reduced-motion: no-preference",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "; smooth scrolling."
+    } ]
+  }, {
+    "id" : "d5f21500",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Touches",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "8ff71e2a",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "module: ."
+    } ],
+    "children" : [ {
+      "id" : "fef84751",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/beirut.html"
+      } ]
+    }, {
+      "id" : "b8f7c862",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): com.example.beirut.PageStyleTest"
+      } ]
+    } ]
+  }, {
+    "id" : "253111cb",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "d871b27a",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A5) CSS uses wrapping/grid rules and media queries so nothing overflows at 360, 768 and 1280 px."
+    } ]
+  }, {
+    "id" : "497bd1ee",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A10) Palette pairs compute ≥ 4.5:1; focus-visible rule exists; animations are gated by reduced-motion media query."
     } ]
   } ],
   "comments" : [ ],

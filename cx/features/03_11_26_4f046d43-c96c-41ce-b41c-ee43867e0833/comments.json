@@ -1,1 +1,57 @@
-[ ]
+[ {
+  "threadId" : "5d8d8e7e-1d07-422e-a65d-81896742d236",
+  "text" : "swaps the text, the `<title>`/meta description-independent labels and `alt` text, and stores nothing",
+  "occurrence" : 0,
+  "resolved" : false,
+  "comments" : [ {
+    "id" : "18dfa0ee-2e9c-4e46-bad5-1b3cb32db52c",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "This sentence is garbled and contradicts the SEO section, which says title and meta are static English. Reword it to say the toggle swaps `data-i18n` text and `alt` text only, and leaves title and meta untouched. Otherwise an implementer may translate the head and diverge from R6.",
+    "createdAt" : "2026-11-03T11:23:09.145243800Z"
+  } ]
+}, {
+  "threadId" : "cd9be53b-2ae1-4210-a53d-75b000383a8b",
+  "text" : "- (A4) Every `data-i18n` key has English and Arabic entries; toggling sets `lang=\"ar\" dir=\"rtl\"` and back to `lang=\"en\" dir=\"ltr\"`; no physical left/right properties break mirroring.",
+  "occurrence" : 0,
+  "resolved" : false,
+  "comments" : [ {
+    "id" : "439e0a5c-af9c-462c-9c15-3997c5fbda07",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "A4 also requires that no English section text remains visible and that the header and cards are mirrored. The criterion only checks dictionary completeness and attributes, so it cannot show the page is actually mirrored. Add checks for the visible-text and mirroring outcomes. State that PageI18nTest runs the toggle in a headless browser rather than only parsing source.",
+    "createdAt" : "2026-11-03T11:23:09.145243800Z"
+  } ]
+}, {
+  "threadId" : "8f9aaf8d-c49c-4cb8-946d-94418bbb5799",
+  "text" : "- (A5) CSS uses wrapping/grid rules and media queries so nothing overflows at 360, 768 and 1280 px.",
+  "occurrence" : 0,
+  "resolved" : false,
+  "comments" : [ {
+    "id" : "5a748dac-8100-40a8-957a-2aa77179470d",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "A5 and A10 are behavioural (no scrollbar, no overlap, contrast, Tab focus, reduced motion), but these criteria only check that CSS rules exist. Rewrite them as observable outcomes. Examples: scrollWidth <= clientWidth at the three widths; computed contrast of the actual pairs; Tab reaches the toggle with a visible outline; no animation runs under emulated reduced motion. The design already plans headless-browser checks, but Touches and Task 4 do not provide that harness.",
+    "createdAt" : "2026-11-03T11:23:09.145243800Z"
+  } ]
+}, {
+  "threadId" : "9b8230b5-d1f6-4942-8d9a-e563dcad0572",
+  "text" : "**Depends on**: Task-2 (styles the sections and cards Task 2 populates)",
+  "occurrence" : 0,
+  "resolved" : false,
+  "comments" : [ {
+    "id" : "328f29b7-f1c3-4efe-b14d-7ffa30f9541b",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "Task 4's A10 criterion covers the toggle focus outline and the hero animation, and the toggle is built in Task 3. Declare Task-3 as a dependency, or move the toggle focus check into Task 3. Without it the criterion verifies an artifact that a task Task 4 does not depend on builds.",
+    "createdAt" : "2026-11-03T11:23:09.145243800Z"
+  } ]
+} ]
