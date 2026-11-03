@@ -75,6 +75,17 @@ section { padding: 4rem 1.25rem; }
   text-decoration: none;
   border-radius: .5rem;
 }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); gap: 1.5rem; }
+.card { min-width: 0; background: #fff; border-radius: .75rem; overflow: hidden; padding-bottom: 1rem; }
+.card h3, .card p { margin-inline: 1rem; overflow-wrap: anywhere; }
+.photo { background: linear-gradient(135deg, var(--sea), var(--terracotta)); overflow: hidden; }
+.photo img { display: block; width: 100%; height: auto; }
+.card .photo { aspect-ratio: 3 / 2; }
+#hero { position: relative; min-height: 100vh; display: flex; align-items: center; color: #fff; background: linear-gradient(135deg, var(--sea), var(--terracotta)); }
+#hero .photo-hero { position: absolute; inset: 0; }
+#hero .photo-hero img { width: 100%; height: 100%; object-fit: cover; }
+#hero .photo-hero::after { content: ""; position: absolute; inset: 0; background: rgba(0, 0, 0, .55); }
+.hero-text { position: relative; max-width: 40rem; }
 footer { padding: 2rem 1.25rem; background: var(--sea); color: #fff; }
 </style>
 </head>
@@ -91,18 +102,76 @@ footer { padding: 2rem 1.25rem; background: var(--sea); color: #fff; }
 </header>
 <main>
   <section id="hero">
-    <h1>Beirut, the Pearl of the Mediterranean</h1>
-    <p>History, food, culture and sea, all in one unforgettable city.</p>
-    <a class="cta" href="#plan">Plan your trip</a>
+    <div class="photo photo-hero">
+      <img src="https://images.unsplash.com/photo-1579606032821-4e6161c81bd3?auto=format&amp;fit=crop&amp;w=1600&amp;q=70" alt="Beirut skyline and Mediterranean coast at sunset" width="1600" height="1000" onerror="this.style.display='none'">
+    </div>
+    <div class="hero-text">
+      <h1 data-i18n="hero.title">Beirut, the Pearl of the Mediterranean</h1>
+      <p data-i18n="hero.tagline">History, food, culture and sea, all in one unforgettable city.</p>
+      <a class="cta" href="#plan" data-i18n="cta.plan">Plan your trip</a>
+    </div>
   </section>
   <section id="highlights">
-    <h2>Highlights</h2>
+    <h2 data-i18n="highlights.title">Highlights</h2>
+    <div class="grid">
+      <article class="card">
+        <div class="photo"><img src="https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&amp;fit=crop&amp;w=600&amp;q=70" alt="Roman columns and ancient ruins in downtown Beirut" width="600" height="400" loading="lazy" onerror="this.style.display='none'"></div>
+        <h3 data-i18n="highlights.history.title">History</h3>
+        <p data-i18n="highlights.history.body">Walk through 5,000 years of Phoenician, Roman, Ottoman and French Mandate heritage.</p>
+      </article>
+      <article class="card">
+        <div class="photo"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&amp;fit=crop&amp;w=600&amp;q=70" alt="A table of Lebanese mezze dishes" width="600" height="400" loading="lazy" onerror="this.style.display='none'"></div>
+        <h3 data-i18n="highlights.food.title">Food</h3>
+        <p data-i18n="highlights.food.body">Share mezze, fresh seafood and warm manakish in one of the world's great food cities.</p>
+      </article>
+      <article class="card">
+        <div class="photo"><img src="https://images.unsplash.com/photo-1518998053901-5348d3961a04?auto=format&amp;fit=crop&amp;w=600&amp;q=70" alt="Colourful street art on a Beirut wall" width="600" height="400" loading="lazy" onerror="this.style.display='none'"></div>
+        <h3 data-i18n="highlights.culture.title">Culture</h3>
+        <p data-i18n="highlights.culture.body">Galleries, theatres, live music and street art make the city a creative capital.</p>
+      </article>
+      <article class="card">
+        <div class="photo"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&amp;fit=crop&amp;w=600&amp;q=70" alt="Turquoise Mediterranean sea along the Beirut corniche" width="600" height="400" loading="lazy" onerror="this.style.display='none'"></div>
+        <h3 data-i18n="highlights.seaside.title">Seaside</h3>
+        <p data-i18n="highlights.seaside.body">Stroll the Corniche, swim from rocky coves and watch the sun set over the Mediterranean.</p>
+      </article>
+    </div>
   </section>
   <section id="neighbourhoods">
-    <h2>Neighbourhoods</h2>
+    <h2 data-i18n="neighbourhoods.title">Neighbourhoods</h2>
+    <div class="grid">
+      <article class="card">
+        <div class="photo"><img src="https://images.unsplash.com/photo-1597655601841-214a4cfe8b2c?auto=format&amp;fit=crop&amp;w=600&amp;q=70" alt="Old stone buildings on a street in Gemmayzeh" width="600" height="400" loading="lazy" onerror="this.style.display='none'"></div>
+        <h3 data-i18n="neighbourhoods.gemmayzeh.title">Gemmayzeh</h3>
+        <p data-i18n="neighbourhoods.gemmayzeh.body">Heritage houses, cafes and bars along a lively hillside street.</p>
+      </article>
+      <article class="card">
+        <div class="photo"><img src="https://images.unsplash.com/photo-1580746738099-78d6833b1d2c?auto=format&amp;fit=crop&amp;w=600&amp;q=70" alt="Pigeon Rocks sea stacks off Raouche" width="600" height="400" loading="lazy" onerror="this.style.display='none'"></div>
+        <h3 data-i18n="neighbourhoods.raouche.title">Raouche</h3>
+        <p data-i18n="neighbourhoods.raouche.body">Cliffside promenade facing the famous Pigeon Rocks, best at sunset.</p>
+      </article>
+      <article class="card">
+        <div class="photo"><img src="https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?auto=format&amp;fit=crop&amp;w=600&amp;q=70" alt="Waterfront buildings and marina in downtown Beirut" width="600" height="400" loading="lazy" onerror="this.style.display='none'"></div>
+        <h3 data-i18n="neighbourhoods.downtown.title">Downtown</h3>
+        <p data-i18n="neighbourhoods.downtown.body">Restored squares, Roman remains, grand mosques and churches, and the marina.</p>
+      </article>
+    </div>
   </section>
   <section id="best-time">
-    <h2>Best time to visit</h2>
+    <h2 data-i18n="besttime.title">Best time to visit</h2>
+    <div class="grid">
+      <article class="card">
+        <h3 data-i18n="besttime.spring.title">Spring (April to June)</h3>
+        <p data-i18n="besttime.spring.body">Warm days, blooming hills and ideal weather for walking the city.</p>
+      </article>
+      <article class="card">
+        <h3 data-i18n="besttime.summer.title">Summer (July to September)</h3>
+        <p data-i18n="besttime.summer.body">Hot, sunny beach weather and a busy calendar of festivals.</p>
+      </article>
+      <article class="card">
+        <h3 data-i18n="besttime.autumn.title">Autumn (October to November)</h3>
+        <p data-i18n="besttime.autumn.body">Warm sea, golden light and fewer crowds.</p>
+      </article>
+    </div>
   </section>
   <section id="plan">
     <h2>Plan your trip</h2>
