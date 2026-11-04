@@ -14,11 +14,11 @@
   }, {
     "name" : "ui/people.Person.js",
     "type" : "UI",
-    "size_bytes" : 2286,
-    "uploaded_at" : "2026-11-04T13:54:17.367408600Z",
+    "size_bytes" : 2317,
+    "uploaded_at" : "2026-11-04T14:02:20.305851600Z",
     "origin" : "AGENT",
     "approval" : {
-      "sha256" : "5d598f158e1e13f8d4b8c149fbd18db993aeaedd4e6ba3922aeaa549aec41880",
+      "sha256" : "7e53e7371efb414054672aec623d5bc20898a9f66527034140f7008d27cda048",
       "basis" : {
         "entity_descriptors/people.Person.json" : "d25e41e9e95b1c817c55b6456c202077c4c31d85cf8e46e801e1ded493b4a226"
       }
@@ -26,7 +26,7 @@
   }, {
     "name" : "ui/people.screen.js",
     "type" : "UI",
-    "size_bytes" : 4166,
+    "size_bytes" : 4229,
     "uploaded_at" : "2026-11-04T13:54:40.200024900Z",
     "origin" : "AGENT"
   } ]
