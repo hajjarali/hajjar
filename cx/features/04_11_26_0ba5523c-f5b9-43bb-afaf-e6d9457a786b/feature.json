@@ -20,11 +20,404 @@
       "text" : "Design"
     } ]
   }, {
-    "id" : "49d34d25",
+    "id" : "3099b889",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Grounding"
+    } ]
+  }, {
+    "id" : "83e00558",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
-      "text" : "What is being built and how — the entities, their fields and types, what is persisted, how they relate, and what the screens show."
+      "text" : "The spec's Dependencies section records that the entity catalog was checked and nothing covers lead requests, so "
+    }, {
+      "type" : "text",
+      "text" : "LeadRequest",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and the "
+    }, {
+      "type" : "text",
+      "text" : "RequestType",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " enum are new. They are not re-modelled from any existing entity."
+    } ]
+  }, {
+    "id" : "9da9406b",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Entities"
+    } ]
+  }, {
+    "id" : "4f6bdcd8",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "RequestType",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " is an enum with the values TEST_DRIVE and QUOTE. It is built from the spec's enum descriptor "
+    }, {
+      "type" : "text",
+      "text" : "entity_descriptors/sales.lead.RequestType.json",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", copied verbatim into the module."
+    } ]
+  }, {
+    "id" : "8fa10b00",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "LeadRequest",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " is a root bean in the "
+    }, {
+      "type" : "text",
+      "text" : "sales.lead",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " package. Its fields are "
+    }, {
+      "type" : "text",
+      "text" : "fullName",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "email",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "phone",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "requestType",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "preferredModel",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "message",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and "
+    }, {
+      "type" : "text",
+      "text" : "status",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "."
+    } ],
+    "children" : [ {
+      "id" : "722cabfa",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "fullName",
+        "styles" : {
+          "code" : true
+        }
+      }, {
+        "type" : "text",
+        "text" : ", "
+      }, {
+        "type" : "text",
+        "text" : "email",
+        "styles" : {
+          "code" : true
+        }
+      }, {
+        "type" : "text",
+        "text" : " and "
+      }, {
+        "type" : "text",
+        "text" : "requestType",
+        "styles" : {
+          "code" : true
+        }
+      }, {
+        "type" : "text",
+        "text" : " are required. "
+      }, {
+        "type" : "text",
+        "text" : "phone",
+        "styles" : {
+          "code" : true
+        }
+      }, {
+        "type" : "text",
+        "text" : ", "
+      }, {
+        "type" : "text",
+        "text" : "preferredModel",
+        "styles" : {
+          "code" : true
+        }
+      }, {
+        "type" : "text",
+        "text" : " and "
+      }, {
+        "type" : "text",
+        "text" : "message",
+        "styles" : {
+          "code" : true
+        }
+      }, {
+        "type" : "text",
+        "text" : " are optional."
+      } ]
+    }, {
+      "id" : "33cf380e",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "email",
+        "styles" : {
+          "code" : true
+        }
+      }, {
+        "type" : "text",
+        "text" : " is text with the email-address format rule, which is enforced on save."
+      } ]
+    }, {
+      "id" : "1ea0fcb5",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "message",
+        "styles" : {
+          "code" : true
+        }
+      }, {
+        "type" : "text",
+        "text" : " is a longtext."
+      } ]
+    }, {
+      "id" : "49bf932e",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "requestType",
+        "styles" : {
+          "code" : true
+        }
+      }, {
+        "type" : "text",
+        "text" : " is "
+      }, {
+        "type" : "text",
+        "text" : "enum(RequestType)",
+        "styles" : {
+          "code" : true
+        }
+      }, {
+        "type" : "text",
+        "text" : "."
+      } ]
+    }, {
+      "id" : "ffa3d083",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "status",
+        "styles" : {
+          "code" : true
+        }
+      }, {
+        "type" : "text",
+        "text" : " is a lifecycle with the states new, contacted and closed, and defaults to new. Moving a request between these states is the field's own behaviour, so it needs no extra rules."
+      } ]
+    }, {
+      "id" : "a22fd6be",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "The bean is built from the spec's descriptor "
+      }, {
+        "type" : "text",
+        "text" : "entity_descriptors/sales.lead.LeadRequest.json",
+        "styles" : {
+          "code" : true
+        }
+      }, {
+        "type" : "text",
+        "text" : ", copied verbatim. Its default form is "
+      }, {
+        "type" : "text",
+        "text" : "ui/sales.lead.LeadRequest.js",
+        "styles" : {
+          "code" : true
+        }
+      }, {
+        "type" : "text",
+        "text" : ", also copied verbatim."
+      } ]
+    } ]
+  }, {
+    "id" : "7e893f8b",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The entity has no relationships. The static page's form is not connected to it, so nothing is posted from the page."
+    } ]
+  }, {
+    "id" : "d75d133c",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Newest-first ordering (A5) needs a creation-time ordering on the sheet query. The task must check whether the entity already records a creation timestamp or whether the screen's sort can use the platform's row ordering. The spec adds no field for this, so none is added."
+    } ]
+  }, {
+    "id" : "2f4181d4",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Static landing page"
+    } ]
+  }, {
+    "id" : "47d42857",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The page is one plain HTML and CSS file with no framework and no server, as in R1 to R4. It has no entity design. It has these sections in order: hero with a call-to-action that scrolls to the form, featured models, key features, testimonials, the lead request form, and contact. Validation and confirmation are client-side only, and the page makes no network call. The responsive layout has no horizontal scroll from 320 px to 1920 px."
+    } ]
+  }, {
+    "id" : "feature-view-layouts-h",
+    "type" : "heading",
+    "props" : {
+      "level" : 2
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "View Layouts"
+    } ]
+  }, {
+    "id" : "07e93059",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The Lead requests screen follows the spec's mock "
+    }, {
+      "type" : "text",
+      "text" : "ui/lead-requests.screen.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " region for region:"
+    } ]
+  }, {
+    "id" : "7f70fefb",
+    "type" : "numberedListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "A filter bar with requestType, status and preferredModel and a search action."
+    } ]
+  }, {
+    "id" : "9d728f02",
+    "type" : "numberedListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "A table of LeadRequest rows showing fullName, email, phone, requestType, preferredModel and status, with open and delete actions. It is sorted newest first."
+    } ]
+  }, {
+    "id" : "056d5c28",
+    "type" : "numberedListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "A side panel holding the selected row's default form, with save and cancel."
+    } ]
+  }, {
+    "id" : "3d74173f",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The screen is registered under "
+    }, {
+      "type" : "text",
+      "text" : "Sales › Lead requests",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " with the "
+    }, {
+      "type" : "text",
+      "text" : "dashboard",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " icon."
     } ]
   }, {
     "id" : "feature-tasks-h",
