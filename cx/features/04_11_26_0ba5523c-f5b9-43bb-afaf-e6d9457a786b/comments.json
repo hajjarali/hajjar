@@ -1,1 +1,57 @@
-[ ]
+[ {
+  "threadId" : "771d8702-12f4-4724-b57e-131dab4ea5b6",
+  "text" : "Check whether the entity records a creation order that the newest-first listing in Task 3 can use. The spec adds no field for it, so none is added.",
+  "occurrence" : 0,
+  "resolved" : false,
+  "comments" : [ {
+    "id" : "03e0e374-0c23-4b16-aa43-4966096c24e8",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "Blocking: A5 requires newest-first, but the plan leaves the ordering mechanism as an investigation inside Task 2. If the entity has no creation timestamp, Task 3 cannot meet its criterion and no task owns the fix. Decide now: either the platform's base entity provides a creation timestamp or id ordering (state which, and that Task 3 sorts by it), or add an explicit createdAt field. The spec's Data model does not forbid an audit field, but the choice must be recorded rather than deferred.",
+    "createdAt" : "2026-11-04T08:28:26.510967600Z"
+  } ]
+}, {
+  "threadId" : "495188c0-55c2-4d72-9472-38c1e839eecf",
+  "text" : "Its list query returns newest first.",
+  "occurrence" : 0,
+  "resolved" : false,
+  "comments" : [ {
+    "id" : "1c7dcfe6-7961-4664-baf1-a86bb5969947",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "Task 3 does not say which column or ordering the query uses. Name it, consistent with the decision on creation order, so the criterion is verifiable and does not depend on same-instant timestamps for two rapidly created rows.",
+    "createdAt" : "2026-11-04T08:28:26.510967600Z"
+  } ]
+}, {
+  "threadId" : "7d1912ce-e11f-4470-91b3-6e6fa2358890",
+  "text" : "**Depends on**: Task-3 (the table reads LeadRequestSheet), Task-2 (the side panel shows the LeadRequest default form)",
+  "occurrence" : 0,
+  "resolved" : false,
+  "comments" : [ {
+    "id" : "0eecf64b-df73-4fa2-96a6-3bc0673302c8",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "The Task 4 criterion '(A5) The screen's table lists the later of two created requests first' duplicates Task 3's sheet-level A5 check, and the screen's sort is not stated to be driven by the sheet. State that the table uses the sheet's ordering, rather than sorting separately, to avoid two competing sort implementations.",
+    "createdAt" : "2026-11-04T08:28:26.510967600Z"
+  } ]
+}, {
+  "threadId" : "ab1c6b33-8307-46f9-9de0-ec4bf3f12fb7",
+  "text" : "is built from the spec's enum descriptor `entity_descriptors/sales.lead.RequestType.json`, copied verbatim into the module.",
+  "occurrence" : 0,
+  "resolved" : false,
+  "comments" : [ {
+    "id" : "a2ce7b09-f671-493b-a220-f710e564ffdc",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "The design restates the copy-verbatim statement for each descriptor in the Entities section and again in Task 2, and repeats the field list and required flags already in the spec. Name the copies once and drop the repeated field narration.",
+    "createdAt" : "2026-11-04T08:28:26.510967600Z"
+  } ]
+} ]

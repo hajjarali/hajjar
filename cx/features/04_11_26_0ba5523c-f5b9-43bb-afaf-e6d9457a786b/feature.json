@@ -10,6 +10,23 @@
       "text" : "dumb"
     } ]
   }, {
+    "id" : "feature-summary-h",
+    "type" : "heading",
+    "props" : {
+      "level" : 2
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Summary"
+    } ]
+  }, {
+    "id" : "0dbbb2b8",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Delivers a plain HTML and CSS landing page with client-side form validation and confirmation, and no network call. Separately, it persists a LeadRequest entity with its RequestType and status enums, approved descriptors and default form. It exposes the entity through an observer sheet that lists newest first, and builds the staff Lead requests screen from its mock, registered under Sales › Lead requests. The work is four tasks."
+    } ]
+  }, {
     "id" : "feature-design-h",
     "type" : "heading",
     "props" : {
@@ -420,6 +437,136 @@
       "text" : " icon."
     } ]
   }, {
+    "id" : "feature-touches-h",
+    "type" : "heading",
+    "props" : {
+      "level" : 2
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Touches"
+    } ]
+  }, {
+    "id" : "952e0564",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "module: ."
+    } ],
+    "children" : [ {
+      "id" : "aaf342fd",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): cyai.sales.lead.RequestType"
+      } ]
+    }, {
+      "id" : "22b9e922",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): cyai.sales.lead.LeadRequestStatus"
+      } ]
+    }, {
+      "id" : "6d0a9ce4",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): cyai.sales.lead.LeadRequest"
+      } ]
+    }, {
+      "id" : "efbc04bc",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/cyai/sales/lead/sales.lead.LeadRequest.json"
+      } ]
+    }, {
+      "id" : "618cc87f",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/cyai/sales/lead/sales.lead.RequestType.json"
+      } ]
+    }, {
+      "id" : "04beb843",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/cyai/sales/lead/sales.lead.LeadRequest.js"
+      } ]
+    }, {
+      "id" : "8f052cc7",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): cyai.sales.lead.LeadRequestTest"
+      } ]
+    }, {
+      "id" : "a8914772",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): cyai.sales.lead.LeadRequestSheet"
+      } ]
+    }, {
+      "id" : "4cc53575",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): cyai.sales.lead.LeadRequestSheetTest"
+      } ]
+    }, {
+      "id" : "15255b0d",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/cyai/sales/lead/lead-requests.screen.js"
+      } ]
+    }, {
+      "id" : "ca3a1830",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): cyai.sales.lead.LeadRequestsScreenModel"
+      } ]
+    }, {
+      "id" : "cd46fba5",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): cyai.sales.lead.LeadApplicationModule"
+      } ]
+    }, {
+      "id" : "a636d84b",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): cyai.sales.lead.LeadRequestsScreenTest"
+      } ]
+    }, {
+      "id" : "b0bab4fb",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/static/index.html"
+      } ]
+    }, {
+      "id" : "180d40e4",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/static/styles.css"
+      } ]
+    }, {
+      "id" : "f27dad23",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): cyai.sales.landing.LandingPageTest"
+      } ]
+    } ]
+  }, {
     "id" : "feature-tasks-h",
     "type" : "heading",
     "props" : {
@@ -430,12 +577,19 @@
       "text" : "Tasks"
     } ]
   }, {
-    "id" : "d0ebd417",
-    "type" : "paragraph",
+    "id" : "a3894d52",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
     "content" : [ {
       "type" : "text",
-      "text" : "The design decomposed into tasks, each a '### Task N: Title' heading with a '"
-    }, {
+      "text" : "Task 1: Static landing page with validated lead form"
+    } ]
+  }, {
+    "id" : "0d322a27",
+    "type" : "paragraph",
+    "content" : [ {
       "type" : "text",
       "text" : "Depends on",
       "styles" : {
@@ -443,7 +597,751 @@
       }
     }, {
       "type" : "text",
-      "text" : "' line naming its direct prerequisites."
+      "text" : ": None"
+    } ]
+  }, {
+    "id" : "182180e1",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Cites",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": A1, A2, A3, A4"
+    } ]
+  }, {
+    "id" : "c17bd3df",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Create "
+    }, {
+      "type" : "text",
+      "text" : "src/main/resources/static/index.html",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and "
+    }, {
+      "type" : "text",
+      "text" : "styles.css",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (plain HTML and CSS, no framework, no server). The sections appear in this order: hero with a call-to-action anchor scrolling to the form, featured models, key features, testimonials, lead request form, contact (address, phone, opening hours). The form has fullName, email, phone, requestType (test drive or quote), preferredModel and message. Inline script validates on submit. It shows a message beside each offending field (empty name, no request type, empty or invalid email) and no confirmation. Otherwise it shows a confirmation and makes no network request. The layout is fluid with no horizontal scroll from 320 px to 1920 px. This task must NOT touch the LeadRequest entity; the form is not connected to it."
+    } ]
+  }, {
+    "id" : "1257d327",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Touches",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "8198891b",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "module: ."
+    } ],
+    "children" : [ {
+      "id" : "ac5bfa6b",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/static/index.html"
+      } ]
+    }, {
+      "id" : "c3054f9e",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/static/styles.css"
+      } ]
+    }, {
+      "id" : "20b9234f",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): cyai.sales.landing.LandingPageTest"
+      } ]
+    } ]
+  }, {
+    "id" : "64fbee8e",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Delivers",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": None"
+    } ]
+  }, {
+    "id" : "b5890a05",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "2746fd5a",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A1) The page contains hero, featured models, key features, testimonials, form and contact sections in that order, and the hero call-to-action targets the form."
+    } ]
+  }, {
+    "id" : "f2cfe743",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A2) Submitting full name, \"a@b.com\" and request type quote shows the confirmation, and the page's script contains no network call."
+    } ]
+  }, {
+    "id" : "288dfcb4",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A3) An empty full name, no request type, or the email \"abc\" shows a message beside that field and no confirmation."
+    } ]
+  }, {
+    "id" : "3876f792",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A4) The CSS has no fixed width that causes horizontal overflow at 320 px or 1920 px (viewport meta set, fluid containers)."
+    } ]
+  }, {
+    "id" : "6a06a652",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Task 2: Persist lead requests and ship the approved form"
+    } ]
+  }, {
+    "id" : "57425b7e",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Depends on",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": None"
+    } ]
+  }, {
+    "id" : "e5d29677",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Cites",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": A5"
+    } ]
+  }, {
+    "id" : "7640d7d5",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Build the "
+    }, {
+      "type" : "text",
+      "text" : "RequestType",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " enum and the "
+    }, {
+      "type" : "text",
+      "text" : "LeadRequestStatus",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " lifecycle enum (new, contacted, closed). Build the "
+    }, {
+      "type" : "text",
+      "text" : "LeadRequest",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " entity. Copy the descriptors "
+    }, {
+      "type" : "text",
+      "text" : "entity_descriptors/sales.lead.LeadRequest.json",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and "
+    }, {
+      "type" : "text",
+      "text" : "entity_descriptors/sales.lead.RequestType.json",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " verbatim from the spec attachments into "
+    }, {
+      "type" : "text",
+      "text" : "src/main/resources/cyai/sales/lead/",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". Copy the default form "
+    }, {
+      "type" : "text",
+      "text" : "ui/sales.lead.LeadRequest.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " verbatim to "
+    }, {
+      "type" : "text",
+      "text" : "src/main/resources/cyai/sales/lead/sales.lead.LeadRequest.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". The repo has only "
+    }, {
+      "type" : "text",
+      "text" : "App.java",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " today, so the project needs the platform dependencies its other entity modules use. Add those in the build file if absent. Enforce the email format rule and the status default on save. Check whether the entity records a creation order that the newest-first listing in Task 3 can use. The spec adds no field for it, so none is added."
+    } ]
+  }, {
+    "id" : "caab2063",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Touches",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "a38c0d14",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "module: ."
+    } ],
+    "children" : [ {
+      "id" : "5f1f8076",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): cyai.sales.lead.RequestType"
+      } ]
+    }, {
+      "id" : "edbad79d",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): cyai.sales.lead.LeadRequestStatus"
+      } ]
+    }, {
+      "id" : "61d5ae6c",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): cyai.sales.lead.LeadRequest"
+      } ]
+    }, {
+      "id" : "aecd8920",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/cyai/sales/lead/sales.lead.LeadRequest.json"
+      } ]
+    }, {
+      "id" : "de3a47ed",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/cyai/sales/lead/sales.lead.RequestType.json"
+      } ]
+    }, {
+      "id" : "60cd6144",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/cyai/sales/lead/sales.lead.LeadRequest.js"
+      } ]
+    }, {
+      "id" : "93aab0c7",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): cyai.sales.lead.LeadRequestTest"
+      } ]
+    } ]
+  }, {
+    "id" : "029251da",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Delivers",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "3ff7be8c",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "persistence.enum: RequestType → cyai.sales.lead.RequestType"
+    } ]
+  }, {
+    "id" : "55fbb825",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "persistence.enum: LeadRequest.status → cyai.sales.lead.LeadRequestStatus"
+    } ]
+  }, {
+    "id" : "e18886c1",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "persistence.entity: LeadRequest → cyai.sales.lead.LeadRequest"
+    } ]
+  }, {
+    "id" : "ee170b2d",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "ui.defaultForm: LeadRequest → src/main/resources/cyai/sales/lead/sales.lead.LeadRequest.js"
+    } ]
+  }, {
+    "id" : "8238b8d6",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "validation.rule: LeadRequest.email → cyai.sales.lead.LeadRequest"
+    } ]
+  }, {
+    "id" : "6bd27f23",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "validation.rule: LeadRequest.status → cyai.sales.lead.LeadRequest"
+    } ]
+  }, {
+    "id" : "fc655009",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "6e3c8465",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "A saved lead request has status new by default."
+    } ]
+  }, {
+    "id" : "7690caab",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Saving an email that is not a valid address is refused."
+    } ]
+  }, {
+    "id" : "4109265f",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Saving without fullName or requestType is refused."
+    } ]
+  }, {
+    "id" : "07429d0f",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Task 3: Expose lead requests through their sheet"
+    } ]
+  }, {
+    "id" : "c8a81e07",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Depends on",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": Task-2 (the sheet serves the LeadRequest entity)"
+    } ]
+  }, {
+    "id" : "297729d7",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Cites",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": A5"
+    } ]
+  }, {
+    "id" : "7c1139d3",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Add the observer sheet for "
+    }, {
+      "type" : "text",
+      "text" : "LeadRequest",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", with reads and writes. Its list query returns newest first."
+    } ]
+  }, {
+    "id" : "9c1890a0",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Touches",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "a6b6433f",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "module: ."
+    } ],
+    "children" : [ {
+      "id" : "362c3020",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): cyai.sales.lead.LeadRequestSheet"
+      } ]
+    }, {
+      "id" : "91296dd6",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): cyai.sales.lead.LeadRequestSheetTest"
+      } ]
+    } ]
+  }, {
+    "id" : "8bdfc125",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Delivers",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "cf194b29",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "observer.sheet: LeadRequest → cyai.sales.lead.LeadRequestSheet"
+    } ]
+  }, {
+    "id" : "3324d4a8",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "c958b490",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A5) With two lead requests created one after the other, the sheet lists the later one first."
+    } ]
+  }, {
+    "id" : "f3d934a9",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Task 4: Build the Lead requests screen and register it"
+    } ]
+  }, {
+    "id" : "761ceda7",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Depends on",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": Task-3 (the table reads LeadRequestSheet), Task-2 (the side panel shows the LeadRequest default form)"
+    } ]
+  }, {
+    "id" : "c47687e3",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Cites",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": A5"
+    } ]
+  }, {
+    "id" : "c2d97466",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Build the screen from the mock "
+    }, {
+      "type" : "text",
+      "text" : "ui/lead-requests.screen.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " with the same regions in the same order. The filter bar has requestType, status and preferredModel plus a search action. The table has one row per LeadRequest with open and delete. The side panel holds the selected row's default form with save and cancel. Copy the mock to "
+    }, {
+      "type" : "text",
+      "text" : "src/main/resources/cyai/sales/lead/lead-requests.screen.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and bind it in "
+    }, {
+      "type" : "text",
+      "text" : "LeadRequestsScreenModel",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". Register the navigation entry "
+    }, {
+      "type" : "text",
+      "text" : "Sales › Lead requests",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " with icon "
+    }, {
+      "type" : "text",
+      "text" : "dashboard",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " in "
+    }, {
+      "type" : "text",
+      "text" : "LeadApplicationModule",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "."
+    } ]
+  }, {
+    "id" : "00434c7d",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Touches",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "d8c5c3e3",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "module: ."
+    } ],
+    "children" : [ {
+      "id" : "7db995ae",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/cyai/sales/lead/lead-requests.screen.js"
+      } ]
+    }, {
+      "id" : "255e78e4",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): cyai.sales.lead.LeadRequestsScreenModel"
+      } ]
+    }, {
+      "id" : "48afbe4e",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): cyai.sales.lead.LeadApplicationModule"
+      } ]
+    }, {
+      "id" : "2dc0cc20",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): cyai.sales.lead.LeadRequestsScreenTest"
+      } ]
+    } ]
+  }, {
+    "id" : "21933aad",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Delivers",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "bf5f180f",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "ui.screen: Lead requests → cyai.sales.lead.LeadRequestsScreenModel"
+    } ]
+  }, {
+    "id" : "cf1b6abb",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "ui.navigation: Lead requests → cyai.sales.lead.LeadApplicationModule"
+    } ]
+  }, {
+    "id" : "b0a87db7",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "93fd57b3",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The navigation entry Sales › Lead requests is registered and opens the screen."
+    } ]
+  }, {
+    "id" : "af92502b",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A5) The screen's table lists the later of two created requests first."
     } ]
   } ],
   "comments" : [ ],
