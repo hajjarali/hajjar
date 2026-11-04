@@ -973,14 +973,14 @@
     "type" : "bulletListItem",
     "content" : [ {
       "type" : "text",
-      "text" : "validation.rule: LeadRequest.email → cyai.sales.lead.LeadRequest"
+      "text" : "validation.rule: LeadRequest.email → cyai.sales.lead.LeadRequest#email"
     } ]
   }, {
     "id" : "6bd27f23",
     "type" : "bulletListItem",
     "content" : [ {
       "type" : "text",
-      "text" : "validation.rule: LeadRequest.status → cyai.sales.lead.LeadRequest"
+      "text" : "validation.rule: LeadRequest.status → cyai.sales.lead.LeadRequest#status"
     } ]
   }, {
     "id" : "fc655009",
