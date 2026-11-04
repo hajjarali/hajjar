@@ -1,0 +1,120 @@
+{
+  "descriptors" : [ {
+    "name" : "sales.lead.RequestType",
+    "className" : "sales.lead.RequestType",
+    "entityType" : "ENUM",
+    "label" : "Request Type",
+    "description" : "What a visitor asks the dealer for through the landing page form.",
+    "fieldDescriptors" : { },
+    "relationships" : { },
+    "version" : 0,
+    "values" : [ {
+      "value" : "TEST_DRIVE",
+      "label" : "Test drive",
+      "description" : "The visitor wants to book a test drive."
+    }, {
+      "value" : "QUOTE",
+      "label" : "Quote",
+      "description" : "The visitor wants a price quote."
+    } ]
+  }, {
+    "name" : "sales.lead.LeadRequest",
+    "className" : "cyai.sales.lead.LeadRequest",
+    "entityType" : "PERSISTABLE_BEAN",
+    "label" : "Lead Request",
+    "description" : "A visitor's request for a test drive or a quote, submitted from the automotive landing page.",
+    "group" : "sales.lead",
+    "persistenceDescriptor" : {
+      "tableName" : "lead_request",
+      "idGenerationStrategy" : "AUTO_INCREMENT",
+      "indexGroups" : {
+        "by_status" : [ "status" ],
+        "by_type" : [ "requestType" ]
+      },
+      "naturalKeyGroups" : { },
+      "cacheDescriptor" : {
+        "strategy" : "NONE"
+      },
+      "starSchemaRole" : "FACT"
+    },
+    "fieldDescriptors" : {
+      "fullName" : {
+        "name" : "fullName",
+        "fieldType" : "STRING",
+        "label" : "Full Name",
+        "description" : "The visitor's full name.",
+        "persistenceDescriptor" : { "columnName" : "full_name", "length" : 200 },
+        "validationDescriptor" : { "nullable" : false, "unique" : false, "nonNegative" : false },
+        "viewDescriptor" : { "viewType" : "TEXT" },
+        "systemField" : false
+      },
+      "email" : {
+        "name" : "email",
+        "fieldType" : "STRING",
+        "label" : "Email",
+        "description" : "The visitor's email address, used to answer the request.",
+        "persistenceDescriptor" : { "columnName" : "email", "length" : 254 },
+        "validationDescriptor" : { "nullable" : false, "unique" : false, "nonNegative" : false },
+        "viewDescriptor" : { "viewType" : "EMAIL", "helperText" : "We reply to this address" },
+        "systemField" : false
+      },
+      "phone" : {
+        "name" : "phone",
+        "fieldType" : "STRING",
+        "label" : "Phone",
+        "description" : "Optional phone number.",
+        "persistenceDescriptor" : { "columnName" : "phone", "length" : 40 },
+        "validationDescriptor" : { "nullable" : true, "unique" : false, "nonNegative" : false },
+        "viewDescriptor" : { "viewType" : "TEXT" },
+        "systemField" : false
+      },
+      "requestType" : {
+        "name" : "requestType",
+        "fieldType" : "ENUM",
+        "label" : "Request Type",
+        "description" : "Whether the visitor asks for a test drive or a quote.",
+        "persistenceDescriptor" : { "columnName" : "request_type", "length" : 20 },
+        "validationDescriptor" : { "nullable" : false, "unique" : false, "nonNegative" : false },
+        "viewDescriptor" : { "viewType" : "RADIO_GROUP" },
+        "componentName" : { "jsontype" : "entity.desc.entityKey", "name" : "sales.lead.RequestType", "version" : 0 },
+        "systemField" : false
+      },
+      "preferredModel" : {
+        "name" : "preferredModel",
+        "fieldType" : "STRING",
+        "label" : "Preferred Model",
+        "description" : "The model the visitor is interested in.",
+        "persistenceDescriptor" : { "columnName" : "preferred_model", "length" : 120 },
+        "validationDescriptor" : { "nullable" : true, "unique" : false, "nonNegative" : false },
+        "viewDescriptor" : { "viewType" : "TEXT" },
+        "systemField" : false
+      },
+      "message" : {
+        "name" : "message",
+        "fieldType" : "STRING",
+        "label" : "Message",
+        "description" : "Free-text message from the visitor.",
+        "persistenceDescriptor" : { "columnName" : "message", "length" : 4000 },
+        "validationDescriptor" : { "nullable" : true, "unique" : false, "nonNegative" : false },
+        "viewDescriptor" : {
+          "viewType" : "TEXT",
+          "viewParameter" : { "jsontype" : "entity.desc.textFieldViewParameter", "multiline" : true }
+        },
+        "systemField" : false
+      },
+      "status" : {
+        "name" : "status",
+        "fieldType" : "ENUM",
+        "label" : "Status",
+        "description" : "Where the request stands: new, contacted, closed.",
+        "persistenceDescriptor" : { "columnName" : "status", "length" : 20, "defaultValue" : "NEW" },
+        "validationDescriptor" : { "nullable" : false, "unique" : false, "nonNegative" : false },
+        "viewDescriptor" : { "viewType" : "TOGGLE_BUTTON_GROUP" },
+        "componentName" : { "jsontype" : "entity.desc.entityKey", "name" : "sales.lead.LeadRequestStatus", "version" : 0 },
+        "systemField" : false
+      }
+    },
+    "relationships" : { },
+    "version" : 1
+  } ]
+}

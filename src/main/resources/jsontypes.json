@@ -1,0 +1,9 @@
+{
+  "group": null,
+  "version": null,
+  "jsontypes": [
+    { "jsontype": "sales.lead.leadRequest", "className": "cyai.sales.lead.LeadRequest" },
+    { "jsontype": "requestType", "className": "cyai.sales.lead.RequestType" },
+    { "jsontype": "leadRequestStatus", "className": "cyai.sales.lead.LeadRequestStatus" }
+  ]
+}

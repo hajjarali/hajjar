@@ -1,0 +1,21 @@
+{
+  "descriptors" : [ {
+    "name" : "sales.lead.RequestType",
+    "className" : "sales.lead.RequestType",
+    "entityType" : "ENUM",
+    "label" : "Request Type",
+    "description" : "What a visitor asks the dealer for through the landing page form.",
+    "fieldDescriptors" : { },
+    "relationships" : { },
+    "version" : 0,
+    "values" : [ {
+      "value" : "TEST_DRIVE",
+      "label" : "Test drive",
+      "description" : "The visitor wants to book a test drive."
+    }, {
+      "value" : "QUOTE",
+      "label" : "Quote",
+      "description" : "The visitor wants a price quote."
+    } ]
+  } ]
+}
