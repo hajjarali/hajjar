@@ -8,6 +8,7 @@
 .local/
 
 # Build output
-target/
+build/
+.gradle/
 *.class
 *.jar
