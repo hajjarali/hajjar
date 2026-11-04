@@ -1,4 +1,4 @@
-sadsadsadsadsadsadsadsadsad(function () {
+(function () {
     const viewUtils = require("cyai/uiai/elements/ViewUtils");
     const beanViewUtils = require("cyai/beans/view/BeanViewUtils");
     function gridField(el, size) {
