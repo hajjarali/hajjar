@@ -1,0 +1,20 @@
+{
+  "descriptors" : [ {
+    "name" : "people.Gender",
+    "className" : "people.Gender",
+    "entityType" : "ENUM",
+    "label" : "Gender",
+    "description" : "The gender a person is recorded with: male or female.",
+    "group" : "people",
+    "fieldDescriptors" : { },
+    "relationships" : { },
+    "version" : 0,
+    "values" : [ {
+      "value" : "MALE",
+      "label" : "Male"
+    }, {
+      "value" : "FEMALE",
+      "label" : "Female"
+    } ]
+  } ]
+}

@@ -1,0 +1,85 @@
+{
+  "descriptors" : [ {
+    "name" : "people.Person",
+    "className" : "cyai.people.Person",
+    "entityType" : "PERSISTABLE_BEAN",
+    "label" : "Person",
+    "description" : "A person kept in the register, with a name, an age and a gender.",
+    "group" : "people",
+    "persistenceDescriptor" : {
+      "tableName" : "person",
+      "idGenerationStrategy" : "AUTO_INCREMENT",
+      "indexGroups" : { },
+      "naturalKeyGroups" : { },
+      "cacheDescriptor" : {
+        "strategy" : "NONE"
+      },
+      "starSchemaRole" : "DIM"
+    },
+    "fieldDescriptors" : {
+      "name" : {
+        "name" : "name",
+        "fieldType" : "STRING",
+        "label" : "Name",
+        "description" : "The person's full name.",
+        "persistenceDescriptor" : {
+          "columnName" : "name",
+          "length" : 255
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "age" : {
+        "name" : "age",
+        "fieldType" : "INTEGER",
+        "label" : "Age",
+        "description" : "The person's age in whole years, from 0 to 150.",
+        "persistenceDescriptor" : {
+          "columnName" : "age"
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : true
+        },
+        "viewDescriptor" : {
+          "viewType" : "INTEGER"
+        },
+        "systemField" : false
+      },
+      "gender" : {
+        "name" : "gender",
+        "fieldType" : "ENUM",
+        "label" : "Gender",
+        "description" : "The gender the person is recorded with.",
+        "persistenceDescriptor" : {
+          "columnName" : "gender",
+          "length" : 40
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "AUTOCOMPLETE"
+        },
+        "componentName" : {
+          "jsontype" : "entity.desc.entityKey",
+          "name" : "people.Gender",
+          "version" : 0
+        },
+        "systemField" : false
+      }
+    },
+    "relationships" : { },
+    "version" : 1
+  } ]
+}
