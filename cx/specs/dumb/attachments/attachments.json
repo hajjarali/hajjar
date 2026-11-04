@@ -1,0 +1,27 @@
+{
+  "attachments" : [ {
+    "name" : "entity_descriptors/sales.lead.LeadRequest.json",
+    "type" : "ENTITY_DESCRIPTORS",
+    "size_bytes" : 5243,
+    "uploaded_at" : "2026-11-04T08:23:38.797205100Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "entity_descriptors/sales.lead.RequestType.json",
+    "type" : "ENTITY_DESCRIPTORS",
+    "size_bytes" : 623,
+    "uploaded_at" : "2026-11-04T08:23:33.996107400Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "ui/lead-requests.screen.js",
+    "type" : "UI",
+    "size_bytes" : 4714,
+    "uploaded_at" : "2026-11-04T08:24:23.737152600Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "ui/sales.lead.LeadRequest.js",
+    "type" : "UI",
+    "size_bytes" : 2558,
+    "uploaded_at" : "2026-11-04T08:24:14.932365400Z",
+    "origin" : "AGENT"
+  } ]
+}
