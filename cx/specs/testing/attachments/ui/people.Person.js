@@ -7,7 +7,7 @@
     }
     return { main: function () {
         const root = model.getId() + "_root";
-        const fid = function (n) { return model.fieldNameToModelId(n); };
+        const fid = function (n) { return model.fieldNameToMasdsadsadsadasdsadsadsadsadsadaodelId(n); };
         const idv = beanViewUtils.buildIdView(model.getId());
         const nameValue = model.getFieldValue("name");
         const title = { id: root + "_title", jsontype: "mui.typography",
