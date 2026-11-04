@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prime Motors - Test drive or request a quote</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header id="hero" class="hero">
+  <div class="container">
+    <h1>Drive the car you deserve</h1>
+    <p>Discover our latest models and book a test drive or get a personal quote today.</p>
+    <a class="cta" href="#lead-form">Request a test drive or quote</a>
+  </div>
+</header>
+
+<main>
+<section id="models" class="section">
+  <div class="container">
+    <h2>Featured models</h2>
+    <div class="grid">
+      <article class="card"><h3>City Spark</h3><p>Compact and efficient hatchback for everyday city life.</p></article>
+      <article class="card"><h3>Terra SUV</h3><p>Spacious family SUV with all-road confidence.</p></article>
+      <article class="card"><h3>Aero GT</h3><p>Sporty grand tourer built for the open road.</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="features" class="section alt">
+  <div class="container">
+    <h2>Key features</h2>
+    <div class="grid">
+      <article class="card"><h3>Advanced safety</h3><p>Driver assistance systems on every model.</p></article>
+      <article class="card"><h3>Hybrid efficiency</h3><p>Low consumption without compromising power.</p></article>
+      <article class="card"><h3>Warranty</h3><p>Five years of warranty and dedicated service.</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="testimonials" class="section">
+  <div class="container">
+    <h2>What our customers say</h2>
+    <div class="grid">
+      <blockquote class="card">"Friendly team and a smooth test drive." <cite>- Sara M.</cite></blockquote>
+      <blockquote class="card">"I got my quote the same day." <cite>- Karim B.</cite></blockquote>
+      <blockquote class="card">"Great service from start to finish." <cite>- Lina H.</cite></blockquote>
+    </div>
+  </div>
+</section>
+
+<section id="lead-form" class="section alt">
+  <div class="container narrow">
+    <h2>Request a test drive or a quote</h2>
+    <form id="leadForm" novalidate>
+      <div class="field">
+        <label for="fullName">Full name *</label>
+        <input type="text" id="fullName" name="fullName" autocomplete="name">
+        <span class="error" id="fullName-error" role="alert"></span>
+      </div>
+      <div class="field">
+        <label for="email">Email *</label>
+        <input type="email" id="email" name="email" autocomplete="email">
+        <span class="error" id="email-error" role="alert"></span>
+      </div>
+      <div class="field">
+        <label for="phone">Phone</label>
+        <input type="tel" id="phone" name="phone" autocomplete="tel">
+      </div>
+      <fieldset class="field">
+        <legend>Request type *</legend>
+        <label class="inline"><input type="radio" name="requestType" value="TEST_DRIVE"> Test drive</label>
+        <label class="inline"><input type="radio" name="requestType" value="QUOTE"> Quote</label>
+        <span class="error" id="requestType-error" role="alert"></span>
+      </fieldset>
+      <div class="field">
+        <label for="preferredModel">Preferred model</label>
+        <input type="text" id="preferredModel" name="preferredModel">
+      </div>
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="4"></textarea>
+      </div>
+      <button type="submit">Send request</button>
+      <p class="confirmation" id="confirmation" role="status" hidden>Thank you! Your request has been received and we will contact you soon.</p>
+    </form>
+  </div>
+</section>
+
+<section id="contact" class="section">
+  <div class="container">
+    <h2>Contact</h2>
+    <address>
+      <p><strong>Address:</strong> 12 Main Avenue, Downtown</p>
+      <p><strong>Phone:</strong> +1 555 010 0123</p>
+      <p><strong>Opening hours:</strong> Mon-Fri 9:00-18:00, Sat 10:00-16:00</p>
+    </address>
+  </div>
+</section>
+</main>
+
+<script>
+(function () {
+  var form = document.getElementById('leadForm');
+  var confirmation = document.getElementById('confirmation');
+  var EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  function setError(id, text) {
+    document.getElementById(id + '-error').textContent = text;
+  }
+
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    var ok = true;
+    confirmation.hidden = true;
+
+    if (form.fullName.value.trim() === '') {
+      setError('fullName', 'Please enter your full name.');
+      ok = false;
+    } else { setError('fullName', ''); }
+
+    var email = form.email.value.trim();
+    if (email === '') {
+      setError('email', 'Please enter your email.');
+      ok = false;
+    } else if (!EMAIL.test(email)) {
+      setError('email', 'Please enter a valid email address.');
+      ok = false;
+    } else { setError('email', ''); }
+
+    if (!form.querySelector('input[name="requestType"]:checked')) {
+      setError('requestType', 'Please choose test drive or quote.');
+      ok = false;
+    } else { setError('requestType', ''); }
+
+    if (ok) { confirmation.hidden = false; }
+  });
+})();
+</script>
+</body>
+</html>
