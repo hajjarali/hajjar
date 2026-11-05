@@ -20,11 +20,396 @@
       "text" : "Design"
     } ]
   }, {
-    "id" : "360a2c49",
+    "id" : "955ca1f4",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Scope and grounding"
+    } ]
+  }, {
+    "id" : "d66b5daa",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
-      "text" : "What is being built and how — the entities, their fields and types, what is persisted, how they relate, and what the screens show."
+      "text" : "The spec has no data model, no screen and no artifacts, so no entity, enum, sheet or navigation entry is designed or reused. The deliverable is one standalone file, "
+    }, {
+      "type" : "text",
+      "text" : "cucumber-panic.html",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", with all markup, CSS and JavaScript inline. The only persisted value is the best score, kept in browser "
+    }, {
+      "type" : "text",
+      "text" : "localStorage",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". Nothing is added to the platform catalog."
+    } ]
+  }, {
+    "id" : "9235cd8f",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Structure of the single file"
+    } ]
+  }, {
+    "id" : "010fabad",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The file holds a full-window "
+    }, {
+      "type" : "text",
+      "text" : "<canvas>",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", a small inline "
+    }, {
+      "type" : "text",
+      "text" : "<style>",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and one inline "
+    }, {
+      "type" : "text",
+      "text" : "<script>",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". It has no "
+    }, {
+      "type" : "text",
+      "text" : "<img>",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "<audio>",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "data:",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " URI or external "
+    }, {
+      "type" : "text",
+      "text" : "src",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "/"
+    }, {
+      "type" : "text",
+      "text" : "href",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "/"
+    }, {
+      "type" : "text",
+      "text" : "url(",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (R1, R11). The mute button is drawn on the canvas and hit-tested there, so no DOM image is needed. The script is split into plain functions around one state object."
+    } ]
+  }, {
+    "id" : "f6732a60",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Game state and rules"
+    } ]
+  }, {
+    "id" : "580097e2",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Game phase: "
+    }, {
+      "type" : "text",
+      "text" : "start",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "play",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "paused",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " or "
+    }, {
+      "type" : "text",
+      "text" : "over",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". Space or a tap advances start→play and over→play, and a restart resets lives to 3 and score to 0."
+    } ]
+  }, {
+    "id" : "9e9652b9",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The cat has x, a fixed y and a constant horizontal speed. It is clamped to the field edges (R2)."
+    } ]
+  }, {
+    "id" : "372b7e2d",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Each cucumber and fish has x, y and a radius or box. They live in two arrays that are filtered each frame."
+    } ]
+  }, {
+    "id" : "38e6fad9",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Lives (3), score, best score, invulnerability timer (1 s), bubble timer (2 s) and bubble text."
+    } ]
+  }, {
+    "id" : "3496e52a",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Difficulty is a pure function of score: "
+    }, {
+      "type" : "text",
+      "text" : "level = floor(score/100)",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", spawn rate = "
+    }, {
+      "type" : "text",
+      "text" : "min(5, 1 + level)",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " per second, fall speed = "
+    }, {
+      "type" : "text",
+      "text" : "min(500, 200 + 100*level)",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " px/s. The function is exposed so A3 can be tested at scores 0, 300 and 1000 (R3)."
+    } ]
+  }, {
+    "id" : "5f82ee7e",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The fish timer spawns one fish every 3 s of play time at a constant fall speed. A fish that passes the bottom is dropped with no effect (R13)."
+    } ]
+  }, {
+    "id" : "c75ca8fd",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Hit handling: a cucumber overlapping the cat is always removed. It costs a life only when the invulnerability timer is 0. A hit starts the 1 s immunity, a 2 s speech bubble with a random line from a fixed list of at least 6, and the shriek (R4, R14, R15). A fish overlap adds 10 and removes the fish (R5). At 0 lives the phase becomes "
+    }, {
+      "type" : "text",
+      "text" : "over",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and the best score is updated (R6, R7)."
+    } ]
+  }, {
+    "id" : "9d65128a",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "All timers advance by the frame delta, and the delta is zero while paused. Spawn accumulators and timers therefore freeze with the game. Pause triggers are P, Escape and "
+    }, {
+      "type" : "text",
+      "text" : "blur",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "/"
+    }, {
+      "type" : "text",
+      "text" : "visibilitychange",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". P or Escape resumes (R8)."
+    } ]
+  }, {
+    "id" : "591f8be0",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Input, scaling and loop"
+    } ]
+  }, {
+    "id" : "c88a4c50",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The loop uses "
+    }, {
+      "type" : "text",
+      "text" : "requestAnimationFrame",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " with the delta clamped to about 50 ms. Input comes from arrow keys or A/D held flags, plus pointer or touch on the left or right half of the canvas, which sets the same direction flags. M and the canvas mute button toggle mute (R2, R12). The canvas has a fixed logical size of 800x600. It is scaled by CSS to the largest size that fits the window at that ratio, and pointer coordinates are mapped back to logical coordinates (R10)."
+    } ]
+  }, {
+    "id" : "4aa7c559",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Storage and sound"
+    } ]
+  }, {
+    "id" : "cf9ef5dd",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Best score is read and written through "
+    }, {
+      "type" : "text",
+      "text" : "try/catch",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " wrappers around "
+    }, {
+      "type" : "text",
+      "text" : "localStorage",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". On any error the value lives in a module variable for the session (R7, R9)."
+    } ]
+  }, {
+    "id" : "0d381990",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Sound is generated with the Web Audio API. An "
+    }, {
+      "type" : "text",
+      "text" : "AudioContext",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " is created lazily on the first user gesture. Shriek, fish pickup and game-over are oscillator sweeps. Every call is a no-op while muted or when audio is unavailable (R11, R12, R14)."
+    } ]
+  }, {
+    "id" : "cfb831ee",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Testability and limits"
+    } ]
+  }, {
+    "id" : "481c0b17",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Logic is kept separate from drawing. The state and step functions are reachable through one "
+    }, {
+      "type" : "text",
+      "text" : "window.__game",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " handle, so tests can set the score, simulate hits and advance time without real waiting. A headless-browser script verifies the A1–A15 behaviours, and a static check greps the file for external references. Constraints are 60 fps with 30 cucumbers, so draw with simple canvas primitives and no per-frame allocation beyond the entity arrays, and a file size of at most 100 KB."
     } ]
   }, {
     "id" : "feature-tasks-h",
