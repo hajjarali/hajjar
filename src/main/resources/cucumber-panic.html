@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<title>Cucumber Panic</title>
+<style>
+  html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #111; }
+  body { display: flex; align-items: center; justify-content: center; }
+  canvas { display: block; background: #bfe6ff; touch-action: none; user-select: none; -webkit-user-select: none; }
+</style>
+</head>
+<body>
+<canvas id="game" width="800" height="600"></canvas>
+<script>
+(function () {
+  'use strict';
+
+  // ---- constants -----------------------------------------------------------
+  var W = 800, H = 600;             // fixed logical size of the play field
+  var MAX_DT = 0.05;                // clamp for the frame delta, in seconds
+  var CAT_SPEED = 400;              // px per second, constant
+  var CAT_W = 60, CAT_H = 44;
+  var CAT_Y = H - 30;               // baseline (feet) of the cat
+  var START_LIVES = 3;
+
+  // ---- state ---------------------------------------------------------------
+  var canvas = document.getElementById('game');
+  var ctx = canvas.getContext('2d');
+
+  var state = {
+    phase: 'start',                 // start | play | over
+    score: 0,
+    best: 0,
+    lives: START_LIVES,
+    cat: { x: W / 2, y: CAT_Y, w: CAT_W, h: CAT_H, dir: 0, facing: 1 }
+  };
+  var keys = { left: false, right: false };
+  var pointerDir = 0;               // -1 left half, +1 right half, 0 none
+  var view = { scale: 1, cssW: W, cssH: H };
+
+  // ---- scaling -------------------------------------------------------------
+  function resize() {
+    var iw = window.innerWidth || W, ih = window.innerHeight || H;
+    var scale = Math.min(iw / W, ih / H);
+    view.scale = scale;
+    view.cssW = Math.floor(W * scale);
+    view.cssH = Math.floor(H * scale);
+    canvas.style.width = view.cssW + 'px';
+    canvas.style.height = view.cssH + 'px';
+  }
+
+  // client (pointer) coordinates -> logical 800x600 coordinates
+  function toLogical(clientX, clientY) {
+    var r = canvas.getBoundingClientRect();
+    var rw = r.width || view.cssW, rh = r.height || view.cssH;
+    return { x: (clientX - r.left) * W / rw, y: (clientY - r.top) * H / rh };
+  }
+
+  // ---- phase machine -------------------------------------------------------
+  function startGame() {
+    state.score = 0;
+    state.lives = START_LIVES;
+    state.cat.x = W / 2;
+    state.cat.dir = 0;
+    state.phase = 'play';
+  }
+
+  function advancePhase() {
+    if (state.phase === 'start' || state.phase === 'over') startGame();
+  }
+
+  // ---- update --------------------------------------------------------------
+  function clampCat() {
+    var half = state.cat.w / 2;
+    if (state.cat.x < half) state.cat.x = half;
+    if (state.cat.x > W - half) state.cat.x = W - half;
+  }
+
+  function currentDir() {
+    var d = (keys.right ? 1 : 0) - (keys.left ? 1 : 0);
+    return d !== 0 ? d : pointerDir;
+  }
+
+  function step(dt) {
+    if (state.phase !== 'play') return;
+    var d = currentDir();
+    state.cat.dir = d;
+    if (d !== 0) state.cat.facing = d;
+    state.cat.x += d * CAT_SPEED * dt;
+    clampCat();
+  }
+
+  // ---- drawing -------------------------------------------------------------
+  function drawCat(c) {
+    var x = c.x, y = c.y, f = c.facing;
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.fillStyle = '#f0a040';
+    // tail
+    ctx.beginPath(); ctx.ellipse(-f * 28, -22, 6, 16, -f * 0.5, 0, Math.PI * 2); ctx.fill();
+    // body
+    ctx.beginPath(); ctx.ellipse(0, -16, 26, 16, 0, 0, Math.PI * 2); ctx.fill();
+    // head
+    ctx.beginPath(); ctx.arc(f * 16, -32, 13, 0, Math.PI * 2); ctx.fill();
+    // ears
+    ctx.beginPath();
+    ctx.moveTo(f * 6, -41); ctx.lineTo(f * 8, -54); ctx.lineTo(f * 15, -43);
+    ctx.moveTo(f * 18, -43); ctx.lineTo(f * 25, -54); ctx.lineTo(f * 27, -39);
+    ctx.fill();
+    // eyes
+    ctx.fillStyle = '#fff';
+    ctx.beginPath(); ctx.arc(f * 11, -34, 4, 0, Math.PI * 2); ctx.arc(f * 22, -34, 4, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#000';
+    ctx.beginPath(); ctx.arc(f * 12, -34, 1.8, 0, Math.PI * 2); ctx.arc(f * 23, -34, 1.8, 0, Math.PI * 2); ctx.fill();
+    // legs
+    ctx.fillStyle = '#d98a2a';
+    ctx.fillRect(-18, -6, 8, 6); ctx.fillRect(10, -6, 8, 6);
+    ctx.restore();
+  }
+
+  function text(str, x, y, size, color) {
+    ctx.fillStyle = color;
+    ctx.font = 'bold ' + size + 'px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText(str, x, y);
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = '#bfe6ff';
+    ctx.fillRect(0, 0, W, H);
+    ctx.fillStyle = '#7ccf6b';
+    ctx.fillRect(0, H - 30, W, 30);
+
+    drawCat(state.cat);
+
+    if (state.phase === 'play' || state.phase === 'over') {
+      ctx.textAlign = 'left';
+      ctx.fillStyle = '#222';
+      ctx.font = 'bold 22px sans-serif';
+      ctx.fillText('Score: ' + state.score, 16, 32);
+      ctx.fillText('Lives: ' + state.lives, 16, 60);
+    }
+    if (state.phase === 'start') {
+      ctx.fillStyle = 'rgba(0,0,0,0.45)'; ctx.fillRect(0, 0, W, H);
+      text('Cucumber Panic', W / 2, 220, 64, '#9be26a');
+      text('Press Space or tap to start', W / 2, 300, 28, '#fff');
+      text('Best: ' + state.best, W / 2, 350, 22, '#fff');
+    } else if (state.phase === 'over') {
+      ctx.fillStyle = 'rgba(0,0,0,0.55)'; ctx.fillRect(0, 0, W, H);
+      text('Game Over', W / 2, 200, 60, '#ff7a7a');
+      text('Score: ' + state.score, W / 2, 270, 30, '#fff');
+      text('Best: ' + state.best, W / 2, 315, 30, '#fff');
+      text('Press Space or tap to restart', W / 2, 380, 26, '#fff');
+    }
+  }
+
+  // ---- input ---------------------------------------------------------------
+  function keyName(e) {
+    var k = e.key || '';
+    return k.length === 1 ? k.toLowerCase() : k;
+  }
+
+  window.addEventListener('keydown', function (e) {
+    var k = keyName(e);
+    if (k === 'ArrowLeft' || k === 'a') keys.left = true;
+    else if (k === 'ArrowRight' || k === 'd') keys.right = true;
+    else if (k === ' ' || k === 'Spacebar') advancePhase();
+    else return;
+    if (e.preventDefault) e.preventDefault();
+  });
+  window.addEventListener('keyup', function (e) {
+    var k = keyName(e);
+    if (k === 'ArrowLeft' || k === 'a') keys.left = false;
+    else if (k === 'ArrowRight' || k === 'd') keys.right = false;
+  });
+
+  function pointerFrom(e) {
+    pointerDir = toLogical(e.clientX, e.clientY).x < W / 2 ? -1 : 1;
+  }
+  canvas.addEventListener('pointerdown', function (e) {
+    if (state.phase !== 'play') { advancePhase(); pointerDir = 0; return; }
+    pointerFrom(e);
+  });
+  canvas.addEventListener('pointermove', function (e) {
+    if (pointerDir !== 0) pointerFrom(e);   // dragging across the halves switches direction
+  });
+  function pointerEnd() { pointerDir = 0; }
+  canvas.addEventListener('pointerup', pointerEnd);
+  canvas.addEventListener('pointercancel', pointerEnd);
+  canvas.addEventListener('pointerleave', pointerEnd);
+  window.addEventListener('resize', resize);
+
+  // ---- loop ----------------------------------------------------------------
+  var last = null;
+  function frame(now) {
+    if (last === null) last = now;
+    var dt = Math.min(MAX_DT, Math.max(0, (now - last) / 1000));
+    last = now;
+    step(dt);
+    draw();
+    window.requestAnimationFrame(frame);
+  }
+
+  // ---- test handle ---------------------------------------------------------
+  window.__game = {
+    W: W, H: H,
+    state: state,
+    keys: keys,
+    view: view,
+    step: step,
+    draw: draw,
+    resize: resize,
+    start: startGame,
+    toLogical: toLogical
+  };
+
+  resize();
+  window.requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
