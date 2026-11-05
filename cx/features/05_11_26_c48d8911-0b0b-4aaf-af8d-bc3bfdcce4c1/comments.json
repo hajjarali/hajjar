@@ -1,1 +1,57 @@
-[ ]
+[ {
+  "threadId" : "6bcfff75-ae71-4e56-9711-7fde7c5423c3",
+  "text" : "the phase machine (start, play, over) with the start screen and its prompt",
+  "occurrence" : 0,
+  "resolved" : false,
+  "comments" : [ {
+    "id" : "dac0aad4-2614-428b-ab22-0800b601778e",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "Blocking: The design defines four phases (`start`, `play`, `paused`, `over`), but Task 1 builds the phase machine with only three. Task 3 adds pause without saying it introduces the `paused` phase, or how P or Escape and blur/visibilitychange resume it (the design says P or Escape resumes). State in Task 1 that the machine includes `paused`, or say explicitly in Task 3 that it adds the phase and its transitions.",
+    "createdAt" : "2026-11-05T08:28:42.887643100Z"
+  } ]
+}, {
+  "threadId" : "9e44532d-344b-4aef-b390-b826617e33f2",
+  "text" : "the game-over screen with the score, best score and restart prompt",
+  "occurrence" : 0,
+  "resolved" : false,
+  "comments" : [ {
+    "id" : "74b15139-90ed-4ce4-b309-010b1158f4d8",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "Task 2 shows the best score on the game-over screen, but storage and the best-score update are only added in Task 3 (the design updates best score on `over`). Task 2's A6 criterion therefore has no real best-score value to verify. Either state that Task 2 uses a placeholder in-memory best that Task 3 replaces with the storage wrappers, or move the best-score display to Task 3.",
+    "createdAt" : "2026-11-05T08:28:42.887643100Z"
+  } ]
+}, {
+  "threadId" : "58ae0df9-e4f6-426a-a96a-0fa3c04c2eec",
+  "text" : "Pause triggers are P, Escape and `blur`/`visibilitychange`. P or Escape resumes (R8).",
+  "occurrence" : 0,
+  "resolved" : false,
+  "comments" : [ {
+    "id" : "2df1545a-e843-4e50-9c2d-90c642a2f126",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "The spec says pressing the same key resumes, and the design lets either P or Escape resume. A8 says 'the same holds for Escape', so pause with P then resume with Escape is untested and unclear. Also, after a blur-triggered pause there is no defined resume key. Define it, for example: any pause key resumes, and a blur-pause resumes on P or Escape.",
+    "createdAt" : "2026-11-05T08:28:42.887643100Z"
+  } ]
+}, {
+  "threadId" : "b7c81cc7-2d2e-4301-9e11-132bdf6a387e",
+  "text" : "The mute button is drawn on the canvas and hit-tested there, so no DOM image is needed.",
+  "occurrence" : 0,
+  "resolved" : false,
+  "comments" : [ {
+    "id" : "0bceb9c4-840e-4779-858e-2c755d76a9a0",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "A tap on the canvas moves the cat, and the mute button sits on the same canvas. The design does not say that a tap on the button must toggle mute without also steering the cat or starting or restarting the game. Specify that the mute hit-test takes priority over movement and phase-advance handling, and add this to the A13 test.",
+    "createdAt" : "2026-11-05T08:28:42.887643100Z"
+  } ]
+} ]

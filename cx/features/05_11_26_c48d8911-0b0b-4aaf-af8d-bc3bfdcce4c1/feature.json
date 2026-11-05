@@ -10,6 +10,41 @@
       "text" : "htmlpage"
     } ]
   }, {
+    "id" : "feature-summary-h",
+    "type" : "heading",
+    "props" : {
+      "level" : 2
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Summary"
+    } ]
+  }, {
+    "id" : "2ab43034",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The plan builds Cucumber Panic as one self-contained "
+    }, {
+      "type" : "text",
+      "text" : "cucumber-panic.html",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " with inline canvas drawing, game logic and Web Audio sound. It has no entities or screens. The work is three tasks on that file. The first adds the scaled canvas, the loop, the cat movement and the static-content checks. The second adds spawning and difficulty, collisions, lives, score and game over. The third adds pause, best-score storage with its fallback, mute and sound, and the speech bubble. Behaviour is verified through a "
+    }, {
+      "type" : "text",
+      "text" : "window.__game",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " handle by a node harness that a JUnit test runs."
+    } ]
+  }, {
     "id" : "feature-design-h",
     "type" : "heading",
     "props" : {
@@ -412,6 +447,52 @@
       "text" : " handle, so tests can set the score, simulate hits and advance time without real waiting. A headless-browser script verifies the A1–A15 behaviours, and a static check greps the file for external references. Constraints are 60 fps with 30 cucumbers, so draw with simple canvas primitives and no per-frame allocation beyond the entity arrays, and a file size of at most 100 KB."
     } ]
   }, {
+    "id" : "feature-touches-h",
+    "type" : "heading",
+    "props" : {
+      "level" : 2
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Touches"
+    } ]
+  }, {
+    "id" : "d323a7c0",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "module: ."
+    } ],
+    "children" : [ {
+      "id" : "a184611b",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/cucumber-panic.html"
+      } ]
+    }, {
+      "id" : "34d72a5b",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/test/resources/cucumber-panic.test.mjs"
+      } ]
+    }, {
+      "id" : "d9be1018",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): com.example.htmlpage.CucumberPanicStaticTest"
+      } ]
+    }, {
+      "id" : "2791b0bb",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): com.example.htmlpage.CucumberPanicBehaviourTest"
+      } ]
+    } ]
+  }, {
     "id" : "feature-tasks-h",
     "type" : "heading",
     "props" : {
@@ -422,12 +503,19 @@
       "text" : "Tasks"
     } ]
   }, {
-    "id" : "75caa05f",
-    "type" : "paragraph",
+    "id" : "1ac4f238",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
     "content" : [ {
       "type" : "text",
-      "text" : "The design decomposed into tasks, each a '### Task N: Title' heading with a '"
-    }, {
+      "text" : "Task 1: Page skeleton, scaling, cat movement and the static-content checks"
+    } ]
+  }, {
+    "id" : "b2685164",
+    "type" : "paragraph",
+    "content" : [ {
       "type" : "text",
       "text" : "Depends on",
       "styles" : {
@@ -435,7 +523,627 @@
       }
     }, {
       "type" : "text",
-      "text" : "' line naming its direct prerequisites."
+      "text" : ": None"
+    } ]
+  }, {
+    "id" : "c8049760",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Cites",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": A1, A2, A10, A12"
+    } ]
+  }, {
+    "id" : "0d3602dd",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Create "
+    }, {
+      "type" : "text",
+      "text" : "src/main/resources/cucumber-panic.html",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (new, one file, inline CSS and JS): the full-window canvas with a fixed 800x600 logical size scaled by CSS to fit the window at its aspect ratio, pointer coordinates mapped back to logical ones, the "
+    }, {
+      "type" : "text",
+      "text" : "requestAnimationFrame",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " loop with a clamped delta, the phase machine (start, play, over) with the start screen and its prompt, and the cat drawn with canvas primitives. Add the cat's movement (arrows or A/D held, left or right half tap or drag) clamped to the field, and the "
+    }, {
+      "type" : "text",
+      "text" : "window.__game",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " test handle. Create the "
+    }, {
+      "type" : "text",
+      "text" : "CucumberPanicStaticTest",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " JUnit test, which reads the file and checks for external references, "
+    }, {
+      "type" : "text",
+      "text" : "data:",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " URIs, "
+    }, {
+      "type" : "text",
+      "text" : "<img>",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", "
+    }, {
+      "type" : "text",
+      "text" : "<audio>",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and size. Create "
+    }, {
+      "type" : "text",
+      "text" : "src/test/resources/cucumber-panic.test.mjs",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " as the node harness that loads the page's script with a stubbed canvas and DOM. It must not implement spawning, hits or sound; those belong to Tasks 2 and 3."
+    } ]
+  }, {
+    "id" : "d2a7f57d",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Touches",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "17f7dbb8",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "module: ."
+    } ],
+    "children" : [ {
+      "id" : "9d4019a1",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/cucumber-panic.html"
+      } ]
+    }, {
+      "id" : "23785db0",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/test/resources/cucumber-panic.test.mjs"
+      } ]
+    }, {
+      "id" : "46d83606",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): com.example.htmlpage.CucumberPanicStaticTest"
+      } ]
+    } ]
+  }, {
+    "id" : "d34a40bb",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Delivers",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": None"
+    } ]
+  }, {
+    "id" : "2ff9feda",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "640b9e4d",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A1) The file contains no "
+    }, {
+      "type" : "text",
+      "text" : "src=",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " or "
+    }, {
+      "type" : "text",
+      "text" : "href=",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " to an external resource, no "
+    }, {
+      "type" : "text",
+      "text" : "@import",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and no external "
+    }, {
+      "type" : "text",
+      "text" : "url(",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "."
+    } ]
+  }, {
+    "id" : "030203ff",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A12) The file contains no "
+    }, {
+      "type" : "text",
+      "text" : "data:",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " URI, no "
+    }, {
+      "type" : "text",
+      "text" : "<img>",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", no "
+    }, {
+      "type" : "text",
+      "text" : "<audio>",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and no external media reference, and it draws on a canvas."
+    } ]
+  }, {
+    "id" : "03d45eab",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A2) Holding Right for 1 s raises the cat's x and stops it at the right edge, and Left does the same at the left edge. A tap on the left half moves the cat left."
+    } ]
+  }, {
+    "id" : "56a17666",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A10) Resizing from 1280x720 to 400x800 leaves the whole field visible at its aspect ratio."
+    } ]
+  }, {
+    "id" : "b247cd6b",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The file is at most 100 KB."
+    } ]
+  }, {
+    "id" : "7c57df16",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Task 2: Falling objects, difficulty, collisions, lives, score and game over"
+    } ]
+  }, {
+    "id" : "59aa85ae",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Depends on",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": Task-1 (the phase machine, loop, cat and "
+    }, {
+      "type" : "text",
+      "text" : "window.__game",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " handle in cucumber-panic.html)"
+    } ]
+  }, {
+    "id" : "82e8c21f",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Cites",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": A3, A4, A5, A6, A14, A15"
+    } ]
+  }, {
+    "id" : "4eb2fcb8",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Extend "
+    }, {
+      "type" : "text",
+      "text" : "cucumber-panic.html",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". Add the pure difficulty function (spawn rate = min(5, 1 + floor(score/100)), fall speed = min(500, 200 + 100*level)). Add the cucumber spawn accumulator and the fish timer (one every 3 s of play time, constant speed, dropped silently at the bottom). Add cucumber and fish collision with the cat. A fish adds 10 points. A cucumber is always removed and costs one life only when the 1 s immunity is off, and a hit starts that immunity. Add the HUD for lives and score, the game-over screen with the score, best score and restart prompt, and restart by Space or tap with 3 lives and score 0. Extend the node harness and add "
+    }, {
+      "type" : "text",
+      "text" : "CucumberPanicBehaviourTest",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", a JUnit test that runs the harness through "
+    }, {
+      "type" : "text",
+      "text" : "node",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". Do not add storage, pause, sound or the speech bubble here; those belong to Task 3."
+    } ]
+  }, {
+    "id" : "2e2b550e",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Touches",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "30ad9e6d",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "module: ."
+    } ],
+    "children" : [ {
+      "id" : "62e8e133",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/cucumber-panic.html"
+      } ]
+    }, {
+      "id" : "b23ac7d9",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/test/resources/cucumber-panic.test.mjs"
+      } ]
+    }, {
+      "id" : "0405dda3",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): com.example.htmlpage.CucumberPanicBehaviourTest"
+      } ]
+    } ]
+  }, {
+    "id" : "c8aad88a",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Delivers",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": None"
+    } ]
+  }, {
+    "id" : "fd25f41c",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "e6b49acd",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A3) At scores 0, 300 and 1000 the spawn rate is 1, 4 and 5 per second and the fall speed is 200, 500 and 500 px/s."
+    } ]
+  }, {
+    "id" : "4e84b397",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A4) A cucumber overlapping the cat drops lives from 3 to 2 and the cucumber disappears."
+    } ]
+  }, {
+    "id" : "f0f9c762",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A5) A fish overlapping the cat raises the score by exactly 10 and the fish disappears."
+    } ]
+  }, {
+    "id" : "8af6ea53",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A6) At 0 lives play stops and the game-over screen shows the score, the best score and a restart prompt. Space or a tap starts a new game with 3 lives and score 0."
+    } ]
+  }, {
+    "id" : "2864eef7",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A14) After 9 s of play exactly 3 fish have spawned. A fish reaching the bottom disappears with score and lives unchanged."
+    } ]
+  }, {
+    "id" : "02cf84b1",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A15) Two cucumbers overlapping within 1 s of a hit cost 1 life in total. A cucumber touching after 1 s costs another life."
+    } ]
+  }, {
+    "id" : "ea833822",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Task 3: Pause, best-score storage, mute and sound, speech bubble"
+    } ]
+  }, {
+    "id" : "dc215180",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Depends on",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": Task-2 (the hit handler, game-over transition and difficulty loop in cucumber-panic.html that pause, storage, bubble and shriek hook into)"
+    } ]
+  }, {
+    "id" : "43e53780",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Cites",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": A7, A8, A9, A11, A13"
+    } ]
+  }, {
+    "id" : "c336f8b1",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Extend "
+    }, {
+      "type" : "text",
+      "text" : "cucumber-panic.html",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". Add pause and resume on P or Escape and on blur or visibilitychange, with the frame delta forced to 0 while paused. Add the best-score "
+    }, {
+      "type" : "text",
+      "text" : "localStorage",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " wrappers with the in-memory fallback, the update at game over, and its display on the start and game-over screens. Add the lazily created Web Audio sounds (shriek, fish pickup, game-over), the M key and the canvas mute button, and the 2 s speech bubble with a random line from a fixed list of at least 6, shown on each lost life. Extend the node harness and "
+    }, {
+      "type" : "text",
+      "text" : "CucumberPanicBehaviourTest",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " to cover these."
+    } ]
+  }, {
+    "id" : "f08c5568",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Touches",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "7151b00c",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "module: ."
+    } ],
+    "children" : [ {
+      "id" : "bca09b8b",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/cucumber-panic.html"
+      } ]
+    }, {
+      "id" : "3e587547",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/test/resources/cucumber-panic.test.mjs"
+      } ]
+    }, {
+      "id" : "d79df67d",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): com.example.htmlpage.CucumberPanicBehaviourTest"
+      } ]
+    } ]
+  }, {
+    "id" : "4beac670",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Delivers",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": None"
+    } ]
+  }, {
+    "id" : "5f33e6e0",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "2bf58724",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A7) A game ending at 120 with a stored best of 100 stores 120, which shows again after a reload. A game ending at 80 leaves it at 120."
+    } ]
+  }, {
+    "id" : "f41a4b5a",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A8) P pauses so cucumbers stop moving, and pressing P again resumes from the same positions. The same holds for Escape and for tab focus loss."
+    } ]
+  }, {
+    "id" : "bb770479",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A9) When storage access throws, the game still starts and plays, and the best score updates for the session."
+    } ]
+  }, {
+    "id" : "3b6eeb69",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A11) Across 20 simulated life losses, each shows a bubble for 2 s with a line from the fixed set, and a shriek plays unless muted."
+    } ]
+  }, {
+    "id" : "1f0822ee",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A13) After M is pressed, no shriek plays on the next hit. After M is pressed again it does. The on-screen button does the same."
     } ]
   } ],
   "comments" : [ ],
