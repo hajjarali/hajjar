@@ -8,8 +8,14 @@ const html = fs.readFileSync(htmlPath, 'utf8');
 const m = /<script>([\s\S]*?)<\/script>/.exec(html);
 assert.ok(m, 'page has an inline script');
 
-function makeEnv(w, h) {
-  const winL = {}, canL = {};
+function memStore() {
+  const d = {};
+  return { getItem: (k) => (k in d ? d[k] : null), setItem: (k, v) => { d[k] = String(v); } };
+}
+const throwingStore = { getItem() { throw new Error('blocked'); }, setItem() { throw new Error('blocked'); } };
+
+function makeEnv(w, h, store) {
+  const winL = {}, canL = {}, docL = {};
   const ctx = new Proxy({}, { get: (t, p) => (p in t ? t[p] : () => {}), set: (t, p, v) => { t[p] = v; return true; } });
   const canvas = {
     style: {}, width: 800, height: 600,
@@ -21,17 +27,21 @@ function makeEnv(w, h) {
     }
   };
   const win = {
-    innerWidth: w, innerHeight: h, rafCb: null,
+    innerWidth: w, innerHeight: h, rafCb: null, localStorage: store || memStore(),
     addEventListener: (n, f) => { (winL[n] = winL[n] || []).push(f); },
     requestAnimationFrame: (cb) => { win.rafCb = cb; return 1; }
   };
-  const document = { getElementById: () => canvas };
+  const document = {
+    getElementById: () => canvas, hidden: false,
+    addEventListener: (n, f) => { (docL[n] = docL[n] || []).push(f); }
+  };
   new Function('window', 'document', m[1])(win, document);
   const fire = (l, n, e) => (l[n] || []).forEach((f) => f(Object.assign({ preventDefault() {} }, e)));
   return {
     win, canvas, g: win.__game,
     key: (n, e) => fire(winL, n, e),
     ptr: (n, e) => fire(canL, n, e),
+    doc: (n, e) => fire(docL, n, e), document,
     resizeTo(nw, nh) { win.innerWidth = nw; win.innerHeight = nh; fire(winL, 'resize', {}); }
   };
 }
@@ -204,6 +214,136 @@ test('a15_two cucumbers within 1 s cost one life; one after 1 s costs another', 
   s.cucumbers.push(onCat(s));
   env.g.step(0.001);
   assert.equal(s.lives, 1);
+});
+
+// ---- Task 3 ----
+const endGameWith = (env, score) => {
+  env.g.start();
+  const s = env.g.state;
+  s.score = score; s.lives = 1;
+  s.cucumbers.push(onCat(s));
+  env.g.step(0.001);
+  assert.equal(s.phase, 'over');
+};
+
+test('a7_best score is stored when beaten, survives reload, and is kept when not beaten', () => {
+  const store = memStore();
+  store.setItem('cucumberPanicBest', '100');
+  let env = makeEnv(1280, 720, store);
+  assert.equal(env.g.state.best, 100);
+  env.g.setRandom(() => 0);
+  endGameWith(env, 120);
+  assert.equal(env.g.state.best, 120);
+  env = makeEnv(1280, 720, store); // reload
+  assert.equal(env.g.state.best, 120);
+  env.g.setRandom(() => 0);
+  endGameWith(env, 80);
+  assert.equal(env.g.state.best, 120);
+  env = makeEnv(1280, 720, store);
+  assert.equal(env.g.state.best, 120);
+});
+
+test('a9_blocked storage: game still plays and best updates for the session', () => {
+  const env = makeEnv(1280, 720, throwingStore);
+  env.key('keydown', { key: ' ' });
+  assert.equal(env.g.state.phase, 'play');
+  env.g.setRandom(() => 0);
+  endGameWith(env, 70);
+  assert.equal(env.g.state.best, 70);
+  env.key('keydown', { key: ' ' });
+  assert.equal(env.g.state.phase, 'play');
+  endGameWith(env, 30);
+  assert.equal(env.g.state.best, 70);
+});
+
+for (const [name, fire] of [
+  ['P', (env) => env.key('keydown', { key: 'p' })],
+  ['Escape', (env) => env.key('keydown', { key: 'Escape' })]
+]) {
+  test('a8_' + name + ' pauses and resumes from the same positions', () => {
+    const env = makeEnv(1280, 720);
+    env.g.start();
+    env.g.setRandom(() => 0);
+    const s = env.g.state;
+    s.cucumbers.push({ x: 20, y: 100 });
+    fire(env);
+    assert.equal(s.phase, 'paused');
+    const y = s.cucumbers[0].y, acc = s.spawnAcc, ft = s.fishTimer;
+    env.win.rafCb(0); env.win.rafCb(40);
+    env.g.step(1);
+    assert.equal(s.cucumbers[0].y, y);
+    assert.equal(s.spawnAcc, acc);
+    assert.equal(s.fishTimer, ft);
+    fire(env);
+    assert.equal(s.phase, 'play');
+    env.g.step(0.1);
+    assert.ok(s.cucumbers[0].y > y);
+  });
+}
+
+test('a8_window blur and tab hidden pause the game', () => {
+  const env = makeEnv(1280, 720);
+  env.g.start();
+  env.key('blur', {});
+  assert.equal(env.g.state.phase, 'paused');
+  env.key('keydown', { key: 'p' });
+  assert.equal(env.g.state.phase, 'play');
+  env.document.hidden = true;
+  env.doc('visibilitychange', {});
+  assert.equal(env.g.state.phase, 'paused');
+});
+
+test('a11_20 life losses each show a 2 s bubble with a line from the set and a shriek', () => {
+  const env = makeEnv(1280, 720);
+  env.g.start();
+  env.g.setRandom(() => 0);
+  const s = env.g.state;
+  assert.ok(env.g.LINES.length >= 6);
+  const seen = new Set();
+  for (let i = 0; i < 20; i++) {
+    env.g.setRandom(() => (i % env.g.LINES.length) / env.g.LINES.length + 0.001);
+    s.lives = 3; s.immune = 0;
+    const n = env.g.soundLog.length;
+    s.cucumbers.length = 0;
+    s.cucumbers.push(onCat(s));
+    env.g.step(0.001);
+    assert.ok(env.g.LINES.includes(s.bubbleText));
+    seen.add(s.bubbleText);
+    assert.ok(s.bubbleTimer > 1.99 && s.bubbleTimer <= 2);
+    assert.equal(env.g.soundLog.slice(n).filter((x) => x === 'shriek').length, 1);
+    env.g.step(1.5);
+    assert.ok(s.bubbleTimer > 0.4);
+    env.g.step(0.6);
+    assert.equal(s.bubbleTimer, 0);
+  }
+  assert.ok(seen.size >= 5);
+});
+
+test('a13_M and the on-screen button toggle sound for the next hit', () => {
+  const env = makeEnv(1280, 720);
+  env.g.start();
+  env.g.setRandom(() => 0);
+  const s = env.g.state;
+  const hit = () => {
+    s.lives = 3; s.immune = 0; s.cucumbers.length = 0;
+    const n = env.g.soundLog.length;
+    s.cucumbers.push(onCat(s));
+    env.g.step(0.001);
+    return env.g.soundLog.slice(n).filter((x) => x === 'shriek').length;
+  };
+  assert.equal(hit(), 1);
+  env.key('keydown', { key: 'm' });
+  assert.equal(hit(), 0);
+  env.key('keydown', { key: 'm' });
+  assert.equal(hit(), 1);
+  // on-screen button: logical (778, 34) -> client coordinates at 1280x720 (scale 1.2)
+  const click = () => env.ptr('pointerdown', { clientX: (1280 - 960) / 2 + 778 * 1.2, clientY: 34 * 1.2 });
+  click();
+  assert.equal(s.muted, true);
+  assert.equal(hit(), 0);
+  click();
+  assert.equal(hit(), 1);
+  assert.equal(s.phase, 'play');
 });
 
 if (failed) { console.log(failed + ' failed'); process.exit(1); }

@@ -32,6 +32,18 @@
   var SPAWN_MARGIN = 30;
   var EPS = 1e-9;
   var rand = Math.random;           // replaceable through the test handle
+  var BUBBLE_TIME = 2;              // seconds the speech bubble stays
+  var STORAGE_KEY = 'cucumberPanicBest';
+  var MUTE_BTN = { x: W - 56, y: 12, w: 44, h: 44 };
+  var LINES = [
+    'Not the cucumber!',
+    'Eeek! Get it away!',
+    'Is that a snake?!',
+    'I am too pretty for this!',
+    'Nope nope nope!',
+    'Why is it always cucumbers?!',
+    'Meowch! Rude!'
+  ];
 
 
   // ---- state ---------------------------------------------------------------
@@ -42,6 +54,9 @@
     phase: 'start',                 // start | play | over
     score: 0,
     best: 0,
+    muted: false,
+    bubbleText: '',
+    bubbleTimer: 0,                 // seconds of speech bubble left
     lives: START_LIVES,
     cucumbers: [],                  // {x, y}
     fish: [],                       // {x, y}
@@ -56,6 +71,53 @@
   var keys = { left: false, right: false };
   var pointerDir = 0;               // -1 left half, +1 right half, 0 none
   var view = { scale: 1, cssW: W, cssH: H };
+  var soundLog = [];                // names of sounds requested while unmuted (test aid)
+
+  // ---- best score storage (falls back to memory when storage throws) ------------
+  function loadBest() {
+    try {
+      var v = parseInt(window.localStorage.getItem(STORAGE_KEY), 10);
+      return isNaN(v) ? 0 : v;
+    } catch (e) { return state.best; }
+  }
+  function saveBest(v) {
+    try { window.localStorage.setItem(STORAGE_KEY, String(v)); } catch (e) { /* session only */ }
+  }
+  state.best = loadBest();
+
+  // ---- sound (Web Audio, created lazily on a user gesture) -----------------------
+  var actx = null;
+  function audioCtx() {
+    if (actx) return actx;
+    try {
+      var AC = window.AudioContext || window.webkitAudioContext;
+      if (AC) actx = new AC();
+    } catch (e) { actx = null; }
+    return actx;
+  }
+  function sweep(f0, f1, dur, type, vol) {
+    var a = audioCtx();
+    if (!a) return;
+    try {
+      var t = a.currentTime, o = a.createOscillator(), g = a.createGain();
+      o.type = type;
+      o.frequency.setValueAtTime(f0, t);
+      o.frequency.exponentialRampToValueAtTime(f1, t + dur);
+      g.gain.setValueAtTime(vol, t);
+      g.gain.exponentialRampToValueAtTime(0.001, t + dur);
+      o.connect(g); g.connect(a.destination);
+      o.start(t); o.stop(t + dur);
+    } catch (e) { /* audio unavailable */ }
+  }
+  function play(name) {
+    if (state.muted) return;
+    soundLog.push(name);
+    if (name === 'shriek') sweep(900, 1800, 0.35, 'sawtooth', 0.25);
+    else if (name === 'fish') sweep(600, 1200, 0.15, 'square', 0.15);
+    else if (name === 'gameover') sweep(400, 80, 0.8, 'triangle', 0.25);
+  }
+  function toggleMute() { state.muted = !state.muted; }
+
 
   // ---- scaling -------------------------------------------------------------
   function resize() {
@@ -85,6 +147,7 @@
     state.spawnAcc = 0;
     state.fishTimer = 0;
     state.fishSpawned = 0;
+    state.bubbleTimer = 0;
     state.cat.x = W / 2;
     state.cat.dir = 0;
     state.phase = 'play';
@@ -93,6 +156,12 @@
   function advancePhase() {
     if (state.phase === 'start' || state.phase === 'over') startGame();
   }
+
+  function togglePause() {
+    if (state.phase === 'play') { state.phase = 'paused'; state.cat.dir = 0; }
+    else if (state.phase === 'paused') state.phase = 'play';
+  }
+  function autoPause() { if (state.phase === 'play') togglePause(); }
 
   // ---- update --------------------------------------------------------------
   function clampCat() {
@@ -126,7 +195,18 @@
   function gameOver() {
     state.phase = 'over';
     state.cat.dir = 0;
-    if (state.score > state.best) state.best = state.score;
+    if (state.score > state.best) { state.best = state.score; saveBest(state.best); }
+    play('gameover');
+  }
+
+  // A life is lost: immunity, speech bubble, shriek; game over at 0 lives.
+  function loseLife() {
+    state.lives -= 1;
+    state.immune = IMMUNITY;
+    state.bubbleText = LINES[Math.floor(rand() * LINES.length) % LINES.length];
+    state.bubbleTimer = BUBBLE_TIME;
+    play('shriek');
+    if (state.lives <= 0) { state.lives = 0; gameOver(); }
   }
 
   function step(dt) {
@@ -139,6 +219,8 @@
 
     var i, o, diff = difficulty(state.score);
     if (state.immune > 0) state.immune = Math.max(0, state.immune - dt);
+    if (state.bubbleTimer > 0) state.bubbleTimer = Math.max(0, state.bubbleTimer - dt);
+
 
     // spawning
     state.spawnAcc += diff.spawnRate * dt;
@@ -159,11 +241,7 @@
       o = state.cucumbers[i];
       o.y += diff.fallSpeed * dt;
       if (state.phase === 'play' && overlapsCat(o, CUC_W, CUC_H)) {
-        if (state.immune <= 0) {
-          state.lives -= 1;
-          state.immune = IMMUNITY;
-          if (state.lives <= 0) { state.lives = 0; gameOver(); }
-        }
+        if (state.immune <= 0) loseLife();
         continue;                   // a touching cucumber is always removed
       }
       if (o.y - CUC_H / 2 < H) keepC.push(o);
@@ -177,6 +255,7 @@
       o.y += FISH_SPEED * dt;
       if (state.phase === 'play' && overlapsCat(o, FISH_W, FISH_H)) {
         state.score += FISH_POINTS;
+        play('fish');
         continue;
       }
       if (o.y - FISH_H / 2 < H) keepF.push(o);
@@ -244,13 +323,31 @@
     drawCat(state.cat);
     ctx.globalAlpha = 1;
 
+    // speech bubble
+    if (state.bubbleTimer > 0 && state.phase !== 'start') {
+      var bx = Math.min(W - 130, Math.max(130, state.cat.x)), by = state.cat.y - 80;
+      ctx.fillStyle = '#fff';
+      ctx.fillRect(bx - 120, by - 34, 240, 34);
+      ctx.beginPath(); ctx.moveTo(bx - 8, by); ctx.lineTo(bx + 8, by); ctx.lineTo(bx, by + 12); ctx.fill();
+      text(state.bubbleText, bx, by - 11, 18, '#222');
+    }
 
-    if (state.phase === 'play' || state.phase === 'over') {
+    // mute button (drawn and hit-tested on the canvas)
+    ctx.fillStyle = 'rgba(0,0,0,0.35)';
+    ctx.fillRect(MUTE_BTN.x, MUTE_BTN.y, MUTE_BTN.w, MUTE_BTN.h);
+    text(state.muted ? 'OFF' : 'SND', MUTE_BTN.x + MUTE_BTN.w / 2, MUTE_BTN.y + 27, 14, '#fff');
+
+    if (state.phase === 'play' || state.phase === 'paused' || state.phase === 'over') {
       ctx.textAlign = 'left';
       ctx.fillStyle = '#222';
       ctx.font = 'bold 22px sans-serif';
       ctx.fillText('Score: ' + state.score, 16, 32);
       ctx.fillText('Lives: ' + state.lives, 16, 60);
+    }
+    if (state.phase === 'paused') {
+      ctx.fillStyle = 'rgba(0,0,0,0.45)'; ctx.fillRect(0, 0, W, H);
+      text('Paused', W / 2, 280, 56, '#fff');
+      text('Press P or Esc to resume', W / 2, 330, 24, '#fff');
     }
     if (state.phase === 'start') {
       ctx.fillStyle = 'rgba(0,0,0,0.45)'; ctx.fillRect(0, 0, W, H);
@@ -277,6 +374,8 @@
     if (k === 'ArrowLeft' || k === 'a') keys.left = true;
     else if (k === 'ArrowRight' || k === 'd') keys.right = true;
     else if (k === ' ' || k === 'Spacebar') advancePhase();
+    else if (k === 'p' || k === 'Escape') { if (!e.repeat) togglePause(); }
+    else if (k === 'm') { if (!e.repeat) toggleMute(); }
     else return;
     if (e.preventDefault) e.preventDefault();
   });
@@ -290,6 +389,13 @@
     pointerDir = toLogical(e.clientX, e.clientY).x < W / 2 ? -1 : 1;
   }
   canvas.addEventListener('pointerdown', function (e) {
+    audioCtx();                       // first user gesture: create the audio context lazily
+    var p = toLogical(e.clientX, e.clientY);
+    if (p.x >= MUTE_BTN.x && p.x <= MUTE_BTN.x + MUTE_BTN.w && p.y >= MUTE_BTN.y && p.y <= MUTE_BTN.y + MUTE_BTN.h) {
+      toggleMute();
+      return;
+    }
+    if (state.phase === 'paused') return;
     if (state.phase !== 'play') { advancePhase(); pointerDir = 0; return; }
     pointerFrom(e);
   });
@@ -301,6 +407,10 @@
   canvas.addEventListener('pointercancel', pointerEnd);
   canvas.addEventListener('pointerleave', pointerEnd);
   window.addEventListener('resize', resize);
+  window.addEventListener('blur', autoPause);
+  if (typeof document.addEventListener === 'function') {
+    document.addEventListener('visibilitychange', function () { if (document.hidden) autoPause(); });
+  }
 
   // ---- loop ----------------------------------------------------------------
   var last = null;
@@ -322,9 +432,13 @@
     step: step,
     difficulty: difficulty,
     setRandom: function (fn) { rand = fn || Math.random; },
-
-    difficulty: difficulty,
-    setRandom: function (fn) { rand = fn || Math.random; },
+    LINES: LINES,
+    BUBBLE_TIME: BUBBLE_TIME,
+    soundLog: soundLog,
+    togglePause: togglePause,
+    toggleMute: toggleMute,
+    loadBest: loadBest,
+    loseLife: loseLife,
     draw: draw,
     resize: resize,
     start: startGame,
