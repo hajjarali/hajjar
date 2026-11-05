@@ -113,5 +113,98 @@ test('animation loop clamps the delta', () => {
   assert.ok(env.g.state.cat.x - x0 <= 400 * 0.05 + 1e-6);
 });
 
+const onCat = (s) => ({ x: s.cat.x, y: s.cat.y - s.cat.h / 2 });
+// a stable setup: no random spawns land on the cat (spawn x pinned far from it)
+const quiet = (env) => { env.g.start(); env.g.setRandom(() => 0); };
+
+test('a3_difficulty at scores 0, 300 and 1000', () => {
+  const env = makeEnv(1280, 720);
+  const d = env.g.difficulty;
+  assert.deepEqual([d(0).spawnRate, d(300).spawnRate, d(1000).spawnRate], [1, 4, 5]);
+  assert.deepEqual([d(0).fallSpeed, d(300).fallSpeed, d(1000).fallSpeed], [200, 500, 500]);
+});
+
+test('a4_cucumber on the cat costs one life and disappears', () => {
+  const env = makeEnv(1280, 720);
+  quiet(env);
+  const s = env.g.state;
+  s.cucumbers.push(onCat(s));
+  env.g.step(0.001);
+  assert.equal(s.lives, 2);
+  assert.equal(s.cucumbers.filter((c) => Math.abs(c.x - s.cat.x) < 5 && c.y > 400).length, 0);
+});
+
+test('a5_fish on the cat adds exactly 10 and disappears', () => {
+  const env = makeEnv(1280, 720);
+  quiet(env);
+  const s = env.g.state;
+  s.fish.push(onCat(s));
+  env.g.step(0.001);
+  assert.equal(s.score, 10);
+  assert.equal(s.fish.length, 0);
+});
+
+test('a6_game over at 0 lives, then Space restarts with 3 lives and score 0', () => {
+  const env = makeEnv(1280, 720);
+  quiet(env);
+  const s = env.g.state;
+  s.score = 50; s.lives = 1;
+  s.cucumbers.push(onCat(s));
+  env.g.step(0.001);
+  assert.equal(s.lives, 0);
+  assert.equal(s.phase, 'over');
+  assert.equal(s.best, 50);
+  env.g.draw();
+  const before = s.cucumbers.length;
+  env.g.step(1);
+  assert.equal(s.cucumbers.length, before, 'play has stopped');
+  env.key('keydown', { key: ' ' });
+  assert.equal(s.phase, 'play');
+  assert.equal(s.lives, 3);
+  assert.equal(s.score, 0);
+});
+
+test('a6_tap restarts after game over', () => {
+  const env = makeEnv(1280, 720);
+  quiet(env);
+  env.g.state.phase = 'over';
+  env.ptr('pointerdown', { clientX: 640, clientY: 360 });
+  assert.equal(env.g.state.phase, 'play');
+  assert.equal(env.g.state.lives, 3);
+});
+
+test('a14_exactly 3 fish spawn in 9 s and a fish at the bottom vanishes silently', () => {
+  const env = makeEnv(1280, 720);
+  env.g.start();
+  const s = env.g.state;
+  env.g.setRandom(() => 0);   // spawn at the far left, away from the cat
+  s.cat.x = 700;
+  for (let i = 0; i < 9 * 60; i++) { s.lives = 1000; env.g.step(1 / 60); }
+  assert.equal(s.fishSpawned, 3);
+  s.fish.length = 0; s.cucumbers.length = 0;
+  s.fish.push({ x: 20, y: 590 });
+  const score = s.score, lives = s.lives;
+  env.g.step(0.2);
+  assert.equal(s.fish.length, 0);
+  assert.equal(s.score, score);
+  assert.equal(s.lives, lives);
+});
+
+test('a15_two cucumbers within 1 s cost one life; one after 1 s costs another', () => {
+  const env = makeEnv(1280, 720);
+  quiet(env);
+  const s = env.g.state;
+  s.cucumbers.push(onCat(s), onCat(s));
+  env.g.step(0.001);
+  assert.equal(s.lives, 2);
+  s.cucumbers.push(onCat(s));
+  env.g.step(0.5);
+  assert.equal(s.lives, 2);
+  env.g.step(0.6);
+  s.cucumbers.push(onCat(s));
+  env.g.step(0.001);
+  assert.equal(s.lives, 1);
+});
+
 if (failed) { console.log(failed + ' failed'); process.exit(1); }
 console.log('all passed');

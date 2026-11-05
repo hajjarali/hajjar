@@ -23,6 +23,16 @@
   var CAT_W = 60, CAT_H = 44;
   var CAT_Y = H - 30;               // baseline (feet) of the cat
   var START_LIVES = 3;
+  var IMMUNITY = 1;                 // seconds of cucumber immunity after a hit
+  var FISH_INTERVAL = 3;            // seconds of play time between fish
+  var FISH_SPEED = 150;             // px per second, constant
+  var FISH_POINTS = 10;
+  var CUC_W = 18, CUC_H = 44;       // cucumber box (centred on x, y)
+  var FISH_W = 34, FISH_H = 20;     // fish box (centred on x, y)
+  var SPAWN_MARGIN = 30;
+  var EPS = 1e-9;
+  var rand = Math.random;           // replaceable through the test handle
+
 
   // ---- state ---------------------------------------------------------------
   var canvas = document.getElementById('game');
@@ -33,6 +43,14 @@
     score: 0,
     best: 0,
     lives: START_LIVES,
+    cucumbers: [],                  // {x, y}
+    fish: [],                       // {x, y}
+    immune: 0,                      // seconds of immunity left
+    spawnAcc: 0,                    // cucumber spawn accumulator
+    fishTimer: 0,                   // seconds since the last fish
+    fishSpawned: 0,                 // fish spawned this game
+
+
     cat: { x: W / 2, y: CAT_Y, w: CAT_W, h: CAT_H, dir: 0, facing: 1 }
   };
   var keys = { left: false, right: false };
@@ -61,6 +79,12 @@
   function startGame() {
     state.score = 0;
     state.lives = START_LIVES;
+    state.cucumbers.length = 0;
+    state.fish.length = 0;
+    state.immune = 0;
+    state.spawnAcc = 0;
+    state.fishTimer = 0;
+    state.fishSpawned = 0;
     state.cat.x = W / 2;
     state.cat.dir = 0;
     state.phase = 'play';
@@ -82,6 +106,29 @@
     return d !== 0 ? d : pointerDir;
   }
 
+  // Pure difficulty: spawn rate (per second) and fall speed (px/s) from the score.
+  function difficulty(score) {
+    var level = Math.floor(score / 100);
+    return {
+      level: level,
+      spawnRate: Math.min(5, 1 + level),
+      fallSpeed: Math.min(500, 200 + 100 * level)
+    };
+  }
+
+  function spawnX() { return SPAWN_MARGIN + rand() * (W - 2 * SPAWN_MARGIN); }
+
+  function overlapsCat(o, w, h) {
+    var c = state.cat;
+    return Math.abs(o.x - c.x) < (w + c.w) / 2 && Math.abs(o.y - (c.y - c.h / 2)) < (h + c.h) / 2;
+  }
+
+  function gameOver() {
+    state.phase = 'over';
+    state.cat.dir = 0;
+    if (state.score > state.best) state.best = state.score;
+  }
+
   function step(dt) {
     if (state.phase !== 'play') return;
     var d = currentDir();
@@ -89,6 +136,52 @@
     if (d !== 0) state.cat.facing = d;
     state.cat.x += d * CAT_SPEED * dt;
     clampCat();
+
+    var i, o, diff = difficulty(state.score);
+    if (state.immune > 0) state.immune = Math.max(0, state.immune - dt);
+
+    // spawning
+    state.spawnAcc += diff.spawnRate * dt;
+    while (state.spawnAcc >= 1 - EPS) {
+      state.spawnAcc -= 1;
+      state.cucumbers.push({ x: spawnX(), y: -CUC_H });
+    }
+    state.fishTimer += dt;
+    while (state.fishTimer >= FISH_INTERVAL - EPS) {
+      state.fishTimer -= FISH_INTERVAL;
+      state.fish.push({ x: spawnX(), y: -FISH_H });
+      state.fishSpawned += 1;
+    }
+
+    // cucumbers: fall, collide, drop off the bottom
+    var keepC = [];
+    for (i = 0; i < state.cucumbers.length; i++) {
+      o = state.cucumbers[i];
+      o.y += diff.fallSpeed * dt;
+      if (state.phase === 'play' && overlapsCat(o, CUC_W, CUC_H)) {
+        if (state.immune <= 0) {
+          state.lives -= 1;
+          state.immune = IMMUNITY;
+          if (state.lives <= 0) { state.lives = 0; gameOver(); }
+        }
+        continue;                   // a touching cucumber is always removed
+      }
+      if (o.y - CUC_H / 2 < H) keepC.push(o);
+    }
+    state.cucumbers = keepC;
+
+    // fish: fall at constant speed, score on touch, vanish silently at the bottom
+    var keepF = [];
+    for (i = 0; i < state.fish.length; i++) {
+      o = state.fish[i];
+      o.y += FISH_SPEED * dt;
+      if (state.phase === 'play' && overlapsCat(o, FISH_W, FISH_H)) {
+        state.score += FISH_POINTS;
+        continue;
+      }
+      if (o.y - FISH_H / 2 < H) keepF.push(o);
+    }
+    state.fish = keepF;
   }
 
   // ---- drawing -------------------------------------------------------------
@@ -133,7 +226,24 @@
     ctx.fillStyle = '#7ccf6b';
     ctx.fillRect(0, H - 30, W, 30);
 
+    var i, o;
+    ctx.fillStyle = '#3f9a3a';
+    for (i = 0; i < state.cucumbers.length; i++) {
+      o = state.cucumbers[i];
+      ctx.fillRect(o.x - CUC_W / 2, o.y - CUC_H / 2, CUC_W, CUC_H);
+    }
+    ctx.fillStyle = '#4aa3e0';
+    for (i = 0; i < state.fish.length; i++) {
+      o = state.fish[i];
+      ctx.beginPath(); ctx.ellipse(o.x, o.y, FISH_W / 2 - 4, FISH_H / 2, 0, 0, Math.PI * 2); ctx.fill();
+      ctx.beginPath(); ctx.moveTo(o.x + FISH_W / 2 - 6, o.y); ctx.lineTo(o.x + FISH_W / 2 + 2, o.y - 8);
+      ctx.lineTo(o.x + FISH_W / 2 + 2, o.y + 8); ctx.fill();
+    }
+
+    if (state.immune > 0) ctx.globalAlpha = Math.floor(state.immune * 10) % 2 ? 0.4 : 1;
     drawCat(state.cat);
+    ctx.globalAlpha = 1;
+
 
     if (state.phase === 'play' || state.phase === 'over') {
       ctx.textAlign = 'left';
@@ -210,6 +320,11 @@
     keys: keys,
     view: view,
     step: step,
+    difficulty: difficulty,
+    setRandom: function (fn) { rand = fn || Math.random; },
+
+    difficulty: difficulty,
+    setRandom: function (fn) { rand = fn || Math.random; },
     draw: draw,
     resize: resize,
     start: startGame,
