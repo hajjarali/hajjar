@@ -1,0 +1,27 @@
+{
+  "attachments" : [ {
+    "name" : "entity_descriptors/refdata.Currency.json",
+    "type" : "ENTITY_DESCRIPTORS",
+    "size_bytes" : 2494,
+    "uploaded_at" : "2026-11-12T13:17:08.631828200Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "ui/currencies.screen.js",
+    "type" : "UI",
+    "size_bytes" : 3272,
+    "uploaded_at" : "2026-11-12T13:17:24.386777100Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "ui/refdata.Currency.js",
+    "type" : "UI",
+    "size_bytes" : 2319,
+    "uploaded_at" : "2026-11-12T13:17:31.935238700Z",
+    "origin" : "AGENT",
+    "approval" : {
+      "sha256" : "cd70cb397396c7f961f53b7bef97dace75d1a36e9842b511ffd2dc852ec02dc8",
+      "basis" : {
+        "entity_descriptors/refdata.Currency.json" : "25b8adcc4b361db84b844d40b033bf2d2199d4df3ae844e6e456bcd05d1351aa"
+      }
+    }
+  } ]
+}

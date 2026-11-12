@@ -1,0 +1,89 @@
+{
+  "descriptors" : [ {
+    "name" : "refdata.Currency",
+    "className" : "cyai.refdata.Currency",
+    "entityType" : "PERSISTABLE_BEAN",
+    "label" : "Currency",
+    "description" : "A currency with its exchange rate to USD, used to convert amounts.",
+    "group" : "refdata",
+    "persistenceDescriptor" : {
+      "tableName" : "currency",
+      "idGenerationStrategy" : "AUTO_INCREMENT",
+      "indexGroups" : { },
+      "naturalKeyGroups" : {
+        "by_code" : [ "code" ]
+      },
+      "managerDescriptor" : {
+        "owner" : {
+          "keep" : "FULL"
+        },
+        "caller" : {
+          "keep" : "NONE",
+          "read" : "LATEST",
+          "write" : "UPDATE_LOCAL"
+        }
+      },
+      "starSchemaRole" : "DIM"
+    },
+    "fieldDescriptors" : {
+      "code" : {
+        "name" : "code",
+        "fieldType" : "STRING",
+        "label" : "Code",
+        "description" : "Three-letter currency code, unique across currencies.",
+        "persistenceDescriptor" : {
+          "columnName" : "code",
+          "length" : 3
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : true,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "name" : {
+        "name" : "name",
+        "fieldType" : "STRING",
+        "label" : "Name",
+        "description" : "The currency's display name.",
+        "persistenceDescriptor" : {
+          "columnName" : "name",
+          "length" : 255
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "rateToUsd" : {
+        "name" : "rateToUsd",
+        "fieldType" : "BIG_DECIMAL",
+        "label" : "Rate to USD",
+        "description" : "Value of one unit of this currency in USD; greater than 0.",
+        "persistenceDescriptor" : {
+          "columnName" : "rate_to_usd"
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "DECIMAL"
+        },
+        "systemField" : false
+      }
+    },
+    "relationships" : { },
+    "version" : 1
+  } ]
+}
