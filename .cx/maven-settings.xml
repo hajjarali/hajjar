@@ -1,0 +1,25 @@
+<settings>
+  <!-- The platform's build-machine settings: every delivery build runs `mvn -s <this file>`. It ships inside the
+       Maven build tool's jar, which writes it beside each workspace's build logs; a deployment replaces it only by
+       naming its own as the Maven entry's settingsFile. It holds no secret: each address and credential is a CX_*
+       variable the platform sets on the build's environment. Each source's profile is active only when its
+       variable is set, so an unconfigured source adds nothing. cx-project's credential is also what a publish writes
+       with (mvn deploy -DaltSnapshotDeploymentRepository=cx-project::<the project's Snapshots repository>). -->
+  <servers>
+    <server><id>cx-project</id>
+      <username>${env.CX_PROJECT_REPO_USER}</username><password>${env.CX_PROJECT_REPO_PASSWORD}</password></server>
+    <server><id>cx-platform</id>
+      <username>${env.CX_PLATFORM_REPO_USER}</username><password>${env.CX_PLATFORM_REPO_PASSWORD}</password></server>
+  </servers>
+  <profiles>
+    <profile><id>cx-project</id>
+      <activation><property><name>env.CX_PROJECT_REPO_URL</name></property></activation>
+      <repositories><repository><id>cx-project</id><url>${env.CX_PROJECT_REPO_URL}</url></repository></repositories>
+      <pluginRepositories><pluginRepository><id>cx-project</id><url>${env.CX_PROJECT_REPO_URL}</url></pluginRepository></pluginRepositories>
+    </profile>
+    <profile><id>cx-platform</id>
+      <activation><property><name>env.CX_PLATFORM_REPO_URL</name></property></activation>
+      <repositories><repository><id>cx-platform</id><url>${env.CX_PLATFORM_REPO_URL}</url></repository></repositories>
+    </profile>
+  </profiles>
+</settings>

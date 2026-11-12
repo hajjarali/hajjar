@@ -8,7 +8,7 @@
 .local/
 
 # Build output
-build/
-.gradle/
+target/
 *.class
 *.jar
+.flattened-pom.xml

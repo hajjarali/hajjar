@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- The platform's part of this project's build: the project's pom.xml names this file as its parent
+     (relativePath .cx/pom.xml), and the platform's agents can read it but never change it. What the project
+     builds and depends on is the project's own pom.xml; what makes it build and publish on the platform is here. -->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.example</groupId>
+    <artifactId>hajjar-cx-parent</artifactId>
+    <version>1</version>
+    <packaging>pom</packaging>
+    <properties>
+        <!-- The project's version when nothing sets one: a publish passes its own (-Drevision=...). -->
+        <revision>1.0-SNAPSHOT</revision>
+        <maven.compiler.source>25</maven.compiler.source>
+        <maven.compiler.target>25</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    <dependencies>
+        <!-- The platform: every jar it ships, on the compile and test classpaths, never packaged (provided:
+             the node already has them). The version is the deployment's pin, set on every build the platform runs. -->
+        <dependency>
+            <groupId>ai.cortexis</groupId>
+            <artifactId>platform-api</artifactId>
+            <version>${env.CX_PLATFORM_VERSION}</version>
+            <type>pom</type>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <!-- The deploy a publish runs: 3.x reads the target it is given as id::url
+                     (-DaltSnapshotDeploymentRepository); the 2.x an older Maven defaults to wants id::layout::url. -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>3.1.4</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <!-- Writes the pom an install or a publish carries: the real version in place of ${revision}, and
+                 this parent folded in (oss mode drops <parent>), so the published pom stands on its own. -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>flatten-maven-plugin</artifactId>
+                <version>1.8.0</version>
+                <configuration>
+                    <updatePomFile>true</updatePomFile>
+                    <flattenMode>oss</flattenMode>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>flatten</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>flatten</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>flatten-clean</id>
+                        <phase>clean</phase>
+                        <goals>
+                            <goal>clean</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
