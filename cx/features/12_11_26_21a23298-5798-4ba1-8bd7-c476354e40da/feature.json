@@ -20,11 +20,151 @@
       "text" : "Design"
     } ]
   }, {
-    "id" : "7ad0dc01",
+    "id" : "5cd4c332",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Currency entity"
+    } ]
+  }, {
+    "id" : "32dc82ab",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
-      "text" : "What is being built and how — the entities, their fields and types, what is persisted, how they relate, and what the screens show."
+      "text" : "New root bean "
+    }, {
+      "type" : "text",
+      "text" : "refdata.Currency",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " with three required fields: "
+    }, {
+      "type" : "text",
+      "text" : "code",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (text, unique, format of exactly 3 letters), "
+    }, {
+      "type" : "text",
+      "text" : "name",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (text) and "
+    }, {
+      "type" : "text",
+      "text" : "rateToUsd",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (decimal number, strictly greater than 0). The spec says no existing entity or spec is reused (Dependencies: None), so nothing is re-modelled. The entity descriptor "
+    }, {
+      "type" : "text",
+      "text" : "entity_descriptors/refdata.Currency.json",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and the default form "
+    }, {
+      "type" : "text",
+      "text" : "ui/refdata.Currency.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " are spec-time artifacts and are copied verbatim into the module. Persistence, the observer sheet, uniqueness (P2 / A1), the 3-letter format and the rateToUsd > 0 rule (P1 / A2) all follow the platform entity pattern. Uniqueness and positivity are enforced on save."
+    } ]
+  }, {
+    "id" : "aeb16263",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Conversion and seed"
+    } ]
+  }, {
+    "id" : "75a7001c",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "convert(amount, fromCode, toCode)",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " is a domain operation over stored Currency rows, not a new entity. It looks both codes up by "
+    }, {
+      "type" : "text",
+      "text" : "code",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and returns amount × rateToUsd(from) ÷ rateToUsd(to), rounded to 2 decimals (R1, A3: 100 EUR → GBP = 85.04). Rounding uses BigDecimal HALF_UP on the final result only. An unknown code is refused with an error whose message contains that code (R2, A4). A seed applies USD 1.0, EUR 1.08 and GBP 1.27 (R3, A5). The seed is idempotent: it skips codes that already exist, so it cannot trip the unique rule."
+    } ]
+  }, {
+    "id" : "7ec88638",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Screen"
+    } ]
+  }, {
+    "id" : "35217be1",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The "
+    }, {
+      "type" : "text",
+      "text" : "Currencies",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " screen follows the spec mock "
+    }, {
+      "type" : "text",
+      "text" : "ui/currencies.screen.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": a table (code, name, rateToUsd) with a side panel holding the selected row's default form (save, cancel). It is registered under "
+    }, {
+      "type" : "text",
+      "text" : "Reference data › Currencies",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "."
     } ]
   }, {
     "id" : "feature-tasks-h",
