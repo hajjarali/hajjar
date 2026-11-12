@@ -10,6 +10,23 @@
       "text" : "s1s2"
     } ]
   }, {
+    "id" : "feature-summary-h",
+    "type" : "heading",
+    "props" : {
+      "level" : 2
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Summary"
+    } ]
+  }, {
+    "id" : "99c0b108",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Adds a CustomerNote entity with required customer name and note text, shipping the approved descriptor and default form verbatim. Exposes it through an observer sheet that lists notes newest first by createdDate. Builds the Customer notes screen from the spec's mock, a standard table beside a side-panel form, and registers it under Customers › Customer notes. Three tasks."
+    } ]
+  }, {
     "id" : "feature-design-h",
     "type" : "heading",
     "props" : {
@@ -30,7 +47,7 @@
       "text" : "Entity: CustomerNote"
     } ]
   }, {
-    "id" : "6989c60d",
+    "id" : "8ba17ad9",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -73,7 +90,7 @@
       "text" : " (date, optional). Both required fields are enforced by the entity's validation, so a save without either is refused (R1). No key or uniqueness is specified; none is added."
     } ]
   }, {
-    "id" : "58288691",
+    "id" : "bbbd54fc",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -108,7 +125,7 @@
       "text" : "Ordering"
     } ]
   }, {
-    "id" : "4a6cb8c0",
+    "id" : "051699f7",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -118,7 +135,7 @@
       }
     }, {
       "type" : "text",
-      "text" : " is the only ordering field (R2). The list sorts it descending, applied by the screen's table over the observer sheet. Notes saved without a date sort after dated ones. No default-date behaviour is added, because the spec marks the field optional."
+      "text" : " is the only ordering field (R2). The sheet's list query sorts it descending, and the screen's table shows rows in that order. No default-date or null-placement behaviour is added, because the spec marks the field optional and says nothing more."
     } ]
   }, {
     "id" : "45ebd036",
@@ -131,7 +148,7 @@
       "text" : "Missing-text message"
     } ]
   }, {
-    "id" : "2594ab89",
+    "id" : "7fbfa8ba",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -157,7 +174,7 @@
       "text" : "Surface"
     } ]
   }, {
-    "id" : "73933980",
+    "id" : "0428297e",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -174,7 +191,7 @@
       "text" : "View Layouts"
     } ]
   }, {
-    "id" : "954e118a",
+    "id" : "a188d901",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -190,7 +207,7 @@
       "text" : " region for region:"
     } ]
   }, {
-    "id" : "48c4700a",
+    "id" : "fba080ce",
     "type" : "bulletListItem",
     "content" : [ {
       "type" : "text",
@@ -203,7 +220,7 @@
       "text" : ": the platform's standard table layout (R3). One row per CustomerNote, showing customerName, noteText and createdDate, newest first, with open and delete actions."
     } ]
   }, {
-    "id" : "69b813b3",
+    "id" : "7f870f1e",
     "type" : "bulletListItem",
     "content" : [ {
       "type" : "text",
@@ -216,7 +233,7 @@
       "text" : ": the selected row's default form, with save and cancel."
     } ]
   }, {
-    "id" : "d5b4e3d2",
+    "id" : "d5389e96",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
@@ -229,7 +246,95 @@
       }
     }, {
       "type" : "text",
-      "text" : ", with the icon the spec's screen block names."
+      "text" : ". The spec names no icon, so the platform default is used."
+    } ]
+  }, {
+    "id" : "feature-touches-h",
+    "type" : "heading",
+    "props" : {
+      "level" : 2
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Touches"
+    } ]
+  }, {
+    "id" : "ec904cee",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "module: ."
+    } ],
+    "children" : [ {
+      "id" : "672530f1",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): cyai.customer.CustomerNote"
+      } ]
+    }, {
+      "id" : "03e34c9c",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/cyai/customer/CustomerNote.js"
+      } ]
+    }, {
+      "id" : "6b4326c0",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/entity_descriptors/customer.CustomerNote.json"
+      } ]
+    }, {
+      "id" : "5df4629b",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): cyai.customer.CustomerNoteTest"
+      } ]
+    }, {
+      "id" : "b884c966",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): cyai.customer.CustomerNoteSheet"
+      } ]
+    }, {
+      "id" : "94542f16",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): cyai.customer.CustomerNoteSheetTest"
+      } ]
+    }, {
+      "id" : "0ffb29b3",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): cyai.customer.CustomerNotesScreenModel"
+      } ]
+    }, {
+      "id" : "6aae405b",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): cyai.customer.CustomerApplicationModule"
+      } ]
+    }, {
+      "id" : "a193a375",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/cyai/customer/customer-notes.screen.js"
+      } ]
+    }, {
+      "id" : "51959aef",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): cyai.customer.CustomerNotesScreenTest"
+      } ]
     } ]
   }, {
     "id" : "feature-tasks-h",
@@ -242,12 +347,19 @@
       "text" : "Tasks"
     } ]
   }, {
-    "id" : "1ab95302",
-    "type" : "paragraph",
+    "id" : "41f070bf",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
     "content" : [ {
       "type" : "text",
-      "text" : "The design decomposed into tasks, each a '### Task N: Title' heading with a '"
-    }, {
+      "text" : "Task 1: Persist CustomerNote with required-field validation and ship the approved form"
+    } ]
+  }, {
+    "id" : "ffc2e2dc",
+    "type" : "paragraph",
+    "content" : [ {
       "type" : "text",
       "text" : "Depends on",
       "styles" : {
@@ -255,7 +367,541 @@
       }
     }, {
       "type" : "text",
-      "text" : "' line naming its direct prerequisites."
+      "text" : ": None"
+    } ]
+  }, {
+    "id" : "0ca8f78d",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Cites",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": A1, A4"
+    } ]
+  }, {
+    "id" : "c6b349b0",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Create the "
+    }, {
+      "type" : "text",
+      "text" : "cyai.customer.CustomerNote",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " entity (the repository holds only "
+    }, {
+      "type" : "text",
+      "text" : "src/main/java/com/example/App.java",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", so nothing exists to extend). Copy the spec attachment "
+    }, {
+      "type" : "text",
+      "text" : "entity_descriptors/customer.CustomerNote.json",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " verbatim to "
+    }, {
+      "type" : "text",
+      "text" : "src/main/resources/entity_descriptors/customer.CustomerNote.json",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". Copy "
+    }, {
+      "type" : "text",
+      "text" : "ui/customer.CustomerNote.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " verbatim to "
+    }, {
+      "type" : "text",
+      "text" : "src/main/resources/cyai/customer/CustomerNote.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". Enforce "
+    }, {
+      "type" : "text",
+      "text" : "customerName",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and "
+    }, {
+      "type" : "text",
+      "text" : "noteText",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " as required, with a natural-language message for a missing note text. Do not touch the sheet or the screen."
+    } ]
+  }, {
+    "id" : "c8026af2",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Touches",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "8846d870",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "module: ."
+    } ],
+    "children" : [ {
+      "id" : "2d205f67",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): cyai.customer.CustomerNote"
+      } ]
+    }, {
+      "id" : "9dbc0010",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/cyai/customer/CustomerNote.js"
+      } ]
+    }, {
+      "id" : "ab9d5f90",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/entity_descriptors/customer.CustomerNote.json"
+      } ]
+    }, {
+      "id" : "6477dee6",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): cyai.customer.CustomerNoteTest"
+      } ]
+    } ]
+  }, {
+    "id" : "01f4165e",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Delivers",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "7d45943a",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "persistence.entity: CustomerNote → cyai.customer.CustomerNote"
+    } ]
+  }, {
+    "id" : "3277484c",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "ui.defaultForm: CustomerNote → src/main/resources/cyai/customer/CustomerNote.js"
+    } ]
+  }, {
+    "id" : "fbcc169e",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "0fa8fb27",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A1) Saving a note without a customer name is refused."
+    } ]
+  }, {
+    "id" : "1fcc1ce5",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A1) Saving a note without note text is refused."
+    } ]
+  }, {
+    "id" : "46a6785a",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A4) The refusal for missing note text carries a readable sentence, not a raw field or constraint string."
+    } ]
+  }, {
+    "id" : "5258e0b5",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Task 2: Expose CustomerNote through its observer sheet, newest first"
+    } ]
+  }, {
+    "id" : "f76b04f7",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Depends on",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": Task-1 (the sheet reads and writes the CustomerNote entity Task 1 creates)"
+    } ]
+  }, {
+    "id" : "eaf19171",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Cites",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": A2"
+    } ]
+  }, {
+    "id" : "e7c475a7",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Add "
+    }, {
+      "type" : "text",
+      "text" : "CustomerNoteSheet",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", the entity's only remote surface. Its list query orders by "
+    }, {
+      "type" : "text",
+      "text" : "createdDate",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " descending."
+    } ]
+  }, {
+    "id" : "438d2ab1",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Touches",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "edb2f219",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "module: ."
+    } ],
+    "children" : [ {
+      "id" : "298da11b",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): cyai.customer.CustomerNoteSheet"
+      } ]
+    }, {
+      "id" : "90ca0c59",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): cyai.customer.CustomerNoteSheetTest"
+      } ]
+    } ]
+  }, {
+    "id" : "e7c1f763",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Delivers",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "6a9ab8d9",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "observer.sheet: CustomerNote → cyai.customer.CustomerNoteSheet"
+    } ]
+  }, {
+    "id" : "6fcce477",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "59377096",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A2) After saving two notes, the sheet lists the newer one first."
+    } ]
+  }, {
+    "id" : "194f26ac",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Task 3: Build the Customer notes screen from its mock and register it"
+    } ]
+  }, {
+    "id" : "0f930e4f",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Depends on",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": Task-2 (the table reads rows from the CustomerNoteSheet Task 2 adds), Task-1 (the side panel renders the CustomerNote default form fields)"
+    } ]
+  }, {
+    "id" : "d97ead40",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Cites",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": A2, A3"
+    } ]
+  }, {
+    "id" : "0e394cb1",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Build the Customer notes screen from the spec mock "
+    }, {
+      "type" : "text",
+      "text" : "ui/customer-notes.screen.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", with the same regions in the same order. The table region shows customerName, noteText and createdDate with open and delete actions, and uses the platform's standard table layout. The side panel holds the selected row's default form with save and cancel. Register the navigation entry under "
+    }, {
+      "type" : "text",
+      "text" : "Customers › Customer notes",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " in "
+    }, {
+      "type" : "text",
+      "text" : "CustomerApplicationModule",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". The spec's screen block names no icon, so use the platform default."
+    } ]
+  }, {
+    "id" : "67b9b050",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Touches",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "894676bc",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "module: ."
+    } ],
+    "children" : [ {
+      "id" : "d71d9a89",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): cyai.customer.CustomerNotesScreenModel"
+      } ]
+    }, {
+      "id" : "fe4d099c",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): cyai.customer.CustomerApplicationModule"
+      } ]
+    }, {
+      "id" : "59d5495e",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/cyai/customer/customer-notes.screen.js"
+      } ]
+    }, {
+      "id" : "c9dd6bfa",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): cyai.customer.CustomerNotesScreenTest"
+      } ]
+    } ]
+  }, {
+    "id" : "0beb4559",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Delivers",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "fbbed749",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "ui.screen: Customer notes → cyai.customer.CustomerNotesScreenModel"
+    } ]
+  }, {
+    "id" : "f3ceb59c",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "ui.navigation: Customer notes → cyai.customer.CustomerApplicationModule"
+    } ]
+  }, {
+    "id" : "7261d95a",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "a4bc6d4d",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The navigation entry "
+    }, {
+      "type" : "text",
+      "text" : "Customers › Customer notes",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " is registered and opens the screen."
+    } ]
+  }, {
+    "id" : "20eba36a",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A2) The screen's table shows the newer of two saved notes first."
+    } ]
+  }, {
+    "id" : "1af8b8ff",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A3) The table uses the platform's standard table layout."
+    } ]
+  }, {
+    "id" : "ae0f527a",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Selecting a row shows its default form in the side panel."
     } ]
   } ],
   "comments" : [ ],

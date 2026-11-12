@@ -1,1 +1,43 @@
-[ ]
+[ {
+  "threadId" : "efb0a971-1e53-4ffe-97b8-578b6a7cd38c",
+  "text" : "The screen is reached from the navigation entry `Customers › Customer notes`, with the icon the spec's screen block names.",
+  "occurrence" : 0,
+  "resolved" : true,
+  "comments" : [ {
+    "id" : "ccac17b0-8c29-442e-ab80-3563d2a24673",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "The spec's screen block names no icon (only `for`, `menu` and `mock`). The design and Task 3 both tell the implementer to use an icon from the spec that does not exist. Either drop the icon requirement or name the icon explicitly in the design.",
+    "createdAt" : "2026-11-12T15:58:23.816805600Z"
+  } ]
+}, {
+  "threadId" : "3eae5c50-9c53-41c1-9110-dc29e60f9df0",
+  "text" : "Notes saved without a date sort after dated ones.",
+  "occurrence" : 0,
+  "resolved" : true,
+  "comments" : [ {
+    "id" : "200c668f-30b1-4041-ba5f-a44d9ef9a7b2",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "This null-ordering behaviour is asserted in the design but no task or criterion implements or verifies it. Task 2's query only says 'orders by createdDate descending'. Either state the null-last ordering in Task 2 and add a criterion, or remove the claim from the design.",
+    "createdAt" : "2026-11-12T15:58:23.816805600Z"
+  } ]
+}, {
+  "threadId" : "d1bc7bd9-818f-43b6-9439-be30a024f469",
+  "text" : "- (A3) The navigation entry `Customers › Customer notes` is registered and opens the screen, which shows the notes in the standard table layout with the selected row's form beside it.",
+  "occurrence" : 0,
+  "resolved" : true,
+  "comments" : [ {
+    "id" : "a12d43f6-c456-426e-9bf3-4bb1f6dd2050",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "This criterion bundles navigation, screen open, table layout and side-panel form into one check, and it cites only A3 even though it also verifies the newest-first list on screen. Split into separate checkable criteria (navigation entry opens the screen; table lists newest first via the sheet; selected row shows the default form).",
+    "createdAt" : "2026-11-12T15:58:23.816805600Z"
+  } ]
+} ]
