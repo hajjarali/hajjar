@@ -1,0 +1,7 @@
+{
+  "group": null,
+  "version": null,
+  "jsontypes": [
+    { "jsontype": "customer.customerNote", "className": "cyai.customer.CustomerNote" }
+  ]
+}
