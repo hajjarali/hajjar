@@ -1,0 +1,24 @@
+// The platform's part of this project's build: the group, the Java version, the source encoding and the platform.
+// The build machine's init script (.cx/gradle-init.gradle) applies it to every project of the build AFTER the
+// project's own script, so what it sets is the build's whatever a build script says; the platform's agents can read
+// .cx/ but never change it. What the project builds and depends on is the project's own build.gradle.kts.
+
+group = 'com.example'
+
+plugins.withId('java') {
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(25)
+        }
+    }
+    tasks.withType(JavaCompile).configureEach {
+        options.encoding = 'UTF-8'
+    }
+    // The platform: every jar it ships, on the compile and test classpaths, never packaged (compileOnly: the node
+    // already has them). The version is the deployment's pin, set on every build the platform runs.
+    def platformVersion = providers.environmentVariable('CX_PLATFORM_VERSION').get()
+    dependencies {
+        compileOnly platform("ai.cortexis:platform-api:$platformVersion")
+        testImplementation platform("ai.cortexis:platform-api:$platformVersion")
+    }
+}

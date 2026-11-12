@@ -1,0 +1,150 @@
+// The platform's build-machine init script: every delivery build, and every read of a build's model, runs
+// `gradle --init-script .cx/gradle-init.gradle`. A new Gradle project is created with this copy in its repository; a
+// deployment replaces every project's copy only by naming its own as the Gradle entry's initScript. It holds no
+// secret: each address and credential is a CX_* variable the platform sets on the build's environment, and a source
+// whose variable is not set adds nothing.
+//
+// It does four things:
+//  1. names every repository a build reads: the platform's sources in the settings, Gradle's public defaults behind
+//     them, and the settings' repositories preferred over any a project script declares;
+//  2. applies the project's own platform part, .cx/platform.gradle, to every project after the project's own script;
+//  3. on a publish (-PcxSnapshotSegment=COR-305), names its version from the root project's own and the segment
+//     (1.0-SNAPSHOT -> 1.0-COR-305-SNAPSHOT), sets it on every project and prints it, so a project carries a plain
+//     version and the platform reads the one it published back off the build's output;
+//  4. on a publish (-PcxSnapshotSegment, with CX_PROJECT_SNAPSHOTS_URL set), gives every Java project a publication and the
+//     repository the platform publishes it to, written with the project's own credential (CX_PROJECT_REPO_*). The
+//     platform runs the one task that joins the two (publishCxPublicationToCxSnapshotsRepository), so a publication of
+//     the project's own is never sent anywhere.
+
+def env = { String name ->
+    def value = System.getenv(name)
+    value != null && !value.trim().isEmpty() ? value.trim() : null
+}
+def publishSegment = gradle.startParameter.projectProperties['cxSnapshotSegment']?.trim()
+def snapshots = env('CX_PROJECT_SNAPSHOTS_URL')
+def publishing = publishSegment && snapshots
+
+// --- 1. the repositories ---------------------------------------------------------------------------------------------
+
+def cxRepositories = { RepositoryHandler repositories ->
+    [['cx-project', 'CX_PROJECT_REPO'], ['cx-platform', 'CX_PLATFORM_REPO']].each { name, prefix ->
+        def url = env("${prefix}_URL")
+        if (url) {
+            repositories.maven { repo ->
+                repo.name = name
+                repo.url = url
+                def user = env("${prefix}_USER")
+                if (user) {
+                    repo.credentials { it.username = user; it.password = System.getenv("${prefix}_PASSWORD") }
+                }
+            }
+        }
+    }
+}
+
+beforeSettings { settings ->
+    // The platform's sources first, Gradle's public defaults behind them: declaring any repository drops the defaults,
+    // as a Maven build keeps Central behind the machine's profiles.
+    cxRepositories(settings.pluginManagement.repositories)
+    settings.pluginManagement.repositories.gradlePluginPortal()
+    cxRepositories(settings.dependencyResolutionManagement.repositories)
+    settings.dependencyResolutionManagement.repositories.mavenCentral()
+}
+
+settingsEvaluated { settings ->
+    // After the project's own settings script, so it cannot be turned back: the settings' repositories are the build's,
+    // and a repository a project script declares is ignored (Gradle says so in its output).
+    settings.dependencyResolutionManagement.repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
+}
+
+// --- 2. the project's platform part ----------------------------------------------------------------------------------
+
+// .cx/platform.gradle — the group, the Java version, the source encoding and the platform root, written when the
+// project was created — applied to every project of the build after the project's own script, so what it sets is the
+// build's whatever a build script says. Registered before section 3's hook, so a project's group is set before anything
+// reads it. A build with no such file is left as it is.
+beforeProject { project ->
+    project.afterEvaluate {
+        def platformPart = new File(project.rootDir, '.cx/platform.gradle')
+        if (platformPart.isFile()) {
+            project.apply(from: platformPart)
+        }
+    }
+}
+
+// --- 3. the version a publish names -----------------------------------------------------------------------------------
+// The root project's own version, its -SNAPSHOT dropped, then the segment, then -SNAPSHOT. ⚠ The rule build-tool-client's
+// SnapshotPublish.versionOf states in Java, where Maven's publish applies it; it is applied HERE for Gradle because only a
+// configured build knows its version, so a publish is one Gradle run. Printed once, on a line of its own, for the
+// platform to read back: 'cx-snapshot-version: <version>'.
+
+def snapshotVersion = null
+def nameSnapshotVersion = { Project root ->
+    def own = root.version.toString().trim()
+    if (own == Project.DEFAULT_VERSION) {
+        throw new GradleException("Cannot publish a snapshot: the root project sets no version. Set version = "
+                + "\"1.0-SNAPSHOT\" in the root build script.")
+    }
+    def base = own.endsWith('-SNAPSHOT') ? own.substring(0, own.length() - '-SNAPSHOT'.length()) : own
+    if (!(base ==~ /[A-Za-z0-9][A-Za-z0-9._+-]*/)) {
+        throw new GradleException("Cannot make a snapshot version from the project's version '" + own
+                + "': it is not a version a repository accepts.")
+    }
+    def named = base + '-' + publishSegment + '-SNAPSHOT'
+    println 'cx-snapshot-version: ' + named
+    named
+}
+
+beforeProject { project ->
+    if (publishSegment) {
+        // after the project's own script, which sets its plain version. The root is evaluated first, so its version is
+        // read — once — before any project's is replaced.
+        project.afterEvaluate {
+            if (snapshotVersion == null) {
+                snapshotVersion = nameSnapshotVersion(project.rootProject)
+            }
+            project.version = snapshotVersion
+        }
+    }
+}
+
+// --- 4a. a publish's publication -------------------------------------------------------------------------------------
+// In afterEvaluate, after the version above: maven-publish registers an afterEvaluate of its own, which Gradle refuses
+// once a project is evaluated, so it cannot be applied in projectsEvaluated.
+
+beforeProject { project ->
+    if (publishing) {
+        project.afterEvaluate {
+            def java = project.components.findByName('java')
+            if (java != null) {  // none: nothing a Java build publishes — an aggregator, a project with no code
+                project.pluginManager.apply('maven-publish')
+                project.extensions.getByName('publishing').publications.create('cx', MavenPublication) {
+                    it.from(java)
+                }
+            }
+        }
+    }
+}
+
+// --- 4b. a publish's repository: once every project is evaluated, beside each cx publication. Its credential is the
+// project's artifact repository's — the one its builds download with; the Snapshots repository is on the same server.
+
+projectsEvaluated { build ->
+    if (!publishing) {
+        return
+    }
+    build.rootProject.allprojects.each { project ->
+        def publications = project.extensions.findByName('publishing')?.publications
+        if (publications?.findByName('cx') == null) {
+            return
+        }
+        project.extensions.getByName('publishing').repositories.maven { repo ->
+            repo.name = 'cxSnapshots'
+            repo.url = snapshots
+            def user = env('CX_PROJECT_REPO_USER')
+            if (user) {
+                repo.credentials { it.username = user; it.password = System.getenv('CX_PROJECT_REPO_PASSWORD') }
+            }
+        }
+    }
+}

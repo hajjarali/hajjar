@@ -4,8 +4,7 @@
   },
   "sourceEncoding" : "UTF-8",
   "buildTool" : {
-    "jsontype" : "buildTool.maven",
-    "profiles" : [ ],
+    "jsontype" : "buildTool.gradle",
     "properties" : { },
     "args" : [ ]
   },
