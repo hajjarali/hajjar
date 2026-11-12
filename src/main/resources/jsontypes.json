@@ -1,0 +1,7 @@
+{
+  "group": null,
+  "version": null,
+  "jsontypes": [
+    { "jsontype": "refdata.currency", "className": "com.example.refdata.Currency" }
+  ]
+}

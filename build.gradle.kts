@@ -8,9 +8,9 @@ plugins {
 version = "1.0-SNAPSHOT"
 
 dependencies {
-    testImplementation(platform("org.junit:junit-bom:5.11.4"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+
+    testImplementation("org.junit.jupiter:junit-jupiter:5.11.2")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher:1.11.2")
 }
 
 tasks.test {
