@@ -20,11 +20,216 @@
       "text" : "Design"
     } ]
   }, {
-    "id" : "4b9d558b",
+    "id" : "29cd6c9b",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Entity: CustomerNote"
+    } ]
+  }, {
+    "id" : "6989c60d",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
-      "text" : "What is being built and how — the entities, their fields and types, what is persisted, how they relate, and what the screens show."
+      "text" : "CustomerNote is a new root bean (package "
+    }, {
+      "type" : "text",
+      "text" : "customer",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "); the spec's Dependencies section names no existing entity to reuse. Fields: "
+    }, {
+      "type" : "text",
+      "text" : "customerName",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (text, required), "
+    }, {
+      "type" : "text",
+      "text" : "noteText",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (longtext, required), "
+    }, {
+      "type" : "text",
+      "text" : "createdDate",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (date, optional). Both required fields are enforced by the entity's validation, so a save without either is refused (R1). No key or uniqueness is specified; none is added."
+    } ]
+  }, {
+    "id" : "58288691",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The entity descriptor "
+    }, {
+      "type" : "text",
+      "text" : "entity_descriptors/customer.CustomerNote.json",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and the default form "
+    }, {
+      "type" : "text",
+      "text" : "ui/customer.CustomerNote.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " are spec attachments. Both are shipped verbatim into the module, not redesigned."
+    } ]
+  }, {
+    "id" : "f1ad9c98",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Ordering"
+    } ]
+  }, {
+    "id" : "4a6cb8c0",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "createdDate",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " is the only ordering field (R2). The list sorts it descending, applied by the screen's table over the observer sheet. Notes saved without a date sort after dated ones. No default-date behaviour is added, because the spec marks the field optional."
+    } ]
+  }, {
+    "id" : "45ebd036",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Missing-text message"
+    } ]
+  }, {
+    "id" : "2594ab89",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The refusal for a missing "
+    }, {
+      "type" : "text",
+      "text" : "noteText",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (R4) uses a plain, natural-language validation message, such as \"Please enter the note text.\" It is not a raw field-name or constraint string. A4 is verified manually."
+    } ]
+  }, {
+    "id" : "84184233",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Surface"
+    } ]
+  }, {
+    "id" : "73933980",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The observer sheet is the entity's only remote surface and serves both reads and writes. The Customer notes screen sits over this sheet."
+    } ]
+  }, {
+    "id" : "feature-view-layouts-h",
+    "type" : "heading",
+    "props" : {
+      "level" : 2
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "View Layouts"
+    } ]
+  }, {
+    "id" : "954e118a",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The Customer notes screen follows the spec's mock "
+    }, {
+      "type" : "text",
+      "text" : "ui/customer-notes.screen.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " region for region:"
+    } ]
+  }, {
+    "id" : "48c4700a",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Table",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": the platform's standard table layout (R3). One row per CustomerNote, showing customerName, noteText and createdDate, newest first, with open and delete actions."
+    } ]
+  }, {
+    "id" : "69b813b3",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Side panel",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": the selected row's default form, with save and cancel."
+    } ]
+  }, {
+    "id" : "d5b4e3d2",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The screen is reached from the navigation entry "
+    }, {
+      "type" : "text",
+      "text" : "Customers › Customer notes",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", with the icon the spec's screen block names."
     } ]
   }, {
     "id" : "feature-tasks-h",
