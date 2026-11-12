@@ -1,1 +1,15 @@
-[ ]
+[ {
+  "threadId" : "0905cdb6-aca9-4838-86ff-37bb64153caf",
+  "text" : "- validation.rule: Currency.code → com.example.refdata.Currency#code",
+  "occurrence" : 0,
+  "resolved" : false,
+  "comments" : [ {
+    "id" : "eff299b4-3b98-467a-8477-fd05ba2c29cb",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "The spec lists two validation.rule artifacts for Currency.code (unique and format(3 letters)), and this single claim covers both. Task 1 has a criterion for uniqueness (A1) and an uncited one for the 3-letter format, so the claim is credible. However, the spec's P1 rule (rateToUsd > 0) is enforced in Task 1 but cited only through A2 with no stated mechanism. Name the mechanism, for example a Bean Validation constraint or a save hook, so the implementer does not have to guess where it lives.",
+    "createdAt" : "2026-11-12T13:20:42.492847900Z"
+  } ]
+} ]

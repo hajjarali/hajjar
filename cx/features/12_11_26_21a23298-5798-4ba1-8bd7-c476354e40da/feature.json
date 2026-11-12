@@ -10,6 +10,23 @@
       "text" : "test17212"
     } ]
   }, {
+    "id" : "feature-summary-h",
+    "type" : "heading",
+    "props" : {
+      "level" : 2
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Summary"
+    } ]
+  }, {
+    "id" : "cc73387c",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Adds a Currency root entity (code, name, rateToUsd) with save-time uniqueness, format and positive-rate validation, its approved descriptor and form shipped verbatim, and an observer sheet. A CurrencyConverter implements convert over stored rates with 2-decimal rounding and a code-naming error, and an idempotent seed supplies USD, EUR and GBP. The Currencies screen is built from its mock and registered under Reference data › Currencies, in four tasks."
+    } ]
+  }, {
     "id" : "feature-design-h",
     "type" : "heading",
     "props" : {
@@ -167,6 +184,115 @@
       "text" : "."
     } ]
   }, {
+    "id" : "feature-touches-h",
+    "type" : "heading",
+    "props" : {
+      "level" : 2
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Touches"
+    } ]
+  }, {
+    "id" : "62e12e0f",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "module: ."
+    } ],
+    "children" : [ {
+      "id" : "12ad18f4",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): com.example.refdata.Currency"
+      } ]
+    }, {
+      "id" : "b9b2b71c",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/entity_descriptors/refdata.Currency.json"
+      } ]
+    }, {
+      "id" : "4c5c0891",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/ui/refdata.Currency.js"
+      } ]
+    }, {
+      "id" : "b894f75f",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): com.example.refdata.CurrencyTest"
+      } ]
+    }, {
+      "id" : "6acf3403",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): com.example.refdata.CurrencySheet"
+      } ]
+    }, {
+      "id" : "ebfb71c0",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): com.example.refdata.CurrencySheetTest"
+      } ]
+    }, {
+      "id" : "cdf045c2",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): com.example.refdata.CurrencyConverter"
+      } ]
+    }, {
+      "id" : "3d72a989",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): com.example.refdata.CurrencySeed"
+      } ]
+    }, {
+      "id" : "c0edd0f8",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): com.example.refdata.CurrencyConverterTest"
+      } ]
+    }, {
+      "id" : "44036131",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): com.example.refdata.CurrenciesScreenModel"
+      } ]
+    }, {
+      "id" : "5cea72cf",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): com.example.refdata.RefdataApplicationModule"
+      } ]
+    }, {
+      "id" : "7f75376c",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/ui/currencies.screen.js"
+      } ]
+    }, {
+      "id" : "8f567888",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): com.example.refdata.CurrenciesScreenTest"
+      } ]
+    } ]
+  }, {
     "id" : "feature-tasks-h",
     "type" : "heading",
     "props" : {
@@ -177,12 +303,19 @@
       "text" : "Tasks"
     } ]
   }, {
-    "id" : "45ad5278",
-    "type" : "paragraph",
+    "id" : "79eda233",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
     "content" : [ {
       "type" : "text",
-      "text" : "The design decomposed into tasks, each a '### Task N: Title' heading with a '"
-    }, {
+      "text" : "Task 1: Persist Currency with its validation and ship the approved form"
+    } ]
+  }, {
+    "id" : "342b5579",
+    "type" : "paragraph",
+    "content" : [ {
       "type" : "text",
       "text" : "Depends on",
       "styles" : {
@@ -190,7 +323,626 @@
       }
     }, {
       "type" : "text",
-      "text" : "' line naming its direct prerequisites."
+      "text" : ": None"
+    } ]
+  }, {
+    "id" : "062e0453",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Cites",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": A1, A2"
+    } ]
+  }, {
+    "id" : "05da81ac",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Create the "
+    }, {
+      "type" : "text",
+      "text" : "refdata.Currency",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " entity (code, name, rateToUsd) with its migration and table. Copy the spec descriptor "
+    }, {
+      "type" : "text",
+      "text" : "entity_descriptors/refdata.Currency.json",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and the default form "
+    }, {
+      "type" : "text",
+      "text" : "ui/refdata.Currency.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " verbatim to their module resource paths. Enforce code uniqueness and the 3-letter format, and rateToUsd > 0, on save. Must not add the sheet, convert or the screen."
+    } ]
+  }, {
+    "id" : "cb036ac4",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Touches",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "0fb5800d",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "module: ."
+    } ],
+    "children" : [ {
+      "id" : "fc39f8f0",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): com.example.refdata.Currency"
+      } ]
+    }, {
+      "id" : "f7cd125a",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/entity_descriptors/refdata.Currency.json"
+      } ]
+    }, {
+      "id" : "13e985b8",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/ui/refdata.Currency.js"
+      } ]
+    }, {
+      "id" : "cb809b96",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): com.example.refdata.CurrencyTest"
+      } ]
+    } ]
+  }, {
+    "id" : "148a729b",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Delivers",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "3b117ee6",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "persistence.entity: Currency → com.example.refdata.Currency"
+    } ]
+  }, {
+    "id" : "7f8b72e9",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "ui.defaultForm: Currency → src/main/resources/ui/refdata.Currency.js"
+    } ]
+  }, {
+    "id" : "6c002480",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "validation.rule: Currency.code → com.example.refdata.Currency#code"
+    } ]
+  }, {
+    "id" : "45cd50b3",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "c767f515",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A1) Saving a Currency with a code already in use is refused."
+    } ]
+  }, {
+    "id" : "f9f4b553",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A2) Saving a Currency with rateToUsd 0 or negative is refused."
+    } ]
+  }, {
+    "id" : "884b9d4d",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "A code that is not 3 letters is refused."
+    } ]
+  }, {
+    "id" : "311e4bd8",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Task 2: Expose Currency through its observer sheet"
+    } ]
+  }, {
+    "id" : "57a73b48",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Depends on",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": Task-1 (the sheet reads and writes the Currency entity)"
+    } ]
+  }, {
+    "id" : "78538516",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Cites",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": A1"
+    } ]
+  }, {
+    "id" : "6d272cfa",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Add the observer sheet serving Currency reads and writes."
+    } ]
+  }, {
+    "id" : "2265aa0b",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Touches",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "5fe82b4e",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "module: ."
+    } ],
+    "children" : [ {
+      "id" : "9857972c",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): com.example.refdata.CurrencySheet"
+      } ]
+    }, {
+      "id" : "a1988cc0",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): com.example.refdata.CurrencySheetTest"
+      } ]
+    } ]
+  }, {
+    "id" : "3d9f3ce0",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Delivers",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "64f5426c",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "observer.sheet: Currency → com.example.refdata.CurrencySheet"
+    } ]
+  }, {
+    "id" : "24fef7d7",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "7af96f81",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A1) Saving a duplicate code through the sheet is refused."
+    } ]
+  }, {
+    "id" : "326a357d",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Saved currencies are listed by the sheet."
+    } ]
+  }, {
+    "id" : "50fb41ea",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Task 3: Add convert and the seed"
+    } ]
+  }, {
+    "id" : "861d5a56",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Depends on",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": Task-1 (convert and the seed read and write Currency rows)"
+    } ]
+  }, {
+    "id" : "e3dd02ec",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Cites",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": A3, A4, A5"
+    } ]
+  }, {
+    "id" : "d35b7437",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Add "
+    }, {
+      "type" : "text",
+      "text" : "CurrencyConverter.convert(amount, fromCode, toCode)",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " computing amount × rate(from) ÷ rate(to) in BigDecimal, rounded HALF_UP to 2 decimals, and "
+    }, {
+      "type" : "text",
+      "text" : "CurrencySeed",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " inserting USD 1.0, EUR 1.08, GBP 1.27, skipping codes already present."
+    } ]
+  }, {
+    "id" : "14ff6e4a",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Touches",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "67f21b77",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "module: ."
+    } ],
+    "children" : [ {
+      "id" : "15c1823b",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): com.example.refdata.CurrencyConverter"
+      } ]
+    }, {
+      "id" : "1db3dd21",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): com.example.refdata.CurrencySeed"
+      } ]
+    }, {
+      "id" : "172fe696",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): com.example.refdata.CurrencyConverterTest"
+      } ]
+    } ]
+  }, {
+    "id" : "ccf883f1",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Delivers",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": None"
+    } ]
+  }, {
+    "id" : "bec77174",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "fa30841a",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A3) After seeding, convert(100, \"EUR\", \"GBP\") returns 85.04."
+    } ]
+  }, {
+    "id" : "e34968d2",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A4) convert(10, \"XYZ\", \"USD\") fails with an error containing \"XYZ\"."
+    } ]
+  }, {
+    "id" : "49c28fec",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A5) After seeding, USD holds 1.0, EUR 1.08 and GBP 1.27."
+    } ]
+  }, {
+    "id" : "b93d918c",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Applying the seed twice leaves exactly three rows."
+    } ]
+  }, {
+    "id" : "3900d452",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Task 4: Build the Currencies screen from its mock and register it"
+    } ]
+  }, {
+    "id" : "eed9ac85",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Depends on",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": Task-2 (the table reads Currency through CurrencySheet)"
+    } ]
+  }, {
+    "id" : "85239ec7",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Cites",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": A1"
+    } ]
+  }, {
+    "id" : "69d154dc",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Build the Currencies screen from the spec mock "
+    }, {
+      "type" : "text",
+      "text" : "ui/currencies.screen.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (copied to "
+    }, {
+      "type" : "text",
+      "text" : "src/main/resources/ui/currencies.screen.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "), same regions in order: table of code, name, rateToUsd with an open action, and a side panel with the selected row's default form (save, cancel). Register it under "
+    }, {
+      "type" : "text",
+      "text" : "Reference data › Currencies",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " in the application module."
+    } ]
+  }, {
+    "id" : "043f40d1",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Touches",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "e8cc1db9",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "module: ."
+    } ],
+    "children" : [ {
+      "id" : "f952c013",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): com.example.refdata.CurrenciesScreenModel"
+      } ]
+    }, {
+      "id" : "67704af3",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): com.example.refdata.RefdataApplicationModule"
+      } ]
+    }, {
+      "id" : "fbdb46e7",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/ui/currencies.screen.js"
+      } ]
+    }, {
+      "id" : "6921e40f",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): com.example.refdata.CurrenciesScreenTest"
+      } ]
+    } ]
+  }, {
+    "id" : "304b1fef",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Delivers",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "abfed0b4",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "ui.screen: Currencies → com.example.refdata.CurrenciesScreenModel"
+    } ]
+  }, {
+    "id" : "3c7774e2",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "ui.navigation: Currencies → com.example.refdata.RefdataApplicationModule"
+    } ]
+  }, {
+    "id" : "6050f0f7",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "05b562bf",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The navigation entry Reference data › Currencies is registered and opens the screen."
+    } ]
+  }, {
+    "id" : "9304d274",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A1) Saving a duplicate code from the side panel form is refused."
     } ]
   } ],
   "comments" : [ ],
