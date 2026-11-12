@@ -1,0 +1,83 @@
+{
+  "descriptors" : [ {
+    "name" : "customer.CustomerNote",
+    "className" : "cyai.customer.CustomerNote",
+    "entityType" : "PERSISTABLE_BEAN",
+    "label" : "Customer Note",
+    "description" : "A free-text note recorded against a customer name.",
+    "group" : "customer",
+    "persistenceDescriptor" : {
+      "tableName" : "customer_note",
+      "idGenerationStrategy" : "AUTO_INCREMENT",
+      "indexGroups" : { },
+      "naturalKeyGroups" : { },
+      "starSchemaRole" : "FACT"
+    },
+    "fieldDescriptors" : {
+      "customerName" : {
+        "name" : "customerName",
+        "fieldType" : "STRING",
+        "label" : "Customer Name",
+        "description" : "The name of the customer the note is about.",
+        "persistenceDescriptor" : {
+          "columnName" : "customer_name",
+          "length" : 255
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "noteText" : {
+        "name" : "noteText",
+        "fieldType" : "STRING",
+        "label" : "Note Text",
+        "description" : "The text of the note.",
+        "persistenceDescriptor" : {
+          "columnName" : "note_text",
+          "length" : 4000
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT",
+          "viewParameter" : {
+            "jsontype" : "entity.desc.textFieldViewParameter",
+            "multiline" : true,
+            "minRows" : 3,
+            "maxRows" : 8
+          }
+        },
+        "systemField" : false
+      },
+      "createdDate" : {
+        "name" : "createdDate",
+        "fieldType" : "DATE",
+        "label" : "Created Date",
+        "description" : "The date the note was created; the list is ordered by it, newest first.",
+        "persistenceDescriptor" : {
+          "columnName" : "created_date"
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "DATE"
+        },
+        "systemField" : false
+      }
+    },
+    "relationships" : { },
+    "version" : 1
+  } ]
+}

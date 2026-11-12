@@ -1,0 +1,27 @@
+{
+  "attachments" : [ {
+    "name" : "entity_descriptors/customer.CustomerNote.json",
+    "type" : "ENTITY_DESCRIPTORS",
+    "size_bytes" : 2477,
+    "uploaded_at" : "2026-11-12T15:47:37.678721500Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "ui/customer-notes.screen.js",
+    "type" : "UI",
+    "size_bytes" : 3882,
+    "uploaded_at" : "2026-11-12T15:48:21.617037700Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "ui/customer.CustomerNote.js",
+    "type" : "UI",
+    "size_bytes" : 2209,
+    "uploaded_at" : "2026-11-12T15:47:58.041020500Z",
+    "origin" : "AGENT",
+    "approval" : {
+      "sha256" : "d23d91c55d9e23cee47821272a2bcf64da04c2b5de2a001bb10cb0901a329c0f",
+      "basis" : {
+        "entity_descriptors/customer.CustomerNote.json" : "3a358436ef77c9adf970c4d8c1c423251e332d62058012a77b608ce9b47b713a"
+      }
+    }
+  } ]
+}
