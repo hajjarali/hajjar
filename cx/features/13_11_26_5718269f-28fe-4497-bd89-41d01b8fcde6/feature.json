@@ -20,11 +20,243 @@
       "text" : "Design"
     } ]
   }, {
-    "id" : "f8c9681e",
+    "id" : "8be53252",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Book entity"
+    } ]
+  }, {
+    "id" : "02df279b",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
-      "text" : "What is being built and how — the entities, their fields and types, what is persisted, how they relate, and what the screens show."
+      "text" : "One new root bean, "
+    }, {
+      "type" : "text",
+      "text" : "Book",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (package "
+    }, {
+      "type" : "text",
+      "text" : "library",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "), realising the spec's Data model: "
+    }, {
+      "type" : "text",
+      "text" : "title",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (text, required), "
+    }, {
+      "type" : "text",
+      "text" : "author",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (text, optional), "
+    }, {
+      "type" : "text",
+      "text" : "rating",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (number, optional, min 1 / max 5), "
+    }, {
+      "type" : "text",
+      "text" : "read",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (flag, default false). No existing entity covers books (spec Dependencies: none), so nothing is reused; author stays a plain text field as the spec's scope excludes an Author entity. The entity descriptor "
+    }, {
+      "type" : "text",
+      "text" : "entity_descriptors/library.Book.json",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " is shipped verbatim from the spec attachment into the module, and the entity class, its jsontype entry, migration and table follow from it. "
+    }, {
+      "type" : "text",
+      "text" : "rating",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " min/max and "
+    }, {
+      "type" : "text",
+      "text" : "read",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " default are enforced on save. The observer sheet "
+    }, {
+      "type" : "text",
+      "text" : "BookSheet",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " is the entity's only remote surface (reads and writes) and backs the screen."
+    } ]
+  }, {
+    "id" : "f654b672",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Default form"
+    } ]
+  }, {
+    "id" : "1f779cc5",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "ui/library.Book.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " is shipped verbatim beside the entity class as the Book default form; it is reused as the side-panel form on the screen, not redesigned."
+    } ]
+  }, {
+    "id" : "8e84a6c9",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Books screen"
+    } ]
+  }, {
+    "id" : "613abafb",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The "
+    }, {
+      "type" : "text",
+      "text" : "Books",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " screen (for Book, menu Library › Books) is built from the spec mock "
+    }, {
+      "type" : "text",
+      "text" : "ui/books.screen.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", region for region: a table of books over the sheet, and a side panel holding the selected row's default form with save/cancel. The table shows title, author, rating and read, with open, add and delete actions."
+    } ]
+  }, {
+    "id" : "60b3fb4d",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Sorting (R1): the table's default sort is rating descending, applied by the screen over the sheet's rows, not by changing stored order. Books without a rating sort last."
+    } ]
+  }, {
+    "id" : "a33f02cf",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Greying (R2): rows whose "
+    }, {
+      "type" : "text",
+      "text" : "read",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " flag is set get a greyed row style; they remain in the list. The style is driven by the row's "
+    }, {
+      "type" : "text",
+      "text" : "read",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " value, so it updates when the flag is saved."
+    } ]
+  }, {
+    "id" : "ddf2923a",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The navigation entry is registered at "
+    }, {
+      "type" : "text",
+      "text" : "Library › Books",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " in the application module."
+    } ]
+  }, {
+    "id" : "feature-view-layouts-h",
+    "type" : "heading",
+    "props" : {
+      "level" : 2
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "View Layouts"
+    } ]
+  }, {
+    "id" : "2f995d9e",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The default form is shipped verbatim. The Books screen follows "
+    }, {
+      "type" : "text",
+      "text" : "ui/books.screen.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": table region first, side panel second; the mock's row-style and sort configuration are the reference for A1 and A2."
     } ]
   }, {
     "id" : "feature-tasks-h",
