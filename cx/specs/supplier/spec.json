@@ -1,1 +1,1 @@
-{"spec_id":"7230d5a0-bb77-42e9-b08d-943cde14ec90","name":"supplier","property_metadata":{}}
+{"spec_id":"7230d5a0-bb77-42e9-b08d-943cde14ec90","name":"supplier","property_metadata":{"reuseGate":"entities corpus, company corpus, platformEntities (Supplier, system.Supplier, cdm.Supplier), platformEnums (country) and spec registry checked: no overlap."}}
