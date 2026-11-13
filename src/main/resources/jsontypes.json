@@ -1,0 +1,7 @@
+{
+  "group": null,
+  "version": null,
+  "jsontypes": [
+    { "jsontype": "procurement.supplier", "className": "procurement.Supplier" }
+  ]
+}

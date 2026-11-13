@@ -1,0 +1,106 @@
+{
+  "descriptors" : [ {
+    "name" : "procurement.Supplier",
+    "className" : "procurement.Supplier",
+    "entityType" : "PERSISTABLE_BEAN",
+    "label" : "Supplier",
+    "description" : "A company that supplies goods or services, kept in a simple register.",
+    "group" : "procurement",
+    "persistenceDescriptor" : {
+      "tableName" : "supplier",
+      "idGenerationStrategy" : "AUTO_INCREMENT",
+      "indexGroups" : { },
+      "naturalKeyGroups" : { },
+      "managerDescriptor" : {
+        "owner" : {
+          "keep" : "FULL"
+        },
+        "caller" : {
+          "keep" : "NONE",
+          "read" : "LATEST",
+          "write" : "UPDATE_LOCAL"
+        }
+      },
+      "starSchemaRole" : "DIM"
+    },
+    "fieldDescriptors" : {
+      "name" : {
+        "name" : "name",
+        "fieldType" : "STRING",
+        "label" : "Name",
+        "description" : "The supplier's name.",
+        "persistenceDescriptor" : {
+          "columnName" : "name",
+          "length" : 255
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "contactEmail" : {
+        "name" : "contactEmail",
+        "fieldType" : "STRING",
+        "label" : "Contact Email",
+        "description" : "The email address to contact the supplier on.",
+        "persistenceDescriptor" : {
+          "columnName" : "contact_email",
+          "length" : 255
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "EMAIL"
+        },
+        "systemField" : false
+      },
+      "country" : {
+        "name" : "country",
+        "fieldType" : "STRING",
+        "label" : "Country",
+        "description" : "The country the supplier is based in.",
+        "persistenceDescriptor" : {
+          "columnName" : "country",
+          "length" : 100
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "active" : {
+        "name" : "active",
+        "fieldType" : "BOOLEAN",
+        "label" : "Active",
+        "description" : "Whether the supplier is currently active. Inactive suppliers stay in the list, greyed out.",
+        "persistenceDescriptor" : {
+          "columnName" : "active"
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "SWITCH"
+        },
+        "systemField" : false
+      }
+    },
+    "relationships" : { },
+    "version" : 1
+  } ]
+}
