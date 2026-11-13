@@ -1,0 +1,27 @@
+{
+  "attachments" : [ {
+    "name" : "entity_descriptors/procurement.Supplier.json",
+    "type" : "ENTITY_DESCRIPTORS",
+    "size_bytes" : 3026,
+    "uploaded_at" : "2026-11-13T08:25:52.767618700Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "ui/procurement.Supplier.js",
+    "type" : "UI",
+    "size_bytes" : 2385,
+    "uploaded_at" : "2026-11-13T08:26:13.662721200Z",
+    "origin" : "AGENT",
+    "approval" : {
+      "sha256" : "b0c45f61ce9c2541619cd815b500b6530c432c15f22b42e189badb52aba4fa43",
+      "basis" : {
+        "entity_descriptors/procurement.Supplier.json" : "47a49c90040ff977dce7c5e7ceb967afa558d6fa2d7583d706516a07b8f1252c"
+      }
+    }
+  }, {
+    "name" : "ui/suppliers.screen.js",
+    "type" : "UI",
+    "size_bytes" : 4758,
+    "uploaded_at" : "2026-11-13T08:26:27.181171200Z",
+    "origin" : "AGENT"
+  } ]
+}
