@@ -10,6 +10,23 @@
       "text" : "library"
     } ]
   }, {
+    "id" : "feature-summary-h",
+    "type" : "heading",
+    "props" : {
+      "level" : 2
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Summary"
+    } ]
+  }, {
+    "id" : "8ad6f183",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Adds a root bean library.Book (title, author, rating 1–5, read default false) with the spec's descriptor and default form shipped verbatim, a BookSheet serving it sorted by rating descending, and a Books screen built from the spec mock (table with read rows greyed, side-panel form) registered at Library › Books, in three tasks."
+    } ]
+  }, {
     "id" : "feature-design-h",
     "type" : "heading",
     "props" : {
@@ -259,6 +276,94 @@
       "text" : ": table region first, side panel second; the mock's row-style and sort configuration are the reference for A1 and A2."
     } ]
   }, {
+    "id" : "feature-touches-h",
+    "type" : "heading",
+    "props" : {
+      "level" : 2
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Touches"
+    } ]
+  }, {
+    "id" : "ab08e4bf",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "module: ."
+    } ],
+    "children" : [ {
+      "id" : "92a200c0",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): library.Book"
+      } ]
+    }, {
+      "id" : "beb08ea5",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/entity_descriptors/library.Book.json"
+      } ]
+    }, {
+      "id" : "b3f673d7",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/library/Book.js"
+      } ]
+    }, {
+      "id" : "98dbc5cf",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): library.BookTest"
+      } ]
+    }, {
+      "id" : "0c126960",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): library.BookSheet"
+      } ]
+    }, {
+      "id" : "a49e0a76",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): library.BookSheetTest"
+      } ]
+    }, {
+      "id" : "770f0f12",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): library.BooksScreenModel"
+      } ]
+    }, {
+      "id" : "561f3207",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/library/books.screen.js"
+      } ]
+    }, {
+      "id" : "fa49132e",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): library.LibraryApplicationModule"
+      } ]
+    }, {
+      "id" : "4077edcb",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): library.BooksScreenTest"
+      } ]
+    } ]
+  }, {
     "id" : "feature-tasks-h",
     "type" : "heading",
     "props" : {
@@ -269,12 +374,19 @@
       "text" : "Tasks"
     } ]
   }, {
-    "id" : "81e14925",
-    "type" : "paragraph",
+    "id" : "1bba4f42",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
     "content" : [ {
       "type" : "text",
-      "text" : "The design decomposed into tasks, each a '### Task N: Title' heading with a '"
-    }, {
+      "text" : "Task 1: Persist books and ship the approved descriptor and form"
+    } ]
+  }, {
+    "id" : "5da323a1",
+    "type" : "paragraph",
+    "content" : [ {
       "type" : "text",
       "text" : "Depends on",
       "styles" : {
@@ -282,7 +394,537 @@
       }
     }, {
       "type" : "text",
-      "text" : "' line naming its direct prerequisites."
+      "text" : ": None"
+    } ]
+  }, {
+    "id" : "7815257d",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Cites",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": A1, A2"
+    } ]
+  }, {
+    "id" : "ba9f5259",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Create the "
+    }, {
+      "type" : "text",
+      "text" : "library.Book",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " entity (title required, author, rating, read) from the spec descriptor "
+    }, {
+      "type" : "text",
+      "text" : "entity_descriptors/library.Book.json",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", copied verbatim to "
+    }, {
+      "type" : "text",
+      "text" : "src/main/resources/entity_descriptors/library.Book.json",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", with its migration and table. Ship the default form "
+    }, {
+      "type" : "text",
+      "text" : "ui/library.Book.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " verbatim to "
+    }, {
+      "type" : "text",
+      "text" : "src/main/resources/library/Book.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". Enforce rating min 1 / max 5 and read default false on save. Must not touch "
+    }, {
+      "type" : "text",
+      "text" : "com.example.App",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "."
+    } ]
+  }, {
+    "id" : "6d6bb9cf",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Touches",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "96a53c8f",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "module: ."
+    } ],
+    "children" : [ {
+      "id" : "9c48edf8",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): library.Book"
+      } ]
+    }, {
+      "id" : "c235ecd7",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/entity_descriptors/library.Book.json"
+      } ]
+    }, {
+      "id" : "e75985ec",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/library/Book.js"
+      } ]
+    }, {
+      "id" : "7da26023",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): library.BookTest"
+      } ]
+    } ]
+  }, {
+    "id" : "abdbb67b",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Delivers",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "457fa612",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "persistence.entity: Book → library.Book"
+    } ]
+  }, {
+    "id" : "a015eef2",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "ui.defaultForm: Book → src/main/resources/library/Book.js"
+    } ]
+  }, {
+    "id" : "9c93697c",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "validation.rule: Book.rating → library.Book#rating"
+    } ]
+  }, {
+    "id" : "4716f453",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "validation.rule: Book.read → library.Book#read"
+    } ]
+  }, {
+    "id" : "b82390cc",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "ec6ec258",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A1) Books saved with ratings 3, 5 and 4 are all persisted with those ratings, ready to be listed by rating."
+    } ]
+  }, {
+    "id" : "b48edd74",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A2) A saved book with read set keeps read true, and a book saved without it has read false."
+    } ]
+  }, {
+    "id" : "81b7d786",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Saving a rating of 0 or 6 is refused; saving without a title is refused."
+    } ]
+  }, {
+    "id" : "2039c456",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Task 2: Expose books through the observer sheet"
+    } ]
+  }, {
+    "id" : "83fad6e0",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Depends on",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": Task-1 (the sheet serves the library.Book entity)"
+    } ]
+  }, {
+    "id" : "408021f8",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Cites",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": A1"
+    } ]
+  }, {
+    "id" : "421c91e0",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Add "
+    }, {
+      "type" : "text",
+      "text" : "library.BookSheet",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", the entity's reads and writes, returning books sorted by rating descending (unrated last)."
+    } ]
+  }, {
+    "id" : "36ddeba6",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Touches",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "d9503bed",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "module: ."
+    } ],
+    "children" : [ {
+      "id" : "940ab198",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): library.BookSheet"
+      } ]
+    }, {
+      "id" : "9e70825b",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): library.BookSheetTest"
+      } ]
+    } ]
+  }, {
+    "id" : "06dc47f2",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Delivers",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "86bf73dc",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "observer.sheet: Book → library.BookSheet"
+    } ]
+  }, {
+    "id" : "df8341e7",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "01d29436",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A1) With books rated 3, 5 and 4, the sheet lists them in the order 5, 4, 3."
+    } ]
+  }, {
+    "id" : "0870b066",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Adding, editing and deleting a book through the sheet persists."
+    } ]
+  }, {
+    "id" : "0d9c02c4",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Task 3: Build the Books screen from its mock and register it"
+    } ]
+  }, {
+    "id" : "002d3bb6",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Depends on",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": Task-2 (the table reads rows from library.BookSheet), Task-1 (the side panel renders the Book default form)"
+    } ]
+  }, {
+    "id" : "05ac0b67",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Cites",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": A1, A2"
+    } ]
+  }, {
+    "id" : "98a764d1",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Build the Books screen from the mock "
+    }, {
+      "type" : "text",
+      "text" : "ui/books.screen.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (copied to "
+    }, {
+      "type" : "text",
+      "text" : "src/main/resources/library/books.screen.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : "): same regions in order — table (title, author, rating, read; Add/Open/Delete) then side panel with the selected row's form (Save/Cancel). Rows sorted by rating descending; rows with read set get reduced opacity but stay listed. Register the entry under "
+    }, {
+      "type" : "text",
+      "text" : "Library › Books",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " with an icon in "
+    }, {
+      "type" : "text",
+      "text" : "library.LibraryApplicationModule",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". Must not alter the Book entity or sheet."
+    } ]
+  }, {
+    "id" : "e3b951a1",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Touches",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "00e81b86",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "module: ."
+    } ],
+    "children" : [ {
+      "id" : "b8bd9a31",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): library.BooksScreenModel"
+      } ]
+    }, {
+      "id" : "9f129c15",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/library/books.screen.js"
+      } ]
+    }, {
+      "id" : "6368c1d6",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): library.LibraryApplicationModule"
+      } ]
+    }, {
+      "id" : "51a7e085",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): library.BooksScreenTest"
+      } ]
+    } ]
+  }, {
+    "id" : "6b9de478",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Delivers",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "d8023099",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "ui.screen: Books → library.BooksScreenModel"
+    } ]
+  }, {
+    "id" : "fdeba87d",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "ui.navigation: Books → library.LibraryApplicationModule"
+    } ]
+  }, {
+    "id" : "048cd47b",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "491f9fe0",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Navigation entry "
+    }, {
+      "type" : "text",
+      "text" : "Library › Books",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " is registered and the screen opens."
+    } ]
+  }, {
+    "id" : "5215e051",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A1) Books rated 3, 5, 4 appear in the table in the order 5, 4, 3."
+    } ]
+  }, {
+    "id" : "44a2a403",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A2) With one read and one unread book, both rows show and only the read one is greyed."
     } ]
   } ],
   "comments" : [ ],

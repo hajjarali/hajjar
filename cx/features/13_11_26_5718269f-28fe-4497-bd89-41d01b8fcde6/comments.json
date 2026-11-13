@@ -1,1 +1,43 @@
-[ ]
+[ {
+  "threadId" : "3b6f4f6c-b2cf-43f9-a868-8fddda4eca8a",
+  "text" : "**Cites**: A1, A2\n\nCreate the `library.Book` entity",
+  "occurrence" : 0,
+  "resolved" : false,
+  "comments" : [ {
+    "id" : "5fea9a31-7460-40a7-a608-fcea3a1d0502",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "Task 1 cites A1 and A2, but its criteria only check that ratings and the read flag persist. The list order and the greying are not verified until Tasks 2 and 3. Cite the A-numbers on the tasks that verify the listed behaviour (Tasks 2 and 3), or name the persistence-only criteria without an A-number.",
+    "createdAt" : "2026-11-13T14:42:21.292337400Z"
+  } ]
+}, {
+  "threadId" : "bcf8d72f-a994-4172-884f-9c7700484912",
+  "text" : "Books without a rating sort last.",
+  "occurrence" : 0,
+  "resolved" : false,
+  "comments" : [ {
+    "id" : "eb2fac5f-b75f-49a2-9758-ffe1a6cc7a56",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "The spec does not say where unrated books go, since rating is optional, and the design decides this without surfacing it. It is stated twice, in the design and in Task 2. Treat it as a decision for the author to confirm, and state it once. Also, the design says the screen applies the sort over the sheet's rows while Task 2 sorts in the sheet, so the sort is duplicated and the two halves describe it differently. Pick one owner.",
+    "createdAt" : "2026-11-13T14:42:21.292337400Z"
+  } ]
+}, {
+  "threadId" : "9a875fdd-0a9f-4599-8c3f-394c793aca79",
+  "text" : "Register the entry under `Library › Books` with an icon in `library.LibraryApplicationModule`.",
+  "occurrence" : 0,
+  "resolved" : false,
+  "comments" : [ {
+    "id" : "c25dcea4-0d93-4072-9e6d-a5c31b404471",
+    "author" : {
+      "id" : "ai-feature",
+      "username" : "Feature Agent"
+    },
+    "text" : "The icon is not in the spec or the design. It is minor, but it adds detail the other half never mentions. Drop it, or add it to the design.",
+    "createdAt" : "2026-11-13T14:42:21.292337400Z"
+  } ]
+} ]
