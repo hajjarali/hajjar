@@ -20,11 +20,152 @@
       "text" : "Design"
     } ]
   }, {
-    "id" : "d9789e0d",
+    "id" : "c0835ff2",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Supplier entity"
+    } ]
+  }, {
+    "id" : "8aeedb35",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
-      "text" : "What is being built and how — the entities, their fields and types, what is persisted, how they relate, and what the screens show."
+      "text" : "Grounding: the spec's Dependencies are \"None\"; Supplier is a genuinely new root bean in package "
+    }, {
+      "type" : "text",
+      "text" : "procurement",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", so nothing is reused or re-modelled. Fields follow the spec's Data model: "
+    }, {
+      "type" : "text",
+      "text" : "name",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (text, required), "
+    }, {
+      "type" : "text",
+      "text" : "contactEmail",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (text, optional, email-address format validation on save), "
+    }, {
+      "type" : "text",
+      "text" : "country",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (text, optional), "
+    }, {
+      "type" : "text",
+      "text" : "active",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (flag, required). There are no references, enums or embedded beans. Nothing is migrated (new table only)."
+    } ]
+  }, {
+    "id" : "4f5fc132",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The entity descriptor "
+    }, {
+      "type" : "text",
+      "text" : "entity_descriptors/procurement.Supplier.json",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and the default form "
+    }, {
+      "type" : "text",
+      "text" : "ui/procurement.Supplier.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " are authored at spec time and copied verbatim into the module. The entity class is built from the descriptor. The observer sheet is the entity's only remote surface, and the screen reads and writes through it."
+    } ]
+  }, {
+    "id" : "8b4773a3",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Greyed-out inactive rows (R1)"
+    } ]
+  }, {
+    "id" : "58011aaf",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Inactive suppliers are never filtered out. The Suppliers screen lists every row and applies a greyed-out row style when "
+    }, {
+      "type" : "text",
+      "text" : "active",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " is false (A1, manual)."
+    } ]
+  }, {
+    "id" : "feature-view-layouts-h",
+    "type" : "heading",
+    "props" : {
+      "level" : 2
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "View Layouts"
+    } ]
+  }, {
+    "id" : "f453ab3a",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The Suppliers screen (menu "
+    }, {
+      "type" : "text",
+      "text" : "Procurement › Suppliers",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ") follows the spec's mock "
+    }, {
+      "type" : "text",
+      "text" : "ui/suppliers.screen.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " region for region. The table region shows name, contactEmail, country and active, sorted by name ascending by default, with add and open actions and inactive rows greyed out. The side panel region shows the selected or new row's default form with save and cancel actions."
     } ]
   }, {
     "id" : "feature-tasks-h",
