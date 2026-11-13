@@ -1,0 +1,113 @@
+{
+  "descriptors" : [ {
+    "name" : "library.Book",
+    "className" : "cyai.library.Book",
+    "entityType" : "PERSISTABLE_BEAN",
+    "label" : "Book",
+    "description" : "A book in the small library, with its author, rating and read flag.",
+    "group" : "library",
+    "persistenceDescriptor" : {
+      "tableName" : "library_book",
+      "idGenerationStrategy" : "AUTO_INCREMENT",
+      "indexGroups" : {
+        "by_rating" : [ "rating" ]
+      },
+      "naturalKeyGroups" : { },
+      "managerDescriptor" : {
+        "owner" : {
+          "keep" : "FULL"
+        },
+        "caller" : {
+          "keep" : "NONE",
+          "read" : "LATEST",
+          "write" : "UPDATE_LOCAL"
+        }
+      },
+      "starSchemaRole" : "DIM"
+    },
+    "fieldDescriptors" : {
+      "title" : {
+        "name" : "title",
+        "fieldType" : "STRING",
+        "label" : "Title",
+        "description" : "The book's title.",
+        "persistenceDescriptor" : {
+          "columnName" : "title",
+          "length" : 255
+        },
+        "validationDescriptor" : {
+          "nullable" : false,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "author" : {
+        "name" : "author",
+        "fieldType" : "STRING",
+        "label" : "Author",
+        "description" : "Who wrote the book.",
+        "persistenceDescriptor" : {
+          "columnName" : "author",
+          "length" : 255
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "TEXT"
+        },
+        "systemField" : false
+      },
+      "rating" : {
+        "name" : "rating",
+        "fieldType" : "INTEGER",
+        "label" : "Rating",
+        "description" : "Rating from 1 to 5, 5 being best.",
+        "persistenceDescriptor" : {
+          "columnName" : "rating"
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : true
+        },
+        "viewDescriptor" : {
+          "viewType" : "RATING",
+          "viewParameter" : {
+            "jsontype" : "entity.desc.ratingFieldViewParameter",
+            "max" : 5,
+            "precision" : 1.0
+          }
+        },
+        "systemField" : false
+      },
+      "read" : {
+        "name" : "read",
+        "fieldType" : "BOOLEAN",
+        "label" : "Read",
+        "description" : "Whether the book has been read.",
+        "persistenceDescriptor" : {
+          "columnName" : "is_read",
+          "defaultValue" : "false"
+        },
+        "validationDescriptor" : {
+          "nullable" : true,
+          "unique" : false,
+          "nonNegative" : false
+        },
+        "viewDescriptor" : {
+          "viewType" : "CHECKBOX"
+        },
+        "systemField" : false
+      }
+    },
+    "relationships" : { },
+    "version" : 1
+  } ]
+}

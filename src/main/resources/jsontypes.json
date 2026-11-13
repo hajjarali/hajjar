@@ -1,0 +1,7 @@
+{
+  "group": null,
+  "version": null,
+  "jsontypes": [
+    { "jsontype": "library.book", "className": "library.Book" }
+  ]
+}
