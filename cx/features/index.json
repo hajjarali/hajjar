@@ -1,3 +1,7 @@
 {
-  "features" : [ ]
+  "features" : [ {
+    "slug" : "13_11_26_eba38ce8-9dd9-4b56-82b4-802ff4f19244",
+    "title" : "supplierdemo",
+    "createdBy" : "svc:SDLCWorker"
+  } ]
 }
