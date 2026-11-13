@@ -1,6 +1,7 @@
 package library;
 
 import cyai.entity.AbstractRdbmsEntity;
+import cyai.entity.desc.EntityClassKey;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import java.util.Objects;
@@ -8,6 +9,11 @@ import java.util.Objects;
 /** A book in the small library: title, author, rating (1 to 5) and read flag. */
 @JsonDeserialize(builder = Book.Builder.class)
 public final class Book extends AbstractRdbmsEntity<Book> {
+
+    /** The entity-descriptor name. */
+    public static final String ENTITY_NAME = "library.Book";
+    /** The versioned entity identity read by the {@code @ServesEntity} export layer. */
+    public static final EntityClassKey ENTITY_CLASS_KEY = new EntityClassKey(ENTITY_NAME, 1);
 
     /** Lowest accepted rating. */
     public static final int MIN_RATING = 1;
