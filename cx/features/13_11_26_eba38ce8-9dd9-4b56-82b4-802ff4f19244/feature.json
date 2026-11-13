@@ -20,11 +20,145 @@
       "text" : "Design"
     } ]
   }, {
-    "id" : "28e35a24",
+    "id" : "0a9d715a",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Supplier entity"
+    } ]
+  }, {
+    "id" : "17f4d1ea",
     "type" : "paragraph",
     "content" : [ {
       "type" : "text",
-      "text" : "What is being built and how — the entities, their fields and types, what is persisted, how they relate, and what the screens show."
+      "text" : "A new root bean "
+    }, {
+      "type" : "text",
+      "text" : "procurement.Supplier",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " — no existing entity is reused (spec Dependencies: none) and nothing needs migrating. Fields: "
+    }, {
+      "type" : "text",
+      "text" : "name",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (text, required), "
+    }, {
+      "type" : "text",
+      "text" : "contactEmail",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (text, optional, email-format validation), "
+    }, {
+      "type" : "text",
+      "text" : "country",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (text, optional), "
+    }, {
+      "type" : "text",
+      "text" : "active",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (flag, required, defaults to true). The entity descriptor "
+    }, {
+      "type" : "text",
+      "text" : "entity_descriptors/procurement.Supplier.json",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and the default form "
+    }, {
+      "type" : "text",
+      "text" : "ui/procurement.Supplier.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " are authored at spec time and shipped verbatim into the module. The entity gets its observer sheet as its only remote surface. There are no references to or from other records."
+    } ]
+  }, {
+    "id" : "9606b053",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Inactive suppliers stay visible (R1)"
+    } ]
+  }, {
+    "id" : "b26c57e2",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Inactive suppliers are never filtered out. The list queries all rows, and greying is a presentation rule on the Suppliers screen table, driven by "
+    }, {
+      "type" : "text",
+      "text" : "active == false",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". Nothing is persisted for it."
+    } ]
+  }, {
+    "id" : "feature-view-layouts-h",
+    "type" : "heading",
+    "props" : {
+      "level" : 2
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "View Layouts"
+    } ]
+  }, {
+    "id" : "c0d4b17a",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The Suppliers screen (menu "
+    }, {
+      "type" : "text",
+      "text" : "Procurement › Suppliers",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", over Supplier) follows the spec mock "
+    }, {
+      "type" : "text",
+      "text" : "ui/suppliers.screen.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " region for region. The table region shows name, contactEmail, country and active, sorted by name ascending, with inactive rows greyed out; its actions are add and open. The side panel region shows the selected or new row's default form, with save and cancel. The screen is registered in the application module's navigation."
     } ]
   }, {
     "id" : "feature-tasks-h",
