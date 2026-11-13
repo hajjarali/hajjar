@@ -6,5 +6,29 @@
     "uploaded_by" : "System Admin",
     "uploaded_at" : "2026-11-13T14:37:30.623140200Z",
     "origin" : "USER"
+  }, {
+    "name" : "entity_descriptors/library.Book.json",
+    "type" : "ENTITY_DESCRIPTORS",
+    "size_bytes" : 3123,
+    "uploaded_at" : "2026-11-13T14:38:18.429496500Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "ui/books.screen.js",
+    "type" : "UI",
+    "size_bytes" : 4290,
+    "uploaded_at" : "2026-11-13T14:39:15.872705900Z",
+    "origin" : "AGENT"
+  }, {
+    "name" : "ui/library.Book.js",
+    "type" : "UI",
+    "size_bytes" : 1847,
+    "uploaded_at" : "2026-11-13T14:38:46.264358800Z",
+    "origin" : "AGENT",
+    "approval" : {
+      "sha256" : "459ee1cc3c8b0cf60516c0a251f91e3f3f81c093aa2702aa87403174670ab0f2",
+      "basis" : {
+        "entity_descriptors/library.Book.json" : "9fc8d08bb9cabc00d136cfb675a92d341f5380e1dabf6cee9ac4ca320cf89fb5"
+      }
+    }
   } ]
 }
