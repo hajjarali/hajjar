@@ -10,6 +10,32 @@
       "text" : "supplierdemo"
     } ]
   }, {
+    "id" : "feature-summary-h",
+    "type" : "heading",
+    "props" : {
+      "level" : 2
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Summary"
+    } ]
+  }, {
+    "id" : "c1915b41",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Adds a new "
+    }, {
+      "type" : "text",
+      "text" : "procurement.Supplier",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " root bean with its spec-time descriptor and default form shipped verbatim, email-format and default-true validation, and an observer sheet that lists all suppliers sorted by name. Builds the Suppliers screen from the spec mock: a table that greys out inactive rows and a side panel holding the default form. It is registered under Procurement › Suppliers, in three tasks."
+    } ]
+  }, {
     "id" : "feature-design-h",
     "type" : "heading",
     "props" : {
@@ -161,6 +187,94 @@
       "text" : " region for region. The table region shows name, contactEmail, country and active, sorted by name ascending, with inactive rows greyed out; its actions are add and open. The side panel region shows the selected or new row's default form, with save and cancel. The screen is registered in the application module's navigation."
     } ]
   }, {
+    "id" : "feature-touches-h",
+    "type" : "heading",
+    "props" : {
+      "level" : 2
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Touches"
+    } ]
+  }, {
+    "id" : "26d07d4d",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "module: ."
+    } ],
+    "children" : [ {
+      "id" : "3d2cfc75",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): com.example.procurement.Supplier"
+      } ]
+    }, {
+      "id" : "335bf7e9",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/entity_descriptors/procurement.Supplier.json"
+      } ]
+    }, {
+      "id" : "abf6a2bb",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/ui/procurement.Supplier.js"
+      } ]
+    }, {
+      "id" : "0f57139a",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): com.example.procurement.SupplierTest"
+      } ]
+    }, {
+      "id" : "839d9489",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): com.example.procurement.SupplierSheet"
+      } ]
+    }, {
+      "id" : "694e74c0",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): com.example.procurement.SupplierSheetTest"
+      } ]
+    }, {
+      "id" : "b3ec732d",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): com.example.procurement.SuppliersScreenModel"
+      } ]
+    }, {
+      "id" : "73ad32e9",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/ui/suppliers.screen.js"
+      } ]
+    }, {
+      "id" : "e85fa7a9",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): com.example.procurement.ProcurementApplicationModule"
+      } ]
+    }, {
+      "id" : "d6038358",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): com.example.procurement.SuppliersScreenTest"
+      } ]
+    } ]
+  }, {
     "id" : "feature-tasks-h",
     "type" : "heading",
     "props" : {
@@ -171,12 +285,19 @@
       "text" : "Tasks"
     } ]
   }, {
-    "id" : "f7d1391b",
-    "type" : "paragraph",
+    "id" : "f6d6bac7",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
     "content" : [ {
       "type" : "text",
-      "text" : "The design decomposed into tasks, each a '### Task N: Title' heading with a '"
-    }, {
+      "text" : "Task 1: Persist suppliers and ship the approved descriptor and form"
+    } ]
+  }, {
+    "id" : "bd8afdf1",
+    "type" : "paragraph",
+    "content" : [ {
       "type" : "text",
       "text" : "Depends on",
       "styles" : {
@@ -184,7 +305,552 @@
       }
     }, {
       "type" : "text",
-      "text" : "' line naming its direct prerequisites."
+      "text" : ": None"
+    } ]
+  }, {
+    "id" : "afa11693",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Cites",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": A1"
+    } ]
+  }, {
+    "id" : "365aa70e",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Create the "
+    }, {
+      "type" : "text",
+      "text" : "Supplier",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " entity class (project has only "
+    }, {
+      "type" : "text",
+      "text" : "com.example.App",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " today, so this is new). Copy the spec's descriptor "
+    }, {
+      "type" : "text",
+      "text" : "entity_descriptors/procurement.Supplier.json",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and default form "
+    }, {
+      "type" : "text",
+      "text" : "ui/procurement.Supplier.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " verbatim to their resource paths. Enforce email format on "
+    }, {
+      "type" : "text",
+      "text" : "contactEmail",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " and default "
+    }, {
+      "type" : "text",
+      "text" : "active",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " to true, with tests."
+    } ]
+  }, {
+    "id" : "5d3203bd",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Touches",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "28af4160",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "module: ."
+    } ],
+    "children" : [ {
+      "id" : "2715679f",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): com.example.procurement.Supplier"
+      } ]
+    }, {
+      "id" : "7ede07ff",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/entity_descriptors/procurement.Supplier.json"
+      } ]
+    }, {
+      "id" : "02b1d770",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/ui/procurement.Supplier.js"
+      } ]
+    }, {
+      "id" : "a24e4a21",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): com.example.procurement.SupplierTest"
+      } ]
+    } ]
+  }, {
+    "id" : "ac6afd3e",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Delivers",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "c9ebc505",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "persistence.entity: Supplier → com.example.procurement.Supplier"
+    } ]
+  }, {
+    "id" : "759a61c5",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "ui.defaultForm: Supplier → src/main/resources/ui/procurement.Supplier.js"
+    } ]
+  }, {
+    "id" : "5ee39c8b",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "validation.rule: Supplier.contactEmail → com.example.procurement.Supplier#contactEmail"
+    } ]
+  }, {
+    "id" : "51259a01",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "validation.rule: Supplier.active → com.example.procurement.Supplier#active"
+    } ]
+  }, {
+    "id" : "d827877a",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "9d979e35",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A1) An inactive and an active supplier both save and both are retained when read back."
+    } ]
+  }, {
+    "id" : "754aee1c",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "A supplier saved without "
+    }, {
+      "type" : "text",
+      "text" : "active",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " is active; an invalid "
+    }, {
+      "type" : "text",
+      "text" : "contactEmail",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " is refused; a missing "
+    }, {
+      "type" : "text",
+      "text" : "name",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " is refused."
+    } ]
+  }, {
+    "id" : "e646f3d8",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Task 2: Expose suppliers through their observer sheet"
+    } ]
+  }, {
+    "id" : "df5470d3",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Depends on",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": Task-1 (the sheet reads and writes the Supplier entity Task 1 creates)"
+    } ]
+  }, {
+    "id" : "4c228ad7",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Cites",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": A1"
+    } ]
+  }, {
+    "id" : "0d45bd2c",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Add "
+    }, {
+      "type" : "text",
+      "text" : "SupplierSheet",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ", the entity's only remote surface. Its list read returns all suppliers, active or not, sorted by name ascending, with no active filter."
+    } ]
+  }, {
+    "id" : "a2f61630",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Touches",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "e77dfae2",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "module: ."
+    } ],
+    "children" : [ {
+      "id" : "e0fc8f02",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): com.example.procurement.SupplierSheet"
+      } ]
+    }, {
+      "id" : "804348d4",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): com.example.procurement.SupplierSheetTest"
+      } ]
+    } ]
+  }, {
+    "id" : "35d4e763",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Delivers",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "d73ad7f7",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "observer.sheet: Supplier → com.example.procurement.SupplierSheet"
+    } ]
+  }, {
+    "id" : "897da654",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "59e644bd",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A1) The sheet's list returns both an inactive and an active supplier, sorted by name."
+    } ]
+  }, {
+    "id" : "36eca16f",
+    "type" : "heading",
+    "props" : {
+      "level" : 3
+    },
+    "content" : [ {
+      "type" : "text",
+      "text" : "Task 3: Build the Suppliers screen from its mock and register it"
+    } ]
+  }, {
+    "id" : "312866b0",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Depends on",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": Task-2 (the table reads rows from SupplierSheet), Task-1 (the side panel renders the Supplier default form)"
+    } ]
+  }, {
+    "id" : "02c5ca8a",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Cites",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ": A1"
+    } ]
+  }, {
+    "id" : "10550674",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Build the Suppliers screen from the spec mock "
+    }, {
+      "type" : "text",
+      "text" : "ui/suppliers.screen.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " (copy to "
+    }, {
+      "type" : "text",
+      "text" : "src/main/resources/ui/suppliers.screen.js",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ") with the same regions in the same order. The table shows name, contactEmail, country and active, with inactive rows greyed out ("
+    }, {
+      "type" : "text",
+      "text" : "text.disabled",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ") and Add and Open actions. The side panel shows the default form with Save and Cancel. Register it under "
+    }, {
+      "type" : "text",
+      "text" : "Procurement › Suppliers",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " with an icon in "
+    }, {
+      "type" : "text",
+      "text" : "ProcurementApplicationModule",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ". Do not change the entity or the sheet."
+    } ]
+  }, {
+    "id" : "9283a3b6",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Touches",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "aec7591c",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "module: ."
+    } ],
+    "children" : [ {
+      "id" : "ad03392c",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): com.example.procurement.SuppliersScreenModel"
+      } ]
+    }, {
+      "id" : "901d1e71",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): src/main/resources/ui/suppliers.screen.js"
+      } ]
+    }, {
+      "id" : "9394e9d3",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "entry (new): com.example.procurement.ProcurementApplicationModule"
+      } ]
+    }, {
+      "id" : "133f1389",
+      "type" : "bulletListItem",
+      "content" : [ {
+        "type" : "text",
+        "text" : "test (new): com.example.procurement.SuppliersScreenTest"
+      } ]
+    } ]
+  }, {
+    "id" : "30464995",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Delivers",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "01509181",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "ui.screen: Suppliers → com.example.procurement.SuppliersScreenModel"
+    } ]
+  }, {
+    "id" : "684b46d0",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "ui.navigation: Suppliers → com.example.procurement.ProcurementApplicationModule"
+    } ]
+  }, {
+    "id" : "ce70d658",
+    "type" : "paragraph",
+    "content" : [ {
+      "type" : "text",
+      "text" : "Acceptance criteria",
+      "styles" : {
+        "bold" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : ":"
+    } ]
+  }, {
+    "id" : "3ac6f8f7",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "(A1) With one inactive and one active supplier, both rows appear and only the inactive one is greyed out."
+    } ]
+  }, {
+    "id" : "0149d65d",
+    "type" : "bulletListItem",
+    "content" : [ {
+      "type" : "text",
+      "text" : "The "
+    }, {
+      "type" : "text",
+      "text" : "Procurement › Suppliers",
+      "styles" : {
+        "code" : true
+      }
+    }, {
+      "type" : "text",
+      "text" : " entry is registered and opens the screen."
     } ]
   } ],
   "comments" : [ ],
